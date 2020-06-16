@@ -14,3 +14,7 @@ BACK Project is a web application which is an online clinic, where patients can 
 * Chenhao Jiang
 * Jennifer Alexandra Thompson
 * Shizhen Cui
+
+## Project Management
+# The Kanban board
+* https://trello.com/b/iGt59yK9/csc309-team-project
