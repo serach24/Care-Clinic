@@ -1,0 +1,20 @@
+.root {
+    float: left;
+    position: fixed;
+    top: 0;
+    flex-grow: 1;
+}
+
+.title {
+    flex-grow: 1;
+}
+
+.loginButton {
+    
+}
+
+.MuiButton-text.loginButton {
+    position: absolute;
+    right: 0px;
+    margin-right: 12px;
+  }
