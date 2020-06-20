@@ -3,6 +3,7 @@
     position: fixed;
     top: 0;
     flex-grow: 1;
+    
 }
 
 .title {
@@ -20,5 +21,8 @@
 }
 
 .drawer {
-    overflow: auto;
+
+}
+.MuiDrawer-paper.MuiDrawer-paperAnchorLeft {
+    top: 64px;
 }
