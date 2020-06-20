@@ -1,0 +1,40 @@
+table
+{
+  border-collapse: collapse;
+  margin: 0 auto;
+  text-align: center;
+}
+
+table thead th
+{
+  background-color: darkblue;
+}
+
+table td, table th
+{
+  border: 1px solid white;
+  color: gray;
+  height: 10%;
+  width: 200px;
+}
+
+table tr:nth-child(odd)
+{
+  background: lightblue;
+}
+table tr:nth-child(even)
+{
+  background: skyblue;
+}
+table tr:hover{
+  background: white;
+}
+.BanButton {
+  width: 50px;
+  border: 0;
+  background: red;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
+  margin: 1px;
+}
