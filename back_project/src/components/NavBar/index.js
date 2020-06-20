@@ -51,21 +51,29 @@ function DropMenu() {
 
 class NavBar extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            secons: 0
+    state = {
+      open:false
+    }
 
-        }
-    };
     handleClick = () => {
         log('click drawer');
+        if (this.state.open) {
+          this.setState({
+            open: false
+          });
+        }
+        else {
+          this.setState({
+            open: true
+          });
+        }
     };
-    
+
+
     render () {
-        const { root } = this.props;
+        const { navbar_root } = this.props;
         return (
-            <div className={root}>
+            <div className={navbar_root}>
                 <AppBar position="fixed">
                     <Toolbar>
                         <IconButton edge="start" 
@@ -73,15 +81,25 @@ class NavBar extends React.Component {
                             className="menuButton" >
                             <MenuIcon />
                         </IconButton>
-                        <Drawer className="drawer" variant="permanent">
+                        <Drawer className="drawer" variant="persistent" open={this.state.open}>
                             <Toolbar />
                             <Button color="inherit" className="Home" >1</Button>
                             <Button color="inherit" className="About" >2</Button>
                         </Drawer>
-                        <Button color="inherit" className="Home" >Home</Button>
-                        <Button color="inherit" className="About" >About</Button>
-                        <Button color="inherit" className="TalkButton" >Talk to a Doctor</Button>
-                        <Button color="inherit" className="loginButton" >Login</Button>
+                        <Button color="inherit" 
+                                onClick = {this.handleClick}
+                                className="Home" >
+                          Home
+                        </Button>
+                        <Button color="inherit" 
+                                onClick = {this.handleClick}
+                                className="About" >About</Button>
+                        <Button color="inherit"
+                                onClick = {this.handleClick} 
+                                className="TalkButton" >Talk to a Doctor</Button>
+                        <Button color="inherit" 
+                                onClick = {this.handleClick}
+                                className="loginButton" >Login</Button>
                     </Toolbar>
                 </AppBar>
                 

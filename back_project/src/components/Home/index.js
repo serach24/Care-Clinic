@@ -8,15 +8,18 @@ import NavBar from "./../NavBar";
 import "./styles.css";
 
 class Home extends React.Component{
-    article = {
-        header: "",
-        context: ""
+    state = {
+        articleheader: "Header",
+        articlecontent: "Content",
+        articles :[
+            {header: "header 1", content: "content 1"},
+            {header: "header 2", content: "content 2"}           
+        ]
     }
 
 
     render(){
         return (
-            
             <div className="App">
                 <NavBar />
                 <div className="article_container">
@@ -25,7 +28,18 @@ class Home extends React.Component{
                             <li>Content</li>
                         </ul>
                     </div>
-                    <Content />
+                    <Content 
+                        articleheader={this.state.articleheader}
+                        articlecontent={this.state.articlecontent}
+                    />
+                    <Content 
+                        articleheader={this.state.articleheader}
+                        articlecontent={this.state.articlecontent}
+                    />
+                    <Content 
+                        articleheader={this.state.articleheader}
+                        articlecontent={this.state.articlecontent}
+                    />
                     <Content />
                     <Content />
                 </div>
