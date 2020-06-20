@@ -5,24 +5,49 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
 
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 import "./styles.css";
+import { Drawer } from '@material-ui/core';
 
 const log = console.log;
+
+// matrial-ui website simple menu
+function DropMenu() {
+    const [anchorEl, setAnchorEl] = useState(null);
+  
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
+  
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+  
+    return (
+      <div>
+        <IconButton edge="start" 
+                    onClick = {handleClick}
+                    className="menuButton" >
+            <MenuIcon />
+        </IconButton>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Appointment</MenuItem>
+          <MenuItem onClick={handleClose}>prescription</MenuItem>
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+        </Menu>
+      </div>
+    );
+  }
+
 
 class NavBar extends React.Component {
 
@@ -38,30 +63,29 @@ class NavBar extends React.Component {
     };
     
     render () {
-        const { root, menuButton, title} = this.props;
+        const { root } = this.props;
         return (
             <div className={root}>
-                <CssBaseline />
                 <AppBar position="fixed">
                     <Toolbar>
                         <IconButton edge="start" 
-                                    onClick = {this.handleClick}
-                                    className={menuButton} >
+                            onClick = {this.handleClick}
+                            className="menuButton" >
                             <MenuIcon />
                         </IconButton>
+                        <Drawer className="drawer" variant="permanent">
+                            <Toolbar />
+                            <Button color="inherit" className="Home" >1</Button>
+                            <Button color="inherit" className="About" >2</Button>
+                        </Drawer>
                         <Button color="inherit" className="Home" >Home</Button>
                         <Button color="inherit" className="About" >About</Button>
                         <Button color="inherit" className="TalkButton" >Talk to a Doctor</Button>
                         <Button color="inherit" className="loginButton" >Login</Button>
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="persistent" anchor="left" open={false}>
-                    <div>
-                    <IconButton>
-                        <ChevronLeftIcon />
-                    </IconButton>
-                    </div>
-                </Drawer>
+                
+                {/* <Drawer1 /> */}
             </div>
 
         );
