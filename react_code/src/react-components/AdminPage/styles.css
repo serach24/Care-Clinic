@@ -1,3 +1,20 @@
-.Whole{
-    width: 100%;
+.FixedNav{
+    position: fixed;
+    right: 4%;
+    top: 20%;
+}
+.NavButton{
+    border-width: 0px;
+    background-color: lightgray;
+    display: block;
+}
+.NavButton:hover{
+    background: lightskyblue;
+}
+.WholeAdmin{
+    scroll-behavior: smooth;
+}
+.Head{
+    text-align: center;
+    margin-top: 10%;
 }

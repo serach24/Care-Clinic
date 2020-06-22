@@ -35,8 +35,14 @@ class UserList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: List
+            list: List,
+            show: true
         };
+        this.FunctionHide = this.Functionhide.bind(this);
+    }
+
+    Functionhide() {
+        this.setState({ show: !this.state.show });
     }
 
     HandleBan(event){
@@ -60,11 +66,21 @@ class UserList extends React.Component {
                     <th>UID</th>
                     <th>Name</th>
                     <th>State</th>
-                    <th></th>
+                    <th>
+                      {!this.state.show && (<button onClick={() => this.FunctionHide()}>
+                          show
+                          </button>
+                      )
+                      }
+                      {this.state.show && (<button onClick={() => this.FunctionHide()}>
+                              hide </button>
+                          )
+                      }
+                    </th>
                 </tr>
               </thead>
               <tbody>
-              {this.state.list.map((item =>
+              {this.state.show && this.state.list.map((item =>
                       <tr>
                         <td> {item.Uid} </td>
                         <td> {item.Name} </td>

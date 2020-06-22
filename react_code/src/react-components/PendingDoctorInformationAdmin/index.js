@@ -33,8 +33,14 @@ class PendingDoctors extends React.Component {
         super(props);
 
         this.state = {
-            list: List
+            list: List,
+            show: true
         };
+        this.FunctionHide = this.Functionhide.bind(this);
+    }
+
+    Functionhide() {
+        this.setState({ show: !this.state.show });
     }
 
     HandleApprove(event){
@@ -74,18 +80,28 @@ class PendingDoctors extends React.Component {
                     <th>UID</th>
                     <th>Name</th>
                     <th>State</th>
-                    <th></th>
+                    <th>
+                    {!this.state.show && (<button onClick={() => this.FunctionHide()}>
+                    show
+                    </button>
+                    )
+                    }
+                    {this.state.show && (<button onClick={() => this.FunctionHide()}>
+                    hide </button>
+                    )
+                    }
+                    </th>
                 </tr>
               </thead>
               <tbody>
-              {this.state.list.map((item =>
+              {this.state.show && this.state.list.map((item =>
                       <tr>
                         <td> {item.Uid} </td>
                         <td> {item.Name} </td>
                         <td> {item.State} </td>
-                        <td>
-                        <button className ="Approve" id={item.Id} onClick={this.HandleApprove.bind(this)}> Approve </button>
-                        <button className ="Decline" id={item.Id} onClick={this.HandleDecline.bind(this)}> Decline </button>
+                        <td class = "PendingDocButtons">
+                        <button className ="Approve2" id={item.Id} onClick={this.HandleApprove.bind(this)}> Approve </button>
+                        <button className ="Decline2" id={item.Id} onClick={this.HandleDecline.bind(this)}> Decline </button>
                         </td>
                       </tr>
                 ))}

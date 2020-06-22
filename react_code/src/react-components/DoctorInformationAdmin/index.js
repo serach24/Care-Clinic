@@ -31,10 +31,15 @@ List.push(new DoctorInfo(2,"DC83265176","Dr Cotton","Active"));
 class DoctorList extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            list: List
-        };
+            list: List,
+            show: true
+    };
+        this.FunctionHide = this.Functionhide.bind(this);
+    }
+
+    Functionhide() {
+        this.setState({ show: !this.state.show });
     }
 
     HandleBan(event){
@@ -52,18 +57,28 @@ class DoctorList extends React.Component {
       render() {
         return (
         <div className="Whole">
-          <table>
+          <table className ="DoctorInfoTable">
               <thead>
                 <tr className = "Head">
                     <th>UID</th>
                     <th>Name</th>
                     <th>State</th>
-                    <th></th>
+                    <th>
+                      {!this.state.show && (<button onClick={() => this.FunctionHide()}>
+                                show
+                                </button>
+                                )
+                      }
+                      {this.state.show && (<button onClick={() => this.FunctionHide()}>
+                          hide </button>
+                      )
+                      }
+                    </th>
                 </tr>
               </thead>
               <tbody>
-              {this.state.list.map((item =>
-                      <tr>
+              {this.state.show && this.state.list.map((item =>
+                      <tr key = {item.Id}>
                         <td> {item.Uid} </td>
                         <td> {item.Name} </td>
                         <td> {item.State} </td>

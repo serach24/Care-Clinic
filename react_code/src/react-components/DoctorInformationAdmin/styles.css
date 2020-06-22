@@ -1,16 +1,16 @@
-table
+.DoctorInfoTable
 {
   border-collapse: collapse;
   margin: 0 auto;
   text-align: center;
 }
 
-table thead th
+.DoctorInfoTable thead th
 {
   background-color: darkblue;
 }
 
-table td, table th
+.DoctorInfoTable td, .DoctorInfoTable th
 {
   border: 1px solid white;
   color: gray;
@@ -18,15 +18,15 @@ table td, table th
   width: 200px;
 }
 
-table tr:nth-child(odd)
+.DoctorInfoTable tr:nth-child(odd)
 {
   background: lightblue;
 }
-table tr:nth-child(even)
+.DoctorInfoTable tr:nth-child(even)
 {
   background: skyblue;
 }
-table tr:hover{
+.DoctorInfoTable tr:hover{
   background: white;
 }
 .BanButton {
@@ -37,4 +37,7 @@ table tr:hover{
   white-space: nowrap;
   text-decoration: none;
   margin: 1px;
+}
+.BanButton:hover{
+  background-color: darkred;
 }

@@ -6,15 +6,11 @@
 {
   width: 100%;
   border: 4px solid blue;
-}
-
-table
-{
   border-collapse: collapse;
   margin: 0 auto;
   text-align: center;
 }
-table:hover{
+.Big:hover{
   background-color:whitesmoke ;
   border-color: lightskyblue;
 
@@ -36,23 +32,34 @@ tr{
 }
 
 .Decline {
-  width: 80px;
+  width: 35%;
+  height: 20%;
   border: 0;
+  font-size: 80%;
   background: red;
   color: white;
   white-space: nowrap;
   text-decoration: none;
   margin-right: 40%;
+  margin-top: 3px;
   float: right;
+}
+.Decline:hover{
+  width: 40%;
 }
 
 .Approve {
-  width: 80px;
+  width: 35%;
+  height: 20%;
   border: 0;
+  font-size: 80%;
   background: Green;
   color: white;
   white-space: nowrap;
   text-decoration: none;
   margin-left: 40%;
   float: left;
+}
+.Approve:hover{
+  width : 40%;
 }

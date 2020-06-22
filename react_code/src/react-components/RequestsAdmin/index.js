@@ -29,7 +29,7 @@ class RequestInfo{
 
 List.push(new RequestInfo(0,"MS0001","Bo@Liu.ca","This is a test message"));
 List.push(new RequestInfo(1,"MS0210","Liu@BO.cc","This is the second test message which is much longer then the first one and this is also a sentence without changing line."));
-List.push(new RequestInfo(0,"MS1234","Bo@Liu.ca",
+List.push(new RequestInfo(2,"MS1234","Bo@Liu.ca",
     "Available Scripts\n" +
     "In the project directory, you can run:\n" +
     "\n" +
@@ -96,7 +96,7 @@ class RequestsList extends React.Component {
         return (
         <div className="Whole">
               {this.state.list.map((item =>
-                      <table className = "Big">
+                      <div className = "Big" key ={item.Id + "whole"}>
                       <table>
                       <tbody>
 
@@ -107,7 +107,7 @@ class RequestsList extends React.Component {
                         </tbody>
                         </table>
 
-                        <div className="Content">
+                        <div className="Content" >
                          {item.message}
                         </div>
 
@@ -117,7 +117,7 @@ class RequestsList extends React.Component {
                         <button className ="Decline" id={item.Id} onClick={this.HandleDecline.bind(this)}> Decline </button>
 
                         </table>
-                       </table>
+                       </div>
                 ))}
 
 

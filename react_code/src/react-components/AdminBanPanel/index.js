@@ -6,16 +6,14 @@ import "./styles.css";
 
 import UserList from './../UserInformationAdmin';
 import DoctorList from './../DoctorInformationAdmin';
-import PendingDoctors from './../PendingDoctorInformationAdmin';
+
 
 class BanPanel extends React.Component {
 
       render() {
         return (
-        <div className="Whole">
+        <div className="WholeAdminPanel">
               <table className = "Panel">
-              <h3>Pending Doctors</h3>
-              <PendingDoctors></PendingDoctors>
               <h3>Doctors</h3>
             <DoctorList></DoctorList>
               <h3>Users</h3>
