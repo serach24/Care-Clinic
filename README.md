@@ -12,7 +12,7 @@ Our Project is a web application which is an online clinic, where patients can c
 ## Team Members
 * Bo Liu
 * Chenhao Jiang
-* Jennifer Alexandra Thompson
+* ~~Jennifer Alexandra Thompson~~
 * Shizhen Cui
 
 ## Project Management
