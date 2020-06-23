@@ -6,9 +6,9 @@ import ReactDOM from 'react-dom';
 import "./styles.css";
 
 /* Component for the Home page */
-import RequestsList from './../RequestsAdmin'
-import BanPanel from './../AdminBanPanel'
-import PendingDoctors from './../PendingDoctorInformationAdmin';
+import RequestsList from '../../components/Admin/RequestsAdmin'
+import BanPanel from '../../components/Admin/AdminBanPanel'
+import PendingDoctors from '../../components/Admin/PendingDoctorInformationAdmin';
 
 
 class AdminPage extends React.Component {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
@@ -97,9 +97,10 @@ class NavBar extends React.Component {
                         <Button color="inherit"
                                 onClick = {this.handleClick} 
                                 className="TalkButton" >Talk to a Doctor</Button>
+                        <Link to={"../../../pages/Login"}>
                         <Button color="inherit" 
-                                onClick = {this.handleClick}
                                 className="loginButton" >Login</Button>
+                        </Link>
                     </Toolbar>
                 </AppBar>
                 

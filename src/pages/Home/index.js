@@ -1,9 +1,8 @@
 import React from "react";
-import CssBaseline from '@material-ui/core/CssBaseline';
 
 //importing components
-import Content from "./../Content";
-import NavBar from "./../NavBar";
+import Content from "../../components/Content";
+import NavBar from "../../components/ui/NavBar";
 
 import "./styles.css";
 
