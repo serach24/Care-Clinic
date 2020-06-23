@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 // material ui components
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
-import Input from "../../components/Input";
+import Input from "../../components/ui/Input";
 
 // import Redirect from "react-router-dom/Redirect";
 
