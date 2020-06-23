@@ -34,3 +34,14 @@
   width: 60%;
   height: 25%;
 }
+.SearchHead{
+  display: block;
+  float: outside;
+  text-align: center;
+}
+.SearchBar{
+  margin-left: 10%;
+  float: left;
+  width: 80%;
+  height: 10px;
+}

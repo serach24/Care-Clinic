@@ -13,7 +13,7 @@ class BanPanel extends React.Component {
       render() {
         return (
         <div className="WholeAdminPanel">
-              <table className = "Panel">
+              <table className = "Panel" className="DoctorInfoTable">
               <h3>Doctors</h3>
             <DoctorList></DoctorList>
               <h3>Users</h3>

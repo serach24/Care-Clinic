@@ -5,6 +5,7 @@ import Button from "@material-ui/core/Button";
 import "./styles.css";
 
 const List = [];
+var oriList;
 
 class DoctorInfo{
     constructor(Id,UID,Name,State) {
@@ -27,6 +28,7 @@ class DoctorInfo{
 List.push(new DoctorInfo(0,"DC99234891","Fake Dr Bo","Pending"));
 List.push(new DoctorInfo(1,"DC99132312","Fake Dr Liu","Pending"));
 List.push(new DoctorInfo(2,"DC99265176","Fake Dr Cotton","Pending"));
+oriList = List.slice();
 
 class PendingDoctors extends React.Component {
     constructor(props) {
@@ -71,10 +73,30 @@ class PendingDoctors extends React.Component {
         });
     }
 
+    FunctionFilter(e){
+
+        const condition = e.target.value;
+        console.log(condition);
+        const newList = [];
+        var i;
+        for (i = 0; i < oriList.length; i++) {
+            console.log(i);
+            if (oriList[i].Uid.includes(condition) || oriList[i].Name.includes(condition)){
+                console.log(i);
+                newList.push(oriList[i]);
+            }
+        }
+        this.setState({
+            list: newList
+        });
+    }
+
       render() {
         return (
         <div className="Whole">
-          <table>
+              <div className = "SearchHead">Search</div>
+              <textarea className= "SearchBar" onChange ={this.FunctionFilter.bind(this)}></textarea>
+          <table className="DoctorInfoTable">
               <thead>
                 <tr className = "Head">
                     <th>UID</th>

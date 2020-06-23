@@ -97,7 +97,7 @@ class RequestsList extends React.Component {
         <div className="Whole">
               {this.state.list.map((item =>
                       <div className = "Big" key ={item.Id + "whole"}>
-                      <table>
+                      <table className="DoctorInfoTable">
                       <tbody>
 
                         <tr> {item.Uid} </tr>
