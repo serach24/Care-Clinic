@@ -1,0 +1,13 @@
+/* Top-level shared styles */
+/* You can keep styles that are shared by different components here */
+
+html {
+  height: 100%;
+}
+
+body {
+  color: darkslategrey;
+  background-color: #f6f6f6;
+  margin: 0px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
