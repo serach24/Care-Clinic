@@ -1,0 +1,47 @@
+.PendingDocButtons{
+  width: 30%;
+}
+.Decline2 {
+  width: 55%;
+  height: 20%;
+  border: 0;
+  font-size: 80%;
+  background: red;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
+  margin-right: 40%;
+  float: right;
+}
+.Decline2:hover{
+  width: 60%;
+  height: 25%;
+}
+
+.Approve2 {
+  width: 55%;
+  height: 20%;
+  border: 0;
+  font-size: 80%;
+  background: Green;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
+  margin-left: 40%;
+  float: left;
+}
+.Approve2:hover{
+  width: 60%;
+  height: 25%;
+}
+.SearchHead{
+  display: block;
+  float: outside;
+  text-align: center;
+}
+.SearchBar{
+  margin-left: 10%;
+  float: left;
+  width: 80%;
+  height: 10px;
+}

@@ -1,0 +1,43 @@
+.DoctorInfoTable
+{
+  border-collapse: collapse;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.DoctorInfoTable thead th
+{
+  background-color: darkblue;
+}
+
+.DoctorInfoTable td, .DoctorInfoTable th
+{
+  border: 1px solid white;
+  color: gray;
+  height: 10%;
+  width: 200px;
+}
+
+.DoctorInfoTable tr:nth-child(odd)
+{
+  background: lightblue;
+}
+.DoctorInfoTable tr:nth-child(even)
+{
+  background: skyblue;
+}
+.DoctorInfoTable tr:hover{
+  background: white;
+}
+.BanButton {
+  width: 50px;
+  border: 0;
+  background: red;
+  color: white;
+  white-space: nowrap;
+  text-decoration: none;
+  margin: 1px;
+}
+.BanButton:hover{
+  background-color: darkred;
+}

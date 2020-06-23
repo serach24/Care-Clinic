@@ -5,6 +5,7 @@ import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import './App.css';
 
+import AdminPage from './react-components/AdminPage';
 import Feedback from './react-components/FeedBack';
 
 class App extends React.Component {
@@ -22,7 +23,10 @@ class App extends React.Component {
           <Switch> { /* Similar to a switch statement - shows the component depending on the URL path */ }
             { /* Each Route below shows a different component depending on the exact path in the URL  */ }
             <Route exact path='/' render={() => 
-                            (<Feedback state={this.state}/>)}/>
+Phase1_Ken_AdminPage
+                            (<AdminPage state={this.state}/>)}/>
+                           // (<Feedback state={this.state}/>)}/>
+ master
           </Switch>
         </BrowserRouter>
       </div>
