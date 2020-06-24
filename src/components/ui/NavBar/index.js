@@ -9,6 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Profile from './../../../pages/Profile';
 
 import "./styles.css";
 import { Drawer } from '@material-ui/core';
@@ -100,8 +101,15 @@ class NavBar extends React.Component {
                                 className="TalkButton" >Talk to a Doctor</Button>
                         <Button component={ Link } to={"/admin"} color="inherit"
                                 className="TalkButton" >Admin</Button>
+                        <Button component={ Link } to={"/feedback"} color="inherit"
+                                className="TalkButton" >FeedBack</Button>
                         <Button component={ Link } to={"/login"} color="inherit" 
                                 className="loginButton" >Login</Button>
+                        <div className="ProfileButton"> Profile </div>
+                        <div className="Profile">
+                        <Profile></Profile>
+                        </div>
+
                     </Toolbar>
                 </AppBar>
                 

@@ -26,3 +26,16 @@
 .MuiDrawer-paper.MuiDrawer-paperAnchorLeft {
     top: 64px;
 }
+.Profile{
+    width: 35%;
+    height: 50%;
+    display: none;
+    position: absolute;
+    left: 25%;
+}
+.ProfileButton:hover + .Profile {
+    display: block;
+}
+.Profile:hover {
+    display: block;
+}
