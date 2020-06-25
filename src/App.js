@@ -6,7 +6,7 @@ import './App.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import AdminPage from './pages/AdminPage';
-
+import Feedback from './pages/FeedBack';
 
 class App extends React.Component {
   render (){
@@ -16,10 +16,12 @@ class App extends React.Component {
         <Switch>
           <Route exact path='/' render={() =>
                           (<Home/>)}/>
-          <Route exact path='/login' render={() => 
+          <Route exact path='/login' render={() =>
                           (<Login/>)}/>
-          <Route exact path='/admin' render={() => 
+          <Route exact path='/admin' render={() =>
                           (<AdminPage/>)}/>
+          <Route exact path='/feedback' render={() =>
+                          (<Feedback/>)}/>
         </Switch>
       </BrowserRouter>
     </div>

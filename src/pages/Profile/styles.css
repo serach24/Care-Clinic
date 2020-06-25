@@ -1,0 +1,49 @@
+.ProfilePanel{
+    display: block;
+    width: 30%;
+    height: 50%;
+}
+.Background{
+    position: absolute;
+    top: -200px;
+    left :75px;
+    width: 220px;
+    height: 700px;
+    background-color: rgba(5,5,5,.1);
+}
+.UserHeadPic{
+    position: absolute;
+    left: 25%;
+    top: 60px;
+    width: 98px;
+    height: 98px;
+    border: 20px solid rgba(25,25,25,.3);
+    border-radius: 50%;
+}
+.Username{
+    font-size:medium;
+    position: absolute;
+    left: 25.2%;
+    top: 75px;
+    text-align: center;
+}
+.UserName{
+    white-space: pre;
+    letter-spacing: 1px;
+    font-family: fantasy ;
+}
+.userInfo{
+    color: black;
+    display: block;
+    margin-top: 210px;
+    margin-left: 95%;
+}
+.ProfileText{
+    left: -50px;
+    width: 100px;
+}
+.ProfileItem{
+    margin-top: 10px;
+    text-align: center;
+    font-family: fantasy;
+}
