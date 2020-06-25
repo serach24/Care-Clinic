@@ -10,8 +10,6 @@
   color: white;
   white-space: nowrap;
   text-decoration: none;
-  margin-right: 40%;
-  float: right;
 }
 .Decline2:hover{
   width: 60%;
@@ -27,8 +25,6 @@
   color: white;
   white-space: nowrap;
   text-decoration: none;
-  margin-left: 40%;
-  float: left;
 }
 .Approve2:hover{
   width: 60%;

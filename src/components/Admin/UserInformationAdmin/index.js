@@ -102,7 +102,7 @@ class UserList extends React.Component {
               </thead>
               <tbody>
               {this.state.show && this.state.list.map((item =>
-                      <tr>
+                      <tr key={item.Id}>
                         <td> {item.Uid} </td>
                         <td> {item.Name} </td>
                         <td> {item.State} </td>

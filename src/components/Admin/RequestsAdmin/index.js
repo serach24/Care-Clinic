@@ -99,11 +99,8 @@ class RequestsList extends React.Component {
                       <div className = "Big" key ={item.Id + "whole"}>
                       <table className="DoctorInfoTable">
                       <tbody>
-
-                        <tr> {item.Uid} </tr>
-                        <tr> {item.email} </tr>
-
-
+                        <tr><td>{item.Uid}</td></tr>
+                        <tr><td>{item.email}</td></tr>
                         </tbody>
                         </table>
 
@@ -112,10 +109,18 @@ class RequestsList extends React.Component {
                         </div>
 
                         <table className ="twoButtons">
+                        <tbody>
+                        <tr>
+                        <td>
                         <button className ="Approve" id={item.Id} onClick={this.HandleApprove.bind(this)}> Approve </button>
-
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
                         <button className ="Decline" id={item.Id} onClick={this.HandleDecline.bind(this)}> Decline </button>
-
+                        </td>
+                        </tr>
+                        </tbody>
                         </table>
                        </div>
                 ))}
