@@ -1,7 +1,7 @@
 import React from "react";
 
 //importing components
-import Content from "../../components/Content";
+import ContentList from "../../components/ContentList";
 import NavBar from "../../components/ui/NavBar";
 
 import "./styles.css";
@@ -11,10 +11,10 @@ class Home extends React.Component{
         articleheader: "Header",
         articlecontent: "Content",
         articles :[
-            {header: "header 1", content: "content 1"},
-            {header: "header 2", content: "content 2"}           
+            {header: "Covid 19", content: "content 1"},
+            {header: "How to keep your mind clear", content: "content 2"}           
         ]
-    }
+    };
 
 
     render(){
@@ -27,20 +27,7 @@ class Home extends React.Component{
                             <li>Content</li>
                         </ul>
                     </div>
-                    <Content 
-                        articleheader={this.state.articleheader}
-                        articlecontent={this.state.articlecontent}
-                    />
-                    <Content 
-                        articleheader={this.state.articleheader}
-                        articlecontent={this.state.articlecontent}
-                    />
-                    <Content 
-                        articleheader={this.state.articleheader}
-                        articlecontent={this.state.articlecontent}
-                    />
-                    <Content />
-                    <Content />
+                    <ContentList articles={this.state.articles}/>
                 </div>
             </div>
         );
