@@ -117,11 +117,11 @@ class PendingDoctors extends React.Component {
               </thead>
               <tbody>
               {this.state.show && this.state.list.map((item =>
-                      <tr>
+                      <tr key={item.Id}>
                         <td> {item.Uid} </td>
                         <td> {item.Name} </td>
                         <td> {item.State} </td>
-                        <td class = "PendingDocButtons">
+                        <td className = "PendingDocButtons">
                         <button className ="Approve2" id={item.Id} onClick={this.HandleApprove.bind(this)}> Approve </button>
                         <button className ="Decline2" id={item.Id} onClick={this.HandleDecline.bind(this)}> Decline </button>
                         </td>

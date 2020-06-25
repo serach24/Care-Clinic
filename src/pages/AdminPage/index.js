@@ -15,19 +15,22 @@ import NavBar from "../../components/ui/NavBar";
 class AdminPage extends React.Component {
     constructor(props) {
         super(props);
+        this.Messages = React.createRef();
+        this.PendingDocs = React.createRef();
+        this.BanPan = React.createRef();
     }
 
     GotoElement(event){
         const target = event.target;
         console.log((target.id))
         if(target.id  == 0){
-            ReactDOM.findDOMNode(this.refs.Messages).scrollIntoView();
+            ReactDOM.findDOMNode(this.Messages.current).scrollIntoView();
         }
         else if(target.id  == 1){
-            ReactDOM.findDOMNode(this.refs.PendingDocs).scrollIntoView();
+            ReactDOM.findDOMNode(this.PendingDocs.current).scrollIntoView();
         }
         else{
-            ReactDOM.findDOMNode(this.refs.BanPan).scrollIntoView();
+            ReactDOM.findDOMNode(this.BanPan.current).scrollIntoView();
         }
     }
 
@@ -43,10 +46,10 @@ class AdminPage extends React.Component {
               <button className="NavButton" id = {2} onClick={this.GotoElement.bind(this)}> To Doctors / Users </button>
               </div>
 
-              <RequestsList ref="Messages"></RequestsList>
-              <h3 className="Head" ref="PendingDocs">Pending Doctors</h3>
+              <RequestsList ref={this.Messages}></RequestsList>
+              <h3 className="Head" ref={this.PendingDocs}>Pending Doctors</h3>
                 <PendingDoctors></PendingDoctors>
-              <BanPanel ref="BanPan"></BanPanel>
+              <BanPanel ref={this.BanPan}></BanPanel>
       </div>
     );
   }
