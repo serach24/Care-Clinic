@@ -2,6 +2,7 @@ import React from "react";
 
 import LoginForm from "./LoginForm"
 import SignupForm from "./SignupForm"
+import NavBar from "../../components/ui/NavBar";
 
 /* Component for the Student Form */
 class Login extends React.Component {
@@ -28,6 +29,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="form-wrap">
+        <NavBar />
         {this.state.formType==="login" 
         ? <LoginForm switch={this.switchForm}/> 
         : <SignupForm switch={this.switchForm}/>

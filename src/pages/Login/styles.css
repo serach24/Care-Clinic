@@ -1,4 +1,6 @@
-
+.form-wrap {
+  margin-top: 90px;
+}
 .login-switch {
   cursor: pointer;
 }
