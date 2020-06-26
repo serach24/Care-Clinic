@@ -3,14 +3,16 @@ import { Link } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
+import Dialog from "@material-ui/core/Dialog";
 // import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-
+import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Profile from './../../../pages/Profile';
 
+import Profile from './../../../pages/Profile';
+import Chat from "./../../../components/Chat";
 import "./styles.css";
 import { Drawer } from '@material-ui/core';
 
@@ -20,6 +22,7 @@ class NavBar extends React.Component {
 
     state = {
       open:false,
+      chatOpen:false
       auth:false
     }
 
@@ -37,6 +40,12 @@ class NavBar extends React.Component {
         }
     };
 
+    openChat = () => {
+      this.setState({
+        chatOpen: true
+      })
+    }
+    
     handleLoginClick = () => {
       log('click drawer');
       if (this.state.auth) {
@@ -51,7 +60,12 @@ class NavBar extends React.Component {
       }
     };
 
-
+    closeChat = () => {
+      this.setState({
+        chatOpen: false
+      })
+    }
+    
     render () {
         const { navbar_root } = this.props;
         return (
@@ -82,6 +96,14 @@ class NavBar extends React.Component {
                                 className="TalkButton" >Admin</Button>
                         <Button component={ Link } to={"/feedback"} color="inherit"
                                 className="TalkButton" >FeedBack</Button>
+                        <ChatOutlinedIcon className="chat-button" onClick={this.openChat}/>
+                        
+                        <Dialog open={this.state.chatOpen} onClose={this.closeChat}>
+                          <Chat/>
+                        </Dialog>
+          
+                        <Button component={ Link } to={"/login"} color="inherit" 
+                                className="loginButton" >Login</Button>
                         {!this.state.auth && <Button component={ Link } to={"/login"} color="inherit" 
                                 className="loginButton" >Login</Button>}
                         {this.state.auth &&  <Button color="inherit" 
