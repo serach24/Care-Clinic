@@ -1,7 +1,7 @@
 import React from "react";
 import { uid } from "react-uid";
 import Content from "./../Content";
-
+import Container from '@material-ui/core/Container';
 import "./styles.css";
 
 class ContentList extends React.Component {
@@ -11,6 +11,7 @@ render() {
     const { articles } = this.props;
     return (
         <div >
+          <Container >
             {articles.map(article => (
             <Content 
             key={uid(
@@ -20,7 +21,7 @@ render() {
             articlecontent={article.content} 
             />
           ))}
-
+          </Container>
         </div>
     );
     }
