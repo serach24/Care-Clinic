@@ -9,7 +9,16 @@
     left :75px;
     width: 220px;
     height: 700px;
-    background-color: rgba(5,5,5,.1);
+    background-color: rgba(25,25,25,.1);
+}
+.Background1{
+    position: absolute;
+    top: -200px;
+    left :75px;
+    width: 220px;
+    height: 700px;
+    background-color: silver;
+    z-index: -1;
 }
 .UserHeadPic{
     position: absolute;
