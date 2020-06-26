@@ -6,8 +6,9 @@
 }
 
 .ac_header {
-    border-bottom: 1px solid grey;
-    width: 650px;
+    /* border-bottom: 1px solid grey; */
+    /* width: 650px; */
+    position: center;
 }
 
 .ac_header ul {
