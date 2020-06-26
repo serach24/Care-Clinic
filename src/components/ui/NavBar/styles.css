@@ -20,6 +20,13 @@
     margin-right: 12px;
 }
 
+.chat-button{
+    position: absolute;
+    right:70px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
 .drawer {
 
 }
