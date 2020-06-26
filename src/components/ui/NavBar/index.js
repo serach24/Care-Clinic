@@ -16,45 +16,11 @@ import { Drawer } from '@material-ui/core';
 
 const log = console.log;
 
-// matrial-ui website simple menu
-function DropMenu() {
-    const [anchorEl, setAnchorEl] = useState(null);
-  
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-  
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
-    return (
-      <div>
-        <IconButton edge="start" 
-                    onClick = {handleClick}
-                    className="menuButton" >
-            <MenuIcon />
-        </IconButton>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={handleClose}>Appointment</MenuItem>
-          <MenuItem onClick={handleClose}>prescription</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
-        </Menu>
-      </div>
-    );
-  }
-
-
 class NavBar extends React.Component {
 
     state = {
-      open:false
+      open:false,
+      auth:false
     }
 
     handleClick = () => {
@@ -69,6 +35,20 @@ class NavBar extends React.Component {
             open: true
           });
         }
+    };
+
+    handleLoginClick = () => {
+      log('click drawer');
+      if (this.state.auth) {
+        this.setState({
+          auth: false
+        });
+      }
+      else {
+        this.setState({
+          auth: true
+        });
+      }
     };
 
 
@@ -97,14 +77,16 @@ class NavBar extends React.Component {
                                 onClick = {this.handleClick}
                                 className="About" >About</Button>
                         <Button color="inherit"
-                                onClick = {this.handleClick} 
+                                onClick = {this.handleLoginClick} 
                                 className="TalkButton" >Talk to a Doctor</Button>
                         <Button component={ Link } to={"/admin"} color="inherit"
                                 className="TalkButton" >Admin</Button>
                         <Button component={ Link } to={"/feedback"} color="inherit"
                                 className="TalkButton" >FeedBack</Button>
-                        <Button component={ Link } to={"/login"} color="inherit" 
-                                className="loginButton" >Login</Button>
+                        {!this.state.auth && <Button component={ Link } to={"/login"} color="inherit" 
+                                className="loginButton" >Login</Button>}
+                        {this.state.auth &&  <Button color="inherit" 
+                                className="accountButton" >My Account</Button>}
                         <div className="ProfileButton"> Profile </div>
                         <div className="Profile">
                         <Profile></Profile>
