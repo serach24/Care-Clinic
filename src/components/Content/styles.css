@@ -10,9 +10,6 @@
 	clear: right;
 }
 
-
-
-
 .block {
     background-color: white;
     margin-left: 10px;
@@ -26,4 +23,9 @@
 
 .MuiButton-contained.articleButton {
     margin-bottom: 5px;
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
 }

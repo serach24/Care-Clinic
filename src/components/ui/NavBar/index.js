@@ -73,8 +73,7 @@ class NavBar extends React.Component {
                                 className="Home" >
                           Home
                         </Button>
-                        <Button color="inherit" 
-                                onClick = {this.handleClick}
+                        <Button component={ Link } to={"/about"} color="inherit"
                                 className="About" >About</Button>
                         <Button color="inherit"
                                 onClick = {this.handleLoginClick} 

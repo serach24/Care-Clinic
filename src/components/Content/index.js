@@ -10,6 +10,7 @@ import Button from '@material-ui/core/Button';
 
 
 import "./styles.css";
+import { Link } from 'react-router-dom';
 
 const log = console.log;
 
@@ -23,10 +24,15 @@ class Content extends React.Component {
                 {/* <Card Mediacomponent="img"/> */}
                 <CardActionArea>
                 <CardContent>
-                <Typography variant="h5" noWrap>{articleheader}
-                </Typography>
+                
+                <Link to={"/story1"} className="link">
+                   <Typography variant="h5" noWrap>{articleheader}
+                   </Typography>
+                
+                
                 <Typography paragraph>{articlecontent} 
                    </Typography>
+                </Link>   
                 </CardContent>
                 </CardActionArea>
                 <CardActions>
