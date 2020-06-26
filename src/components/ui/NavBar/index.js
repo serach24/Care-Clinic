@@ -22,7 +22,7 @@ class NavBar extends React.Component {
 
     state = {
       open:false,
-      chatOpen:false
+      chatOpen:false,
       auth:false
     }
 
