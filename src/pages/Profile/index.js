@@ -62,6 +62,8 @@ class Profile extends React.Component {
         return (
         <div className="ProfilePanel">
               <div className="Background"></div>
+              <div className="Background1"></div>
+
               <div className="UserDiv">
               <svg className="Username">
               <defs>

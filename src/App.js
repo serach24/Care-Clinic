@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import AdminPage from './pages/AdminPage';
 import Feedback from './pages/FeedBack';
+import Storys from './pages/Storys';
+import About from './pages/About';
 
 class App extends React.Component {
   render (){
@@ -22,6 +24,10 @@ class App extends React.Component {
                           (<AdminPage/>)}/>
           <Route exact path='/feedback' render={() =>
                           (<Feedback/>)}/>
+          <Route exact path='/story1' render={() =>
+                          (<Storys/>)}/>
+          <Route exact path='/about' render={() =>
+                          (<About/>)}/>
         </Switch>
       </BrowserRouter>
     </div>

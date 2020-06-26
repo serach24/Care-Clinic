@@ -18,46 +18,12 @@ import { Drawer } from '@material-ui/core';
 
 const log = console.log;
 
-// matrial-ui website simple menu
-function DropMenu() {
-    const [anchorEl, setAnchorEl] = useState(null);
-  
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-  
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
-    return (
-      <div>
-        <IconButton edge="start" 
-                    onClick = {handleClick}
-                    className="menuButton" >
-            <MenuIcon />
-        </IconButton>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={handleClose}>Appointment</MenuItem>
-          <MenuItem onClick={handleClose}>prescription</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
-        </Menu>
-      </div>
-    );
-  }
-
-
 class NavBar extends React.Component {
 
     state = {
       open:false,
       chatOpen:false
+      auth:false
     }
 
     handleClick = () => {
@@ -79,6 +45,20 @@ class NavBar extends React.Component {
         chatOpen: true
       })
     }
+    
+    handleLoginClick = () => {
+      log('click drawer');
+      if (this.state.auth) {
+        this.setState({
+          auth: false
+        });
+      }
+      else {
+        this.setState({
+          auth: true
+        });
+      }
+    };
 
     closeChat = () => {
       this.setState({
@@ -107,22 +87,27 @@ class NavBar extends React.Component {
                                 className="Home" >
                           Home
                         </Button>
-                        <Button color="inherit" 
-                                onClick = {this.handleClick}
+                        <Button component={ Link } to={"/about"} color="inherit"
                                 className="About" >About</Button>
                         <Button color="inherit"
-                                onClick = {this.handleClick} 
+                                onClick = {this.handleLoginClick} 
                                 className="TalkButton" >Talk to a Doctor</Button>
                         <Button component={ Link } to={"/admin"} color="inherit"
                                 className="TalkButton" >Admin</Button>
                         <Button component={ Link } to={"/feedback"} color="inherit"
                                 className="TalkButton" >FeedBack</Button>
                         <ChatOutlinedIcon className="chat-button" onClick={this.openChat}/>
+                        
                         <Dialog open={this.state.chatOpen} onClose={this.closeChat}>
                           <Chat/>
                         </Dialog>
+          
                         <Button component={ Link } to={"/login"} color="inherit" 
                                 className="loginButton" >Login</Button>
+                        {!this.state.auth && <Button component={ Link } to={"/login"} color="inherit" 
+                                className="loginButton" >Login</Button>}
+                        {this.state.auth &&  <Button color="inherit" 
+                                className="accountButton" >My Account</Button>}
                         <div className="ProfileButton"> Profile </div>
                         <div className="Profile">
                         <Profile></Profile>

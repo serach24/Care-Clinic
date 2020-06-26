@@ -19,6 +19,11 @@
     right: 0px;
     margin-right: 12px;
 }
+.MuiButton-text.accountButton {
+    position: absolute;
+    right: 0px;
+    margin-right: 12px;
+}
 
 .chat-button{
     position: absolute;
@@ -33,6 +38,7 @@
 .MuiDrawer-paper.MuiDrawer-paperAnchorLeft {
     top: 64px;
 }
+
 .Profile{
     width: 35%;
     height: 50%;

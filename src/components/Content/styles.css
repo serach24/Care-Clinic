@@ -1,17 +1,14 @@
 .article {
     /* border-radius: 10px; */
-    border-left: 1px solid grey;
-    border-right: 1px solid grey;
+    /* border-left: 1px solid grey; */
+    /* border-right: 1px solid grey; */
     border-bottom: 1px solid grey;
     background-color: white;
 
-	width: 650px;
+	/* width: 650px; */
 	/* float: left; */
 	clear: right;
 }
-
-
-
 
 .block {
     background-color: white;
@@ -26,4 +23,9 @@
 
 .MuiButton-contained.articleButton {
     margin-bottom: 5px;
+}
+
+.link {
+    color: inherit;
+    text-decoration: none;
 }
