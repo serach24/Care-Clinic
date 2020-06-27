@@ -54,7 +54,6 @@ class AdminPage extends React.Component {
   }
 
 
-
   render() {
     return (
       <div className="admin-page-wrapper">
