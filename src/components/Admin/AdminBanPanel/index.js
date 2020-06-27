@@ -9,6 +9,10 @@ import DoctorList from './../DoctorInformationAdmin';
 
 
 class BanPanel extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
 
       render() {
         return (

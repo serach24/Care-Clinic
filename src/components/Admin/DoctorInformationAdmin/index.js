@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
 import "./styles.css";
+import BanPanel from './../AdminBanPanel'
 
 const List = [];
 var oriList;
@@ -49,6 +50,7 @@ class DoctorList extends React.Component {
         List[target.id].FunctionDeactive();
         this.SetState(List);
     }
+
 
     SetState(NewList) {
         this.setState({
