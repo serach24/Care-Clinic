@@ -11,6 +11,23 @@ import Storys from './pages/Storys';
 import About from './pages/About';
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loginState:0
+        };
+        this.changeLogINState = this.changeLogINState.bind(this);
+    }
+
+    whichLogInStateAmI(){
+        return this.state.loginState;
+    }
+    changeLogINState(newState){
+        this.setState({
+            loginState: newState
+        });
+    }
+
   render (){
     return(
     <div>
@@ -19,15 +36,15 @@ class App extends React.Component {
           <Route exact path='/' render={() =>
                           (<Home/>)}/>
           <Route exact path='/login' render={() =>
-                          (<Login/>)}/>
+                          (<Login which={this.whichLogInStateAmI()} change={this.changeLogINState} />)}/>
           <Route exact path='/admin' render={() =>
-                          (<AdminPage/>)}/>
+                          (<AdminPage which={this.whichLogInStateAmI()} change={this.changeLogINState}/>)}/>
           <Route exact path='/feedback' render={() =>
-                          (<Feedback/>)}/>
+                          (<Feedback which={this.whichLogInStateAmI()} change={this.changeLogINState}/>)}/>
           <Route exact path='/story1' render={() =>
-                          (<Storys/>)}/>
+                          (<Storys which={this.whichLogInStateAmI()} change={this.changeLogINState}/>)}/>
           <Route exact path='/about' render={() =>
-                          (<About/>)}/>
+                          (<About which={this.whichLogInStateAmI()} change={this.changeLogINState}/>)}/>
         </Switch>
       </BrowserRouter>
     </div>

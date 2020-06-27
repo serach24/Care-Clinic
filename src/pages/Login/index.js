@@ -6,6 +6,9 @@ import NavBar from "../../components/ui/NavBar";
 
 /* Component for the Student Form */
 class Login extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   state = {
     formType: "login",
     users: [
@@ -29,9 +32,9 @@ class Login extends React.Component {
   render() {
     return (
       <div className="form-wrap">
-        <NavBar />
+        <NavBar which={this.whichLogInStateAmI()} change={this.changeLogINState}/>
         {this.state.formType==="login" 
-        ? <LoginForm switch={this.switchForm}/> 
+        ? <LoginForm which={this.props.which} change={this.props.change} switch={this.switchForm}/>
         : <SignupForm switch={this.switchForm}/>
         }
       </div>
