@@ -111,6 +111,7 @@ class NavBar extends React.Component {
                         <div className="ProfileButton"> Profile </div>
                         <div className="Profile">
                         <Profile></Profile>
+
                         </div>
 
                     </Toolbar>

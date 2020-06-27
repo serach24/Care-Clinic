@@ -34,12 +34,10 @@ class AdminPage extends React.Component {
         }
     }
 
-
-
       render() {
         return (
         <div className="WholeAdmin">
-          <NavBar />
+          <NavBar which={this.whichLogInStateAmI()} change={this.changeLogINState}/>
               <div className ="FixedNav">
               <button className="NavButton" id = {0} onClick={this.GotoElement.bind(this)}> To Messages </button>
               <button className="NavButton" id = {1} onClick={this.GotoElement.bind(this)}> To Pending Doctors </button>

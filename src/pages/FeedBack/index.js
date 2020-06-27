@@ -35,7 +35,7 @@ class Feedback extends React.Component {
       render() {
         return (
         <div className="Whole">
-            <NavBar />
+            <NavBar which={this.whichLogInStateAmI()} change={this.changeLogINState}/>
             <div className="input_panel">
               <div className = "head_feedback" >
               FeedBack Form

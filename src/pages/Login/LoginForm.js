@@ -12,6 +12,10 @@ import "./styles.css";
 
 /* Component for the Student Form */
 class LoginForm extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
   state = {
     username: "",
     password: "",
@@ -33,11 +37,13 @@ class LoginForm extends React.Component {
     this.setState({
       checkError: true,
     });
-    // if (username==="user" && password==="user"){
-    //   this.setState({loginState: 1})
-    // } else if (username==="admin" && password==="admin"){
-    //   this.setState({loginState: 2})
-    // }
+    if (username==="user" && password==="user"){
+      this.setState({loginState: 1});
+      this.props.change(1);
+    } else if (username==="admin" && password==="admin"){
+      this.setState({loginState: 2})
+      this.props.change(2);
+    }
   }
 
   render() {
@@ -48,7 +54,7 @@ class LoginForm extends React.Component {
     // }
     return (
       <Container component="main" maxWidth="xs">
-        <h3> Login</h3>
+        <h3> Login </h3>
         <Input
           error={isUsernameEmpty}
           helperText={isUsernameEmpty ? "Username cannot be empty." : ""}
