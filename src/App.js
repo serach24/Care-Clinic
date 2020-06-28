@@ -37,9 +37,9 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path='/' render={() =>
-                          (<Home/>)}/>
+                          (<Home which={this.whichLogInStateAmI()} change={this.changeLogINState}/>)}/>
           <Route exact path='/login' render={() =>
-                          (<Login which={this.whichLogInStateAmI()} change={this.changeLogINState} />)}/>
+                          (<Login which={this.whichLogInStateAmI()} change={this.changeLogINState}/>)}/>
           <Route exact path='/admin' render={() =>
                           (<AdminPage which={this.whichLogInStateAmI()} change={this.changeLogINState}/>)}/>
           <Route exact path='/feedback' render={() =>

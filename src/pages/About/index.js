@@ -17,7 +17,7 @@ class About extends React.Component{
     render(){
         return (
             <div className="App">
-                <NavBar />
+                <NavBar which={this.props.which} change={this.props.change}/>
                 <StoryPage header={this.state.articleheader} content={this.state.articlecontent} />
             </div>
         );
