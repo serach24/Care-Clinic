@@ -1,0 +1,14 @@
+/* .admin-side-bar-wrapper{
+  width: 300px;
+} */
+
+.nested-item-text{
+  padding-left: 20px !important;
+}
+
+.sidebar-item-text{
+  font-weight: bold;
+  font-size: 20px;
+}
+
+
