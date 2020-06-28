@@ -12,7 +12,8 @@ export const styles = theme => ({
         border: '1px solid darkgray',
     },
     contentarea: {
-        width: 590,
+        minWidth: 500,
+        maxWidth: 500,
         height: 120,
     },
     content: {

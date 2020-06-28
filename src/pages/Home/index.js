@@ -3,7 +3,7 @@ import React from "react";
 //importing components
 import ContentList from "../../components/ContentList";
 import NavBar from "../../components/ui/NavBar";
-import StoryPage from "../../components/StoryPage";
+import RightPart from "../../components/RightPart";
 
 import "./styles.css";
 import a from "./img/1.jpg";
@@ -36,12 +36,10 @@ class Home extends React.Component{
         return (
             <div className="App">
                 <NavBar />
-                    <div className="ac_header">
-                        <ul>
-                            <li>Content</li>
-                        </ul>
-                    </div>
-                    <ContentList articles={this.state.articles}/>
+                <div className="content">
+                <ContentList articles={this.state.articles}/>
+                <RightPart />
+                </div>
                 {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}
             </div>
         );
