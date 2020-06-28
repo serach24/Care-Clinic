@@ -32,7 +32,7 @@ class Login extends React.Component {
   render() {
     return (
       <div className="form-wrap">
-        <NavBar which={this.whichLogInStateAmI()} change={this.changeLogINState}/>
+        <NavBar which={this.props.which} change={this.props.change}/>
         {this.state.formType==="login" 
         ? <LoginForm which={this.props.which} change={this.props.change} switch={this.switchForm}/>
         : <SignupForm switch={this.switchForm}/>
