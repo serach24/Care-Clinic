@@ -98,6 +98,9 @@ class Profile extends React.Component {
               <div className = "ProfileItem">
               <Button  variant="contained" onClick = {this.FunctionAge.bind(this)} color="primary">change</Button></div>
               </div>
+              <div className ="Logout">
+              <Button variant="contained" onClick = {()=>(this.props.change(0))}>LogOut</Button>
+              </div>
       </div>
       </div>
     );
