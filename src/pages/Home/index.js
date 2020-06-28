@@ -30,7 +30,7 @@ class Home extends React.Component{
     render(){
         return (
             <div className="App">
-                <NavBar />
+                <NavBar which={this.props.which} change={this.props.change}/>
                 <div className="article_container">
                     <div className="ac_header">
                         <ul>

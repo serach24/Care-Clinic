@@ -23,8 +23,13 @@ class NavBar extends React.Component {
     state = {
       open:false,
       chatOpen:false,
-      auth:false
+      auth:false,
     }
+
+    talkToDoctor=()=>{
+        alert("talkToADoctor");
+    }
+
 
     handleClick = () => {
         log('click drawer');
@@ -89,30 +94,28 @@ class NavBar extends React.Component {
                         </Button>
                         <Button component={ Link } to={"/about"} color="inherit"
                                 className="About" >About</Button>
-                        <Button color="inherit"
-                                onClick = {this.handleLoginClick} 
-                                className="TalkButton" >Talk to a Doctor</Button>
-                        <Button component={ Link } to={"/admin"} color="inherit"
-                                className="TalkButton" >Admin</Button>
-                        <Button component={ Link } to={"/feedback"} color="inherit"
-                                className="TalkButton" >FeedBack</Button>
+                        {this.props.which==0 &&<Button component={ Link } to={"/login"} color="inherit"
+                            className="TalkButton" >Talk to a Doctor</Button>}
+                        {this.props.which==1 && <Button color="inherit"
+                                onClick = {this.talkToDoctor}
+                                className="TalkButton" >Talk to a Doctor</Button>}
+                        {this.props.which==2 && <Button component={ Link } to={"/admin"} color="inherit"
+                                className="TalkButton" >Admin</Button>}
+                        {this.props.which!=2 && <Button component={ Link } to={"/feedback"} color="inherit"
+                                className="TalkButton" >FeedBack</Button>}
                         <ChatOutlinedIcon className="chat-button" onClick={this.openChat}/>
                         
                         <Dialog open={this.state.chatOpen} onClose={this.closeChat}>
                           <Chat/>
                         </Dialog>
-          
-                        <Button component={ Link } to={"/login"} color="inherit" 
-                                className="loginButton" >Login</Button>
-                        {!this.state.auth && <Button component={ Link } to={"/login"} color="inherit" 
+
+                        {this.props.which ==0 && !this.state.auth && <Button component={ Link } to={"/login"} color="inherit"
                                 className="loginButton" >Login</Button>}
+                            {this.props.which!=0 && <div className="ProfileButton"> Profile </div>}
+                            {this.props.which!=0 && <div className="Profile"> <Profile which={this.props.which} change={this.props.change}></Profile> </div>}
                         {this.state.auth &&  <Button color="inherit" 
                                 className="accountButton" >My Account</Button>}
-                        <div className="ProfileButton"> Profile </div>
-                        <div className="Profile">
-                        <Profile></Profile>
 
-                        </div>
 
                     </Toolbar>
                 </AppBar>

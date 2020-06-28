@@ -1,12 +1,11 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import  { Redirect } from 'react-router-dom'
 
 // material ui components
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Input from "../../components/ui/Input";
-
-// import Redirect from "react-router-dom/Redirect";
 
 import "./styles.css";
 
@@ -40,18 +39,20 @@ class LoginForm extends React.Component {
     if (username==="user" && password==="user"){
       this.setState({loginState: 1});
       this.props.change(1);
+
     } else if (username==="admin" && password==="admin"){
       this.setState({loginState: 2})
       this.props.change(2);
+
     }
   }
 
   render() {
     let isUsernameEmpty = this.state.checkError && this.state.username === "";
     let isPasswordEmpty = this.state.checkError && this.state.password === "";
-    // if (this.state.loginState===1){
-    //   return <Redirect to={{pathname:""}}/>
-    // }
+    if (this.state.loginState != 0){
+      return <Redirect to={"/"}/>
+     }
     return (
       <Container component="main" maxWidth="xs">
         <h3> Login </h3>

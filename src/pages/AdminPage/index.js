@@ -43,7 +43,6 @@ class AdminPage extends React.Component {
               <button className="NavButton" id = {1} onClick={this.GotoElement.bind(this)}> To Pending Doctors </button>
               <button className="NavButton" id = {2} onClick={this.GotoElement.bind(this)}> To Doctors / Users </button>
               </div>
-
               <RequestsList ref={this.Messages}></RequestsList>
               <h3 className="Head" ref={this.PendingDocs}>Pending Doctors</h3>
                 <PendingDoctors></PendingDoctors>
