@@ -1,4 +1,13 @@
-.FixedNav{
+.admin-page-content{
+    margin-top: 70px;
+    margin-left: 270px;
+}
+
+.user-management-title{
+    color: black;
+}
+
+/* .FixedNav{
     position: fixed;
     right: 4%;
     top: 20%;
@@ -18,4 +27,4 @@
 .Head{
     text-align: center;
     margin-top: 10%;
-}
+} */
