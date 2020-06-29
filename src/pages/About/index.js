@@ -3,7 +3,7 @@ import React from "react";
 //importing components
 import NavBar from "../../components/ui/NavBar";
 import StoryPage from "../../components/StoryPage";
-import HealthForm from "../../components/Patient/HealthForm";
+import HealthHistory from "../../components/Patient/HealthHistory";
 
 import "./styles.css";
 
@@ -19,7 +19,7 @@ class About extends React.Component{
         return (
             <div className="App">
                 <NavBar which={this.props.which} change={this.props.change}/>
-                <HealthForm/>
+                <HealthHistory/>
                 <StoryPage header={this.state.articleheader} content={this.state.articlecontent} />
             </div>
         );

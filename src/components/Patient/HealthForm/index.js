@@ -5,37 +5,9 @@ import TextField from '@material-ui/core/TextField';
 
 import { styles } from './styles';
 import { uid } from "react-uid";
+import { Button } from "@material-ui/core";
 const log = console.log;
 class HealthForm extends React.Component {
-
-    state = {
-        patient: {
-            name: "patient zero",
-            DOB: "",
-            maritalStatus: "",
-            problems:[
-                {year:"", reason:""},
-                {year:"", reason:""},
-                {year:"", reason:""},
-                {year:"", reason:""},
-                {year:"", reason:""}
-            ],
-            drugs:[
-                {drugName:"", strength:"", frequency:""},
-                {drugName:"", strength:"", frequency:""},
-                {drugName:"", strength:"", frequency:""},
-                {drugName:"", strength:"", frequency:""},
-                {drugName:"", strength:"", frequency:""}
-            ],
-            allergies:[
-                {drugName:"", reaction:""},
-                {drugName:"", reaction:""},
-                {drugName:"", reaction:""},
-                {drugName:"", reaction:""},
-                {drugName:"", reaction:""}
-            ]
-        }
-    }
 
 addProblem = healthform => {
     const problemList = healthform.state.patient.problems;
@@ -54,7 +26,7 @@ addProblem = healthform => {
 
 
 render () {
-    const { classes, patient, handleChange } = this.props;
+    const { classes, patient, handleChange, handleSubmit } = this.props;
     return (
         <div className={classes.formroot}>
             <div className={classes.header}><h2> Personal Information </h2> </div>
@@ -88,13 +60,13 @@ render () {
             />
             </div>
 
-            <div className={classes.header}><h2> Problem </h2> </div>
-            {this.state.patient.problems.map(problem => (
+            <div className={classes.header}><h2> Problems </h2> </div>
+            {patient.problems.map(problem => (
             <div>
            <TextField
-                key={uid(
-                    problem
-                )}
+                // key={uid(
+                //     problem
+                // )}
                 label="Problem Year"
                 id="outlined-margin-dense"
                 className={classes.textField}
@@ -104,9 +76,9 @@ render () {
                 variant="outlined"
             />
             <TextField
-                key={uid(
-                    problem
-                )}            
+                // key={uid(
+                //     problem
+                // )}            
                 label="Problem reason"
                 id="outlined-margin-dense"
                 className={classes.textFieldFull}
@@ -119,12 +91,12 @@ render () {
             ))}
 
             <div className={classes.header}><h2> Drugs </h2> </div>
-            {this.state.patient.drugs.map(drug => (
+            {patient.drugs.map(drug => (
             <div>
            <TextField
-                key={uid(
-                    drug
-                )}
+                // key={uid(
+                //     drug
+                // )}
                 label="Drug Name"
                 id="outlined-margin-dense"
                 className={classes.textField}
@@ -133,9 +105,9 @@ render () {
                 variant="outlined"
             />
             <TextField
-                key={uid(
-                    drug
-                )}
+                // key={uid(
+                //     drug
+                // )}
                 label="strength"
                 id="outlined-margin-dense"
                 className={classes.textField}
@@ -144,9 +116,9 @@ render () {
                 variant="outlined"
             />
             <TextField
-                key={uid(
-                    drug
-                )}
+                // key={uid(
+                //     drug
+                // )}
                 label="Frequency"
                 id="outlined-margin-dense"
                 className={classes.textField}
@@ -158,12 +130,12 @@ render () {
             ))}
 
             <div className={classes.header}><h2> Allergies </h2> </div>
-            {this.state.patient.allergies.map(allergie => (
+            {patient.allergies.map(allergie => (
             <div>
             <TextField
-                key={uid(
-                    allergie
-                )}
+                // key={uid(
+                //     allergie
+                // )}
                 label="allergie drugName"
                 id="outlined-margin-dense"
                 className={classes.textField}
@@ -172,9 +144,9 @@ render () {
                 variant="outlined"
             />
             <TextField
-                key={uid(
-                    allergie
-                )}
+                // key={uid(
+                //     allergie
+                // )}
                 label="reaction"
                 id="outlined-margin-dense"
                 className={classes.textFieldFull}
@@ -184,6 +156,15 @@ render () {
             />
             </div>
             ))}
+            <div className={classes.button}>
+                <Button 
+                        variant="contained"
+                        color="secondary"
+                        onClick={handleSubmit}
+                        className={classes.submitButton} >
+                    Submit
+                </Button>
+            </div>
         </div>
     );
 }

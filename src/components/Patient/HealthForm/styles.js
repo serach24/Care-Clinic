@@ -12,7 +12,7 @@ export const styles = theme => ({
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
         width: 230,
-      },
+    },
     textFieldFull: {
         margin: 8,
         width: 640,
@@ -20,5 +20,11 @@ export const styles = theme => ({
     header: {
         width:960,
         margin:8
+    },
+    button: {
+        margin:"8px auto"
+    },
+    submitButton: {
+        width: 100,
     }
 });
