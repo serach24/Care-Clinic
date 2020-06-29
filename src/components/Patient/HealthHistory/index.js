@@ -5,8 +5,20 @@ const log = console.log;
 class HealthHistory extends React.Component {
 
     state = {
-        patientName: '',
-        patientDOB:'',
+        patientName: "",
+        patientDOB: "",
+        maritalStatus: "",
+
+        problemYear: "",
+        problemReason: "",
+
+        drugName:"", 
+        drugStrength:"", 
+        drugFrequency:"",
+
+        allergieDrugName:"", 
+        allergieReaction:"",
+
         patient: {
             name: "",
             DOB: "",
@@ -19,11 +31,11 @@ class HealthHistory extends React.Component {
                 {year:"", reason:""}
             ],
             drugs:[
-                {drugName:"", strength:"", frequency:""},
-                {drugName:"", strength:"", frequency:""},
-                {drugName:"", strength:"", frequency:""},
-                {drugName:"", strength:"", frequency:""},
-                {drugName:"", strength:"", frequency:""}
+                {name:"", strength:"", frequency:""},
+                {name:"", strength:"", frequency:""},
+                {name:"", strength:"", frequency:""},
+                {name:"", strength:"", frequency:""},
+                {name:"", strength:"", frequency:""}
             ],
             allergies:[
                 {drugName:"", reaction:""},

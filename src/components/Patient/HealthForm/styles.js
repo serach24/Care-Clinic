@@ -2,7 +2,7 @@ export const styles = theme => ({
     formroot: {
         display:"flex",
         flexWrap:"wrap",
-        width:960,
+        width:902,
         margin:"10px auto",
         backgroundColor: 'white',
         border: '2px solid grey',
@@ -16,6 +16,10 @@ export const styles = theme => ({
     textFieldFull: {
         margin: 8,
         width: 640,
+    },
+    headerMain: {
+        textAlign: 'center',
+        margin: 'auto'
     },
     header: {
         width:960,

@@ -3,7 +3,8 @@ export const styles = theme => ({
         maxWidth: 320,
         minWidth:280,
         height: 600,
-        border: '2px solid black',
+        backgroundColor: 'white',
+        border: '1px solid #f5f5f5',
         display: 'block',
     },
     buttoncard: {
