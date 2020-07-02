@@ -3,9 +3,13 @@ import React from "react";
 //importing components
 import ContentList from "../../components/ContentList";
 import NavBar from "../../components/ui/NavBar";
-import StoryPage from "../../components/StoryPage";
+import RightPart from "../../components/RightPart";
 
 import "./styles.css";
+import a from "./img/1.jpg";
+import b from "./img/2.jpeg";
+import c from "./img/3.jpg";
+import d from "./img/4.jpg"
 
 class Home extends React.Component{
     state = {
@@ -17,9 +21,10 @@ class Home extends React.Component{
             "As of July 1, Goel will take on a new role as a special adviser to U of T’s president and provost, helping to guide the university’s COVID-19 planning efforts.",
         "Note: The information in this podcast is current as of the posting date. Listeners should consult their local public health agency for the latest information in their jurisdiction."],
         articles :[
-            {header: "10th Ebola outbreak in the Democratic Republic of the Congo declared over; vigilance against flare-ups and support for survivors must continue", content: "Today marks the end of the 10th outbreak of Ebola virus disease in the Democratic Republic of the Congo (DRC). This long, complex and difficult outbreak has been overcome due to the leadership and commitment of the Government of the DRC, supported by the World Health Organization (WHO), a multitude of partners, donors, and above all, the efforts of the communities affected by the virus."},
-            {header: "New Ebola outbreak detected in northwest Democratic Republic of the Congo; WHO surge team supporting the response", content: "The Government of the Democratic Republic of the Congo announced today that a new outbreak of Ebola virus disease is occurring in Wangata health zone, Mbandaka, in Équateur province. The announcement comes as a long, difficult and complex Ebola outbreak in eastern Democratic Republic of the Congo is in its final phase, while the country also battles COVID-19 and the world’s largest measles outbreak."},
-            {header: "10th Ebola outbreak in the Democratic Republic of the Congo declared over; vigilance against flare-ups and support for survivors must continue", content: "Today marks the end of the 10th outbreak of Ebola virus disease in the Democratic Republic of the Congo (DRC). This long, complex and difficult outbreak has been overcome due to the leadership and commitment of the Government of the DRC, supported by the World Health Organization (WHO), a multitude of partners, donors, and above all, the efforts of the communities affected by the virus."},
+            {link:"\story1", img: d, header: "Hearder", content: "hellow world"},
+            {link:"\story1", img: a, header: "10th Ebola outbreak in the Democratic Republic of the Congo declared over; vigilance against flare-ups and support for survivors must continue", content: "Today marks the end of the 10th outbreak of Ebola virus disease in the Democratic Republic of the Congo (DRC). This long, complex and difficult outbreak has been overcome due to the leadership and commitment of the Government of the DRC, supported by the World Health Organization (WHO), a multitude of partners, donors, and above all, the efforts of the communities affected by the virus."},
+            {link:"\story1", img: b, header: "New Ebola outbreak detected in northwest Democratic Republic of the Congo; WHO surge team supporting the response", content: "The Government of the Democratic Republic of the Congo announced today that a new outbreak of Ebola virus disease is occurring in Wangata health zone, Mbandaka, in Équateur province. The announcement comes as a long, difficult and complex Ebola outbreak in eastern Democratic Republic of the Congo is in its final phase, while the country also battles COVID-19 and the world’s largest measles outbreak."},
+            {link:"\story1", img: c, header: "10th Ebola outbreak in the Democratic Republic of the Congo declared over; vigilance against flare-ups and support for survivors must continue", content: "Today marks the end of the 10th outbreak of Ebola virus disease in the Democratic Republic of the Congo (DRC). This long, complex and difficult outbreak has been overcome due to the leadership and commitment of the Government of the DRC, supported by the World Health Organization (WHO), a multitude of partners, donors, and above all, the efforts of the communities affected by the virus."},
             {header: "New Ebola outbreak detected in northwest Democratic Republic of the Congo; WHO surge team supporting the response", content: "The Government of the Democratic Republic of the Congo announced today that a new outbreak of Ebola virus disease is occurring in Wangata health zone, Mbandaka, in Équateur province. The announcement comes as a long, difficult and complex Ebola outbreak in eastern Democratic Republic of the Congo is in its final phase, while the country also battles COVID-19 and the world’s largest measles outbreak."},
             {header: "10th Ebola outbreak in the Democratic Republic of the Congo declared over; vigilance against flare-ups and support for survivors must continue", content: "Today marks the end of the 10th outbreak of Ebola virus disease in the Democratic Republic of the Congo (DRC). This long, complex and difficult outbreak has been overcome due to the leadership and commitment of the Government of the DRC, supported by the World Health Organization (WHO), a multitude of partners, donors, and above all, the efforts of the communities affected by the virus."},
             {header: "New Ebola outbreak detected in northwest Democratic Republic of the Congo; WHO surge team supporting the response", content: "The Government of the Democratic Republic of the Congo announced today that a new outbreak of Ebola virus disease is occurring in Wangata health zone, Mbandaka, in Équateur province. The announcement comes as a long, difficult and complex Ebola outbreak in eastern Democratic Republic of the Congo is in its final phase, while the country also battles COVID-19 and the world’s largest measles outbreak."}
@@ -30,14 +35,13 @@ class Home extends React.Component{
     render(){
         return (
             <div className="App">
+
             <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
-                <div className="article_container">
-                    <div className="ac_header">
-                        <ul>
-                            <li>Content</li>
-                        </ul>
-                    </div>
-                    <ContentList articles={this.state.articles}/>
+
+                <div className="content">
+                <ContentList articles={this.state.articles}/>
+                <RightPart />
+
                 </div>
                 {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}
             </div>

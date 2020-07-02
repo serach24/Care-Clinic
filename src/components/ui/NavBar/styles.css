@@ -1,8 +1,6 @@
-.root {
-    float: left;
-    position: fixed;
-    top: 0;
-    flex-grow: 1;
+.navbar{
+    display: flex;
+    height: 64px;
 }
 
 .title {
