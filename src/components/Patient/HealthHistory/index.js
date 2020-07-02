@@ -18,56 +18,40 @@ class HealthHistory extends React.Component {
 
         allergieDrugName:"", 
         allergieReaction:"",
-
+        isSubmit: false,
         patient: {
-            name: "",
+            firstName: "",
+            lastName:"",
             DOB: "",
             maritalStatus: "",
             problems:[
-                {year:"", reason:""},
-                {year:"", reason:""},
-                {year:"", reason:""},
-                {year:"", reason:""},
-                {year:"", reason:""}
+                {year:"", reason:"", ukey: 100 }
             ],
             drugs:[
-                {name:"", strength:"", frequency:""},
-                {name:"", strength:"", frequency:""},
-                {name:"", strength:"", frequency:""},
-                {name:"", strength:"", frequency:""},
-                {name:"", strength:"", frequency:""}
+                {name:"", strength:"", frequency:"", ukey:200}
             ],
             allergies:[
-                {drugName:"", reaction:""},
-                {drugName:"", reaction:""},
-                {drugName:"", reaction:""},
-                {drugName:"", reaction:""},
-                {drugName:"", reaction:""}
+                {drugName:"", reaction:"", ukey:300}
             ]
         }
     };
 
-    handleChange = event => {
-        const target = event.target;
-        const value = target.value;
-        // const name = target.name;
-        log(target);
-        log(value+'value');
-        // log(name+'name');
-        this.setState({
-            patientName: value
-        });
-    };
+handleSubmit = (data) => {
+    // const newpatient= event.state.patient;
+    // console.log(data);
 
-    handleSubmit = event => {
-        alert('Submited' + this.state.patientName);
-        event.preventDefault();
-    }
+    this.setState({
+        patient: data,
+        isSubmit: true
+    },()=>console.log(this.state.patient));
+}
+
     
 render () {
     return (
         <div>
-            <HealthForm patient={this.state.patient} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+            {/* <HealthForm patient={this.state.patient} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/> */}
+            <HealthForm patient={this.state.patient} onSubmit = {this.handleSubmit} isSubmit={this.state.isSubmit}/>
         </div>
     );
 }
