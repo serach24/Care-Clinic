@@ -1,0 +1,6 @@
+.ProfilePanel{
+    position: fixed;
+    width: 250px;
+    height: 720px;
+    background-color: rgba(25,25,25,.2);
+}

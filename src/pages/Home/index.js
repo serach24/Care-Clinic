@@ -30,7 +30,7 @@ class Home extends React.Component{
     render(){
         return (
             <div className="App">
-                <NavBar which={this.props.which} change={this.props.change}/>
+            <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
                 <div className="article_container">
                     <div className="ac_header">
                         <ul>

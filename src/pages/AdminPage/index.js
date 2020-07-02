@@ -57,7 +57,7 @@ class AdminPage extends React.Component {
   render() {
     return (
       <div className="admin-page-wrapper">
-        <NavBar />
+        <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
         <AdminSideBar />
         <div className="admin-page-content">
           <UserManagement />
