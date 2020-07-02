@@ -10,15 +10,14 @@ class ContentList extends React.Component {
 render() {
     const { articles } = this.props;
     return (
-        <div >
+        <div className="article_container">
           <Container >
             {articles.map(article => (
             <Content 
             key={uid(
                 article
               )}
-            articleheader={article.header} 
-            articlecontent={article.content} 
+            article={article}
             />
           ))}
           </Container>

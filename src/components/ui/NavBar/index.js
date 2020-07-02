@@ -74,7 +74,7 @@ class NavBar extends React.Component {
     render () {
         const { navbar_root } = this.props;
         return (
-            <div className={navbar_root}>
+            <div className="navbar">
                 <AppBar position="fixed">
                     <Toolbar>
                         <IconButton edge="start" 
