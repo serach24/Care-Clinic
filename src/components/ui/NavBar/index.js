@@ -103,6 +103,9 @@ class NavBar extends React.Component {
                                 className="TalkButton" >Admin</Button>}
                         {this.props.which!=2 && <Button component={ Link } to={"/feedback"} color="inherit"
                                 className="TalkButton" >FeedBack</Button>}
+
+
+
                         <ChatOutlinedIcon className="chat-button" onClick={this.openChat}/>
                         
                         <Dialog open={this.state.chatOpen} onClose={this.closeChat}>
@@ -112,11 +115,9 @@ class NavBar extends React.Component {
                         {this.props.which ==0 && !this.state.auth && <Button component={ Link } to={"/login"} color="inherit"
                                 className="loginButton" >Login</Button>}
                             {this.props.which!=0 && <div className="ProfileButton"> Profile </div>}
-                            {this.props.which!=0 && <div className="Profile"> <Profile which={this.props.which} change={this.props.change}></Profile> </div>}
+                            {this.props.which!=0 && <div className="Profile"> <Profile which={this.props.which} change={this.props.change} UUid={this.props.UUid}></Profile> </div>}
                         {this.state.auth &&  <Button color="inherit" 
                                 className="accountButton" >My Account</Button>}
-
-
                     </Toolbar>
                 </AppBar>
                 

@@ -39,11 +39,12 @@ class LoginForm extends React.Component {
     if (username==="user" && password==="user"){
       this.setState({loginState: 1});
       this.props.change(1);
+      this.props.SetUUid("UserId000");
 
     } else if (username==="admin" && password==="admin"){
       this.setState({loginState: 2})
       this.props.change(2);
-
+      this.props.SetUUid("AdminId000");
     }
   }
 

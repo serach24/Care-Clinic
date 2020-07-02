@@ -1,0 +1,11 @@
+.ProfileContainer{
+    width: 20%;
+    margin-top: 3%;
+}
+.AppointmentsContainer{
+    margin-top: 3%;
+    text-align: center;
+    width: 80%;
+    height: 50%;
+    float: right;
+}
