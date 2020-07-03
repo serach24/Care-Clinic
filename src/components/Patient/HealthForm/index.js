@@ -83,7 +83,8 @@ render () {
                 <FieldArray name="problems">
                     {(arrayHelper) => (
                         <div>
-                            <Button onClick={() => 
+                            <Button disabled={isSubmit}
+                                    onClick={() => 
                                         arrayHelper.push ({ 
                                             year:"",  
                                             reason:"",
@@ -92,7 +93,7 @@ render () {
                                     }
                                     variant="contained"
                                     // color="secondary"
-                                    // className={classes.submitButton}
+                                    className={classes.addButton}
                             >
                                 Add
                             </Button>
@@ -130,7 +131,9 @@ render () {
                 <FieldArray name="drugs">
                     {(arrayHelper) => (
                         <div>
-                            <Button onClick={() => 
+                            <div>
+                            <Button disabled={isSubmit}
+                                    onClick={() => 
                                         arrayHelper.push ({ 
                                             name:"",  
                                             strength:"", 
@@ -139,10 +142,11 @@ render () {
                                         })
                                     }
                                     variant="contained"
+                                    className={classes.addButton}
                             >
                                 Add
                             </Button>
-                    
+                            </div>
                         {values.drugs.map((drug,index) => (
                                 <div key={drug.ukey}>
                                         <TextField
@@ -185,7 +189,8 @@ render () {
                 <FieldArray name="allergies">
                     {(arrayHelper) => (
                         <div>
-                            <Button onClick={() => 
+                            <Button disabled={isSubmit}
+                                    onClick={() => 
                                     arrayHelper.push ({ 
                                         drugName:"",  
                                         reaction:"", 
@@ -193,6 +198,7 @@ render () {
                                     })
                                     }
                                     variant="contained"
+                                    className={classes.addButton}
                             >
                                 Add
                             </Button>
@@ -232,14 +238,15 @@ render () {
                                         }
                                 type="button"
                                 variant="contained"
+                                className={classes.submitButton}
                         >
                             Submit
                         </Button>
                     </div>
 
-                <pre>
+                {/* <pre>
                     {JSON.stringify(values, null, 2)}
-                </pre>
+                </pre> */}
 
                 </Form>
             )}
