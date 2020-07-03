@@ -26,10 +26,6 @@ class NavBar extends React.Component {
       auth:false,
     }
 
-    talkToDoctor=()=>{
-        alert("talkToADoctor");
-    }
-
 
     handleClick = () => {
         log('click drawer');
@@ -97,7 +93,7 @@ class NavBar extends React.Component {
                         {this.props.which==0 &&<Button component={ Link } to={"/login"} color="inherit"
                             className="TalkButton" >Talk to a Doctor</Button>}
                         {this.props.which==1 && <Button color="inherit"
-                                onClick = {this.talkToDoctor}
+                                component={ Link } to={"/doctorlist"}
                                 className="TalkButton" >Talk to a Doctor</Button>}
                         {this.props.which==2 && <Button component={ Link } to={"/admin"} color="inherit"
                                 className="TalkButton" >Admin</Button>}
