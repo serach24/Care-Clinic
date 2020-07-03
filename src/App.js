@@ -18,6 +18,7 @@ import HealthHistory from './pages/HealthHistory';
 
 import Doctors from './pages/Doctors';
 
+import DoctorProfile from './pages/ProfilePage/DoctorProfile';
 
 class App extends React.Component {
     constructor(props) {
@@ -69,8 +70,12 @@ class App extends React.Component {
                           (<HealthHistory which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
           <Route exact path={"/healthHistory"+this.state.userId+"T"} render={() =>
                           (<HealthHistory isEdit={true} which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
-          {this.state.loginState!=0 && <Route exact path={"/"+this.state.userId} render={() =>
+          {this.state.loginState!==0 && <Route exact path={"/"+this.state.userId} render={() =>
                           (<ProfilePage which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>}
+
+        {/* TODO: delete this, test only */}
+        <Route exact path={"/doctorProfile"} render={() =>
+                          (<DoctorProfile/>)} />
           {((this.state.loginState=== 1) || (this.state.loginState === 2))
                           ? <Route exact path='/doctorlist' render={() =>
                             (<Doctors which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/> 

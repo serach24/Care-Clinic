@@ -17,9 +17,9 @@ import AdminSideBar from "../../components/Admin/AdminSideBar";
 class AdminPage extends React.Component {
   constructor(props) {
     super(props);
+    this.user = React.createRef();
     this.content = React.createRef();
     this.feedback= React.createRef();
-    this.user = React.createRef();
     // this.isSideBarOpen = false;
   }
 
@@ -40,10 +40,10 @@ class AdminPage extends React.Component {
       ReactDOM.findDOMNode(this.user.current).scrollIntoView();
     }
     else if (index === 1) {
-      ReactDOM.findDOMNode(this.feedback.current).scrollIntoView();
+      ReactDOM.findDOMNode(this.content.current).scrollIntoView();
     }
     else {
-      ReactDOM.findDOMNode(this.content.current).scrollIntoView();
+      ReactDOM.findDOMNode(this.feedback.current).scrollIntoView();
     }
   }
 
