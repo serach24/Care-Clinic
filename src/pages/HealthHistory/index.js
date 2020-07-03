@@ -45,7 +45,7 @@ handleSubmit = (data) => {
     // console.log(data);
 
     this.setState({
-        patient: data,
+        patient1: data,
         isSubmit: true
     },()=>console.log(this.state.patient));
 }
@@ -55,8 +55,11 @@ render () {
     const {which, change, UUid, isEdit} = this.props;
     return (
         <div>
-            {isEdit ? <HealthForm patient={this.state.patient} onSubmit = {this.handleSubmit} isSubmit={this.state.isSubmit}/> :
-            <HealthForm patient={this.state.patient} isSubmit={true}/>}
+            <div>123 123{this.state.patient1.firstName}</div>
+            {/* {isEdit ? <HealthForm patient={this.state.patient1} onSubmit = {this.handleSubmit} isSubmit={this.state.isSubmit}/> :
+                        <HealthForm patient={this.state.patient1} isSubmit={true}/>} */}
+            <HealthForm patient={this.state.patient1} onSubmit = {this.handleSubmit} isSubmit={this.state.isSubmit}/> :
+                        <HealthForm patient={this.state.patient1} isSubmit={true}/>
         </div>
     );
 }

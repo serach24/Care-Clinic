@@ -16,13 +16,13 @@ class HealthForm extends React.Component {
     }
 
 render () {
-    const { classes, patient, onSubmit, isSubmit} = this.props;
+    const { classes, onSubmit, isSubmit} = this.props;
     return (
         <div className={classes.formroot}>
             <div className={classes.headerMain}><h1> <strong> Patient History </strong> </h1> </div>
             <div className={classes.header}><h2> Personal Information </h2> </div>
             <Formik 
-                initialValues= {patient}
+                initialValues= {this.props.patient}
                 onSubmit={(data, {setSubmitting}) => {
                     setSubmitting(true);
                     console.log(data);
