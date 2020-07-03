@@ -21,6 +21,7 @@ import imgforbody from './img/Systems-for-health-topic.jpg';
 class RightPart extends React.Component {
     state = {
         ukey:0,
+        
         categories:[
             {category: "General",open:false, sub:[
                                                     {   name:"Sub category 1", 
