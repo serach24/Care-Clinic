@@ -3,6 +3,7 @@ import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePag
 import Button from "@material-ui/core/Button";
 class DoctorApplicationReview extends React.Component {
   state = {
+    ukey:0,
     page: 0,
     itemsPerPage: 6,
     doctors: [
@@ -206,13 +207,13 @@ class DoctorApplicationReview extends React.Component {
             {this.state.doctors
             .slice(page * itemsPerPage, (page+1) * itemsPerPage)
             .map((row) => (
-              <TableRow>
+              <TableRow key={this.state.ukey++}>
                 <TableCell>{row.realName}</TableCell>
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.expertise}</TableCell>
                 <TableCell>
                   {row.documents.map((doc) => (
-                    <div>
+                    <div key={this.state.ukey++}>
                       <a className="doctor-document" href={doc.location} download={doc.docName}>{doc.docName}</a>
                     </div>
                   ))}

@@ -13,6 +13,7 @@ import { styles } from '../styles';
 
 class UserBan extends React.Component {
   state = {
+    ukey: 0,
     page: 0,
     itemsPerPage: 6,
     users: [
@@ -160,7 +161,7 @@ class UserBan extends React.Component {
             {this.state.chosenUsers
             .slice(page * itemsPerPage, (page+1) * itemsPerPage)
             .map((row) => (
-              <TableRow>
+              <TableRow key={this.state.ukey++}>
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.role}</TableCell>
                 <TableCell>{row.recentIPAddress}</TableCell>

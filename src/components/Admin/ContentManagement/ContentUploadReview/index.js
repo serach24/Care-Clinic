@@ -8,6 +8,7 @@ import {styles} from "./styles"
 
 class ContentUploadReview extends React.Component {
   state = {
+    ukey:0,
     page: 0,
     itemsPerPage: 6,
     content: [
@@ -147,7 +148,7 @@ class ContentUploadReview extends React.Component {
             {this.state.chosenContent
               .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
               .map((row) => (
-                <TableRow>
+                <TableRow key={this.state.ukey++}>
                   <TableCell>{row.title}</TableCell>
                   <TableCell>{row.uploader}</TableCell>
                   <TableCell>{row.uploadTime}</TableCell>

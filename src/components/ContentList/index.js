@@ -7,23 +7,23 @@ import "./styles.css";
 class ContentList extends React.Component {
 
 
-render() {
+  render() {
     const { articles } = this.props;
     return (
-        <div className="article_container">
-          <Container >
-            {articles.map(article => (
-            <Content 
-            key={uid(
+      <div className="article_container">
+        <Container >
+          {articles.map(article => (
+            <Content
+              key={uid(
                 article
               )}
-            article={article}
+              article={article}
             />
           ))}
-          </Container>
-        </div>
+        </Container>
+      </div>
     );
-    }
+  }
 }
 
 export default ContentList;

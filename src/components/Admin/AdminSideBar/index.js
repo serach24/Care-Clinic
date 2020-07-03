@@ -7,6 +7,7 @@ import { ListItem} from "@material-ui/core";
 
 class AdminSideBar extends React.Component {
   state = {
+    ukey:0,
     isSideBarOpen: true,
     sideBarList: [
       {
@@ -67,11 +68,11 @@ class AdminSideBar extends React.Component {
   render() {
     return (
       <div className="admin-side-bar-wrapper">
-        <Drawer containerClassName="admin-side-bar" docked={true} open={this.state.isSideBarOpen} onClose={this.openSideBar} variant="permanent">
+        <Drawer className="admin-side-bar" open={this.state.isSideBarOpen} onClose={this.openSideBar} variant="permanent">
           <div>
             <List>
               {this.state.sideBarList.map(row => (
-                <div>
+                <div key={this.state.ukey++}>
                   <ListItem button className="sidebar-item">
                     <span onClick={() => this.props.GoTo(row.index)} className="sidebar-item-text">{row.name}</span>
                     {/* <ListItemText primary={row.name} /> */}
@@ -79,7 +80,7 @@ class AdminSideBar extends React.Component {
                   { row.nested!==undefined &&
                   <List>
                     {row.nested.map(nestedRow => (
-                      <ListItem button>
+                      <ListItem key={this.state.ukey++} button>
                         <span className="nested-item-text">{nestedRow.name}</span>
                         {/* <ListItemText primary={nestedRow.name} /> */}
                       </ListItem>
