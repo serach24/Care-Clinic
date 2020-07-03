@@ -4,7 +4,7 @@ import Message from "./Message";
 
 // import {Styles} from "./styles"
 import "./styles.css"
-/* Component for the Student Form */
+
 class ChatMessages extends React.Component {
   
   render() {

@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 import "./styles.css"
-/* Component for the Student Form */
+
 class ChatInput extends React.Component {
 
   onKeyDown = (event, func) => {

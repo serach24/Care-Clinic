@@ -1,6 +1,7 @@
 import React from "react";
 
 import Paper from "@material-ui/core/Paper";
+import Dialog from "@material-ui/core/Dialog";
 
 import ChatInput from "./ChatInput";
 import ChatMessages from "./ChatMessages";
@@ -9,7 +10,6 @@ import ChatMessages from "./ChatMessages";
 // import styles from "./styles"
 import "./styles.css"
 
-/* Component for the Student Form */
 class Chat extends React.Component {
   state = {
     // only for phase 1 sample display, in the final version 
@@ -56,7 +56,9 @@ class Chat extends React.Component {
   }
 
   render() {
+    const {open, onClose} = this.props;
     return (
+      <Dialog open={open} onClose={onClose}>
       <Paper className="chat-component-wrapper">
         <ChatMessages
           messages={this.state.messages}
@@ -68,6 +70,7 @@ class Chat extends React.Component {
           sendMessage={this.sendMessage}
         />
       </Paper>
+      </Dialog>
     );
   }
 }
