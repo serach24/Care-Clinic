@@ -6,7 +6,6 @@ import NavBar from "../../components/ui/NavBar";
 import RightPart from "../../components/RightPart";
 import "./styles.css";
 
-
 class Doctors extends React.Component{
 
     render(){
