@@ -6,7 +6,7 @@ import "./styles.css";
 import a from "./img/1.jpg";
 import b from "./img/2.jpeg";
 import c from "./img/3.jpg";
-import d from "./img/4.jpg"
+import d from "./img/4.jpg";
 
 
 class DoctorList extends React.Component {
