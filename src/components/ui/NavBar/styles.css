@@ -29,13 +29,6 @@
     cursor: pointer;
 }
 
-.drawer {
-
-}
-.MuiDrawer-paper.MuiDrawer-paperAnchorLeft {
-    top: 64px;
-}
-
 .Profile{
     position: absolute;
     right: -10%;

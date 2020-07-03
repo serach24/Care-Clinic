@@ -12,16 +12,7 @@ const log = console.log;
 class HealthForm extends React.Component {
     state = {
         ukey:0,
-
     }
-
-    componentWillReceiveProps(nextProps) {
-        this.setState({
-            patient: nextProps.patient1,
-        });
-    }
-    
-
 render () {
     const { classes, patient, onSubmit, isSubmit} = this.props;
     return (
