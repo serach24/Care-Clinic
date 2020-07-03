@@ -1,9 +1,6 @@
 /* .admin-side-bar-wrapper{
   width: 300px;
 } */
-.MuiDrawer-paper {
-  top: auto !important;
-}
 
 .nested-item-text{
   padding-left: 20px !important;
