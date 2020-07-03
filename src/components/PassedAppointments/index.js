@@ -5,6 +5,8 @@ class PassedAppointments extends React.Component {
   state = {
     page: 0,
     itemsPerPage: 3,
+
+    // the data below need a serverCall to get
     doctors: [
       {
         id: 0,

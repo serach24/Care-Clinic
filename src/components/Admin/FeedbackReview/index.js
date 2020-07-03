@@ -4,8 +4,10 @@ import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePag
 
 class FeedbackReview extends React.Component {
   state = {
+    ukey: 0,
     page: 0,
     itemsPerPage: 6,
+    // the data below need a serverCall to get
     feedback: [
       {
         content: "This product is so good, I finally figured out my health problems.This product is so good, I finally figured out my health problems.This product is so good, I finally figured out my health problems.",
@@ -43,7 +45,7 @@ class FeedbackReview extends React.Component {
             {this.state.feedback
               .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
               .map((row) => (
-                <TableRow>
+                <TableRow key={this.state.ukey++}>
                   <TableCell>{row.user}</TableCell>
                   <TableCell>{row.content}</TableCell>
                 </TableRow>

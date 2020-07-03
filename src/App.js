@@ -25,6 +25,8 @@ class App extends React.Component {
         super(props);
         this.state = {
             loginState:0,
+
+            // the data below need a serverCall to get
             userId:"nli000000"
         };
         this.changeLogINState = this.changeLogINState.bind(this);

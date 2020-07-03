@@ -25,6 +25,7 @@ class DoctorInfo{
     }
 }
 /*Sample Doctors*/
+// the data below need a serverCall to get
 List.push(new DoctorInfo(0,"DC01234891","Dr Bo","Active"));
 List[0].FunctionDeactive();
 List.push(new DoctorInfo(1,"DC23132312","Dr Liu","Active"));

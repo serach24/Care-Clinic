@@ -14,6 +14,7 @@ class ProfileSide extends React.Component {
         super(props);
         this.state = {
             //State should be setted by call backend with Uid this.props.UUid
+            // the data below need a serverCall to get
             mainEmail : 'User@user.com',
             email :'Boliu@liuB.o',
             age: 200,

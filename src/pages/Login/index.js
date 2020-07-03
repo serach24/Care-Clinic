@@ -11,6 +11,8 @@ class Login extends React.Component {
   }
   state = {
     formType: "login",
+    
+    // the data below need a serverCall to get
     users: [
       { "username": "user", "password": "user" },
       { "username": "admin", "password": "admin" }

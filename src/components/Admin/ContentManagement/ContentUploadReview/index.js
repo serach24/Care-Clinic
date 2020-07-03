@@ -10,6 +10,8 @@ class ContentUploadReview extends React.Component {
   state = {
     page: 0,
     itemsPerPage: 6,
+
+    // the data below need a serverCall to get
     content: [
       {
         id: 0,

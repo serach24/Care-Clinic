@@ -8,6 +8,8 @@ import "./styles.css";
 
 class Storys extends React.Component{
     state = {
+
+        // the data below need a serverCall to get
         img: covidImg,
         articleheader: "What’s Next: COVID-19 podcast – (Ep 22) Vivek Goel on contact tracing apps",
         articlecontent : ["A made-in-Canada app that notifies those who may have been in contact with people with COVID-19 is coming to Ontario in July.", 

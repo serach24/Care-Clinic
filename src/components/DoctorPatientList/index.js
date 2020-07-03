@@ -8,6 +8,8 @@ class DoctorPatientList extends React.Component {
     page: 0,
     itemsPerPage: 6,
     chatOpen: false,
+    
+    // the data below need a serverCall to get
     patients: [
       {
         id: 0,
@@ -102,19 +104,19 @@ class DoctorPatientList extends React.Component {
     ]
   }
 
-  renderButton(id){
-    if (this.state.patients[id].status==="Pending"){
-      return(<div>
-        <Button size="small" onClick={()=>{this.acceptAppointment(id)}} variant="contained" color="primary">
+  renderButton(id) {
+    if (this.state.patients[id].status === "Pending") {
+      return (<div>
+        <Button size="small" onClick={() => { this.acceptAppointment(id) }} variant="contained" color="primary">
           Accept
         </Button>
-        <Button size="small" onClick={()=>{this.declineAppointment(id)}} variant="contained" color="secondary">
+        <Button size="small" onClick={() => { this.declineAppointment(id) }} variant="contained" color="secondary">
           Decline
         </Button>
       </div>
       );
-    } else if (this.state.patients[id].status==="Current"){
-      return(<div>
+    } else if (this.state.patients[id].status === "Current") {
+      return (<div>
         <Button size="small" onClick={this.openChat} variant="contained" color="primary">
           Chat
         </Button>
@@ -123,7 +125,7 @@ class DoctorPatientList extends React.Component {
         </Button>
       </div>
       );
-    } else if (this.state.patients[id].status==="Subsequent"){
+    } else if (this.state.patients[id].status === "Subsequent") {
       return (<div>
         <Button size="small" onClick={this.openChat} variant="contained" color="primary">
           Chat
@@ -133,7 +135,7 @@ class DoctorPatientList extends React.Component {
     }
   }
 
-  openChat = () =>{
+  openChat = () => {
     this.setState({
       chatOpen: true,
     })
@@ -145,32 +147,32 @@ class DoctorPatientList extends React.Component {
     })
   }
 
-  acceptAppointment = (id) =>{
+  acceptAppointment = (id) => {
     const patients = this.state.patients;
     patients[id].status = "Current";
-    this.setState({patients});
+    this.setState({ patients });
   }
 
-  declineAppointment = (id) =>{
+  declineAppointment = (id) => {
     const patients = this.state.patients;
     patients[id].status = "Declined";
-    this.setState({patients});
+    this.setState({ patients });
   }
 
   returnTreatment = (id) => {
     const patients = this.state.patients;
     patients[id].status = "Subsequent";
-    this.setState({patients});
-  } 
+    this.setState({ patients });
+  }
 
   finishTreatment = (id) => {
     const patients = this.state.patients;
     patients[id].status = "Finished";
-    this.setState({patients});
-  } 
+    this.setState({ patients });
+  }
 
-  handleChangePage = (e,page) =>{
-    this.setState({page})
+  handleChangePage = (e, page) => {
+    this.setState({ page })
   }
 
   render() {
@@ -194,32 +196,32 @@ class DoctorPatientList extends React.Component {
           </TableHead>
           <TableBody>
             {this.state.patients
-            .slice(page * itemsPerPage, (page+1) * itemsPerPage)
-            .map((row) => (
-              <TableRow>
-                <TableCell>{row.realName}</TableCell>
-                <TableCell>{row.username}</TableCell>
-                <TableCell>{row.description}</TableCell>
-                <TableCell>{row.appointTime}</TableCell>
-                <TableCell>{row.treatment}</TableCell>
-                <TableCell>{row.status}</TableCell>
-                <TableCell>
-                  {this.renderButton(row.id)}
-                </TableCell>
-              </TableRow>
-            ))}
+              .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
+              .map((row) => (
+                <TableRow>
+                  <TableCell>{row.realName}</TableCell>
+                  <TableCell>{row.username}</TableCell>
+                  <TableCell>{row.description}</TableCell>
+                  <TableCell>{row.appointTime}</TableCell>
+                  <TableCell>{row.treatment}</TableCell>
+                  <TableCell>{row.status}</TableCell>
+                  <TableCell>
+                    {this.renderButton(row.id)}
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
           <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[6]}
-              count={this.state.patients.length}
-              rowsPerPage={this.state.itemsPerPage}
-              page={this.state.page}
-              onChangePage={this.handleChangePage}
-            />
-          </TableRow>
-        </TableFooter>
+            <TableRow>
+              <TablePagination
+                rowsPerPageOptions={[6]}
+                count={this.state.patients.length}
+                rowsPerPage={this.state.itemsPerPage}
+                page={this.state.page}
+                onChangePage={this.handleChangePage}
+              />
+            </TableRow>
+          </TableFooter>
         </Table>
         <Chat open={this.state.chatOpen} onClose={this.closeChat} />
       </div>

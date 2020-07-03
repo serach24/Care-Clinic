@@ -13,6 +13,7 @@ import d from "./img/4.jpg"
 
 class Home extends React.Component{
     state = {
+        // the data below need a serverCall to get.
         articleheader: "What’s Next: COVID-19 podcast – (Ep 22) Vivek Goel on contact tracing apps",
         articlecontent : ["A made-in-Canada app that notifies those who may have been in contact with people with COVID-19 is coming to Ontario in July.",
                     "The way in which this technology works is, when two users come close to each other, their Bluetooth systems exchange encrypted keys,” says Vivek Goel, the University of Toronto’s vice-president, research and innovation, and strategic initiatives, and a professor at the Dalla Lana School of Public Health. “These keys are uploaded to a database. When a user of the app is confirmed with having the disease, they are provided with a special code to upload. This triggers an exposure notification for everyone that has been in contact with that user.",
