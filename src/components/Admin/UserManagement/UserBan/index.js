@@ -9,7 +9,7 @@ import InputBase from "@material-ui/core/InputBase";
 import Paper from "@material-ui/core/Paper"
 
 
-import { styles } from './styles';
+import { styles } from '../styles';
 
 class UserBan extends React.Component {
   state = {
