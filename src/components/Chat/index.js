@@ -22,19 +22,24 @@ class Chat extends React.Component {
         text: "Hello!"
       }
     ],
-    input: ""
+    input: "",
+    tip: "",
   }
 
   handleChange= (e) =>{
     const target = e.target;
     this.setState({
+      tip: "",
       [target.name]: target.value
     });
   }
 
   sendMessage = () =>{
     if (this.state.input===""){
-      console.log("Input could not be empty");
+      this.setState({
+        tip: "Input could not be empty"
+      });
+      console.log("Input could not be empty")
       return;
     }
     const messages = this.state.messages
@@ -48,17 +53,16 @@ class Chat extends React.Component {
       input: "",
       messages
     });
-    console.log(messages);
   }
 
   render() {
-    const {classes} = this.props;
     return (
       <Paper className="chat-component-wrapper">
         <ChatMessages
           messages={this.state.messages}
         />
         <ChatInput 
+          tip={this.state.tip}
           input={this.state.input}
           handleChange={this.handleChange}
           sendMessage={this.sendMessage}

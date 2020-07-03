@@ -56,9 +56,9 @@ class AdminPage extends React.Component {
         <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
         <AdminSideBar />
         <div className="admin-page-content">
-          <UserManagement id="user-management"/>
-          <ContentManagement id="content-management"/>
-          <FeedbackReview id="feedback-review"/>
+          <UserManagement />
+          <ContentManagement />
+          <FeedbackReview />
         </div>
         {/* <RequestsList ref={this.Messages}></RequestsList>
               <h3 className="Head" ref={this.PendingDocs}>Pending Doctors</h3>
