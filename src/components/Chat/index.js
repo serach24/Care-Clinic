@@ -1,6 +1,7 @@
 import React from "react";
 
 import Paper from "@material-ui/core/Paper";
+import Dialog from "@material-ui/core/Dialog";
 
 import ChatInput from "./ChatInput";
 import ChatMessages from "./ChatMessages";
@@ -9,7 +10,6 @@ import ChatMessages from "./ChatMessages";
 // import styles from "./styles"
 import "./styles.css"
 
-/* Component for the Student Form */
 class Chat extends React.Component {
   state = {
     // only for phase 1 sample display, in the final version 
@@ -22,19 +22,24 @@ class Chat extends React.Component {
         text: "Hello!"
       }
     ],
-    input: ""
+    input: "",
+    tip: "",
   }
 
   handleChange= (e) =>{
     const target = e.target;
     this.setState({
+      tip: "",
       [target.name]: target.value
     });
   }
 
   sendMessage = () =>{
     if (this.state.input===""){
-      console.log("Input could not be empty");
+      this.setState({
+        tip: "Input could not be empty"
+      });
+      console.log("Input could not be empty")
       return;
     }
     const messages = this.state.messages
@@ -48,22 +53,24 @@ class Chat extends React.Component {
       input: "",
       messages
     });
-    console.log(messages);
   }
 
   render() {
-    const {classes} = this.props;
+    const {open, onClose} = this.props;
     return (
+      <Dialog open={open} onClose={onClose}>
       <Paper className="chat-component-wrapper">
         <ChatMessages
           messages={this.state.messages}
         />
         <ChatInput 
+          tip={this.state.tip}
           input={this.state.input}
           handleChange={this.handleChange}
           sendMessage={this.sendMessage}
         />
       </Paper>
+      </Dialog>
     );
   }
 }

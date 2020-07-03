@@ -36,10 +36,10 @@ class AdminPage extends React.Component {
   // }
 
   GotoElement(index) {
-    if (index == 0) {
+    if (index === 0) {
       ReactDOM.findDOMNode(this.user.current).scrollIntoView();
     }
-    else if (index == 1) {
+    else if (index === 1) {
       ReactDOM.findDOMNode(this.feedback.current).scrollIntoView();
     }
     else {

@@ -1,15 +1,22 @@
 import React from "react";
 
 import Button from "@material-ui/core/Button";
-import Input from "@material-ui/core/Input";
 import TextField from "@material-ui/core/TextField";
 
 import "./styles.css"
-/* Component for the Student Form */
+
 class ChatInput extends React.Component {
 
+  onKeyDown = (event, func) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      func();
+    }
+  }
+
   render() {
-    const { input, handleChange, sendMessage } = this.props;
+    const { input, handleChange, sendMessage, tip } = this.props;
     return (
       <div className="chat-input-component">
         <TextField
@@ -22,14 +29,16 @@ class ChatInput extends React.Component {
           name="input"
           value={input}
           autoFocus
+          onKeyDown={(e)=>(this.onKeyDown(e,sendMessage))}
         />
+        <div className="chat-tip">{tip}</div>
         <Button
           className="chat-input-send-button"
           variant="contained"
           color="primary"
           id="chat-send-button"
           onClick={sendMessage}
-          // onKeyDown={(e)=>{(e->keyCode===13) ? sendMessage().bind(this) : undefined}}
+          // onKeyDown={(e)=>{(e->keyCode===13) ? sendMessage: undefined}}
         >
           Send
         </Button>
