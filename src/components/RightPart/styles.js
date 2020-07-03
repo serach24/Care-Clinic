@@ -14,7 +14,7 @@ export const styles = theme => ({
     img: {
         width: 280,
         // height:120,
-        border: '1px solid darkgray',
+        border: '1px solid #f5f5f5',
     },
     // contentarea: {
     //     width: 590,
