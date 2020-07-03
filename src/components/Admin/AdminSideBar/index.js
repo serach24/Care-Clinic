@@ -12,6 +12,7 @@ class AdminSideBar extends React.Component {
       {
         name: "User Management",
         ref: "user-management",
+        index:0,
         nested: [
           { name: "Doctor Application Review",
             ref: "doctor-application-review"
@@ -24,7 +25,8 @@ class AdminSideBar extends React.Component {
       {
         name: "Content Management",
         ref: "content-management",
-        nested: [
+          index:1,
+          nested: [
           { name: "Content Upload Review",
             ref: "content-upload-review" },
           { name: "Content Editing",
@@ -33,8 +35,9 @@ class AdminSideBar extends React.Component {
       },
       {
         name: "Feedback Review",
-        ref: "feedback-review"
-        // nested: [
+        ref: "feedback-review",
+          index:2,
+          // nested: [
         //   { "name": "Patient Feedback" },
         //   { "name": "Doctor Feedback" }
         // ]
@@ -70,14 +73,14 @@ class AdminSideBar extends React.Component {
               {this.state.sideBarList.map(row => (
                 <div>
                   <ListItem button className="sidebar-item">
-                    <span onClick={() => this.scrollToAnchor(row.ref)} className="sidebar-item-text">{row.name}</span>
+                    <span onClick={() => this.props.GoTo(row.index)} className="sidebar-item-text">{row.name}</span>
                     {/* <ListItemText primary={row.name} /> */}
                   </ListItem>
                   { row.nested!==undefined &&
                   <List>
                     {row.nested.map(nestedRow => (
                       <ListItem button>
-                        <span onClick={() => this.scrollToAnchor(nestedRow.ref)} className="nested-item-text">{nestedRow.name}</span>
+                        <span className="nested-item-text">{nestedRow.name}</span>
                         {/* <ListItemText primary={nestedRow.name} /> */}
                       </ListItem>
                     ))}

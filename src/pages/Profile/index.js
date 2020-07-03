@@ -67,7 +67,7 @@ class Profile extends React.Component {
               </div>
               <div className="FlowButtons">
               <div className ="FlowButton">
-              <Button variant="contained" onClick = {()=>(this.props.change(0))}>LogOut</Button>
+              <Button variant="contained" component={ Link } to={"/"} onClick = {()=>(this.props.change(0))}>LogOut</Button>
               </div>
               <div className ="FlowButton">
               {this.props.which!=2 && <Button component={ Link } to={"/"+this.props.UUid} variant="contained">Detail</Button>}

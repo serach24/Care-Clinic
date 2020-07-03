@@ -12,11 +12,19 @@ export const styles = theme => ({
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
         width: 230,
+        '&$disabled': {
+            color:'black'
+          }
     },
+    disabled: {},
     textFieldFull: {
         margin: 8,
         width: 640,
+        '&$disabledFull': {
+            color:'black'
+          }
     },
+    disabledFull: {},
     headerMain: {
         textAlign: 'center',
         margin: 'auto'
@@ -34,6 +42,8 @@ export const styles = theme => ({
     },
     addButton: {
         width:32,
-        marginLeft:8
-    }
+        marginLeft:8,
+        margin: 8
+    },
+    
 });

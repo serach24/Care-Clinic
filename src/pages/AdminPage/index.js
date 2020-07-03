@@ -17,9 +17,9 @@ import AdminSideBar from "../../components/Admin/AdminSideBar";
 class AdminPage extends React.Component {
   constructor(props) {
     super(props);
-    this.Messages = React.createRef();
-    this.PendingDocs = React.createRef();
-    this.BanPan = React.createRef();
+    this.content = React.createRef();
+    this.feedback= React.createRef();
+    this.user = React.createRef();
     // this.isSideBarOpen = false;
   }
 
@@ -35,17 +35,15 @@ class AdminPage extends React.Component {
   //   }
   // }
 
-  GotoElement(event) {
-    const target = event.target;
-    console.log((target.id))
-    if (target.id == 0) {
-      ReactDOM.findDOMNode(this.Messages.current).scrollIntoView();
+  GotoElement(index) {
+    if (index == 0) {
+      ReactDOM.findDOMNode(this.user.current).scrollIntoView();
     }
-    else if (target.id == 1) {
-      ReactDOM.findDOMNode(this.PendingDocs.current).scrollIntoView();
+    else if (index == 1) {
+      ReactDOM.findDOMNode(this.feedback.current).scrollIntoView();
     }
     else {
-      ReactDOM.findDOMNode(this.BanPan.current).scrollIntoView();
+      ReactDOM.findDOMNode(this.content.current).scrollIntoView();
     }
   }
 
@@ -54,11 +52,11 @@ class AdminPage extends React.Component {
     return (
       <div className="admin-page-wrapper">
         <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
-        <AdminSideBar />
+        <AdminSideBar GoTo={this.GotoElement.bind(this)}/>
         <div className="admin-page-content">
-          <UserManagement />
-          <ContentManagement />
-          <FeedbackReview />
+          <UserManagement ref={this.user} id="user-management"/>
+          <ContentManagement ref={this.content} id="content-management"/>
+          <FeedbackReview ref={this.feedback} id="feedback-review"/>
         </div>
         {/* <RequestsList ref={this.Messages}></RequestsList>
               <h3 className="Head" ref={this.PendingDocs}>Pending Doctors</h3>

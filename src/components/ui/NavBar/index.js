@@ -25,10 +25,6 @@ class NavBar extends React.Component {
     chatPeopleAnchor: null
   }
 
-  talkToDoctor = () => {
-    alert("talkToADoctor");
-  }
-
 
   handleClick = (e) => {
     if (this.state.chatPeopleAnchor === null) {
@@ -55,7 +51,7 @@ class NavBar extends React.Component {
         auth: true
       });
     }
-  };
+  }
 
   closeChat = () => {
     this.setState({
