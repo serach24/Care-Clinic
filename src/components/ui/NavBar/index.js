@@ -65,6 +65,10 @@ class NavBar extends React.Component {
       <div className="navbar">
         <AppBar position="fixed">
           <Toolbar>
+            <IconButton edge="start" 
+                        className="menuButton" >
+                <LocalHospitalIcon fontSize="large" />
+            </IconButton>
             <Button color="inherit"
               component={Link} to={"/"}
               className="Home" >
