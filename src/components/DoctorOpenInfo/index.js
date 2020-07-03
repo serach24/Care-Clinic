@@ -40,8 +40,12 @@ class DoctorOpenInfo extends React.Component {
                     </Typography>
                 </CardContent>
             <div  className="TalkWithADoctor">
-            <Button> Talk</Button>
-            <Button> Make Appointment</Button>
+                <div>
+                <Button> Talk</Button>
+                </div>
+                <div>
+                <Button> Make Appointment</Button>
+                </div>
             </div>
             </CardActionArea>
 

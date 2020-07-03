@@ -6,15 +6,13 @@ import Button from '@material-ui/core/Button';
 import Dialog from "@material-ui/core/Dialog";
 // import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+
 
 import Profile from './../../../pages/Profile';
 import Chat from "./../../../components/Chat";
 import "./styles.css";
-import { Drawer } from '@material-ui/core';
 
 const log = console.log;
 
@@ -74,15 +72,9 @@ class NavBar extends React.Component {
                 <AppBar position="fixed">
                     <Toolbar>
                         <IconButton edge="start" 
-                            onClick = {this.handleClick}
                             className="menuButton" >
-                            <MenuIcon />
+                            <LocalHospitalIcon fontSize="large" />
                         </IconButton>
-                        <Drawer className="drawer" variant="persistent" open={this.state.open}>
-                            <Toolbar />
-                            <Button color="inherit" className="Home" >1</Button>
-                            <Button color="inherit" className="About" >2</Button>
-                        </Drawer>
                         <Button color="inherit" 
                                 component={ Link } to={"/"} 
                                 className="Home" >

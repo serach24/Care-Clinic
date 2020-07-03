@@ -40,7 +40,7 @@ class Home extends React.Component{
 
                 <div className="content">
                 <ContentList articles={this.state.articles}/>
-                <RightPart />
+                <RightPart which={this.props.which}/>
 
                 </div>
                 {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}
