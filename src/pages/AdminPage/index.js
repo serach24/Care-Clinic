@@ -10,12 +10,8 @@ import UserManagement from "../../components/Admin/UserManagement";
 import ContentManagement from "../../components/Admin/ContentManagement";
 import FeedbackReview from "../../components/Admin/FeedbackReview";
 
-import RequestsList from '../../components/Admin/RequestsAdmin'
-import BanPanel from '../../components/Admin/AdminBanPanel'
-import PendingDoctors from '../../components/Admin/PendingDoctorInformationAdmin';
 import NavBar from "../../components/ui/NavBar";
 import AdminSideBar from "../../components/Admin/AdminSideBar";
-import Feedback from "../FeedBack";
 
 
 class AdminPage extends React.Component {
@@ -60,9 +56,9 @@ class AdminPage extends React.Component {
         <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
         <AdminSideBar />
         <div className="admin-page-content">
-          <UserManagement />
-          <ContentManagement />
-          <FeedbackReview />
+          <UserManagement id="user-management"/>
+          <ContentManagement id="content-management"/>
+          <FeedbackReview id="feedback-review"/>
         </div>
         {/* <RequestsList ref={this.Messages}></RequestsList>
               <h3 className="Head" ref={this.PendingDocs}>Pending Doctors</h3>
