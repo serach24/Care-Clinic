@@ -35,10 +35,13 @@ class Home extends React.Component{
     render(){
         return (
             <div className="App">
-                <NavBar />
+
+            <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
+
                 <div className="content">
                 <ContentList articles={this.state.articles}/>
                 <RightPart />
+
                 </div>
                 {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}
             </div>
