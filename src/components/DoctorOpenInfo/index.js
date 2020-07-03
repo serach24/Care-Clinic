@@ -45,18 +45,12 @@ class DoctorOpenInfo extends React.Component {
                     <div>{ doctor.expertise+"\n" +doctor.gender}</div>
                     </Typography>
                 </CardContent>
-            <div  className="TalkWithADoctor">
-
-                <div>
-            {!this.state.appointment &&<Button> Talk</Button>}
-                </div>
-                <div>
-        {!this.state.appointment && <Button onClick={()=>this.setState({appointment: true})}> Make Appointment</Button>}
-            {this.state.appointment && <Time submit={this.submit.bind(this)}/>}
-                </div>
-
-            </div>
-            </CardActionArea>
+            </CardActionArea>    
+            <CardActions>
+                    {!this.state.appointment && <Button> Talk</Button>}
+                    {!this.state.appointment && <Button onClick={()=>this.setState({appointment: true})}> Make Appointment</Button>}
+                    {this.state.appointment && <Time submit={this.submit.bind(this)}/>}
+            </CardActions>
 
             </Card>
         );
