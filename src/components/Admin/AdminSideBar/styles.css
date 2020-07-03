@@ -1,0 +1,12 @@
+.MuiDrawer-paper {
+  top: auto !important;
+}
+
+.nested-item-text{
+  padding-left: 20px !important;
+}
+
+.sidebar-item-text{
+  font-weight: bold;
+  font-size: 20px;
+}
