@@ -1,0 +1,75 @@
+/* Styles for the Home React component */
+.input_panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: darkblue;
+}
+
+.message{
+  border: darkblue dot-dash;
+  border-radius: 8px;
+  background-color: lightblue;
+  margin-top: 1%;
+  font-size: large;
+}
+
+.message:hover{
+  border: black dot-dash;
+  background-color: aliceblue;
+}
+
+.email{
+  display: inline-block;
+  border: darkblue dot-dash;
+  border-radius: 8px;
+  background-color: lightblue;
+  display: inline-block;
+  font-size: large;
+  float: right;
+}
+.email:hover{
+  border: black dot-dash;
+  background-color: aliceblue;
+}
+
+.head_feedback{
+  float: left;
+  color: aliceblue;
+  margin-top: 1%;
+  margin-left: 5%;
+  display: inline-block;
+  font-size: xx-large;
+  font-style: oblique;
+  font-weight: bolder;
+}
+
+
+.submitFeedback {
+  font-weight: bold;
+  font-family: "French Script MT";
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: xx-large;
+  width: 25%;
+  cursor: pointer;
+  background-image: linear-gradient(315deg, darkblue 10%, mediumpurple 74%);
+  border: none;
+  border-radius: 100px 100px 60px 60px;
+  transition: 1s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.submitFeedback:hover {
+  border-radius: 0%;
+  background-image: linear-gradient(315deg, darkblue 0%, mediumpurple 60%);
+  transition: 1s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+}
+
+.FeedbackSubmitPanel{
+  margin-left: 44%;
+}
+
+

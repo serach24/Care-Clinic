@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+import Time from './appointment';
 
 import "./styles.css";
 import { styles } from './styles';
@@ -16,6 +16,12 @@ import { styles } from './styles';
 const log = console.log;
 
 class DoctorOpenInfo extends React.Component {
+    state={appointment:false};
+    submit(){
+        //talk with backend
+        this.setState({appointment:false});
+    }
+
 
     render () {
         const { classes, doctor } = this.props;
@@ -40,12 +46,15 @@ class DoctorOpenInfo extends React.Component {
                     </Typography>
                 </CardContent>
             <div  className="TalkWithADoctor">
+
                 <div>
-                <Button> Talk</Button>
+            {!this.state.appointment &&<Button> Talk</Button>}
                 </div>
                 <div>
-                <Button> Make Appointment</Button>
+        {!this.state.appointment && <Button onClick={()=>this.setState({appointment: true})}> Make Appointment</Button>}
+            {this.state.appointment && <Time submit={this.submit.bind(this)}/>}
                 </div>
+
             </div>
             </CardActionArea>
 
