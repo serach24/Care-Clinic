@@ -110,7 +110,7 @@ class ProfileSide extends React.Component {
                     <Button component={ Link } to={"/healthHistory"+this.props.UUid+"T"} variant="contained" color="primary"
                                  >Edit Health History</Button>
               </div>
-              
+
           </div>
       </div>
           </div>

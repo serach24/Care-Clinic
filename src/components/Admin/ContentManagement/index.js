@@ -1,9 +1,15 @@
 import React from "react"
+import ContentUploadReview from "./ContentUploadReview"
+import ContentEditing from "./ContentEditing";
 
-class ContentManagement extends React.Component{
-  render(){
+class ContentManagement extends React.Component {
+  render() {
     return (
-      <div/>
+      <div>
+        <h2 className="content-management-title">Content Management</h2>
+        <ContentUploadReview id="content-upload-review"/>
+        <ContentEditing id="content-editing"/>
+      </div>
     );
   }
 }
