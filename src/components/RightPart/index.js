@@ -5,12 +5,10 @@ import { styles } from './styles';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import { Link } from "react-router-dom";
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import SendIcon from '@material-ui/icons/Send';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
@@ -25,57 +23,57 @@ class RightPart extends React.Component {
         categories:[
             {category: "General",open:false, sub:[
                                                     {   name:"Sub category 1", 
-                                                        link:""
+                                                        link:"/doctorlist"
                                                     },
                                                     {   name:"Sub category 2", 
-                                                        link:""
+                                                        link:"/doctorlist"
                                                     },
                                                     {   name:"Sub category 3", 
-                                                        link:""
+                                                        link:"/doctorlist"
                                                     }
                                                 ]
             },
             {category: "Abdomen and Digestive",open:false, sub:[
                                                     {   name:"Sub category 1", 
-                                                        link:""
+                                                        link:"/doctorlist"
                                                     },
                                                     {   name:"Sub category 2", 
-                                                        link:""
+                                                        link:"/doctorlist"
                                                     },
                                                     {   name:"Sub category 3", 
-                                                        link:""
+                                                        link:"/doctorlist"
                                                     }
                                                 ]
             },
             {category: "Bleeding",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Brain and Nervous System",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Chest and Respiratory",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Children's Symptoms",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Eye",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Genital and Urinary",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Ear Nose and Throat",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Infection",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Joint and Muscle",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Oral and Dental",open:false, sub:[{
-                                        name:"Sub category 1", link:""
+                                        name:"Sub category 1", link:"/doctorlist"
                                     }]}
         ]
     };
@@ -108,13 +106,14 @@ class RightPart extends React.Component {
                         </ListItem>
                         <Collapse in={item.open} timeout="auto" unmountOnExit>
                                 {item.sub.map((cate, index) => (
-                                <ListItem key={this.state.ukey++} button className={classes.nested}>
+                                <ListItem key={this.state.ukey++} button className={classes.nested} component={ Link } to={cate.link} >
                                   <ListItemText secondary={cate.name} />
                                 </ListItem>
                                 ))}
                         </Collapse>
                         </div>
                     ))}
+                {console.log(this.props.which+ "state")}
                 </List>
             </div>
         );

@@ -6,9 +6,14 @@ class StoryPage extends React.Component {
 
 
     render () {
-        const { header, content} = this.props;
+        const { header, img, content} = this.props;
         return(
         <div className="storyContainer">
+            { img != null && <div className="imageContainer">
+            <img src={img} alt="image" className="img"/>
+            </div>
+            }
+            <div>
             <Typography variant="h3" gutterBottom> {header} </Typography>
             {content.map(body => (
             <Typography 
@@ -17,7 +22,7 @@ class StoryPage extends React.Component {
                 )} 
               variant="body1" paragraph gutterBottom> {body} </Typography> 
           ))}
-            
+            </div>
         </div>
         );
     }

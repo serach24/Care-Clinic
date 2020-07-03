@@ -3,7 +3,8 @@
 .TalkWithADoctor{
     position: absolute;
     right: 5%;
-    top: 65%
+    top: 65%;
+    display: flex;
 }
 .AppointmentWithADoctor{
     position: absolute;

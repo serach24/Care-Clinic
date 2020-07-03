@@ -3,11 +3,12 @@ import React from "react";
 //importing components
 import NavBar from "../../components/ui/NavBar";
 import StoryPage from "../../components/StoryPage";
-
+import covidImg from "./img/covid-19-1330px.jpg";
 import "./styles.css";
 
 class Storys extends React.Component{
     state = {
+        img: covidImg,
         articleheader: "What’s Next: COVID-19 podcast – (Ep 22) Vivek Goel on contact tracing apps",
         articlecontent : ["A made-in-Canada app that notifies those who may have been in contact with people with COVID-19 is coming to Ontario in July.", 
                     "The way in which this technology works is, when two users come close to each other, their Bluetooth systems exchange encrypted keys,” says Vivek Goel, the University of Toronto’s vice-president, research and innovation, and strategic initiatives, and a professor at the Dalla Lana School of Public Health. “These keys are uploaded to a database. When a user of the app is confirmed with having the disease, they are provided with a special code to upload. This triggers an exposure notification for everyone that has been in contact with that user.",
@@ -22,7 +23,7 @@ class Storys extends React.Component{
         return (
             <div className="App">
             <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
-                <StoryPage header={this.state.articleheader} content={this.state.articlecontent} />
+                <StoryPage img={this.state.img} header={this.state.articleheader} content={this.state.articlecontent} />
             </div>
         );
     }

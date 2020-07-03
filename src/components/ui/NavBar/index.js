@@ -5,16 +5,15 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+
 
 import Profile from './../../../pages/Profile';
 import Chat from "./../../../components/Chat";
 import "./styles.css";
-import { Drawer } from '@material-ui/core';
 import ChatPeople from '../../ChatPeople';
+
 
 const log = console.log;
 
