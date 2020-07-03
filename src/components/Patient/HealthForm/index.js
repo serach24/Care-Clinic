@@ -5,6 +5,7 @@ import { Formik, Field, Form, FieldArray } from "formik";
 
 
 import { styles } from './styles';
+import "./styles.css";
 import { uid } from "react-uid";
 import { Button, Checkbox, Radio } from "@material-ui/core";
 const log = console.log;
@@ -32,6 +33,7 @@ render () {
                 <Form>
                     <div>
                         <TextField
+                            disabled={isSubmit}
                             name = "firstName"
                             value={values.firstName || ""}
                             onChange={handleChange}
@@ -44,6 +46,7 @@ render () {
                             className={classes.textField}
                         />
                         <TextField
+                            disabled={isSubmit}
                             name = "lastName"
                             value={values.lastName || ""}
                             onChange={handleChange}
@@ -56,6 +59,7 @@ render () {
                             className={classes.textField}
                         />
                         <TextField
+                            disabled={isSubmit}
                             name="DOB"
                             value={values.DOB || ""}
                             onChange={handleChange}
@@ -67,6 +71,7 @@ render () {
                             variant="outlined"
                         />
                         <TextField
+                            disabled={isSubmit}
                             name="maritalStatus"
                             value={values.maritalStatus}
                             onChange={handleChange}
@@ -100,7 +105,9 @@ render () {
                         {values.problems.map((problem, index) => (
                             <div key={problem.ukey}>
                                 <TextField
+                                        disabled={isSubmit}
                                         name={`problems.${index}.year`}
+                                        value={problem.year || ""}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         label="Problem Year"
@@ -111,7 +118,9 @@ render () {
                                         variant="outlined"
                                     />
                                     <TextField
+                                        disabled={isSubmit}
                                         name={`problems.${index}.reason`}
+                                        value={problem.reason || ""}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                         label="Problem reason"
@@ -120,6 +129,7 @@ render () {
                                         helperText="Problem"
                                         margin="dense"
                                         variant="outlined"
+                                        multiline
                                     />
                             </div>
                         ))}
@@ -150,7 +160,9 @@ render () {
                         {values.drugs.map((drug,index) => (
                                 <div key={drug.ukey}>
                                         <TextField
+                                            disabled={isSubmit}
                                             name={`drugs.${index}.name`}
+                                            value={drug.name || ""}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             label="Drug Name"
@@ -160,7 +172,9 @@ render () {
                                             variant="outlined"
                                         />
                                         <TextField
+                                            disabled={isSubmit}
                                             name={`drugs.${index}.strength`}
+                                            value={drug.strength || ""}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             label="strength"
@@ -170,7 +184,9 @@ render () {
                                             variant="outlined"
                                         />
                                         <TextField
+                                            disabled={isSubmit}
                                             name={`drugs.${index}.frequency`}
+                                            value={drug.frequency || ""}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             label="Frequency"
@@ -205,7 +221,9 @@ render () {
                         {values.allergies.map((allergie,index) => (
                             <div key={allergie.ukey}>
                                 <TextField
+                                    disabled={isSubmit}
                                     name={`allergies.${index}.drugName`}
+                                    value={allergie.drugName || ""}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     label="allergie drugName"
@@ -215,7 +233,9 @@ render () {
                                     variant="outlined"
                                 />
                                 <TextField
+                                    disabled={isSubmit}
                                     name={`allergies.${index}.reaction`}
+                                    value={allergie.reaction || ""}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     label="reaction"
@@ -223,6 +243,7 @@ render () {
                                     helperText="reaction"
                                     margin="dense"
                                     variant="outlined"
+                                    multiline
                                 />
                             </div>
                         ))}

@@ -102,6 +102,13 @@ class ProfileSide extends React.Component {
               <div className = "ProfileItem">
               <Button  variant="contained" onClick = {this.FunctionPhone.bind(this)} color="primary">change</Button></div>
               </div>
+              <div className = "ProfileItem">
+                    <Button component={ Link } to={"/healthHistory"+this.props.UUid} variant="contained" color="primary"
+                                 >Health History</Button>
+                    <Button component={ Link } to={"/healthHistory"+this.props.UUid+"T"} variant="contained" color="primary"
+                                 >Edit Health History</Button>
+              </div>
+              
           </div>
       </div>
           </div>

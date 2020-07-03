@@ -13,6 +13,7 @@ import Feedback from './pages/FeedBack';
 import Storys from './pages/Storys';
 import About from './pages/About';
 import ProfilePage from './pages/ProfilePage';
+import HealthHistory from './pages/HealthHistory';
 
 class App extends React.Component {
     constructor(props) {
@@ -38,7 +39,7 @@ class App extends React.Component {
     changeLogINState(newState){
         this.setState({
             loginState: newState
-        });
+        },() => console.log(this.state.loginState));
     }
 
 
@@ -61,6 +62,10 @@ class App extends React.Component {
                           (<About which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
           <Route exact path={"/"+this.state.userId} render={() =>
                           (<ProfilePage which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
+          <Route exact path={"/healthHistory"+this.state.userId} render={() =>
+                          (<HealthHistory which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
+          <Route exact path={"/healthHistory"+this.state.userId+"T"} render={() =>
+                          (<HealthHistory isEdit={true} which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
         </Switch>
       </BrowserRouter>
     </div>
