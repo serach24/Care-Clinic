@@ -8,22 +8,22 @@ class HealthHistory extends React.Component {
 
     state = {
         isSubmit: false,
+        // patient: {
+        //     firstName: "",
+        //     lastName:"",
+        //     DOB: "",
+        //     maritalStatus: "",
+        //     problems:[
+        //         {year:"", reason:"", ukey: 100 }
+        //     ],
+        //     drugs:[
+        //         {name:"", strength:"", frequency:"", ukey:200}
+        //     ],
+        //     allergies:[
+        //         {drugName:"", reaction:"", ukey:300}
+        //     ]
+        // },
         patient: {
-            firstName: "",
-            lastName:"",
-            DOB: "",
-            maritalStatus: "",
-            problems:[
-                {year:"", reason:"", ukey: 100 }
-            ],
-            drugs:[
-                {name:"", strength:"", frequency:"", ukey:200}
-            ],
-            allergies:[
-                {drugName:"", reaction:"", ukey:300}
-            ]
-        },
-        patient1: {
             firstName: " Ken ",
             lastName:" Cui ",
             DOB: "1999-09-09",
@@ -44,9 +44,10 @@ handleSubmit = (data) => {
     // const newpatient= event.state.patient;
     // console.log(data);
 
-    this.setState({
-        patient1: data,
-        isSubmit: true
+    this.setState(() => {
+        return {
+        patient: data,
+        isSubmit: true}
     },()=>console.log(this.state.patient));
 }
 
@@ -55,11 +56,9 @@ render () {
     const {which, change, UUid, isEdit} = this.props;
     return (
         <div>
-            <div>123 123{this.state.patient1.firstName}</div>
-            {/* {isEdit ? <HealthForm patient={this.state.patient1} onSubmit = {this.handleSubmit} isSubmit={this.state.isSubmit}/> :
-                        <HealthForm patient={this.state.patient1} isSubmit={true}/>} */}
-            <HealthForm patient={this.state.patient1} onSubmit = {this.handleSubmit} isSubmit={this.state.isSubmit}/> :
-                        <HealthForm patient={this.state.patient1} isSubmit={true}/>
+            {/* <div>1{this.state.patient.firstName}</div> */}
+            {isEdit ? <HealthForm patient={this.state.patient} onSubmit = {this.handleSubmit} isSubmit={this.state.isSubmit}/> :
+                        <HealthForm patient={this.state.patient} isSubmit={true}/>}
         </div>
     );
 }

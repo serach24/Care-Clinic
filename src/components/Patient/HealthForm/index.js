@@ -15,13 +15,21 @@ class HealthForm extends React.Component {
 
     }
 
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            patient: nextProps.patient1,
+        });
+    }
+    
+
 render () {
     const { classes, patient, onSubmit, isSubmit} = this.props;
     return (
         <div className={classes.formroot}>
-            <div className={classes.headerMain}><h1> <strong> Patient History </strong> </h1> </div>
+            <div className={classes.headerMain}><h1> <strong> Patient History {patient.firstName}</strong> </h1> </div>
             <div className={classes.header}><h2> Personal Information </h2> </div>
-            <Formik 
+            <Formik
+                enableReinitialize
                 initialValues= {patient}
                 onSubmit={(data, {setSubmitting}) => {
                     setSubmitting(true);

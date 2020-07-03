@@ -105,6 +105,8 @@ class ProfileSide extends React.Component {
               <div className = "ProfileItem">
                     <Button component={ Link } to={"/healthHistory"+this.props.UUid} variant="contained" color="primary"
                                  >Health History</Button>
+                </div>                 
+                <div className = "ProfileItem">
                     <Button component={ Link } to={"/healthHistory"+this.props.UUid+"T"} variant="contained" color="primary"
                                  >Edit Health History</Button>
               </div>
