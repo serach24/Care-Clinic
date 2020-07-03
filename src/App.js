@@ -13,7 +13,11 @@ import Feedback from './pages/FeedBack';
 import Storys from './pages/Storys';
 import About from './pages/About';
 import ProfilePage from './pages/ProfilePage';
+
+import HealthHistory from './pages/HealthHistory';
+
 import Doctors from './pages/Doctors';
+
 
 class App extends React.Component {
     constructor(props) {
@@ -39,7 +43,7 @@ class App extends React.Component {
     changeLogINState(newState){
         this.setState({
             loginState: newState
-        });
+        },() => console.log(this.state.loginState));
     }
 
 
@@ -52,6 +56,7 @@ class App extends React.Component {
                           (<Home which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
           <Route exact path='/login' render={() =>
                           (<Login which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId} SetUUid={this.setUserId}/>)}/>
+
           {this.state.loginState==2 && <Route exact path='/admin' render={() =>
                           (<AdminPage which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>}
           <Route exact path='/feedback' render={() =>
@@ -60,6 +65,10 @@ class App extends React.Component {
                           (<Storys which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
           <Route exact path='/about' render={() =>
                           (<About which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
+          <Route exact path={"/healthHistory"+this.state.userId} render={() =>
+                          (<HealthHistory which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
+          <Route exact path={"/healthHistory"+this.state.userId+"T"} render={() =>
+                          (<HealthHistory isEdit={true} which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
           {this.state.loginState!=0 && <Route exact path={"/"+this.state.userId} render={() =>
                           (<ProfilePage which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>}
           {this.state.loginState==1 && <Route exact path='/doctorlist' render={() =>

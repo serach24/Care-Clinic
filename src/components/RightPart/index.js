@@ -20,42 +20,62 @@ import imgforbody from './img/Systems-for-health-topic.jpg';
 
 class RightPart extends React.Component {
     state = {
+        ukey:0,
+        
         categories:[
-            {category: "General",open:false, sub:[{
-                                        name:"", link:""
-                                    }]},
-            {category: "Abdomen and Digestive",open:false, sub:[{
-                                        name:"", link:""
-                                    }]},
+            {category: "General",open:false, sub:[
+                                                    {   name:"Sub category 1", 
+                                                        link:""
+                                                    },
+                                                    {   name:"Sub category 2", 
+                                                        link:""
+                                                    },
+                                                    {   name:"Sub category 3", 
+                                                        link:""
+                                                    }
+                                                ]
+            },
+            {category: "Abdomen and Digestive",open:false, sub:[
+                                                    {   name:"Sub category 1", 
+                                                        link:""
+                                                    },
+                                                    {   name:"Sub category 2", 
+                                                        link:""
+                                                    },
+                                                    {   name:"Sub category 3", 
+                                                        link:""
+                                                    }
+                                                ]
+            },
             {category: "Bleeding",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]},
             {category: "Brain and Nervous System",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]},
             {category: "Chest and Respiratory",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]},
             {category: "Children's Symptoms",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]},
             {category: "Eye",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]},
             {category: "Genital and Urinary",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]},
             {category: "Ear Nose and Throat",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]},
             {category: "Infection",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]},
             {category: "Joint and Muscle",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]},
             {category: "Oral and Dental",open:false, sub:[{
-                                        name:"", link:""
+                                        name:"Sub category 1", link:""
                                     }]}
         ]
     };
@@ -81,16 +101,17 @@ class RightPart extends React.Component {
                         className={classes.buttoncard}
                 >
                     {this.state.categories.map((item, index) => (
-                        <div>
+                        <div key={this.state.ukey++}>
                         <ListItem button onClick={()=> {this.handleClick(index)}}>
                         <ListItemText primary={item.category} />
                         {item.open ? <ExpandLess /> : <ExpandMore />}
                         </ListItem>
                         <Collapse in={item.open} timeout="auto" unmountOnExit>
-                                <ListItem button className={classes.nested}>
-                                  <ListItemText secondary="Sub categories" />
+                                {item.sub.map((cate, index) => (
+                                <ListItem key={this.state.ukey++} button className={classes.nested}>
+                                  <ListItemText secondary={cate.name} />
                                 </ListItem>
-
+                                ))}
                         </Collapse>
                         </div>
                     ))}
