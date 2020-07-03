@@ -26,9 +26,14 @@ export const styles = theme => ({
         margin:8
     },
     button: {
+        width:100,
         margin:"8px auto"
     },
     submitButton: {
-        width: 100,
+        width: 100
+    },
+    addButton: {
+        width:32,
+        marginLeft:8
     }
 });
