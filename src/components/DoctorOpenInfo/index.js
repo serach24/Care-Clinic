@@ -47,7 +47,6 @@ class DoctorOpenInfo extends React.Component {
                 </CardContent>
             <div  className="TalkWithADoctor">
             {!this.state.appointment &&<Button> Talk</Button>}
-        //talk with backend here
         {!this.state.appointment && <Button onClick={()=>this.setState({appointment: true})}> Make Appointment</Button>}
             {this.state.appointment && <Time submit={this.submit.bind(this)}/>}
             </div>
