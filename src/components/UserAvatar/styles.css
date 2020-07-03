@@ -1,0 +1,21 @@
+.UserHeadPic{
+    position: absolute;
+    left:24%;
+    top: 8%;
+    width: 98px;
+    height: 98px;
+    border: 20px solid rgba(25,25,25,.3);
+    border-radius: 50%;
+}
+.Username{
+    font-size:medium;
+    position: absolute;
+    left: 24.8%;
+    top: 10%;
+    text-align: center;
+}
+.UserName{
+    white-space: pre;
+    letter-spacing: 1px;
+    font-family: fantasy ;
+}

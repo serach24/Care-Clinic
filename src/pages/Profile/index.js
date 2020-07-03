@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 
 import "./styles.css";
 import ava from './static/icon.jpg'
+import UserAvatar from './../../components/UserAvatar'
 
 /* Component for the Home page */
 
@@ -60,45 +61,18 @@ class Profile extends React.Component {
 
       render() {
         return (
-        <div className="ProfilePanel">
-              <div className="Background"></div>
-              <div className="Background1"></div>
-
-              <div className="UserDiv">
-              <svg className="Username">
-              <defs>
-              <path id='CurveName' d="M0,57 a1,1 0 0,0 133,0" />
-              </defs>
-              <text className= "UserName">
-                <textPath xlinkHref='#CurveName' >
-                    {"   Welcome !       " +this.state.name}
-                </textPath>
-              </text>
-              </svg>
-              <img className="UserHeadPic" src= {ava}></img>
-
-
-              <div
-              className = "userInfo">
-              <div className = "ProfileItem">
-              {"Email: "+ this.state.email+"\n"}
+        <div className="ProfileWindow">
+              <div className="FlowAvatar">
+              <UserAvatar UUid={this.props.UUid}/>
               </div>
-              <div className = "ProfileText">
-              {this.state.changeEmail && (<TextField label="New Email" fullWidth={true} variant="filled" onChange ={this.SetEmail.bind(this)}></TextField>)}
+              <div className="FlowButtons">
+              <div className ="FlowButton">
+              <Button variant="contained" onClick = {()=>(this.props.change(0))}>LogOut</Button>
               </div>
-              <div className = "ProfileItem">
-              <Button  variant="contained" onClick = {this.FunctionEmail.bind(this)} color="primary">change</Button>
+              <div className ="FlowButton">
+              {this.props.which!=2 && <Button component={ Link } to={"/"+this.props.UUid} variant="contained">Detail</Button>}
               </div>
-              <div className = "ProfileItem">
-              {"Age: " + this.state.age+"\n"}
               </div>
-              <div className = "ProfileText">
-                  {this.state.changeAge && (<TextField label="New Age" fullWidth={true} variant="filled" onChange ={this.SetAge.bind(this)}></TextField>)}
-              </div>
-              <div className = "ProfileItem">
-              <Button  variant="contained" onClick = {this.FunctionAge.bind(this)} color="primary">change</Button></div>
-              </div>
-      </div>
       </div>
     );
   }

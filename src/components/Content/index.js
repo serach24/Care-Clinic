@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -10,37 +10,38 @@ import Button from '@material-ui/core/Button';
 
 
 import "./styles.css";
-import { Link } from 'react-router-dom';
+import { styles } from './styles';
+
 
 const log = console.log;
 
 class Content extends React.Component {
 
-
     render () {
-        const { articleheader, articlecontent } = this.props;
+        const { classes, article } = this.props;
         return(
-            <Card className= "article">
+            <Card className= {classes.root}>
                 {/* <Card Mediacomponent="img"/> */}
-                <CardActionArea>
-                <CardContent>
-                
-                <Link to={"/story1"} className="link">
-                   <Typography variant="h5" noWrap>{articleheader}
-                   </Typography>
-                
-                
-                <Typography paragraph>{articlecontent} 
-                   </Typography>
-                </Link>   
+
+                <CardActionArea className= {classes.actionarea}>
+                <div className={classes.MediaContainer}>
+                <CardMedia  className={classes.cardmedia}
+                            image={article.img}
+                            title="img"
+                            /> 
+                </div>            
+                <CardContent className={classes.contentarea}>
+
+                    <Typography variant="h5">
+                       <a href={article.link}>{article.header}</a>
+                    </Typography>
+                    {/* <Typography paragraph>
+                        <a href="/story1">{article.content}</a>
+                    </Typography> */}
                 </CardContent>
                 </CardActionArea>
-                <CardActions>
-                <Button size="small" variant="contained" className="articleButton" > Like </Button>
-                </CardActions>
-                
             </Card>
         );
     }
 }
-export default Content;
+export default withStyles(styles, { withTheme: false })(Content);

@@ -16,7 +16,7 @@ class AdminSideBar extends React.Component {
         "name": "User Management",
         "nested": [
           { "name": "Doctor Application Review" },
-          { "name": "User Removal" }
+          { "name": "User Ban" }
         ]
       },
       {

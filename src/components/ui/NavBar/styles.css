@@ -1,8 +1,6 @@
-.root {
-    float: left;
-    position: fixed;
-    top: 0;
-    flex-grow: 1;
+.navbar{
+    display: flex;
+    height: 64px;
 }
 
 .title {
@@ -39,15 +37,20 @@
 }
 
 .Profile{
+    position: absolute;
+    right: -10%;
     width: 35%;
     height: 50%;
     display: none;
-    position: absolute;
-    left: 25%;
 }
 .ProfileButton:hover + .Profile {
     display: block;
 }
 .Profile:hover {
     display: block;
+}
+.ProfileButton{
+    position: absolute;
+    right: 0px;
+    margin-right: 12px;
 }
