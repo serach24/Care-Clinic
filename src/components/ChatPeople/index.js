@@ -11,6 +11,7 @@ import {styles} from "./styles";
 
 class ChatPeople extends React.Component {
   state = {
+    ukey: 0,
     chatOpen: false,
 
     // the data below need a serverCall to get
@@ -70,7 +71,7 @@ class ChatPeople extends React.Component {
       >
         <List className="chat-people">
           {people.map(person => (
-            <ListItem onClick={this.openChat} className={classes.chatPerson} alignItems="flex-start">
+            <ListItem key={this.state.ukey++} onClick={this.openChat} className={classes.chatPerson} alignItems="flex-start">
               <Avatar className="chat-self-avatar" alt="currentUser" src={person.avatar} />
               <ListItemText
                 primary={person.name}
