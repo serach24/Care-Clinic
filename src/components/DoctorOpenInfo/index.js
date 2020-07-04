@@ -47,7 +47,7 @@ class DoctorOpenInfo extends React.Component {
                 </CardContent>
             </CardActionArea>    
             <CardActions>
-                    {!this.state.appointment && <Button> Talk</Button>}
+                    {/* {!this.state.appointment && <Button> Talk</Button>} */}
                     {!this.state.appointment && <Button onClick={()=>this.setState({appointment: true})}> Make Appointment</Button>}
                     {this.state.appointment && <Time submit={this.submit.bind(this)}/>}
             </CardActions>

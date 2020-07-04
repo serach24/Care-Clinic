@@ -78,7 +78,7 @@ class App extends React.Component {
         {/* TODO: delete this, test only */}
         <Route exact path={"/doctorProfile"} render={() =>
                           (<DoctorProfile/>)} />
-          {((this.state.loginState=== 1) || (this.state.loginState === 2))
+          {((this.state.loginState=== 1) || (this.state.loginState === 2) || (this.state.loginState === 3))
                           ? <Route exact path='/doctorlist' render={() =>
                             (<Doctors which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/> 
                           : <Route exact path='/doctorlist' render={() =>
