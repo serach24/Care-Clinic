@@ -7,8 +7,6 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import AdminPage from './pages/AdminPage';
 
-import AdminSideBar from './components/Admin/AdminSideBar';
-
 import Feedback from './pages/FeedBack';
 import Storys from './pages/Storys';
 import About from './pages/About';
@@ -17,8 +15,6 @@ import ProfilePage from './pages/ProfilePage';
 import HealthHistory from './pages/HealthHistory';
 
 import Doctors from './pages/Doctors';
-
-import DoctorProfile from './pages/ProfilePage/DoctorProfile';
 
 class App extends React.Component {
     constructor(props) {
@@ -60,7 +56,7 @@ class App extends React.Component {
           <Route exact path='/login' render={() =>
                           (<Login which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId} SetUUid={this.setUserId}/>)}/>
 
-          {this.state.loginState==2 && <Route exact path='/admin' render={() =>
+          {this.state.loginState===2 && <Route exact path='/admin' render={() =>
                           (<AdminPage which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>}
           <Route exact path='/feedback' render={() =>
                           (<Feedback which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
@@ -75,10 +71,8 @@ class App extends React.Component {
           {this.state.loginState!==0 && <Route exact path={"/"+this.state.userId} render={() =>
                           (<ProfilePage which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>}
 
-        {/* TODO: delete this, test only */}
-        <Route exact path={"/doctorProfile"} render={() =>
-                          (<DoctorProfile/>)} />
-          {((this.state.loginState=== 1) || (this.state.loginState === 2) || (this.state.loginState === 3))
+          {((this.state.loginState=== 1) || (this.state.loginState === 2))
+
                           ? <Route exact path='/doctorlist' render={() =>
                             (<Doctors which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/> 
                           : <Route exact path='/doctorlist' render={() =>

@@ -53,7 +53,7 @@ class LoginForm extends React.Component {
   render() {
     let isUsernameEmpty = this.state.checkError && this.state.username === "";
     let isPasswordEmpty = this.state.checkError && this.state.password === "";
-    if (this.state.loginState != 0){
+    if (this.state.loginState !== 0){
       return <Redirect to={"/"}/>
      }
     return (
