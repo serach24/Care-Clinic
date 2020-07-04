@@ -14,6 +14,9 @@ class SignupForm extends React.Component {
   state = {
     username: "",
     password: "",
+    realName: "",
+    location: "",
+    age: "",
     checkError: false,
   }
 
@@ -26,8 +29,6 @@ class SignupForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const username = this.state.username;
-    const password = this.state.password;
     this.setState({
       checkError: true,
     });
@@ -61,6 +62,33 @@ class SignupForm extends React.Component {
           value={this.state.password}
           onChange={this.handleInputChange}
         />
+
+        <Input
+          error={isPasswordEmpty}
+          name="realName"
+          label="Real Name"
+          value={this.state.password}
+          onChange={this.handleInputChange}
+        />
+
+        <Input
+          error={isPasswordEmpty}
+          helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+          name="location"
+          label="Location"
+          value={this.state.password}
+          onChange={this.handleInputChange}
+        />
+
+        <Input
+          error={isPasswordEmpty}
+          helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+          name="age"
+          label="Age"
+          value={this.state.password}
+          onChange={this.handleInputChange}
+        />
+
 
         <Button
           variant="contained"

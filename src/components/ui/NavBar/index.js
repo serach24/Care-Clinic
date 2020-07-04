@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -10,7 +10,6 @@ import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 
 
 import Profile from './../../../pages/Profile';
-import Chat from "./../../../components/Chat";
 import "./styles.css";
 import ChatPeople from '../../ChatPeople';
 
@@ -59,7 +58,6 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const { navbar_root } = this.props;
     const open = Boolean(this.state.chatPeopleAnchor);
     return (
       <div className="navbar">
