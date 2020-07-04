@@ -70,7 +70,9 @@ class App extends React.Component {
                           (<HealthHistory isEdit={true} which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
           {this.state.loginState!==0 && <Route exact path={"/"+this.state.userId} render={() =>
                           (<ProfilePage which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>}
+
           {((this.state.loginState=== 1) || (this.state.loginState === 2))
+
                           ? <Route exact path='/doctorlist' render={() =>
                             (<Doctors which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/> 
                           : <Route exact path='/doctorlist' render={() =>

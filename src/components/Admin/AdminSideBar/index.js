@@ -7,6 +7,7 @@ import { ListItem} from "@material-ui/core";
 
 class AdminSideBar extends React.Component {
   state = {
+    ukey:0,
     isSideBarOpen: true,
 
     // the data below need a serverCall to get
@@ -73,7 +74,7 @@ class AdminSideBar extends React.Component {
           <div>
             <List>
               {this.state.sideBarList.map(row => (
-                <div>
+                <div key={this.state.ukey++}>
                   <ListItem button className="sidebar-item">
                     <span onClick={() => this.props.GoTo(row.index)} className="sidebar-item-text">{row.name}</span>
                     {/* <ListItemText primary={row.name} /> */}
@@ -81,7 +82,7 @@ class AdminSideBar extends React.Component {
                   { row.nested!==undefined &&
                   <List>
                     {row.nested.map(nestedRow => (
-                      <ListItem button>
+                      <ListItem button key={this.state.ukey++}>
                         <span className="nested-item-text">{nestedRow.name}</span>
                         {/* <ListItemText primary={nestedRow.name} /> */}
                       </ListItem>

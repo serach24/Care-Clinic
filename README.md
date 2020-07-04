@@ -5,6 +5,16 @@ CSC309 Summer 2020 Team Project
 Our Project is a web application which is an online clinic, where patients can chat with doctors about their symptoms and get a prescription sent to them through the app. This is aimed at more common ailments (colds, headaches, behind counter supplements like iron pills, UTIs, etc)and not used for more complex cases.
 
 ## Features
+### Username and Password
+#### Patient 
+* Username: user 
+* Password: user
+#### Doctor 
+* Username: user2 
+* Password: user2
+#### Admin
+* Username: admin 
+* Password: admin
 ### Navigation Bar
 * provide entries for user
 * entires is depents on user's permission
@@ -29,11 +39,15 @@ Our Project is a web application which is an online clinic, where patients can c
 * Log in with username:user password:user
 
 ### Doctor
-* Log in with username:user2 password:user2
+
+* chat with patient
+* apporve patient appointment
+* upload perscription
 
 ### Admin
 * admin portal with management system
-* Log in with username:admin password:admin
+* doctor application review & ban users & edit/review content & review feedback
+
 
 
 ## Team Members
