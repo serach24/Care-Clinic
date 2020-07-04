@@ -11,9 +11,6 @@ import "./styles.css";
 
 /* Component for the Student Form */
 class LoginForm extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
   state = {
     username: "",
