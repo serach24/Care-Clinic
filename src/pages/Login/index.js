@@ -6,9 +6,6 @@ import NavBar from "../../components/ui/NavBar";
 
 /* Component for the Student Form */
 class Login extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   state = {
     formType: "login",
     

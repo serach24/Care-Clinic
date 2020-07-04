@@ -6,6 +6,7 @@ import Dialog from "@material-ui/core/Dialog";
 import ChatInput from "./ChatInput";
 import ChatMessages from "./ChatMessages";
 
+import { DialogTitle } from "../DialogTitle";
 
 // import styles from "./styles"
 import "./styles.css"
@@ -61,6 +62,9 @@ class Chat extends React.Component {
     const {open, onClose} = this.props;
     return (
       <Dialog open={open} onClose={onClose}>
+        <DialogTitle id="customized-dialog-title" onClose={onClose}>
+          testUser
+        </DialogTitle>
       <Paper className="chat-component-wrapper">
         <ChatMessages
           messages={this.state.messages}

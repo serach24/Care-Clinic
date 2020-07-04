@@ -26,13 +26,14 @@ Our Project is a web application which is an online clinic, where patients can c
 * profile view page also have patient's appointment record
 * make appointment in doctor list page
 * patient history form and page. (patient able to edit their health history). entry in the profile page
-* 
+* Log in with username:user password:user
 
 ### Doctor
+* Log in with username:user2 password:user2
 
 ### Admin
 * admin portal with management system
-
+* Log in with username:admin password:admin
 
 
 ## Team Members
