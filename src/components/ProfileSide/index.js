@@ -14,6 +14,7 @@ class ProfileSide extends React.Component {
         super(props);
         this.state = {
             //State should be setted by call backend with Uid this.props.UUid
+            // the data below need a serverCall to get
             mainEmail : 'User@user.com',
             email :'Boliu@liuB.o',
             age: 200,
@@ -23,7 +24,19 @@ class ProfileSide extends React.Component {
             changeEmail : false,
             changePhone : false,
             newphone : 0,
-            newemail : "a@a.a"
+            newemail : "a@a.a",
+            expertise: "Pediatrics",
+            documents: [
+                {
+                    docName: "sampleCertification1.jpg",
+                    location: "/img/sampleCertification1.jpg"
+                },
+                {
+                    docName: "sampleCertification2.pdf",
+                    location: "/img/sampleCertification2.pdf"
+                }
+            ],
+            status: "Pending"
         };
     }
             SetPhone(e){
@@ -102,15 +115,21 @@ class ProfileSide extends React.Component {
               <div className = "ProfileItem">
               <Button  variant="contained" onClick = {this.FunctionPhone.bind(this)} color="primary">change</Button></div>
               </div>
-              <div className = "ProfileItem">
-                    <Button component={ Link } to={"/healthHistory"+this.props.UUid} variant="contained" color="primary"
-                                 >Health History</Button>
-                </div>                 
-                <div className = "ProfileItem">
-                    <Button component={ Link } to={"/healthHistory"+this.props.UUid+"T"} variant="contained" color="primary"
-                                 >Edit Health History</Button>
-              </div>
 
+              {this.props.which === 1 && <div className = "ProfileItem">
+                    <Button component={ Link } to={"/healthHistory"+this.props.UUid} variant="contained" color="primary" >Health History</Button>
+                </div>}
+              {this.props.which === 1 &&<div className = "ProfileItem">
+                    <Button component={ Link } to={"/healthHistory"+this.props.UUid+"T"} variant="contained" color="primary" >Edit Health History</Button>
+                </div>}
+
+              {this.props.which === 3 &&
+              <div className = "ProfileItem"> {"Expertise: "+ this.state.expertise+"\n"} </div>}
+              {this.props.which==3 && this.state.documents.map((doc) => (
+                  <div className = "ProfileItem">
+                  <a className="doctor-document" href={doc.location} download={doc.docName}>{doc.docName}</a>
+                  </div>
+              ))}
           </div>
       </div>
           </div>

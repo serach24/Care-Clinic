@@ -14,6 +14,8 @@ class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+
+            // the data below need a serverCall to get
             email :'Boliu@liuB.o',
             name : 'Bo Liu lol',
             age : '1800',

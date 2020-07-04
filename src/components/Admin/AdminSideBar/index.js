@@ -8,6 +8,8 @@ import { ListItem} from "@material-ui/core";
 class AdminSideBar extends React.Component {
   state = {
     isSideBarOpen: true,
+
+    // the data below need a serverCall to get
     sideBarList: [
       {
         name: "User Management",

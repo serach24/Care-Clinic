@@ -16,6 +16,8 @@ class Chat extends React.Component {
     // only for phase 1 sample display, in the final version 
     // the time would be from the server
     curTime: "2020-06-11 00:12:13", 
+
+    // the data below need a serverCall to get
     messages: [
       {
         user: "testUser",

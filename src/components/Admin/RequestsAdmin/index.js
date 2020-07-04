@@ -27,6 +27,7 @@ class RequestInfo{
     }
 }
 
+// the data below need a serverCall to get
 List.push(new RequestInfo(0,"MS0001","Bo@Liu.ca","This is a test message"));
 List.push(new RequestInfo(1,"MS0210","Liu@BO.cc","This is the second test message which is much longer then the first one and this is also a sentence without changing line."));
 List.push(new RequestInfo(2,"MS1234","Bo@Liu.ca",

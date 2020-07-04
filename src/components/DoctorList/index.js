@@ -13,6 +13,8 @@ class DoctorList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+
+            // the data below need a serverCall to get
             doctors: [
                 {
                     id: 0,

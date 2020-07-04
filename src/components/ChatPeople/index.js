@@ -12,6 +12,8 @@ import {styles} from "./styles";
 class ChatPeople extends React.Component {
   state = {
     chatOpen: false,
+
+    // the data below need a serverCall to get
     people: [
       {
         name: "testUser1",

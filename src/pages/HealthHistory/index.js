@@ -23,6 +23,8 @@ class HealthHistory extends React.Component {
         //         {drugName:"", reaction:"", ukey:300}
         //     ]
         // },
+
+        // the data below need a serverCall to get.
         patient: {
             firstName: " Ken ",
             lastName:" Cui ",

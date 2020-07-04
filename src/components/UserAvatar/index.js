@@ -14,6 +14,7 @@ class UserAvatar extends React.Component {
         super(props);
         this.state = {
             //State should be setted by call backend with Uid this.props.UUid
+            // the data below need a serverCall to get
             name : 'Bo Liu lol',
             type: "not loged in",
         };

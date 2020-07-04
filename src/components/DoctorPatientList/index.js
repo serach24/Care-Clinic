@@ -11,6 +11,8 @@ class DoctorPatientList extends React.Component {
     chatOpen: false,
     treatmentDialogOpen: false,
     treatmentId: 0,
+    
+    // the data below need a serverCall to get
     patients: [
       {
         id: 0,

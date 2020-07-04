@@ -20,6 +20,7 @@ class RightPart extends React.Component {
     state = {
         ukey:0,
         
+        // the data below need a serverCall to get
         categories:[
             {category: "General",open:false, sub:[
                                                     {   name:"Sub category 1", 
