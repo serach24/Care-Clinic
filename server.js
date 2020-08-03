@@ -41,19 +41,19 @@ app.use(
 
 // A route to login and create a session
 app.post("/users/login", (req, res) => {
-    const email = req.body.email;
+    const username = req.body.username;
     const password = req.body.password;
 
-    log(email, password);
+    log(username, password);
     // Use the static method on the User model to find a user
     // by their email and password
-    User.findByEmailPassword(email, password)
+    User.findByNamePassword(username, password)
         .then(user => {
             // Add the user's id to the session cookie.
             // We can check later if this exists to ensure we are logged in.
             req.session.user = user._id;
-            req.session.email = user.email;
-            res.send({ currentUser: user.email });
+            req.session.username = user.username;
+            res.send({ currentUser: user.username });
         })
         .catch(error => {
             res.status(400).send()
@@ -75,7 +75,7 @@ app.get("/users/logout", (req, res) => {
 // A route to check if a use is logged in on the session cookie
 app.get("/users/check-session", (req, res) => {
     if (req.session.user) {
-        res.send({ currentUser: req.session.email });
+        res.send({ currentUser: req.session.username });
     } else {
         res.status(401).send();
     }

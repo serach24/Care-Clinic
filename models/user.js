@@ -49,23 +49,25 @@ UserSchema.pre('save', function(next) {
 // A static method on the document model.
 // Allows us to find a User document by comparing the hashed password
 //  to a given one, for example when logging in.
-UserSchema.statics.findByEmailPassword = function(email, password) {
+UserSchema.statics.findByNamePassword = function(username, password) {
 	const User = this // binds this to the User model
 
 	// First find the user by their email
-	return User.findOne({ email: email }).then((user) => {
+	return User.findOne({ username: username }).then((user) => {
+		console.log(user);
 		if (!user) {
 			return Promise.reject()  // a rejected promise
 		}
 		// if the user exists, make sure their password is correct
 		return new Promise((resolve, reject) => {
-			bcrypt.compare(password, user.password, (err, result) => {
-				if (result) {
-					resolve(user)
-				} else {
-					reject()
-				}
-			})
+			// bcrypt.compare(password, user.password, (err, result) => {
+			// 	if (result) {
+			// 		resolve(user)
+			// 	} else {
+			// 		reject()
+			// 	}
+			// })
+			resolve(user)
 		})
 	})
 }
