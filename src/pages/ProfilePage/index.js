@@ -21,7 +21,6 @@ class ProfilePage extends React.Component {
       render() {
         return (
         <div className="ProfilePageWhole">
-            <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
             <ProfilePanel which={this.props.which} change={this.props.change} UUid={this.props.UUid}></ProfilePanel>
       </div>
     );

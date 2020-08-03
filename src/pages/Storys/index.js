@@ -24,7 +24,6 @@ class Storys extends React.Component{
     render(){
         return (
             <div className="App">
-            <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
                 <StoryPage img={this.state.img} header={this.state.articleheader} content={this.state.articlecontent} />
             </div>
         );

@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import {Link } from 'react-router-dom';
 
 
 import "./styles.css";
@@ -33,7 +34,7 @@ class Content extends React.Component {
                 <CardContent className={classes.contentarea}>
 
                     <Typography variant="h5">
-                       <a href={article.link}>{article.header}</a>
+                       <Link to={article.link}>{article.header}</Link>
                     </Typography>
                     {/* <Typography paragraph>
                         <a href="/story1">{article.content}</a>

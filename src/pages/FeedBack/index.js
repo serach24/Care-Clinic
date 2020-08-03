@@ -35,7 +35,6 @@ class Feedback extends React.Component {
       render() {
         return (
         <div className="Whole">
-              <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
             <div className="input_panel">
               <div className = "head_feedback" >
               FeedBack Form

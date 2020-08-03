@@ -11,9 +11,6 @@ class Doctors extends React.Component{
     render(){
         return (
             <div className="App">
-
-            <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
-
                 <div className="content">
                 <DoctorList which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
                 <RightPart />

@@ -51,7 +51,6 @@ class AdminPage extends React.Component {
   render() {
     return (
       <div className="admin-page-wrapper">
-        <NavBar which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
         <AdminSideBar GoTo={this.GotoElement.bind(this)}/>
         <div className="admin-page-content">
           <UserManagement ref={this.user} id="user-management"/>

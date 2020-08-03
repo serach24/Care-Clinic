@@ -6,14 +6,14 @@ import './App.css';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import AdminPage from './pages/AdminPage';
-
+import Navbar from './components/ui/NavBar';
 import Feedback from './pages/FeedBack';
 import Storys from './pages/Storys';
 import About from './pages/About';
 import ProfilePage from './pages/ProfilePage';
 
 import HealthHistory from './pages/HealthHistory';
-
+import Page404 from './pages/404';
 import Doctors from './pages/Doctors';
 
 class App extends React.Component {
@@ -50,6 +50,9 @@ class App extends React.Component {
     return(
     <div>
       <BrowserRouter>
+        <div>
+        <Navbar which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>
+        {/* <Page404/> */}
         <Switch>
           <Route exact path='/' render={() =>
                           (<Home which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId}/>)}/>
@@ -78,7 +81,9 @@ class App extends React.Component {
                           : <Route exact path='/doctorlist' render={() =>
                             (<Login which={this.whichLogInStateAmI()} change={this.changeLogINState} UUid={this.state.userId} SetUUid={this.setUserId}/>)}/>
                           }
+          <Route component={Page404}/>
         </Switch>
+        </div>
       </BrowserRouter>
     </div>
     );
