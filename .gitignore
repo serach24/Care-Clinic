@@ -23,3 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 back_project/.gitignore
+client/node_modules/
+client/package-lock.json
+package-lock.json
+client/build/
+/mongo-data
+.vscode
+
