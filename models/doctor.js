@@ -1,7 +1,7 @@
-/* Student mongoose model */
+/* Doctor mongoose model */
 const mongoose = require('mongoose')
 
-const Student = mongoose.model('Student', {
+const Doctor = mongoose.model('Doctor', {
 	name: {
 		type: String,
 		required: true,
@@ -15,4 +15,4 @@ const Student = mongoose.model('Student', {
 	}
 })
 
-module.exports = { Student }
+module.exports = { Doctor }

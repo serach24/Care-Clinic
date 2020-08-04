@@ -11,7 +11,7 @@ const { mongoose } = require("./db/mongoose");
 mongoose.set('useFindAndModify', false); // for some deprecation issues
 
 // import the mongoose models
-const { Student } = require("./models/student");
+const { Doctor } = require("./models/doctor");
 const { User } = require("./models/user");
 
 // to validate object IDs
@@ -87,19 +87,19 @@ app.get("/users/check-session", (req, res) => {
 // NOTE: The JSON routes (/students) are not protected in this react server (no authentication required). 
 //       You can (and should!) add this using similar middleware techniques we used in lecture.
 
-/** Student resource routes **/
-// a POST route to *create* a student
+/** Doctor resource routes **/
+// a POST route to *create* a doctor
 app.post("/students", (req, res) => {
     // log(req.body)
 
-    // Create a new student using the Student mongoose model
-    const student = new Student({
+    // Create a new doctor using the Doctor mongoose model
+    const doctor = new Doctor({
         name: req.body.name,
         year: req.body.year
     });
 
-    // Save student to the database
-    student.save().then(
+    // Save doctor to the database
+    doctor.save().then(
         result => {
             res.send(result);
         },
@@ -111,7 +111,7 @@ app.post("/students", (req, res) => {
 
 // a GET route to get all students
 app.get("/students", (req, res) => {
-    Student.find().then(
+    Doctor.find().then(
         students => {
             log();
             res.send({ students }); // can wrap in object if want to add more properties
@@ -122,7 +122,7 @@ app.get("/students", (req, res) => {
     );
 });
 
-/// a GET route to get a student by their id.
+/// a GET route to get a doctor by their id.
 // id is treated as a wildcard parameter, which is why there is a colon : beside it.
 // (in this case, the database id, but you can make your own id system for your project)
 app.get("/students/:id", (req, res) => {
@@ -137,14 +137,14 @@ app.get("/students/:id", (req, res) => {
     }
 
     // Otherwise, findById
-    Student.findById(id)
-        .then(student => {
-            if (!student) {
-                res.status(404).send(); // could not find this student
+    Doctor.findById(id)
+        .then(doctor => {
+            if (!doctor) {
+                res.status(404).send(); // could not find this doctor
             } else {
                 /// sometimes we wrap returned object in another object:
-                //res.send({student})
-                res.send(student);
+                //res.send({doctor})
+                res.send(doctor);
             }
         })
         .catch(error => {
@@ -152,7 +152,7 @@ app.get("/students/:id", (req, res) => {
         });
 });
 
-/// a DELETE route to remove a student by their id.
+/// a DELETE route to remove a doctor by their id.
 app.delete("/students/:id", (req, res) => {
     const id = req.params.id;
 
@@ -162,13 +162,13 @@ app.delete("/students/:id", (req, res) => {
         return;
     }
 
-    // Delete a student by their id
-    Student.findByIdAndRemove(id)
-        .then(student => {
-            if (!student) {
+    // Delete a doctor by their id
+    Doctor.findByIdAndRemove(id)
+        .then(doctor => {
+            if (!doctor) {
                 res.status(404).send();
             } else {
-                res.send(student);
+                res.send(doctor);
             }
         })
         .catch(error => {
@@ -190,22 +190,22 @@ app.patch("/students/:id", (req, res) => {
         return;
     }
 
-    // Update the student by their id.
-    Student.findByIdAndUpdate(id, { $set: body }, { new: true })
-        .then(student => {
-            if (!student) {
+    // Update the doctor by their id.
+    Doctor.findByIdAndUpdate(id, { $set: body }, { new: true })
+        .then(doctor => {
+            if (!doctor) {
                 res.status(404).send();
             } else {
-                res.send(student);
+                res.send(doctor);
             }
         })
         .catch(error => {
-            res.status(400).send(); // bad request for changing the student.
+            res.status(400).send(); // bad request for changing the doctor.
         });
 });
 
 /** User routes below **/
-// Set up a POST route to *create* a user of your web app (*not* a student).
+// Set up a POST route to *create* a user of your web app (*not* a doctor).
 app.post("/users", (req, res) => {
     log(req.body);
 

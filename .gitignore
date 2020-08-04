@@ -28,4 +28,5 @@ client/package-lock.json
 package-lock.json
 client/build/
 /mongo-data
+.vscode
 
