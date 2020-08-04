@@ -38,6 +38,21 @@ const UserSchema = new mongoose.Schema({
 		type: Number,
 		required: true,
 		minlength: 2
+	},
+	mainmail: {
+		type: Number,
+		required: false,
+		minlength: 2
+	},
+	backupemail: {
+		type: Number,
+		required: false,
+		minlength: 2
+	},
+	phone: {
+		type: Number,
+		required: false,
+		minlength: 2
 	}
 })
 
