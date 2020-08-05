@@ -93,6 +93,7 @@ class DoctorList extends React.Component {
     }
 
 render() {
+    const {app} = this.props;
     return (
         <div className="article_container">
           <Container >
@@ -100,7 +101,7 @@ render() {
             <DoctorOpenInfo
             key={item.username}
             doctor={item}
-            UUid = {this.props.UUid}
+            UUid = {app.state.userId}
             />
           ))}
           </Container>

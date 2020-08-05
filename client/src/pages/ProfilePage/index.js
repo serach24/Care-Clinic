@@ -19,9 +19,10 @@ class ProfilePage extends React.Component {
 
 
       render() {
+        const {app} = this.props;
         return (
         <div className="ProfilePageWhole">
-            <ProfilePanel which={this.props.which} change={this.props.change} UUid={this.props.UUid}></ProfilePanel>
+            <ProfilePanel app={app}></ProfilePanel>
       </div>
     );
   }

@@ -10,8 +10,10 @@ export const readCookie = (app) => {
             }
         })
         .then(json => {
-            if (json && json.currentUser) {
-                app.setState({ currentUser: json.currentUser });
+            if (json && json.userId) {
+                app.setState({ userId: json.userId,
+                               loginState: json.loginState
+                });
             }
         })
         .catch(error => {
@@ -20,8 +22,8 @@ export const readCookie = (app) => {
 };
 
 
-// A function to send a POST request with the user to be logged in
-export const login = (loginComp, app) => {
+// A function to send a POST request with the user to be logged inw
+export const LoginRequest = (loginComp, app) => {
     // Create our request constructor with all the parameters we need
     const request = new Request("/users/login", {
         method: "post",
@@ -40,8 +42,9 @@ export const login = (loginComp, app) => {
             }
         })
         .then(json => {
-            if (json.currentUser !== undefined) {
-                app.setState({ currentUser: json.currentUser });
+            if (json.userId !== undefined) {
+                app.setUserId(json.userId);
+                app.setState({loginState: json.loginState})
             }
         })
         .catch(error => {
@@ -56,11 +59,42 @@ export const logout = (app) => {
     fetch(url)
         .then(res => {
             app.setState({
-                currentUser: null,
-                message: { type: "", body: "" }
+                userId: null,
+                loginState: 0,
+                // message: { type: "", body: "" }
             });
         })
         .catch(error => {
             console.log(error);
         });
 };
+
+export const signup = (info, app) => {
+    const url = "/users";
+    const request = new Request("/users", {
+        method: "post",
+        body: JSON.stringify(info.state),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+    console.log(request);
+    fetch(request)
+        .then(res =>{
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json =>{
+            if(json && json.userId){
+                app.setState({ userId: json.userId,
+                    loginState: json.loginState
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+
+}

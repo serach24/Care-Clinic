@@ -2,7 +2,7 @@ import React from "react";
 
 import LoginForm from "./LoginForm"
 import SignupForm from "./SignupForm"
-import NavBar from "../../components/ui/NavBar";
+import {LoginRequest} from "./../../auth/authUtil"
 
 /* Component for the Student Form */
 class Login extends React.Component {
@@ -29,11 +29,12 @@ class Login extends React.Component {
   }
 
   render() {
+    const {app} = this.props
     return (
       <div className="form-wrap">
         {this.state.formType==="login" 
-        ? <LoginForm which={this.props.which} change={this.props.change} SetUUid={this.props.SetUUid} switch={this.switchForm}/>
-        : <SignupForm switch={this.switchForm}/>
+        ? <LoginForm  app={app} switch={this.switchForm} login={LoginRequest}/>
+        : <SignupForm app={app} switch={this.switchForm}/>
         }
       </div>
     );

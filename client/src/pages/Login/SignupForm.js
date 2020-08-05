@@ -2,10 +2,11 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 
 // material ui components
-import Container from "@material-ui/core/Container"
+import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 
-import Input from "../../components/ui/Input"
+import Input from "../../components/ui/Input";
+import {signup} from "./../../auth/authUtil";
 
 import "./styles.css";
 
@@ -36,6 +37,7 @@ class SignupForm extends React.Component {
 
 
   render() {
+    const {app} = this.props;
     let isUsernameEmpty = this.state.checkError && this.state.username === "";
     let isPasswordEmpty = this.state.checkError && this.state.password === "";
     return (
@@ -67,7 +69,7 @@ class SignupForm extends React.Component {
           error={isPasswordEmpty}
           name="realName"
           label="Real Name"
-          value={this.state.password}
+          value={this.state.realName}
           onChange={this.handleInputChange}
         />
 
@@ -76,7 +78,7 @@ class SignupForm extends React.Component {
           helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
           name="location"
           label="Location"
-          value={this.state.password}
+          value={this.state.location}
           onChange={this.handleInputChange}
         />
 
@@ -85,7 +87,7 @@ class SignupForm extends React.Component {
           helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
           name="age"
           label="Age"
-          value={this.state.password}
+          value={this.state.age}
           onChange={this.handleInputChange}
         />
 
@@ -94,7 +96,7 @@ class SignupForm extends React.Component {
           variant="contained"
           color="primary"
           fullWidth
-          onClick={this.handleSubmit}
+          onClick={() => signup(this, app)}
           className="login-submit-button"
         >
           Sign up

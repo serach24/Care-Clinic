@@ -12,6 +12,9 @@ import c from "./img/3.jpg";
 import d from "./img/4.jpg"
 
 class Home extends React.Component{
+    constructor(props) {
+        super(props);
+    }
     state = {
         // the data below need a serverCall to get.
         articleheader: "What’s Next: COVID-19 podcast – (Ep 22) Vivek Goel on contact tracing apps",
@@ -34,11 +37,13 @@ class Home extends React.Component{
 
 
     render(){
+        const {app} = this.props
+
         return (
             <div className="App">
                 <div className="content">
                 <ContentList articles={this.state.articles}/>
-                <RightPart which={this.props.which}/>
+                <RightPart app={app}/>
 
                 </div>
                 {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}

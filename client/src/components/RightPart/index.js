@@ -87,7 +87,7 @@ class RightPart extends React.Component {
     };
 
     render () {
-        const { classes } = this.props;
+        const { classes, app } = this.props;
         return (
             <div className={classes.rightroot}>
                 <img src={imgforbody} alt="img for body" className={classes.img}/>
@@ -114,7 +114,7 @@ class RightPart extends React.Component {
                         </Collapse>
                         </div>
                     ))}
-                {console.log(this.props.which+ "state")}
+                {console.log(app.state.loginState + "state")}
                 </List>
             </div>
         );
