@@ -58,6 +58,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    const {app} = this.props;
     const open = Boolean(this.state.chatPeopleAnchor);
     return (
       <div className="navbar">
@@ -74,25 +75,25 @@ class NavBar extends React.Component {
                         </Button>
             <Button component={Link} to={"/about"} color="inherit"
               className="About" >About</Button>
-            {this.props.which === 0 && <Button component={Link} to={"/login"} color="inherit"
+            {app.state.loginState === 0 && <Button component={Link} to={"/login"} color="inherit"
               className="TalkButton" >Talk to a Doctor</Button>}
-            {this.props.which === 1 && <Button color="inherit"
+            {app.state.loginState === 1 && <Button color="inherit"
               component={ Link } to={"/doctorlist"}
               className="TalkButton" >Talk to a Doctor</Button>}
-            {this.props.which === 2 && <Button component={Link} to={"/admin"} color="inherit"
+            {app.state.loginState === 2 && <Button component={Link} to={"/admin"} color="inherit"
               className="TalkButton" >Admin</Button>}
-            {this.props.which !== 2 && <Button component={Link} to={"/feedback"} color="inherit"
+            {app.state.loginState !== 2 && <Button component={Link} to={"/feedback"} color="inherit"
               className="TalkButton" >FeedBack</Button>}
 
 
 
-          {this.props.which !== 0 && <ChatOutlinedIcon className="chat-button" onClick={this.handleClick} />}
+          {app.state.loginState !== 0 && <ChatOutlinedIcon className="chat-button" onClick={this.handleClick} />}
             <ChatPeople open={open} anchorEl={this.state.chatPeopleAnchor} onClose={this.closeChat} />
 
-            {this.props.which === 0 && !this.state.auth && <Button component={Link} to={"/login"} color="inherit"
+            {app.state.loginState === 0 && !this.state.auth && <Button component={Link} to={"/login"} color="inherit"
               className="loginButton" >Login</Button>}
-            {this.props.which !== 0 && <div className="ProfileButton"> Profile </div>}
-            {this.props.which !== 0 && <div className="Profile"> <Profile which={this.props.which} change={this.props.change} UUid={this.props.UUid}></Profile> </div>}
+            {app.state.loginState !== 0 && <div className="ProfileButton"> Profile </div>}
+            {app.state.loginState !== 0 && <div className="Profile"> <Profile app={app}></Profile> </div>}
             {this.state.auth && <Button color="inherit"
               className="accountButton" >My Account</Button>}
           </Toolbar>

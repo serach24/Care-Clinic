@@ -22,21 +22,41 @@ const UserSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true,
-		minlength: 6
+		minlength: 3
 	}, 
+	level: {
+		type: Number,
+		default: 1
+	},
 	realname: {
 		type: String,
-		required: true,
-		minlength: 1
+		required: false,
+		minlength: 1,
+		default:'bob'
 	}, 
 	location: {
 		type: String,
-		required: true,
-		minlength: 6
+		required: false,
+		minlength: 2
 	}, 
 	age: {
 		type: Number,
-		required: true,
+		required: false,
+		minlength: 2
+	},
+	mainmail: {
+		type: Number,
+		required: false,
+		minlength: 2
+	},
+	backupemail: {
+		type: Number,
+		required: false,
+		minlength: 2
+	},
+	phone: {
+		type: Number,
+		required: false,
 		minlength: 2
 	}
 })
@@ -75,14 +95,14 @@ UserSchema.statics.findByNamePassword = function(username, password) {
 		}
 		// if the user exists, make sure their password is correct
 		return new Promise((resolve, reject) => {
-			// bcrypt.compare(password, user.password, (err, result) => {
-			// 	if (result) {
-			// 		resolve(user)
-			// 	} else {
-			// 		reject()
-			// 	}
-			// })
-			resolve(user)
+			bcrypt.compare(password, user.password, (err, result) => {
+				if (result) {
+					resolve(user)
+				} else {
+					reject()
+				}
+			})
+			// resolve(user)
 		})
 	})
 }

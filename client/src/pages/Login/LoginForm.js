@@ -16,7 +16,6 @@ class LoginForm extends React.Component {
     username: "",
     password: "",
     checkError: false,
-    loginState: 0,
   }
 
   handleInputChange = (e) => {
@@ -33,27 +32,29 @@ class LoginForm extends React.Component {
     this.setState({
       checkError: true,
     });
-    if (username==="user" && password==="user"){
-      this.setState({loginState: 1});
-      this.props.change(1);
-      this.props.SetUUid("UserId000");
+    // Login()
+    // if (username==="user" && password==="user"){
+    //   this.setState({loginState: 1});
+    //   this.props.change(1);
+    //   this.props.SetUUid("UserId000");
 
-    } else if (username==="admin" && password==="admin"){
-      this.setState({loginState: 2})
-      this.props.change(2);
-      this.props.SetUUid("AdminId000");
-    }
-    else if (username==="user2" && password==="user2"){
-    this.setState({loginState: 3})
-    this.props.change(3);
-    this.props.SetUUid("BoluoLiuDoctor");
-    }
+    // } else if (username==="admin" && password==="admin"){
+    //   this.setState({loginState: 2})
+    //   this.props.change(2);
+    //   this.props.SetUUid("AdminId000");
+    // }
+    // else if (username==="user2" && password==="user2"){
+    // this.setState({loginState: 3})
+    // this.props.change(3);
+    // this.props.SetUUid("BoluoLiuDoctor");
+    // }
   }
 
   render() {
+    const {app , login} = this.props;
     let isUsernameEmpty = this.state.checkError && this.state.username === "";
     let isPasswordEmpty = this.state.checkError && this.state.password === "";
-    if (this.state.loginState !== 0){
+    if (app.state.loginState !== 0){
       return <Redirect to={"/"}/>
      }
     return (
@@ -85,7 +86,7 @@ class LoginForm extends React.Component {
           variant="contained"
           color="primary"
           fullWidth
-          onClick={this.handleSubmit}
+          onClick={()=>login(this, app)}
           className="login-submit-button"
           id="login-submit-button"
         >

@@ -9,11 +9,12 @@ import "./styles.css";
 class Doctors extends React.Component{
 
     render(){
+        const {app} =this.props;
         return (
             <div className="App">
                 <div className="content">
-                <DoctorList which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
-                <RightPart />
+                <DoctorList app={app}/>
+                <RightPart app={app} />
 
                 </div>
                 {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}

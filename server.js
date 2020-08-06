@@ -33,11 +33,30 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 60000,
+            expires: 60*1000,
             httpOnly: true
         }
     })
 );
+
+// Middleware for authentication of resources
+const authenticate = (req, res, next) => {
+	if (req.session.user) {
+		User.findById(req.session.userId).then((userId) => {
+            log('auth'+ userId)
+			if (!userId) {
+				return Promise.reject()
+			} else {
+				req.userId = userId
+				next()
+			}
+		}).catch((error) => {
+			res.status(401).send("Unauthorized")
+		})
+	} else {
+		res.status(401).send("Unauthorized")
+	}
+}
 
 // A route to login and create a session
 app.post("/users/login", (req, res) => {
@@ -53,7 +72,15 @@ app.post("/users/login", (req, res) => {
             // We can check later if this exists to ensure we are logged in.
             req.session.user = user._id;
             req.session.username = user.username;
-            res.send({ currentUser: user.username });
+            req.session.loginState = user.level;
+            log('after:'+user._id);
+            // log('after:'+user.username);
+            // log('after:'+user.level);
+            // log(req.session)
+            // log(req.session.id)
+            res.send({ userId: user._id,
+                       loginState: user.level
+            });
         })
         .catch(error => {
             res.status(400).send()
@@ -75,7 +102,9 @@ app.get("/users/logout", (req, res) => {
 // A route to check if a use is logged in on the session cookie
 app.get("/users/check-session", (req, res) => {
     if (req.session.user) {
-        res.send({ currentUser: req.session.username });
+        res.send({ userId: req.session.user,
+                    loginState: req.session.loginState
+        });
     } else {
         res.status(401).send();
     }
@@ -211,16 +240,23 @@ app.post("/users", (req, res) => {
 
     // Create a new user
     const user = new User({
-        email: req.body.email,
-        password: req.body.password
+        username: req.body.username,
+        password: req.body.password,
+        realName: req.body.realName,
+        location: req.body.location,
+        age: req.body.age
     });
-
+    log(user);
     // Save the user
     user.save().then(
         user => {
-            res.send(user);
+            res.send({
+                    userId: user._id,
+                    loginState: user.level
+                });
         },
         error => {
+            log(error);
             res.status(400).send(error); // 400 for bad request
         }
     );

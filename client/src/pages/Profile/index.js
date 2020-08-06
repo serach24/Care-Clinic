@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import "./styles.css";
 import ava from './static/icon.jpg'
 import UserAvatar from './../../components/UserAvatar'
+import {logout} from './../../auth/authUtil'
 
 /* Component for the Home page */
 
@@ -62,17 +63,18 @@ class Profile extends React.Component {
 
 
       render() {
+          const {app} = this.props;
         return (
         <div className="ProfileWindow">
               <div className="FlowAvatar">
-              <UserAvatar UUid={this.props.UUid}/>
+              <UserAvatar UUid={app.state.userId}/>
               </div>
               <div className="FlowButtons">
               <div className ="FlowButton">
-              <Button variant="contained" component={ Link } to={"/"} onClick = {()=>(this.props.change(0))}>LogOut</Button>
+              <Button variant="contained" component={ Link } to={"/"} onClick = {()=>logout(app)}>LogOut</Button>
               </div>
               <div className ="FlowButton">
-              {this.props.which!=2 && <Button component={ Link } to={"/"+this.props.UUid} variant="contained">Detail</Button>}
+              {app.state.loginState!=2 && <Button component={ Link } to={"/"+app.state.userId} variant="contained">Detail</Button>}
               </div>
               </div>
       </div>
