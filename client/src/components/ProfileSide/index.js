@@ -75,6 +75,7 @@ class ProfileSide extends React.Component {
 
 
       render() {
+          const {app} = this.props;
         return (
         <div className="ProfilePanel">
               <div className="Background">
@@ -83,13 +84,13 @@ class ProfileSide extends React.Component {
               <div
               className = "userInfo">
               <div className = "ProfileItem">
-              {(this.props.which==0 && "User Type: Developer")}
-              {(this.props.which==1 && "User Type: User")}
-              {(this.props.which==2 && "User Type: Admin")}
-              {(this.props.which==3 && "User Type: Doctor")}
+              {(app.state.loginState==0 && "User Type: Developer")}
+              {(app.state.loginState==1 && "User Type: User")}
+              {(app.state.loginState==2 && "User Type: Admin")}
+              {(app.state.loginState==3 && "User Type: Doctor")}
               </div>
               <div className = "ProfileItem">
-              {"User Uid: "+ this.props.UUid +"\n"}
+              {"User Uid: "+ app.state.userId +"\n"}
               </div>
               <div className = "ProfileItem">
               {"Main Email: "+ this.state.mainEmail+"\n"}
@@ -115,17 +116,16 @@ class ProfileSide extends React.Component {
               <div className = "ProfileItem">
               <Button  variant="contained" onClick = {this.FunctionPhone.bind(this)} color="primary">change</Button></div>
               </div>
-
-              {this.props.which === 1 && <div className = "ProfileItem">
-                    <Button component={ Link } to={"/healthHistory"+this.props.UUid} variant="contained" color="primary" >Health History</Button>
+              {app.state.loginState === 1 && <div className = "ProfileItem">
+                    <Link to={"/healthHistory"+app.state.userId} >Health History</Link>
                 </div>}
-              {this.props.which === 1 &&<div className = "ProfileItem">
-                    <Button component={ Link } to={"/healthHistory"+this.props.UUid+"T"} variant="contained" color="primary" >Edit Health History</Button>
+              {app.state.loginState === 1 &&<div className = "ProfileItem">
+                    <Link to={"/healthHistory"+app.state.userId+"T"}>Edit Health History</Link>
                 </div>}
 
-              {this.props.which === 3 &&
+              {app.state.loginState === 3 &&
               <div className = "ProfileItem"> {"Expertise: "+ this.state.expertise+"\n"} </div>}
-              {this.props.which==3 && this.state.documents.map((doc) => (
+              {app.state.loginState ==3 && this.state.documents.map((doc) => (
                   <div className = "ProfileItem">
                   <a className="doctor-document" href={doc.location} download={doc.docName}>{doc.docName}</a>
                   </div>

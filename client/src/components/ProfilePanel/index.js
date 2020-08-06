@@ -16,19 +16,20 @@ class ProfilePanel extends React.Component {
         super(props);
     }
       render() {
+        const {app} = this.props;
         return (
           <div>
           <div className="ProfileContainer">
-            <ProfileSide which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
+            <ProfileSide app={app}/>
           </div>
-          {this.props.which===1 && <div className="AppointmentsContainer">
-              <Appointments which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
+          {app.state.loginState ===1 && <div className="AppointmentsContainer">
+              <Appointments app={app}/>
           </div>}
-          {this.props.which===1 && <div className="AppointmentsContainer">
-              <PassedAppointments which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
+          {app.state.loginState ===1 && <div className="AppointmentsContainer">
+              <PassedAppointments app={app} />
           </div>}
-          {this.props.which===3 && <div className="AppointmentsContainer">
-              <DoctorPatientList which={this.props.which} change={this.props.change} UUid={this.props.UUid}/>
+          {app.state.loginState ===3 && <div className="AppointmentsContainer">
+              <DoctorPatientList app={app}/>
           </div>}
           </div>
     );
