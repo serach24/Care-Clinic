@@ -20,6 +20,7 @@ class UserAvatar extends React.Component {
         };
     }
       render() {
+        const {app} = this.props
         return (
         <div>
               <svg className="Username">
@@ -28,7 +29,7 @@ class UserAvatar extends React.Component {
               </defs>
               <text className= "UserName">
                 <textPath xlinkHref='#CurveName' >
-                    {"   Welcome !       " +this.state.name}
+                    {"   Welcome !       " +app.state.profile.realName}
                 </textPath>
               </text>
               </svg>

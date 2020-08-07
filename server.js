@@ -81,13 +81,31 @@ app.post("/users/login", (req, res) => {
             // log(req.session)
             // log(req.session.id)
             res.send({ userId: user._id,
-                       loginState: user.level
+                       loginState: user.level,
+                       profile:user
             });
         })
         .catch(error => {
             res.status(400).send()
         });
 });
+
+
+app.post("/users/changephoneEmail", (req, res) => {
+    // Use the static method on the User model to find a user
+    // by their email and password
+    User.findById(req.body.userId)
+        .then(user => {
+            user.backupemail = req.body.email;
+            user.phone = req.body.newphone;
+            user.save();
+            res.send(user)
+        })
+        .catch(error => {
+            res.status(400).send()
+        });
+});
+
 
 // A route to logout a user
 app.get("/users/logout", (req, res) => {
@@ -112,6 +130,13 @@ app.get("/users/check-session", (req, res) => {
     }
 });
 
+app.get("/users/get_profile", (req, res) => {
+    if (req.session.user) {
+        res.send(req.session.user);
+    } else {
+        res.status(401).send();
+    }
+});
 /*********************************************************/
 
 /*** API Routes below ************************************/
@@ -246,7 +271,10 @@ app.post("/users", (req, res) => {
         password: req.body.password,
         realName: req.body.realName,
         location: req.body.location,
-        age: req.body.age
+        age: req.body.age,
+        phone:req.body.phone,
+        mainmail:req.body.mainmail,
+        backupemail:req.body.mainmail
     });
     log(user);
     // Save the user
@@ -254,7 +282,8 @@ app.post("/users", (req, res) => {
         user => {
             res.send({
                     userId: user._id,
-                    loginState: user.level
+                    loginState: user.level,
+                    profile:user
                 });
         },
         error => {
