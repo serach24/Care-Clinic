@@ -120,7 +120,7 @@ app.get("/users/check-session", (req, res) => {
 
 /** Doctor resource routes **/
 // a POST route to *create* a doctor
-app.post("/students", (req, res) => {
+app.post("/doctors", (req, res) => {
     // log(req.body)
 
     // Create a new doctor using the Doctor mongoose model
@@ -141,7 +141,7 @@ app.post("/students", (req, res) => {
 });
 
 // a GET route to get all students
-app.get("/students", (req, res) => {
+app.get("/doctors", (req, res) => {
     Doctor.find().then(
         students => {
             log();
@@ -156,7 +156,7 @@ app.get("/students", (req, res) => {
 /// a GET route to get a doctor by their id.
 // id is treated as a wildcard parameter, which is why there is a colon : beside it.
 // (in this case, the database id, but you can make your own id system for your project)
-app.get("/students/:id", (req, res) => {
+app.get("/doctors/:id", (req, res) => {
     /// req.params has the wildcard parameters in the url, in this case, id.
     // log(req.params.id)
     const id = req.params.id;
@@ -184,7 +184,7 @@ app.get("/students/:id", (req, res) => {
 });
 
 /// a DELETE route to remove a doctor by their id.
-app.delete("/students/:id", (req, res) => {
+app.delete("/doctors/:id", (req, res) => {
     const id = req.params.id;
 
     // Validate id
