@@ -90,6 +90,23 @@ app.post("/users/login", (req, res) => {
         });
 });
 
+
+app.post("/users/changephoneEmail", (req, res) => {
+    // Use the static method on the User model to find a user
+    // by their email and password
+    User.findById(req.body.userId)
+        .then(user => {
+            user.backupemail = req.body.email;
+            user.phone = req.body.newphone;
+            user.save();
+            res.send(user)
+        })
+        .catch(error => {
+            res.status(400).send()
+        });
+});
+
+
 // A route to logout a user
 app.get("/users/logout", (req, res) => {
     // Remove the session

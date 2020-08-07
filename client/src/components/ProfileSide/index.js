@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 
 import "./styles.css";
 import UserAvatar  from './../UserAvatar'
+import {changePhoneEmail} from './../../auth/authUtil'
 
 /* Component for the Home page */
 
@@ -16,6 +17,7 @@ class ProfileSide extends React.Component {
         this.state = {
             //State should be setted by call backend with Uid this.props.UUid
             // the data below need a serverCall to get
+            userId: app.state.userId,
             mainEmail : app.state.profile.mainmail,
             email :app.state.profile.backupemail,
             age: app.state.profile.age,
@@ -55,6 +57,7 @@ class ProfileSide extends React.Component {
             }
             else {
                 //info backend
+                changePhoneEmail(this,this.props)
                 this.setState({
                     phone: this.state.newphone,
                     changePhone: false
@@ -68,6 +71,7 @@ class ProfileSide extends React.Component {
             }
             else {
                 //info backend
+                changePhoneEmail(this,this.props)
                 this.setState({
                     email: this.state.newemail,
                     changeEmail: false

@@ -122,3 +122,30 @@ export const getProfile = (app) => {
             console.log(error);
         });
 };
+export const changePhoneEmail = (info, app) => {
+    // Create our request constructor with all the parameters we need
+    const request = new Request("/users/changephoneEmail", {
+        method: "post",
+        body: JSON.stringify(info.state),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+    // Send the request with fetch()
+    fetch(request)
+    .then(res => {
+        if (res.status === 200) {
+            return res.json();
+        }
+    })
+    .then(json => {
+        if (json && json.userId) {
+            app.setState({ profile: json
+            });
+        }
+    })
+    .catch(error => {
+        console.log(error);
+    });
+};
