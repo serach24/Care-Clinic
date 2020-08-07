@@ -28,11 +28,10 @@ const UserSchema = new mongoose.Schema({
 		type: Number,
 		default: 1
 	},
-	realname: {
+	realName: {
 		type: String,
 		required: false,
 		minlength: 1,
-		default:'bob'
 	}, 
 	location: {
 		type: String,
@@ -45,12 +44,12 @@ const UserSchema = new mongoose.Schema({
 		minlength: 2
 	},
 	mainmail: {
-		type: Number,
+		type: String,
 		required: false,
 		minlength: 2
 	},
 	backupemail: {
-		type: Number,
+		type: String,
 		required: false,
 		minlength: 2
 	},

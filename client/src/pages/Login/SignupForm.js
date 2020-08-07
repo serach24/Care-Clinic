@@ -18,6 +18,9 @@ class SignupForm extends React.Component {
     realName: "",
     location: "",
     age: "",
+    mainmail:"",
+    phone:"",
+    backupemail:"not setted yet",
     checkError: false,
   }
 
@@ -64,7 +67,20 @@ class SignupForm extends React.Component {
           value={this.state.password}
           onChange={this.handleInputChange}
         />
-
+        <Input
+          error={isPasswordEmpty}
+          name="mainmail"
+          label="Email"
+          value={this.state.mainmail}
+          onChange={this.handleInputChange}
+        />
+        <Input
+          error={isPasswordEmpty}
+          name="phone"
+          label="Phone number"
+          value={this.state.phone}
+          onChange={this.handleInputChange}
+        />
         <Input
           error={isPasswordEmpty}
           name="realName"
