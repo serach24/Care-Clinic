@@ -1,14 +1,19 @@
 import React from "react";
-
+import {
+    useParams
+  } from 'react-router-dom'
 //importing components
 import NavBar from "../../components/ui/NavBar";
 import StoryPage from "../../components/StoryPage";
 import covidImg from "./img/covid-19-1330px.jpg";
+import {getArticle} from "./request";
 import "./styles.css";
 
 class Storys extends React.Component{
-    state = {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            article:{img:"", title:"", content:""},
         // the data below need a serverCall to get
         img: covidImg,
         articleheader: "What’s Next: COVID-19 podcast – (Ep 22) Vivek Goel on contact tracing apps",
@@ -18,13 +23,18 @@ class Storys extends React.Component{
                 "COVID-19: What’s Next is a bi-weekly podcast created by Goel in collaboration with a University of Toronto Communications team led by producer Lisa Lightbourn.",
             "As of July 1, Goel will take on a new role as a special adviser to U of T’s president and provost, helping to guide the university’s COVID-19 planning efforts.",
         "Note: The information in this podcast is current as of the posting date. Listeners should consult their local public health agency for the latest information in their jurisdiction."],
-    };
+        }
+        console.log(this.props.match.params.id);
+        getArticle(this.props.match.params.id, this);
+    }
+
 
 
     render(){
+        // console.log(id);
         return (
             <div className="App">
-                <StoryPage img={this.state.img} header={this.state.articleheader} content={this.state.articlecontent} />
+                <StoryPage article={this.state.article} />
             </div>
         );
     }

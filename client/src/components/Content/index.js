@@ -20,6 +20,7 @@ class Content extends React.Component {
 
     render () {
         const { classes, article } = this.props;
+        // console.log(article);
         return(
             <Card className= {classes.root}>
                 {/* <Card Mediacomponent="img"/> */}
@@ -34,7 +35,7 @@ class Content extends React.Component {
                 <CardContent className={classes.contentarea}>
 
                     <Typography variant="h5">
-                       <Link to={article.link}>{article.header}</Link>
+                       <Link to={"/article/"+article._id}>{article.title}</Link>
                     </Typography>
                     {/* <Typography paragraph>
                         <a href="/story1">{article.content}</a>

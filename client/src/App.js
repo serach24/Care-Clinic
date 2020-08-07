@@ -60,8 +60,7 @@ class App extends React.Component {
                           (<AdminPage app={this}/>)}/>}
           <Route exact path='/feedback' render={() =>
                           (<Feedback app={this}/>)}/>
-          <Route exact path='/story1' render={() =>
-                          (<Storys app={this}/>)}/>
+          <Route path='/article/:id' component={Storys}/>
           <Route exact path='/about' render={() =>
                           (<About app={this}/>)}/>
           <Route exact path={"/healthHistory"+this.state.userId} render={() =>

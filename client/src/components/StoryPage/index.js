@@ -5,25 +5,23 @@ import "./styles.css";
 class StoryPage extends React.Component {
 
 
-    render () {
-        const { header, img, content} = this.props;
-        return(
-        <div className="storyContainer">
-            { img != null && <div className="imageContainer">
-            <img src={img} alt="image" className="img"/>
+    render() {
+        const { article } = this.props;
+        return (
+            <div className="storyContainer">
+                {article.img != null && <div className="imageContainer">
+                    <img src={article.img} alt="image" className="img" />
+                </div>
+                }
+                <div>
+                    <Typography variant="h3" gutterBottom> {article.title} </Typography>
+                    {/* {article.content.map(body => ( */}
+                        <Typography
+                        style={{whiteSpace: 'pre-wrap'}}
+                            variant="body1"  gutterBottom> {article.content} </Typography>
+                    {/* ))} */}
+                </div>
             </div>
-            }
-            <div>
-            <Typography variant="h3" gutterBottom> {header} </Typography>
-            {content.map(body => (
-            <Typography 
-                key={uid(
-                body
-                )} 
-              variant="body1" paragraph gutterBottom> {body} </Typography> 
-          ))}
-            </div>
-        </div>
         );
     }
 
