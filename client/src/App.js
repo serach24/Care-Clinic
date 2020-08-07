@@ -23,7 +23,8 @@ class App extends React.Component {
         this.state = {
             loginState:0,
             // the data below need a serverCall to get
-            userId:null
+            userId:null,
+            profile:{}
         };
         readCookie(this)
         this.setloginState = this.setloginState.bind(this);

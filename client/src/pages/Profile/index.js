@@ -14,12 +14,13 @@ import {logout} from './../../auth/authUtil'
 class Profile extends React.Component {
     constructor(props) {
         super(props);
+        const {app} = this.props;
         this.state = {
 
             // the data below need a serverCall to get
-            email :'Boliu@liuB.o',
-            name : 'Bo Liu lol',
-            age : '1800',
+            email :app.state.profile.mainmail,
+            name : app.state.profile.realname,
+            age : app.state.profile.age,
             icon : ava,
             changeEmail : false,
             changeAge : false,
@@ -67,7 +68,7 @@ class Profile extends React.Component {
         return (
         <div className="ProfileWindow">
               <div className="FlowAvatar">
-              <UserAvatar UUid={app.state.userId}/>
+              <UserAvatar app={app}/>
               </div>
               <div className="FlowButtons">
               <div className ="FlowButton">

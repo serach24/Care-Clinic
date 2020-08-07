@@ -12,15 +12,16 @@ import UserAvatar  from './../UserAvatar'
 class ProfileSide extends React.Component {
     constructor(props) {
         super(props);
+        const {app} = this.props;
         this.state = {
             //State should be setted by call backend with Uid this.props.UUid
             // the data below need a serverCall to get
-            mainEmail : 'User@user.com',
-            email :'Boliu@liuB.o',
-            age: 200,
-            name : 'Bo Liu',
+            mainEmail : app.state.profile.mainmail,
+            email :app.state.profile.backupemail,
+            age: app.state.profile.age,
+            name : app.state.profile.realName,
             type: "not loged in",
-            phone : '180000000',
+            phone : app.state.profile.phone,
             changeEmail : false,
             changePhone : false,
             newphone : 0,
@@ -73,14 +74,14 @@ class ProfileSide extends React.Component {
                 })
             }}
 
-
+        
       render() {
           const {app} = this.props;
         return (
         <div className="ProfilePanel">
               <div className="Background">
               <div className="UserDiv">
-                <UserAvatar></UserAvatar>
+                <UserAvatar app={app}></UserAvatar>
               <div
               className = "userInfo">
               <div className = "ProfileItem">
@@ -108,7 +109,7 @@ class ProfileSide extends React.Component {
               <Button  variant="contained" onClick = {this.FunctionEmail.bind(this)} color="primary">change</Button>
               </div>
               <div className = "ProfileItem">
-              {"PhoneNumbe: " + this.state.phone+"\n"}
+              {"PhoneNumber: " + this.state.phone+"\n"}
               </div>
               <div className = "ProfileText">
                   {this.state.changePhone && (<TextField label="New PhoneNumber" fullWidth={true} variant="filled" onChange ={this.SetPhone.bind(this)}></TextField>)}

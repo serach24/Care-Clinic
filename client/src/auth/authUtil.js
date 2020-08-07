@@ -44,7 +44,9 @@ export const LoginRequest = (loginComp, app) => {
         .then(json => {
             if (json.userId !== undefined) {
                 app.setUserId(json.userId);
-                app.setState({loginState: json.loginState})
+                app.setState({loginState: json.loginState});
+                app.setState({profile:json.profile});
+                console.log(json);
             }
         })
         .catch(error => {
@@ -61,6 +63,7 @@ export const logout = (app) => {
             app.setState({
                 userId: null,
                 loginState: 0,
+                profile:{}
                 // message: { type: "", body: "" }
             });
         })
@@ -89,7 +92,8 @@ export const signup = (info, app) => {
         .then(json =>{
             if(json && json.userId){
                 app.setState({ userId: json.userId,
-                    loginState: json.loginState
+                    loginState: json.loginState,
+                    profile:json.profile
                 });
             }
         })
@@ -98,3 +102,23 @@ export const signup = (info, app) => {
         });
 
 }
+
+export const getProfile = (app) => {
+    const url = "/users/get_profile";
+
+    fetch(url)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json && json.userId) {
+                app.setState({ profile: json
+                });
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
