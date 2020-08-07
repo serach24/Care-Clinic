@@ -13,6 +13,7 @@ mongoose.set('useFindAndModify', false); // for some deprecation issues
 // import the mongoose models
 const { Doctor } = require("./models/doctor");
 const { User } = require("./models/user");
+const { Article } = require("./models/article");
 
 // to validate object IDs
 const { ObjectID } = require("mongodb");
@@ -23,6 +24,7 @@ app.use(bodyParser.json());
 
 // express-session for managing user sessions
 const session = require("express-session");
+const article = require("./models/article");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 /*** Session handling **************************************/
@@ -262,6 +264,73 @@ app.post("/users", (req, res) => {
     );
 });
 
+/*** Article APIs below ***/
+// body format { title:"", content:"", img:""}
+// return article document
+app.post("/articles", (req, res) =>{
+    log(req.body);
+        // Create a new doctor using the Doctor mongoose model
+        const article = new Article({
+            title: req.body.title,
+            content: req.body.content,
+            img: req.body.img
+        });
+    
+        // Save doctor to the database
+        article.save().then(
+            result => {
+                res.send(result);
+            },
+            error => {
+                res.status(400).send(error); // 400 for bad request
+            }
+        );
+})
+
+//Get all articles
+// return { articles:[ {article }, {article}, ...]}
+app.get("/articles", (req,res) => {
+    // log(req.body)
+    Article.find().then(
+        articles => {
+            log();
+            res.send({ articles }); // can wrap in object if want to add more properties
+        },
+        error => {
+            res.status(500).send(error); // server error
+        }
+    );
+})
+//get article by id
+app.get("/articles/:id", (req, res) => {
+    /// req.params has the wildcard parameters in the url, in this case, id.
+    log(req.params.id)
+    const id = req.params.id;
+
+    // Good practise: Validate id immediately.
+    if (!ObjectID.isValid(id)) {
+        res.status(404).send(); // if invalid id, definitely can't find resource, 404.
+        return;
+    }
+
+    // Otherwise, findById
+    Article.findById(id)
+        .then(article => {
+            if (!article) {
+                res.status(404).send(); // could not find this article
+            } else {
+                res.send(article);
+            }
+        })
+        .catch(error => {
+            res.status(500).send(); // server error
+        });
+});
+//article delete 
+//article update
+
+
+
 /*** Webpage routes below **********************************/
 // Serve the build
 app.use(express.static(__dirname + "/client/build"));
@@ -269,7 +338,7 @@ app.use(express.static(__dirname + "/client/build"));
 // All routes other than above will go to index.html
 app.get("*", (req, res) => {
     // check for page routes that we expect in the frontend to provide correct status code.
-    const goodPageRoutes = ["/", "/login", "/dashboard"];
+    const goodPageRoutes = ["/", "/login", "/article/:id"];
     if (!goodPageRoutes.includes(req.url)) {
         // if url not in expected page routes, set status to 404.
         res.status(404);
