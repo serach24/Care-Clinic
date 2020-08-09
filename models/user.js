@@ -7,6 +7,29 @@ const bcrypt = require('bcryptjs')
 
 // Making a Mongoose model a little differently: a Mongoose Schema
 // Allows us to add additional functionality.
+const patientSchema = new mongoose.Schema({
+	patientId: {
+		type: mongoose.ObjectId,
+		required: true
+	},
+	description: {
+		type: String,
+		default: ""
+	},
+	appointmentTime:{
+		type: String,
+		required:true
+	},
+	treatment:{
+		type: String,
+		default: ""
+	},
+	status:{
+		type: Boolean,
+		default: false
+	}
+})
+
 const UserSchema = new mongoose.Schema({
 	username: {
 		type: String,
@@ -23,7 +46,12 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		minlength: 3
-	}, 
+	},
+	gender: {
+		type: String,
+		required: true,
+		minlength: 1
+	},  
 	level: {
 		type: Number,
 		default: 1
@@ -57,7 +85,17 @@ const UserSchema = new mongoose.Schema({
 		type: Number,
 		required: false,
 		minlength: 2
-	}
+	},
+	needVerify: {
+		type: Boolean,
+		required: true
+	},
+	img: {
+		type: String,
+		default: "https://i.postimg.cc/vBsL0kX0/1.jpg"
+	},
+	expertise:[String],
+	patients:[patientSchema]
 })
 
 // An example of Mongoose middleware.

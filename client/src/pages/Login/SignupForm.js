@@ -4,6 +4,8 @@ import Button from "@material-ui/core/Button";
 // material ui components
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 import Input from "../../components/ui/Input";
 import {signup} from "./../../auth/authUtil";
@@ -21,6 +23,7 @@ class SignupForm extends React.Component {
     mainmail:"",
     phone:"",
     backupemail:"not setted yet",
+    needVerify: false,
     checkError: false,
   }
 
@@ -38,6 +41,11 @@ class SignupForm extends React.Component {
     });
   }
 
+  submitDoctor = (event) => {
+    this.setState({
+      needVerify: event.target.checked
+    },()=> console.log(this.state.needVerify))
+  }
 
   render() {
     const {app} = this.props;
@@ -46,6 +54,10 @@ class SignupForm extends React.Component {
     return (
       <Container component="main" maxWidth="xs">
         <h3> Sign up</h3>
+        <FormControlLabel
+        control={<Switch checked={this.state.needVerify} onChange={this.submitDoctor} name="needVerify" />}
+        label="Sign up as a Doctor"
+      />
         <Input
           error={isUsernameEmpty}
           helperText={isUsernameEmpty ? "Username cannot be empty." : ""}
