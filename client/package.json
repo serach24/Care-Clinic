@@ -14,9 +14,11 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-uid": "^2.3.0",
+    "socket.io-client": "^2.3.0",
     "typescript": "^3.9.5"
   },
   "scripts": {
+    "dev": "dotenv -e .env.development react-scripts build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -36,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv-cli": "^3.2.0"
   }
 }

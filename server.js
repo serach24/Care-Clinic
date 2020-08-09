@@ -8,6 +8,7 @@ const usersRouter = require('./routes/users');
 const articlesRouter = require('./routes/articles');
 const doctorsRouter = require('./routes/doctors');
 const loginRouter = require('./routes/login');
+const sio = require("socket.io");
 // starting the express server
 const app = express();
 
@@ -39,29 +40,65 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 60*1000,
+            expires: 60 * 1000,
             httpOnly: true
         }
     })
 );
 
+/*************************************************/
+// Express server listening...
+const port = process.env.PORT || 3000;
+const server = app.listen(port, () => {
+    log(`Listening on port ${port}...`);
+});
+
+const io = sio.listen(server)
+
+/** Chat using socket io */
+let userList = []
+io.on('connection', (socket) => {
+    log(`socketID: ${socket.id} connected`);
+    socket.on('on', (userInfo) => {
+        log(`on: userId: ${userInfo.userId}, socketId: ${userInfo.socketId}`)
+        userList.push(userInfo)
+    })
+
+    socket.on('sendMsg', (data) =>{
+        log('sendmsg: '+ data);
+        const message = data.message
+        message.user = data.sendId
+        const date = new Date()
+        const time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+        message.time = time
+        const receiverId = userList.filter(userInfo => userInfo.userId === data.talkTo)[0].socketId
+        socket.broadcast.to(receiverId).emit('receiveMsg', message)
+    })
+
+    socket.on('disconnect', () => {
+        log('quit')
+        userList = userList.filter(item => (item.id !== socket.id))
+    })
+
+});
+
 // Middleware for authentication of resources
 const authenticate = (req, res, next) => {
-	if (req.session.user) {
-		User.findById(req.session.userId).then((userId) => {
-            log('auth'+ userId)
-			if (!userId) {
-				return Promise.reject()
-			} else {
-				req.userId = userId
-				next()
-			}
-		}).catch((error) => {
-			res.status(401).send("Unauthorized")
-		})
-	} else {
-		res.status(401).send("Unauthorized")
-	}
+    if (req.session.user) {
+        User.findById(req.session.userId).then((userId) => {
+            log('auth' + userId)
+            if (!userId) {
+                return Promise.reject()
+            } else {
+                req.userId = userId
+                next()
+            }
+        }).catch((error) => {
+            res.status(401).send("Unauthorized")
+        })
+    } else {
+        res.status(401).send("Unauthorized")
+    }
 }
 
 app.use('/users', loginRouter);
@@ -72,6 +109,8 @@ app.use('/doctors', doctorsRouter);
 app.use('/users', usersRouter);
 
 app.use('/articles', articlesRouter);
+
+
 
 
 /*** Webpage routes below **********************************/
@@ -91,9 +130,3 @@ app.get("*", (req, res) => {
     res.sendFile(__dirname + "/client/build/index.html");
 });
 
-/*************************************************/
-// Express server listening...
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    log(`Listening on port ${port}...`);
-});
