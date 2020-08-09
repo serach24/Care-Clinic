@@ -88,7 +88,7 @@ class NavBar extends React.Component {
 
 
           {app.state.loginState !== 0 && <ChatOutlinedIcon className="chat-button" onClick={this.handleClick} />}
-            <ChatPeople open={open} anchorEl={this.state.chatPeopleAnchor} onClose={this.closeChat} />
+            <ChatPeople userId={this.props.userId} open={open} anchorEl={this.state.chatPeopleAnchor} onClose={this.closeChat} />
 
             {app.state.loginState === 0 && !this.state.auth && <Button component={Link} to={"/login"} color="inherit"
               className="loginButton" >Login</Button>}

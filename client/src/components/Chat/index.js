@@ -1,18 +1,16 @@
 import React from "react";
-import io from 'socket.io-client'
-// TODO might need to change this
-const socket = io('ws://localhost:3000')
-
 import Paper from "@material-ui/core/Paper";
 import Dialog from "@material-ui/core/Dialog";
-
 import ChatInput from "./ChatInput";
 import ChatMessages from "./ChatMessages";
-
 import { DialogTitle } from "../DialogTitle";
 
 // import styles from "./styles"
 import "./styles.css"
+
+import io from 'socket.io-client'
+// TODO might need to change this
+const socket = io('ws://localhost:3000')
 
 class Chat extends React.Component {
   state = {
@@ -36,7 +34,7 @@ class Chat extends React.Component {
     socket.on('receiveMsg', (message) => {
       console.log(message)
       this.setState({
-        messages: [...this.state.message, message]
+        messages: [...this.state.messages, message]
       })
     })
   }

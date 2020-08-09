@@ -18,6 +18,7 @@
     "typescript": "^3.9.5"
   },
   "scripts": {
+    "dev": "dotenv -e .env.development react-scripts build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -37,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "dotenv-cli": "^3.2.0"
   }
 }

@@ -49,7 +49,7 @@ class App extends React.Component {
     <div>
       <BrowserRouter>
         <div>
-        <Navbar app={this}/>
+        <Navbar app={this} userId={this.state.userId}/>
         {/* <Page404/> */}
         <Switch>
           <Route exact path='/' render={() =>

@@ -77,7 +77,7 @@ let userList = []
 io.on('connection', (socket) => {
     log(`socketID: ${socket.id} connected`);
     socket.on('on', (userInfo) => {
-        log('on: '+ userInfo)
+        log(`on: userId: ${userInfo.userId}, socketId: ${userInfo.socketId}`)
         userList.push(userInfo)
     })
 
