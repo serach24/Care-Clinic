@@ -191,33 +191,87 @@ app.get("/users/get_profile", (req, res) => {
 //       You can (and should!) add this using similar middleware techniques we used in lecture.
 
 /** Doctor resource routes **/
-// a POST route to *create* a doctor
-app.post("/students", (req, res) => {
+// a POST route to add patient to the doctor
+app.post("/doctors/:id", (req, res) => {
     // log(req.body)
+	const id = req.params.id
 
-    // Create a new doctor using the Doctor mongoose model
-    const doctor = new Doctor({
-        name: req.body.name,
-        year: req.body.year
-    });
+	// Good practise: Validate id immediately.
+	if (!ObjectID.isValid(id)) {
+		res.status(404).send(code404)  // if invalid id, definitely can't find resource, 404.
+		return;  // so that we don't run the rest of the handler.
+	}
+	if (!ObjectID.isValid(req.body.patientId) || !req.body.appointmentTime){
+		res.status(400).send(code400);
+		return;
+	}
 
-    // Save doctor to the database
-    doctor.save().then(
-        result => {
-            res.send(result);
+	// check mongoose connection established.
+	if (mongoose.connection.readyState != 1) {
+		log('Issue with mongoose connection')
+		res.status(500).send(code500)
+		return;
+	} 
+
+	const fieldToPush = {};
+	fieldToPush.patientId = req.body.patientId;
+	fieldToPush.appointmentTime = req.body.appointmentTime;
+	// If id valid, findById
+	User.findByIdAndUpdate(id, {$push: {patients: fieldToPush }}, {new:true, useFindAndModify: false}).then((user) => {
+		if (!user) {
+			res.status(404).send(code404)  // could not find this student
+		} else {
+			/// sometimes we wrap returned object in another object:
+			//add reservation to restaurant
+			const patient = user.patients[user.patients.length - 1];
+			// log(restaurant.id);
+			const arrayToSend = {};
+			arrayToSend.patient = patient;
+			arrayToSend.user = user;
+			res.send(arrayToSend);
+		}
+	})
+	.catch((error) => {
+		if (isMongoError(error)) { // check for if mongo server suddenly dissconnected before this request.
+			res.status(500).send(code500)
+		} else {
+			log(error)
+			res.status(400).send(code400) // bad request
+		}
+	})
+
+});
+
+// a GET route to get all users
+app.get("/users", (req, res) => {
+    User.find().then(
+        students => {
+            let doctors = [];
+            res.send({ students }); // can wrap in object if want to add more properties
         },
         error => {
-            res.status(400).send(error); // 400 for bad request
+            res.status(500).send(error); // server error
         }
     );
 });
 
-// a GET route to get all students
-app.get("/students", (req, res) => {
-    Doctor.find().then(
-        students => {
-            log();
-            res.send({ students }); // can wrap in object if want to add more properties
+// a GET route to get all valid doctors
+app.get("/doctors", (req, res) => {
+    User.find().then(
+        users => {
+            let doctors = [];
+            doctors = users.filter(user =>  user.level === 3)
+            let fileToSend = doctors.map(doc => {
+                const newDoc = {};
+                newDoc.id= doc._id;
+                newDoc.realName= doc.realName;
+                newDoc.username= doc.username;
+                newDoc.expertise= doc.expertise;
+                newDoc.gender= doc.gender;
+                newDoc.img= doc.img;
+                return newDoc;
+            })
+            res.send({ doctors: fileToSend }); // can wrap in object if want to add more properties
         },
         error => {
             res.status(500).send(error); // server error
@@ -228,7 +282,7 @@ app.get("/students", (req, res) => {
 /// a GET route to get a doctor by their id.
 // id is treated as a wildcard parameter, which is why there is a colon : beside it.
 // (in this case, the database id, but you can make your own id system for your project)
-app.get("/students/:id", (req, res) => {
+app.get("/doctors/:id", (req, res) => {
     /// req.params has the wildcard parameters in the url, in this case, id.
     // log(req.params.id)
     const id = req.params.id;
@@ -240,14 +294,18 @@ app.get("/students/:id", (req, res) => {
     }
 
     // Otherwise, findById
-    Doctor.findById(id)
+    User.findById(id)
         .then(doctor => {
             if (!doctor) {
                 res.status(404).send(); // could not find this doctor
             } else {
                 /// sometimes we wrap returned object in another object:
                 //res.send({doctor})
-                res.send(doctor);
+                if (doctor.level !== 3){
+                    res.status(404).send("Doctor not found");
+                }else{
+                    res.send(doctor);
+                }
             }
         })
         .catch(error => {
@@ -256,7 +314,7 @@ app.get("/students/:id", (req, res) => {
 });
 
 /// a DELETE route to remove a doctor by their id.
-app.delete("/students/:id", (req, res) => {
+app.delete("/doctors/:id", (req, res) => {
     const id = req.params.id;
 
     // Validate id
@@ -266,7 +324,7 @@ app.delete("/students/:id", (req, res) => {
     }
 
     // Delete a doctor by their id
-    Doctor.findByIdAndRemove(id)
+    User.findByIdAndRemove(id)
         .then(doctor => {
             if (!doctor) {
                 res.status(404).send();
@@ -281,7 +339,7 @@ app.delete("/students/:id", (req, res) => {
 
 // a PATCH route for changing properties of a resource.
 // (alternatively, a PUT is used more often for replacing entire resources).
-app.patch("/students/:id", (req, res) => {
+app.patch("/doctors/:id", (req, res) => {
     const id = req.params.id;
 
     // get the updated name and year only from the request body.
@@ -319,9 +377,10 @@ app.post("/users", (req, res) => {
         realName: req.body.realName,
         location: req.body.location,
         age: req.body.age,
-        phone: req.body.phone,
-        mainmail: req.body.mainmail,
-        backupemail: req.body.mainmail
+        phone:req.body.phone,
+        mainmail:req.body.mainmail,
+        backupemail:req.body.mainmail,
+        needVerify: req.body.needVerify
     });
     log(user);
     // Save the user
@@ -416,7 +475,7 @@ app.use(express.static(__dirname + "/client/build"));
 // All routes other than above will go to index.html
 app.get("*", (req, res) => {
     // check for page routes that we expect in the frontend to provide correct status code.
-    const goodPageRoutes = ["/", "/login", "/article/:id"];
+    const goodPageRoutes = ["/", "/login", "/article/:id", "/doctorlist"];
     if (!goodPageRoutes.includes(req.url)) {
         // if url not in expected page routes, set status to 404.
         res.status(404);
