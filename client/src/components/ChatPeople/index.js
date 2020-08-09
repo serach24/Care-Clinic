@@ -7,13 +7,14 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { withStyles } from '@material-ui/core/styles';
 
 import Chat from "../Chat";
-import {styles} from "./styles";
+import { styles } from "./styles";
 
 class ChatPeople extends React.Component {
   state = {
     ukey: 0,
     chatOpen: false,
 
+    talkTo: '',
     // the data below need a serverCall to get
     people: [
       {
@@ -39,8 +40,9 @@ class ChatPeople extends React.Component {
     ],
   }
 
-  openChat = () =>{
+  openChat = (name) => {
     this.setState({
+      talkTo: name,
       chatOpen: true,
     })
   }
@@ -52,7 +54,7 @@ class ChatPeople extends React.Component {
   }
 
   render() {
-    const { open, onClose, anchorEl, classes } = this.props;
+    const { open, onClose, anchorEl, classes, userId } = this.props;
     const people = this.state.people;
     return (
       <Popover
@@ -71,7 +73,7 @@ class ChatPeople extends React.Component {
       >
         <List className="chat-people">
           {people.map(person => (
-            <ListItem key={this.state.ukey++} onClick={this.openChat} className={classes.chatPerson} alignItems="flex-start">
+            <ListItem key={this.state.ukey++} onClick={() => this.openChat(person.id)} className={classes.chatPerson} alignItems="flex-start">
               <Avatar className="chat-self-avatar" alt="currentUser" src={person.avatar} />
               <ListItemText
                 primary={person.name}
@@ -80,7 +82,12 @@ class ChatPeople extends React.Component {
             </ListItem>
           ))}
         </List>
-         <Chat open={this.state.chatOpen} onClose={this.closeChat} />
+        <Chat
+          open={this.state.chatOpen} 
+          onClose={this.closeChat} 
+          talkTo={this.state.talkTo}
+          userId= {this.props.userId}
+        />
       </Popover>
     );
   }

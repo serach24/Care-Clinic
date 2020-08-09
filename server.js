@@ -3,6 +3,7 @@
 const log = console.log;
 
 const express = require("express");
+const sio = require("socket.io");
 // starting the express server
 const app = express();
 
@@ -35,30 +36,74 @@ app.use(
         resave: false,
         saveUninitialized: false,
         cookie: {
-            expires: 60*1000,
+            expires: 60 * 1000,
             httpOnly: true
         }
     })
 );
 
+/*************************************************/
+// Express server listening...
+const port = process.env.PORT || 3000;
+const server = app.listen(port, () => {
+    log(`Listening on port ${port}...`);
+});
+
+const io = sio.listen(server)
+
 // Middleware for authentication of resources
 const authenticate = (req, res, next) => {
-	if (req.session.user) {
-		User.findById(req.session.userId).then((userId) => {
-            log('auth'+ userId)
-			if (!userId) {
-				return Promise.reject()
-			} else {
-				req.userId = userId
-				next()
-			}
-		}).catch((error) => {
-			res.status(401).send("Unauthorized")
-		})
-	} else {
-		res.status(401).send("Unauthorized")
-	}
+    if (req.session.user) {
+        User.findById(req.session.userId).then((userId) => {
+            log('auth' + userId)
+            if (!userId) {
+                return Promise.reject()
+            } else {
+                req.userId = userId
+                next()
+            }
+        }).catch((error) => {
+            res.status(401).send("Unauthorized")
+        })
+    } else {
+        res.status(401).send("Unauthorized")
+    }
 }
+
+
+
+/** Chat using socket io */
+let userList = []
+io.on('connection', (socket) => {
+    log(`socketID: ${socket.id} connected`);
+    socket.on('on', (userInfo) => {
+        log('on: '+ userInfo)
+        userList.push(userInfo)
+    })
+
+    socket.on('sendMsg', (data) =>{
+        log('sendmsg: '+ data);
+        const message = data.message
+        message.user = data.sendId
+        const date = new Date()
+        const time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+        message.time = time
+        const receiverId = userList.filter(userInfo => userInfo.userId === data.talkTo)[0].socketId
+        socket.broadcast.to(receiverId).emit('receiveMsg', message)
+    })
+
+    socket.on('disconnect', () => {
+        log('quit')
+        userList = userList.filter(item => (item.id !== socket.id))
+    })
+
+})
+
+
+
+
+
+
 
 // A route to login and create a session
 app.post("/users/login", (req, res) => {
@@ -75,14 +120,15 @@ app.post("/users/login", (req, res) => {
             req.session.user = user._id;
             req.session.username = user.username;
             req.session.loginState = user.level;
-            log('after:'+user._id);
+            log('after:' + user._id);
             // log('after:'+user.username);
             // log('after:'+user.level);
             // log(req.session)
             // log(req.session.id)
-            res.send({ userId: user._id,
-                       loginState: user.level,
-                       profile:user
+            res.send({
+                userId: user._id,
+                loginState: user.level,
+                profile: user
             });
         })
         .catch(error => {
@@ -122,8 +168,9 @@ app.get("/users/logout", (req, res) => {
 // A route to check if a use is logged in on the session cookie
 app.get("/users/check-session", (req, res) => {
     if (req.session.user) {
-        res.send({ userId: req.session.user,
-                    loginState: req.session.loginState
+        res.send({
+            userId: req.session.user,
+            loginState: req.session.loginState
         });
     } else {
         res.status(401).send();
@@ -272,19 +319,19 @@ app.post("/users", (req, res) => {
         realName: req.body.realName,
         location: req.body.location,
         age: req.body.age,
-        phone:req.body.phone,
-        mainmail:req.body.mainmail,
-        backupemail:req.body.mainmail
+        phone: req.body.phone,
+        mainmail: req.body.mainmail,
+        backupemail: req.body.mainmail
     });
     log(user);
     // Save the user
     user.save().then(
         user => {
             res.send({
-                    userId: user._id,
-                    loginState: user.level,
-                    profile:user
-                });
+                userId: user._id,
+                loginState: user.level,
+                profile: user
+            });
         },
         error => {
             log(error);
@@ -296,29 +343,29 @@ app.post("/users", (req, res) => {
 /*** Article APIs below ***/
 // body format { title:"", content:"", img:""}
 // return article document
-app.post("/articles", (req, res) =>{
+app.post("/articles", (req, res) => {
     log(req.body);
-        // Create a new doctor using the Doctor mongoose model
-        const article = new Article({
-            title: req.body.title,
-            content: req.body.content,
-            img: req.body.img
-        });
-    
-        // Save doctor to the database
-        article.save().then(
-            result => {
-                res.send(result);
-            },
-            error => {
-                res.status(400).send(error); // 400 for bad request
-            }
-        );
+    // Create a new doctor using the Doctor mongoose model
+    const article = new Article({
+        title: req.body.title,
+        content: req.body.content,
+        img: req.body.img
+    });
+
+    // Save doctor to the database
+    article.save().then(
+        result => {
+            res.send(result);
+        },
+        error => {
+            res.status(400).send(error); // 400 for bad request
+        }
+    );
 })
 
 //Get all articles
 // return { articles:[ {article }, {article}, ...]}
-app.get("/articles", (req,res) => {
+app.get("/articles", (req, res) => {
     // log(req.body)
     Article.find().then(
         articles => {
@@ -360,6 +407,8 @@ app.get("/articles/:id", (req, res) => {
 
 
 
+
+
 /*** Webpage routes below **********************************/
 // Serve the build
 app.use(express.static(__dirname + "/client/build"));
@@ -377,9 +426,3 @@ app.get("*", (req, res) => {
     res.sendFile(__dirname + "/client/build/index.html");
 });
 
-/*************************************************/
-// Express server listening...
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    log(`Listening on port ${port}...`);
-});
