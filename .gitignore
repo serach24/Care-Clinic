@@ -30,3 +30,4 @@ client/build/
 /mongo-data
 .vscode
 
+/server
