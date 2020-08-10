@@ -6,6 +6,9 @@ const router = express.Router();
 const { User } = require("../models/user");
 const { ObjectID } = require("mongodb");
 
+const code500 = 'Internal server error';
+const code400 = 'Bad Request';
+const code404 = 'Resource not found';
 /** Doctor resource routes **/
 // a POST route to add patient to the doctor
 router.post("/:id", (req, res) => {
@@ -77,7 +80,7 @@ router.get("/", (req, res) => {
             res.send({ doctors: fileToSend }); // can wrap in object if want to add more properties
         },
         error => {
-            res.status(500).send(error); // server error
+            res.status(500).send(code500); // server error
         }
     );
 });
@@ -100,19 +103,19 @@ router.get("/:id", (req, res) => {
     User.findById(id)
         .then(doctor => {
             if (!doctor) {
-                res.status(404).send(); // could not find this doctor
+                res.status(404).send(code404); // could not find this doctor
             } else {
                 /// sometimes we wrap returned object in another object:
                 //res.send({doctor})
                 if (doctor.level !== 3){
-                    res.status(404).send("Doctor not found");
+                    res.status(404).send(code404);
                 }else{
                     res.send(doctor);
                 }
             }
         })
         .catch(error => {
-            res.status(500).send(); // server error
+            res.status(500).send(code500); // server error
         });
 });
 
@@ -122,7 +125,7 @@ router.delete("/:id", (req, res) => {
 
     // Validate id
     if (!ObjectID.isValid(id)) {
-        res.status(404).send();
+        res.status(404).send(code404);
         return;
     }
 
@@ -136,7 +139,7 @@ router.delete("/:id", (req, res) => {
             }
         })
         .catch(error => {
-            res.status(500).send(); // server error, could not delete.
+            res.status(500).send(code500); // server error, could not delete.
         });
 });
 
@@ -150,7 +153,7 @@ router.patch("/:id", (req, res) => {
     const body = { name, year };
 
     if (!ObjectID.isValid(id)) {
-        res.status(404).send();
+        res.status(404).send(code404);
         return;
     }
 
@@ -158,13 +161,13 @@ router.patch("/:id", (req, res) => {
     User.findByIdAndUpdate(id, { $set: body }, { new: true })
         .then(doctor => {
             if (!doctor) {
-                res.status(404).send();
+                res.status(404).send(code404);
             } else {
                 res.send(doctor);
             }
         })
         .catch(error => {
-            res.status(400).send(); // bad request for changing the doctor.
+            res.status(400).send(code400); // bad request for changing the doctor.
         });
 });
 

@@ -16,18 +16,62 @@ const patientSchema = new mongoose.Schema({
 		type: String,
 		default: ""
 	},
-	appointmentTime:{
+	appointmentTime: {
 		type: String,
-		required:true
+		required: true
 	},
-	treatment:{
+	treatment: {
 		type: String,
 		default: ""
 	},
-	status:{
+	status: {
 		type: Boolean,
 		default: false
 	}
+})
+
+const problemSchema = new mongoose.Schema({
+	year: {
+		type: String,
+		required: true
+	},
+	reason: {
+		type: String,
+		required: true
+	}
+})
+
+const healthHistory = new mongoose.Schema({
+	firstName: {
+		type: String,
+		required: true
+	},
+	lastName: {
+		type: String,
+		required: true
+	},
+	DOB: {
+		type: String,
+		required: true
+	},
+	maritalStatus: {
+		type: String,
+		required: true
+	},
+	problems: [problemSchema],
+	drugs: [
+		{
+			name: String,
+			strength: String,
+			frequency: String
+		}
+	],
+	allergies: [
+		{
+			drugName: String,
+			reaction: String
+		}
+	]
 })
 
 const UserSchema = new mongoose.Schema({
@@ -41,7 +85,7 @@ const UserSchema = new mongoose.Schema({
 		// 	validator: validator.isEmail,   // custom validator
 		// 	message: 'Not valid email'
 		// }
-	}, 
+	},
 	password: {
 		type: String,
 		required: true,
@@ -51,7 +95,7 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 		minlength: 1
-	},  
+	},
 	level: {
 		type: Number,
 		default: 1
@@ -60,12 +104,12 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		required: false,
 		minlength: 1,
-	}, 
+	},
 	location: {
 		type: String,
 		required: false,
 		minlength: 2
-	}, 
+	},
 	age: {
 		type: Number,
 		required: false,
@@ -94,14 +138,15 @@ const UserSchema = new mongoose.Schema({
 		type: String,
 		default: "https://i.postimg.cc/vBsL0kX0/1.jpg"
 	},
-	expertise:[String],
-	patients:[patientSchema]
+	expertise: [String],
+	patients: [patientSchema],
+	healthHistory: healthHistory
 })
 
 // An example of Mongoose middleware.
 // This function will run immediately prior to saving the document
 // in the database.
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
 	const user = this; // binds this to User document instance
 
 	// checks to ensure we don't hash password more than once
@@ -121,7 +166,7 @@ UserSchema.pre('save', function(next) {
 // A static method on the document model.
 // Allows us to find a User document by comparing the hashed password
 //  to a given one, for example when logging in.
-UserSchema.statics.findByNamePassword = function(username, password) {
+UserSchema.statics.findByNamePassword = function (username, password) {
 	const User = this // binds this to the User model
 
 	// First find the user by their email

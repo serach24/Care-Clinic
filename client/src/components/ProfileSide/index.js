@@ -122,7 +122,7 @@ class ProfileSide extends React.Component {
               <Button  variant="contained" onClick = {this.FunctionPhone.bind(this)} color="primary">change</Button></div>
               </div>
               {app.state.loginState === 1 && <div className = "ProfileItem">
-                    <Link to={"/healthHistory"+app.state.userId} >Health History</Link>
+                    <Link to={"/healthHistory/"+app.state.userId} >Health History</Link>
                 </div>}
               {app.state.loginState === 1 &&<div className = "ProfileItem">
                     <Link to={"/healthHistory"+app.state.userId+"T"}>Edit Health History</Link>
