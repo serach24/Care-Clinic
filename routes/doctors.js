@@ -1,14 +1,17 @@
 const log = console.log;
 const express = require('express');
-const doctorsAPI = express.Router();
+const router = express.Router();
 
 // mongoose model
 const { User } = require("../models/user");
 const { ObjectID } = require("mongodb");
 
+const code500 = 'Internal server error';
+const code400 = 'Bad Request';
+const code404 = 'Resource not found';
 /** Doctor resource routes **/
 // a POST route to add patient to the doctor
-doctorsAPI.post("/:id", (req, res) => {
+router.post("/:id", (req, res) => {
     // log(req.body)
 	const id = req.params.id
 
@@ -59,7 +62,7 @@ doctorsAPI.post("/:id", (req, res) => {
 });
 
 // a GET route to get all valid doctors
-doctorsAPI.get("/", (req, res) => {
+router.get("/", (req, res) => {
     User.find().then(
         users => {
             let doctors = [];
@@ -77,7 +80,7 @@ doctorsAPI.get("/", (req, res) => {
             res.send({ doctors: fileToSend }); // can wrap in object if want to add more properties
         },
         error => {
-            res.status(500).send(error); // server error
+            res.status(500).send(code500); // server error
         }
     );
 });
@@ -85,7 +88,7 @@ doctorsAPI.get("/", (req, res) => {
 // a GET route to get a doctor by their id.
 // id is treated as a wildcard parameter, which is why there is a colon : beside it.
 // (in this case, the database id, but you can make your own id system for your project)
-doctorsAPI.get("/:id", (req, res) => {
+router.get("/:id", (req, res) => {
     /// req.params has the wildcard parameters in the url, in this case, id.
     // log(req.params.id)
     const id = req.params.id;
@@ -100,29 +103,29 @@ doctorsAPI.get("/:id", (req, res) => {
     User.findById(id)
         .then(doctor => {
             if (!doctor) {
-                res.status(404).send(); // could not find this doctor
+                res.status(404).send(code404); // could not find this doctor
             } else {
                 /// sometimes we wrap returned object in another object:
                 //res.send({doctor})
                 if (doctor.level !== 3){
-                    res.status(404).send("Doctor not found");
+                    res.status(404).send(code404);
                 }else{
                     res.send(doctor);
                 }
             }
         })
         .catch(error => {
-            res.status(500).send(); // server error
+            res.status(500).send(code500); // server error
         });
 });
 
 /// a DELETE route to remove a doctor by their id.
-doctorsAPI.delete("/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
     const id = req.params.id;
 
     // Validate id
     if (!ObjectID.isValid(id)) {
-        res.status(404).send();
+        res.status(404).send(code404);
         return;
     }
 
@@ -136,13 +139,13 @@ doctorsAPI.delete("/:id", (req, res) => {
             }
         })
         .catch(error => {
-            res.status(500).send(); // server error, could not delete.
+            res.status(500).send(code500); // server error, could not delete.
         });
 });
 
 // a PATCH route for changing properties of a resource.
 // (alternatively, a PUT is used more often for replacing entire resources).
-doctorsAPI.patch("/:id", (req, res) => {
+router.patch("/:id", (req, res) => {
     const id = req.params.id;
 
     // get the updated name and year only from the request body.
@@ -150,7 +153,7 @@ doctorsAPI.patch("/:id", (req, res) => {
     const body = { name, year };
 
     if (!ObjectID.isValid(id)) {
-        res.status(404).send();
+        res.status(404).send(code404);
         return;
     }
 
@@ -158,14 +161,14 @@ doctorsAPI.patch("/:id", (req, res) => {
     User.findByIdAndUpdate(id, { $set: body }, { new: true })
         .then(doctor => {
             if (!doctor) {
-                res.status(404).send();
+                res.status(404).send(code404);
             } else {
                 res.send(doctor);
             }
         })
         .catch(error => {
-            res.status(400).send(); // bad request for changing the doctor.
+            res.status(400).send(code400); // bad request for changing the doctor.
         });
 });
 
-module.exports = doctorsAPI;
+module.exports = router;

@@ -62,10 +62,11 @@ class App extends React.Component {
           <Route exact path='/feedback' render={() =>
                           (<Feedback app={this}/>)}/>
           <Route path='/article/:id' component={Storys}/>
+
           <Route exact path='/about' render={() =>
                           (<About app={this}/>)}/>
-          <Route exact path={"/healthHistory"+this.state.userId} render={() =>
-                          (<HealthHistory app={this}/>)}/>
+          <Route path="/healthHistory/:id" component={HealthHistory} />
+
           <Route exact path={"/healthHistory"+this.state.userId+"T"} render={() =>
                           (<HealthHistory isEdit={true} app={this}/>)}/>
           {this.state.loginState!==0 && <Route exact path={"/"+this.state.userId} render={() =>

@@ -1,4 +1,4 @@
-export const homeContent = (state) => {
+export const homeContent = (homeComp) => {
     // Create our request constructor with all the parameters we need
     const request = new Request("/articles", {
         method: "get",
@@ -18,7 +18,7 @@ export const homeContent = (state) => {
         .then(json => {
             if (json.articles !== undefined) {
                 // console.log(json.articles);
-                state.setState({articles: json.articles})
+                homeComp.setState({articles: json.articles})
             }
         })
         .catch(error => {
