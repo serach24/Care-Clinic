@@ -1,6 +1,6 @@
 const log = console.log;
 const express = require('express');
-const doctorsAPI = express.Router();
+const router = express.Router();
 
 // mongoose model
 const { User } = require("../models/user");
@@ -8,7 +8,7 @@ const { ObjectID } = require("mongodb");
 
 /** Doctor resource routes **/
 // a POST route to add patient to the doctor
-doctorsAPI.post("/:id", (req, res) => {
+router.post("/:id", (req, res) => {
     // log(req.body)
 	const id = req.params.id
 
@@ -59,7 +59,7 @@ doctorsAPI.post("/:id", (req, res) => {
 });
 
 // a GET route to get all valid doctors
-doctorsAPI.get("/", (req, res) => {
+router.get("/", (req, res) => {
     User.find().then(
         users => {
             let doctors = [];
@@ -85,7 +85,7 @@ doctorsAPI.get("/", (req, res) => {
 // a GET route to get a doctor by their id.
 // id is treated as a wildcard parameter, which is why there is a colon : beside it.
 // (in this case, the database id, but you can make your own id system for your project)
-doctorsAPI.get("/:id", (req, res) => {
+router.get("/:id", (req, res) => {
     /// req.params has the wildcard parameters in the url, in this case, id.
     // log(req.params.id)
     const id = req.params.id;
@@ -117,7 +117,7 @@ doctorsAPI.get("/:id", (req, res) => {
 });
 
 /// a DELETE route to remove a doctor by their id.
-doctorsAPI.delete("/:id", (req, res) => {
+router.delete("/:id", (req, res) => {
     const id = req.params.id;
 
     // Validate id
@@ -142,7 +142,7 @@ doctorsAPI.delete("/:id", (req, res) => {
 
 // a PATCH route for changing properties of a resource.
 // (alternatively, a PUT is used more often for replacing entire resources).
-doctorsAPI.patch("/:id", (req, res) => {
+router.patch("/:id", (req, res) => {
     const id = req.params.id;
 
     // get the updated name and year only from the request body.
@@ -168,4 +168,4 @@ doctorsAPI.patch("/:id", (req, res) => {
         });
 });
 
-module.exports = doctorsAPI;
+module.exports = router;
