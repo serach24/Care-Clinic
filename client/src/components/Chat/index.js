@@ -14,28 +14,20 @@ const socket = io('ws://localhost:3000')
 
 class Chat extends React.Component {
   state = {
-    // only for phase 1 sample display, in the final version 
-    // the time would be from the server
-
-    // the data below need a serverCall to get
-    messages: [
-      {
-        user: "testUser",
-        time: "2020-06-10 23:46:24",
-        text: "Hello!"
-      }
-    ],
+    messages: [],
     input: "",
     tip: "",
   }
 
   componentDidMount() {
-    socket.emit('on', {userId: this.props.userId, socketId: socket.id})
+    socket.emit('on', { userId: this.props.userId, socketId: socket.id })
     socket.on('receiveMsg', (message) => {
       console.log(message)
-      this.setState({
-        messages: [...this.state.messages, message]
-      })
+      if (message) {
+        this.setState({
+          messages: [...this.state.messages, message]
+        })
+      }
     })
   }
 
@@ -69,15 +61,15 @@ class Chat extends React.Component {
     });
 
     // send to server
-    socket.emit('sendMsg', {message, sendId: this.props.userId, talkTo: this.props.talkTo})
+    socket.emit('sendMsg', { message, sendId: this.props.userId, talkTo: this.props.talkTo.name })
   }
 
   render() {
-    const { open, onClose } = this.props;
+    const { open, onClose, talkTo } = this.props;
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogTitle id="customized-dialog-title" onClose={onClose}>
-          testUser
+          {talkTo.name}
         </DialogTitle>
         <Paper className="chat-component-wrapper">
           <ChatMessages
