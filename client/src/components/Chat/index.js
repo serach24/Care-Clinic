@@ -46,11 +46,13 @@ class Chat extends React.Component {
       });
       return;
     }
+    // locally add message
     const messages = this.state.messages
     const date = new Date()
     const time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
     const message = {
-      user: "",
+      sender: this.props.userId,
+      receiver: this.props.talkTo.userId,
       time,
       text: this.state.input
     }
@@ -61,7 +63,7 @@ class Chat extends React.Component {
     });
 
     // send to server
-    socket.emit('sendMsg', { message, sendId: this.props.userId, talkTo: this.props.talkTo.name })
+    socket.emit('sendMsg', message)
   }
 
   render() {
