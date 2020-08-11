@@ -4,22 +4,25 @@ export const styles = theme => ({
     },
     actionarea: {
         height: 150,
-        display: 'flex',
+        display: 'flex'
     },
     cardmedia: {
         width: 120,
         height:120,
-        border: '1px solid darkgray',
+        border: '1px solid darkgray'
     },
     contentarea: {
         minWidth: 500,
         maxWidth: 500,
-        height: 120,
+        height: 120
     },
     content: {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap'
+    },
+    CardActions: {
+       padding: 0
     }
 
   });

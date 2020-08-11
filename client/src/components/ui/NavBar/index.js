@@ -1,4 +1,5 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -15,6 +16,14 @@ import ChatPeople from '../../ChatPeople';
 
 
 const log = console.log;
+
+export const styles = theme => ({
+  appBar: {
+    color: '#fff',
+    backgroundColor: '#4fc9a5'
+  }
+
+});
 
 class NavBar extends React.Component {
 
@@ -58,11 +67,11 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const {app} = this.props;
+    const {app, classes} = this.props;
     const open = Boolean(this.state.chatPeopleAnchor);
     return (
       <div className="navbar">
-        <AppBar position="fixed">
+        <AppBar position="fixed" className={classes.appBar} color="secondary">
           <Toolbar>
             <IconButton edge="start" 
                         className="menuButton" >
@@ -104,4 +113,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withStyles(styles, { withTheme: false })(NavBar);

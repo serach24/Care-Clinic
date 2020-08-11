@@ -1,4 +1,6 @@
 .navbar{
+    color: #fff;
+    background-color: #66CCCC;
     display: flex;
     height: 64px;
 }
@@ -7,8 +9,9 @@
     flex-grow: 1;
 }
 
-.loginButton {
-    
+.appBar {
+    color: #fff;
+    background-color: #66CCCC;
 }
 
 .MuiButton-text.loginButton {
