@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Chat from "../Chat";
 import { styles } from "./styles";
+import {acquireChatList} from '../../requests/chat';
 
 class ChatPeople extends React.Component {
   state = {
@@ -30,6 +31,12 @@ class ChatPeople extends React.Component {
         recentMessage: "Hello!",
       },
     ],
+  }
+
+  componentWillMount(){
+    acquireChatList(this.props.userId).then((chatList) =>{
+      this.setState({people: chatList})
+    })
   }
 
   openChat = (talkTo) => {
