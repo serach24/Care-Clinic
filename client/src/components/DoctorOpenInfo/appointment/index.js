@@ -8,7 +8,7 @@ class Time extends React.Component {
     return (
         <form noValidate>
     <TextField
-    id="datetime-local"
+    id={this.props.doctorId + "time"}
     label="Next appointment"
     type="datetime-local"
     defaultValue="2017-05-24T10:30"
