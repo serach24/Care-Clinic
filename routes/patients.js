@@ -99,6 +99,40 @@ router.get('/:id', (req,res) => {
     })
 })
 
+router.post("/", (req, res) => {
+    const id = req.body.id;
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send(code404)  // if invalid id, definitely can't find resource, 404.
+		return;  // so that we don't run the rest of the handler.
+    }
+
+    User.find().then(
+            users => {
+                let doctors = [];
+                let appos = [];
+                doctors = users.filter(user =>  user.level === 3)
+                for (var i = 0; i < doctors.length; i++) {
+                    for (var i2 = 0; i2 < doctors[i].patients.length; i2++) {
+
+                        if(doctors[i].patients[i2].patientId +'' === id){
+                            appos.push({
+                                id: doctors[i].id,
+                                username: doctors[i].username,
+                                realName: doctors[i].realName,
+                                date: doctors[i].patients[i2].appointmentTime,
+                                expertise: "Balabilipala"
+                            });
+                        }
+                    }
+                }
+                res.send({ appos }); // can wrap in object if want to add more properties
+            },
+            error => {
+                res.status(500).send(code500); // server error
+            }
+        );
+    });
 
 
 

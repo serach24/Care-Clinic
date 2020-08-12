@@ -1,41 +1,21 @@
 import React from "react"
 import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePagination } from "@material-ui/core"
 import Button from "@material-ui/core/Button";
+import {Apporequest} from "./request";
 class Appointments extends React.Component {
-  state = {
-    page: 0,
-    itemsPerPage: 3,
-
-    // the data below need a serverCall to get
-    doctors: [
-      {
-        id: 0,
-        realName: "John Doe1",
-        username: "testDoctor1",
-        expertise: "department0",
-        date: "2020 06 23",
-      },
-      {
-        id: 1,
-        realName: "John Doe24",
-        username: "testDoctor24",
-        expertise: "department91",
-        date: "2020 07 25",
-      },      {
-        id: 2,
-        realName: "John Doe1",
-        username: "testDoctor1",
-        expertise: "department4",
-        date: "2020 07 27",
-      },      {
-        id: 3,
-        realName: "John Doe3",
-        username: "testDoctor3",
-        expertise: "department4",
-        date: "2020 07 28",
-      },
-    ]
-  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 0,
+      itemsPerPage: 3,
+      id: this.props.app.state.userId,
+      // the data below need a serverCall to get
+      doctors: 
+      [
+      ]
+    }
+    Apporequest(this)
+}
 
   handleChangePage = (e,page) =>{
     this.setState({page})
@@ -54,6 +34,7 @@ class Appointments extends React.Component {
               <TableCell >Doctor Username</TableCell>
               <TableCell >Department</TableCell>
               <TableCell >Date</TableCell>
+              <TableCell >Talk</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -65,6 +46,7 @@ class Appointments extends React.Component {
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.expertise}</TableCell>
                 <TableCell>{row.date}</TableCell>
+                <TableCell ><Button onClick={console.log(row)}>Talk</Button></TableCell>
               </TableRow>
             ))}
           </TableBody>
