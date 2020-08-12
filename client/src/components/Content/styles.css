@@ -7,3 +7,8 @@ a:link {
     cursor: pointer;
     text-decoration: none;
 }
+
+.icon {
+    margin-left: 80%;
+    margin-right: auto;
+}

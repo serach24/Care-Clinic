@@ -7,7 +7,12 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import {Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import AddCommentIcon from '@material-ui/icons/AddComment';
+import IconButton from '@material-ui/core/IconButton';
+import Divider from '@material-ui/core/Divider';
+import Comment from '../Comments';
 
 
 import "./styles.css";
@@ -17,31 +22,59 @@ import { styles } from './styles';
 const log = console.log;
 
 class Content extends React.Component {
+    state= {
+        commentStatus: false,
+        likeStatus: false
+    }
 
-    render () {
+    handleClick = () => {
+        this.setState(prevState => ({
+            commentStatus: !prevState.commentStatus
+        }),() => console.log(this.state.commentStatus))
+    }
+
+    handleClickLike = () => {
+        this.setState(prevState => ({
+            likeStatus: !prevState.likeStatus
+        }),() => console.log(this.state.likeStatus))
+    }
+
+    render() {
         const { classes, article } = this.props;
         // console.log(article);
-        return(
-            <Card className= {classes.root}>
+        return (
+            <Card className={classes.root}>
                 {/* <Card Mediacomponent="img"/> */}
+                <Link to={"/article/" + article._id}>
+                    <CardActionArea className={classes.actionarea} >
+                        <div className={classes.MediaContainer}>
+                            <CardMedia className={classes.cardmedia}
+                                image={article.img}
+                                title="img"
+                            />
+                        </div>
+                        <CardContent className={classes.contentarea}>
 
-                <CardActionArea className= {classes.actionarea}>
-                <div className={classes.MediaContainer}>
-                <CardMedia  className={classes.cardmedia}
-                            image={article.img}
-                            title="img"
-                            /> 
-                </div>            
-                <CardContent className={classes.contentarea}>
-
-                    <Typography variant="h5">
-                       <Link to={"/article/"+article._id}>{article.title}</Link>
-                    </Typography>
-                    {/* <Typography paragraph>
+                            <Typography variant="h5">
+                                {article.title}
+                            </Typography>
+                            {/* <Typography paragraph>
                         <a href="/story1">{article.content}</a>
                     </Typography> */}
-                </CardContent>
-                </CardActionArea>
+                        </CardContent>
+                    </CardActionArea>
+                </Link>
+                <CardActions className={classes.CardActions}>
+                    <div className="icon">
+                        <IconButton onClick={this.handleClickLike} aria-label="Like">
+                            {this.state.likeStatus ? <FavoriteIcon color="secondary" /> : <FavoriteIcon/>}
+                        </IconButton>
+                        <IconButton onClick={this.handleClick} aria-label="Comment">
+                            <AddCommentIcon />
+                        </IconButton>
+                    </div>
+                </CardActions>
+                {this.state.commentStatus && <Comment /> }
             </Card>
         );
     }

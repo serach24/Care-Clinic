@@ -11,6 +11,7 @@ import Feedback from './pages/FeedBack';
 import Storys from './pages/Storys';
 import About from './pages/About';
 import ProfilePage from './pages/ProfilePage';
+import Comments from './components/Comments';
 
 import HealthHistory from './pages/HealthHistory';
 import Page404 from './pages/404';
@@ -62,6 +63,8 @@ class App extends React.Component {
           <Route exact path='/feedback' render={() =>
                           (<Feedback app={this}/>)}/>
           <Route path='/article/:id' component={Storys}/>
+
+          <Route path="/test" component={Comments}/>
 
           <Route exact path='/about' render={() =>
                           (<About app={this}/>)}/>
