@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Time from './appointment';
+import {Apporequest} from './request'
 
 import "./styles.css";
 import { styles } from './styles';
@@ -16,8 +17,19 @@ import { styles } from './styles';
 const log = console.log;
 
 class DoctorOpenInfo extends React.Component {
-    state={appointment:false};
+    state={appointment:false,
+    };
     submit(){
+        const body = {
+            from : this.props.UUid,
+            to : this.props.doctor.id,
+            time : document.getElementById(this.props.doctor.id +"time").value
+        };
+
+        console.log("make a appointment by "+this.props.UUid +" to "
+         +this.props.doctor.id +" at " +document.getElementById(this.props.doctor.id +"time").value)
+
+        Apporequest(body);
         //talk with backend
         this.setState({appointment:false});
     }
@@ -49,7 +61,7 @@ class DoctorOpenInfo extends React.Component {
             <CardActions>
                     {/* {!this.state.appointment && <Button> Talk</Button>} */}
                     {!this.state.appointment && <Button onClick={()=>this.setState({appointment: true})}> Make Appointment</Button>}
-                    {this.state.appointment && <Time submit={this.submit.bind(this)}/>}
+                    {this.state.appointment && <Time submit={this.submit.bind(this)} doctorId={doctor.id} />}
             </CardActions>
 
             </Card>

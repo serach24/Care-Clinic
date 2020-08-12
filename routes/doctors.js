@@ -5,6 +5,7 @@ const router = express.Router();
 // mongoose model
 const { User } = require("../models/user");
 const { ObjectID } = require("mongodb");
+const user = require('../models/user');
 
 const code500 = 'Internal server error';
 const code400 = 'Bad Request';
@@ -171,4 +172,34 @@ router.patch("/:id", (req, res) => {
         });
 });
 
+router.post("/", (req, res) => {
+    const id = req.body.to;
+    log(id+" start adding appointment")
+	if (!ObjectID.isValid(id)) {
+        log(id+" not vaild")
+		res.status(404).send()  // if invalid id, definitely can't find resource, 404.
+		return;  // so that we don't run the rest of the handler.
+	}
+
+	// If id valid, findById
+	User.findById(id).then((User) => {
+		if (!User) {
+            log(id+" not found in database")
+			res.status(404).send('Resource not found')  // could not find this student
+		} else {
+			const newRev = {
+				appointmentTime: req.body.time,
+                patientId: req.body.from,
+			}
+			User.patients.push(newRev);
+			User.save();
+			res.send(User);
+		}
+	})
+		.catch((error) => {
+			log(error)
+			res.status(500).send('Internal Server Error')  // server error
+		})
+
+})
 module.exports = router;

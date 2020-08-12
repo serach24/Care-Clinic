@@ -9,6 +9,7 @@ const articlesRouter = require('./routes/articles');
 const doctorsRouter = require('./routes/doctors');
 const loginRouter = require('./routes/login');
 const patientsRouter = require('./routes/patients');
+const feedRouter = require('./routes/feedback');
 const sio = require("socket.io");
 // starting the express server
 const app = express();
@@ -112,6 +113,7 @@ app.use('/users', usersRouter);
 
 app.use('/articles', articlesRouter);
 
+app.use('/feed', feedRouter);
 
 
 
