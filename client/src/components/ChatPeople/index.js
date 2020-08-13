@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Chat from "../Chat";
 import { styles } from "./styles";
-import {acquireChatList} from '../../requests/chat';
+// import {acquireChatList} from '../../requests/chat';
 
 class ChatPeople extends React.Component {
   state = {
@@ -17,27 +17,27 @@ class ChatPeople extends React.Component {
 
     talkTo: {},
     // the data below need a serverCall to get
-    people: [
-      {
-        id: "asdf",
-        name: "testUser1",
-        avatar: "/img/test-user1.png",
-        recentMessage: "Hello!",
-      },
-      {
-        id: "qwer",
-        name: "testUser1",
-        avatar: "/img/test-user1.png",
-        recentMessage: "Hello!",
-      },
-    ],
+    // people: [
+    //   {
+    //     id: "asdf",
+    //     name: "testUser1",
+    //     avatar: "/img/test-user1.png",
+    //     recentMessage: "Hello!",
+    //   },
+    //   {
+    //     id: "qwer",
+    //     name: "testUser1",
+    //     avatar: "/img/test-user1.png",
+    //     recentMessage: "Hello!",
+    //   },
+    // ],
   }
 
-  componentWillMount(){
-    acquireChatList(this.props.userId).then((chatList) =>{
-      this.setState({people: chatList})
-    })
-  }
+  // componentDidMount(){
+  //   acquireChatList(this.props.userId).then((chatList) =>{
+  //     this.setState({people: chatList})
+  //   })
+  // }
 
   openChat = (talkTo) => {
     this.setState({
@@ -53,8 +53,8 @@ class ChatPeople extends React.Component {
   }
 
   render() {
-    const { open, onClose, anchorEl, classes } = this.props;
-    const people = this.state.people;
+    const { people, open, onClose, anchorEl, classes } = this.props;
+    // const people = this.state.people;
     return (
       <Popover
         className={classes.chatPeople}
@@ -70,7 +70,7 @@ class ChatPeople extends React.Component {
           horizontal: 'center',
         }}
       >
-        <List className="chat-people">
+        <List className={classes.chatPeople}>
           {people.map(person => (
             <ListItem key={this.state.ukey++} onClick={() => this.openChat(person)} className={classes.chatPerson} alignItems="flex-start">
               <Avatar className="chat-self-avatar" alt="currentUser" src={person.avatar} />

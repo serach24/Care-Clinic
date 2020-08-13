@@ -3,4 +3,8 @@ export const styles = theme => ({
     width: 300,
     cursor: "pointer"
   },
+  chatPeople:{
+    minWidth: 300,
+    minHeight: 100, 
+  }
 });

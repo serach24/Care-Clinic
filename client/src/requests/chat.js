@@ -1,10 +1,7 @@
 export const acquireChatList = (sender) => {
   // Create our request constructor with all the parameters we need
-  const request = new Request("/chatHistory", {
+  const request = new Request(`/chat/${sender}`, {
       method: "get",
-      headers: {
-        sender
-      }
   });
   // Send the request with fetch()
   return fetch(request)
