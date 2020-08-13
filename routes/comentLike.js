@@ -57,31 +57,35 @@ router.delete('/like', (req, res) => {
 });
 
 //add comment
-// router.post('/addRely', (req, res) => {
-//     const id = req.body.articleId;
-//     const comment = req.body.comment;
-//     log(comment)
-//     if (!ObjectID.isValid(id)) {
-//         res.status(404).send(); // if invalid id, definitely can't find resource, 404.
-//         return;
-//     }
-//     fieldToPush ={};
-//     fieldToPush.img = comment.img;
-//     fieldToPush.userName = comment.userName
-//     fieldToPush.userProfileLink = 
-// 	Article.findByIdAndUpdate(id, {$push: {likes: comment }}, {new:true, useFindAndModify: false}).then((likes) => {
-// 		if (!likes) {
-// 			res.status(404).send(code404)  // could not find this student
-// 		} else {
-// 			res.send(likes);
-// 		}
-// 	})
-// 	.catch((error) => {
-// 			log(error)
-// 			res.status(400).send(code400) // bad request
-// 	})
+router.put('/rely', (req, res) => {
+    const id = req.body.articleId;
+    const comment = req.body.comment;
+    log(comment)
+    if (!ObjectID.isValid(id)) {
+        res.status(404).send("resource not found"); // if invalid id, definitely can't find resource, 404.
+        return;
+    }
+    fieldToPush ={};
+    fieldToPush.img = comment.img;
+    fieldToPush.userName = comment.userName
+    fieldToPush.userProfileLink = comment.userProfileLink
+    fieldToPush.commentTime = comment.commentTime
+    fieldToPush.comment = comment.comment
+	Article.findByIdAndUpdate(id, {$push: {comments: fieldToPush }}, {new:true, useFindAndModify: false}).then((likes) => {
+		if (!likes) {
+			res.status(404).send(code404)  // could not find this student
+		} else {
+			res.send(likes);
+		}
+	})
+	.catch((error) => {
+			log(error)
+			res.status(400).send(code400) // bad request
+	})
 
-// });
+});
+
+// router.delete()
 
 
 module.exports = router;
