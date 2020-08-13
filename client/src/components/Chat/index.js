@@ -75,6 +75,7 @@ class Chat extends React.Component {
         </DialogTitle>
         <Paper className="chat-component-wrapper">
           <ChatMessages
+            userId={userId}
             messages={this.state.messages}
           />
           <ChatInput
