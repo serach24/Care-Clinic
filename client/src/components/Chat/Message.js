@@ -10,11 +10,11 @@ class Message extends React.Component {
 
 
   render() {
-    const { message } = this.props;
+    const { message, userId } = this.props;
 
     return (
       <div>
-        {message.user === ""
+        {message.sender === userId
           // message the current user sent
           ? <ListItem className="chat-self-message" alignItems="flex-start">
             <Avatar className="chat-self-avatar" alt="currentUser" src="" />

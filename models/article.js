@@ -13,7 +13,7 @@ const articleSchema = new mongoose.Schema({
     },
     img: {
         data: Buffer,
-        contentType:String
+        contentType: String
     }
 });
 const Article = mongoose.model('Article', articleSchema)
