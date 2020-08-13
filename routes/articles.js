@@ -15,7 +15,9 @@ router.post("/", (req, res) =>{
         const article = new Article({
             title: req.body.title,
             content: req.body.content,
-            img: req.body.img
+            img: req.body.img,
+            likes:req.body.likes,
+            comments:req.body.comments
         });
     
         // Save doctor to the database
@@ -35,7 +37,6 @@ router.get("/", (req,res) => {
     // log(req.body)
     Article.find().then(
         articles => {
-            log();
             res.send({ articles }); // can wrap in object if want to add more properties
         },
         error => {
@@ -46,7 +47,7 @@ router.get("/", (req,res) => {
 //get article by id
 router.get("/:id", (req, res) => {
     /// req.params has the wildcard parameters in the url, in this case, id.
-    log(req.params.id)
+    // log(req.params.id)
     const id = req.params.id;
 
     // Good practise: Validate id immediately.
@@ -70,6 +71,7 @@ router.get("/:id", (req, res) => {
 });
 //article delete 
 //article update
+
 
 
 module.exports = router;

@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { styles } from './styles';
 import { getHealth, changeHealth } from './request';
 
-const log = console.log;
 class HealthHistory extends React.Component {
     constructor(props) {
         super(props);
@@ -74,7 +73,6 @@ class HealthHistory extends React.Component {
 
 
     render() {
-        const { which, change, UUid } = this.props;
         return (
             <div>
                 {/* <div>1{this.state.patient.firstName}</div> */}

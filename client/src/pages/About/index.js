@@ -1,9 +1,7 @@
 import React from "react";
 
 //importing components
-import NavBar from "../../components/ui/NavBar";
 import StoryPage from "../../components/StoryPage";
-import HealthHistory from "../HealthHistory";
 
 import "./styles.css";
 

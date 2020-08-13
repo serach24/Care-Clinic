@@ -16,10 +16,10 @@ import {useStyles} from './styles';
 function AddComment(props) {
     const classes = useStyles();
     return (
-                <div class={classes.field}>
+                <div className={classes.field}>
                     <TextareaAutosize onChange={props.onChange} className={classes.textArea}>
                     </TextareaAutosize>
-                    <Button onClick={props.onClick} variant="contained" class={classes.replyButton} disableRipple>
+                    <Button onClick={props.onClick} variant="contained" className={classes.replyButton} disableRipple>
                         reply
                     </Button>
 
@@ -62,47 +62,47 @@ function Comment(props) {
 
 function CommentContainer(props) {
     const classes = useStyles();
-    const aComments = [
-        {
-            _id: '123123',
-            img: 'https://i.ibb.co/cCCf9dF/316703-normal.png',
-            userName: 'Jack',
-            userProfileLink: '/',
-            commentTime: 'Jan 1 2019',
-            comment: "This is a test case for comment feature"
-        },
-        {
-            _id: '123124',
-            img: 'https://i.ibb.co/cCCf9dF/316703-normal.png',
-            userName: 'Zoe',
-            userProfileLink: '/',
-            commentTime: 'Jan 2 2019',
-            comment: "This is a test case for comment feature"
-        },
-        {
-            _id: '123125',
-            img: 'https://i.ibb.co/cCCf9dF/316703-normal.png',
-            userName: 'Ken',
-            userProfileLink: '/',
-            commentTime: 'Jan 3 2019',
-            comment: "This is a test case for comment feature"
-        },
-        {
-            _id: '123126',
-            img: 'https://i.ibb.co/cCCf9dF/316703-normal.png',
-            userName: 'Alex',
-            userProfileLink: '/',
-            commentTime: 'Jan 4 2019',
-            comment: "This is a test case for comment feature"
-        },
-    ]
+    // console.log(props.comments);
+    // const aComments = [
+    //     {
+    //         _id: '123123',
+    //         img: 'https://i.ibb.co/cCCf9dF/316703-normal.png',
+    //         userName: 'Jack',
+    //         userProfileLink: '/',
+    //         commentTime: 'Jan 1 2019',
+    //         comment: "This is a test case for comment feature"
+    //     },
+    //     {
+    //         _id: '123124',
+    //         img: 'https://i.ibb.co/cCCf9dF/316703-normal.png',
+    //         userName: 'Zoe',
+    //         userProfileLink: '/',
+    //         commentTime: 'Jan 2 2019',
+    //         comment: "This is a test case for comment feature"
+    //     },
+    //     {
+    //         _id: '123125',
+    //         img: 'https://i.ibb.co/cCCf9dF/316703-normal.png',
+    //         userName: 'Ken',
+    //         userProfileLink: '/',
+    //         commentTime: 'Jan 3 2019',
+    //         comment: "This is a test case for comment feature"
+    //     },
+    //     {
+    //         _id: '123126',
+    //         img: 'https://i.ibb.co/cCCf9dF/316703-normal.png',
+    //         userName: 'Alex',
+    //         userProfileLink: '/',
+    //         commentTime: 'Jan 4 2019',
+    //         comment: "This is a test case for comment feature"
+    //     },
+    // ]
 
 
     return (
         <div>
             <Divider />
-            {aComments.map((element, index) => (
-
+            {props.comments.map((element, index) => (
                 <div id={element._id} className={classes.cell}>
                     <Comment img={element.img} userName={element.userName} userProfileLink={element.userProfileLink} commentTime={element.commentTime} comment={element.comment} index={index} />
                 </div>

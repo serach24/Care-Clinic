@@ -72,7 +72,6 @@ export const logout = (app) => {
 };
 
 export const signup = (info, app) => {
-    const url = "/users";
     const request = new Request("/users", {
         method: "post",
         body: JSON.stringify(info.state),

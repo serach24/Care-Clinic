@@ -39,7 +39,7 @@ class Home extends React.Component {
         }
         
     };
-    componentWillMount() {
+    componentDidMount() {
         homeContent(this);
     }
     render() {

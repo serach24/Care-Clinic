@@ -11,6 +11,8 @@ const loginRouter = require('./routes/login');
 const patientsRouter = require('./routes/patients');
 const feedRouter = require('./routes/feedback');
 const chatRouter = require('./routes/chat');
+const commentLike = require('./routes/comentLike');
+
 const sio = require("socket.io");
 // starting the express server
 const app = express();
@@ -51,7 +53,7 @@ app.use(
 
 /*************************************************/
 // Express server listening...
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 const server = app.listen(port, () => {
   log(`Listening on port ${port}...`);
 });
@@ -134,6 +136,8 @@ app.use('/articles', articlesRouter);
 app.use('/feed', feedRouter);
 
 app.use('/chat', chatRouter);
+
+app.use('/comment', commentLike);
 
 
 

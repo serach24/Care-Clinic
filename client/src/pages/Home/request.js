@@ -17,7 +17,7 @@ export const homeContent = (homeComp) => {
         })
         .then(json => {
             if (json.articles !== undefined) {
-                // console.log(json.articles);
+                console.log(json.articles);
                 homeComp.setState({articles: json.articles})
             }
         })
