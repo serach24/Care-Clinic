@@ -22,10 +22,16 @@ class Chat extends React.Component {
   componentDidMount() {
     socket.emit('on', { userId: this.props.userId, socketId: socket.id })
     socket.on('receiveMsg', (message) => {
-      console.log(message)
       if (message) {
         this.setState({
           messages: [...this.state.messages, message]
+        })
+      }
+    })
+    socket.on('chatTip', (tip) => {
+      if (tip) {
+        this.setState({
+          tip
         })
       }
     })
@@ -71,7 +77,7 @@ class Chat extends React.Component {
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogTitle id="customized-dialog-title" onClose={onClose}>
-          {talkTo.name}
+          {talkTo.username}
         </DialogTitle>
         <Paper className="chat-component-wrapper">
           <ChatMessages

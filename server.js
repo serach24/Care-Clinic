@@ -70,7 +70,11 @@ io.on('connection', (socket) => {
   socket.on('sendMsg', (message) => {
     log('sendmsg: ' + message);
 
-    const receiverId = userList.filter(userInfo => userInfo.userId == message.receiver)[0].socketId
+    const receiver = userList.filter(userInfo => userInfo.userId == message.receiver)[0]
+    if (!receiver) {
+      socket.emit('chatTip', "He/She is not online yet and could not see your message");
+      return;
+    }
     // TODO verify if user has permission to talk to receiver
 
     // update time to server time
