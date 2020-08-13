@@ -9,6 +9,7 @@ class Appointments extends React.Component {
       page: 0,
       itemsPerPage: 3,
       id: this.props.app.state.userId,
+      passedNorT: true,
       // the data below need a serverCall to get
       doctors: 
       [
@@ -46,7 +47,7 @@ class Appointments extends React.Component {
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.expertise}</TableCell>
                 <TableCell>{row.date}</TableCell>
-                <TableCell ><Button onClick={console.log(row)}>Talk</Button></TableCell>
+                <TableCell ><Button onClick={()=>{console.log(row)}}>Talk</Button></TableCell>
               </TableRow>
             ))}
           </TableBody>

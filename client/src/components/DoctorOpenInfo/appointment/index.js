@@ -11,7 +11,7 @@ class Time extends React.Component {
     id={this.props.doctorId + "time"}
     label="Next appointment"
     type="datetime-local"
-    defaultValue="2017-05-24T10:30"
+    defaultValue="2020-8-19T10:30"
     InputLabelProps={{
         shrink: true,
     }}

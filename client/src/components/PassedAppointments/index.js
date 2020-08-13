@@ -1,41 +1,22 @@
 import React from "react"
 import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePagination } from "@material-ui/core"
 import Button from "@material-ui/core/Button";
+import {Apporequest} from "./request";
 class PassedAppointments extends React.Component {
-  state = {
-    page: 0,
-    itemsPerPage: 3,
-
-    // the data below need a serverCall to get
-    doctors: [
-      {
-        id: 0,
-        realName: "John Doe91",
-        username: "testDoctor91",
-        expertise: "department90",
-        date: "2000 06 23",
-      },
-      {
-        id: 1,
-        realName: "John Doe241",
-        username: "testDoctor244",
-        expertise: "department914",
-        date: "2000 07 25",
-      },      {
-        id: 2,
-        realName: "John Doe11",
-        username: "testDoctor31",
-        expertise: "department44",
-        date: "2000 07 27",
-      },      {
-        id: 3,
-        realName: "John Doe23",
-        username: "testDoctor23",
-        expertise: "department24",
-        date: "2000 07 28",
-      },
-    ]
-  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 0,
+      itemsPerPage: 3,
+      id: this.props.app.state.userId,
+      passedNorT: false,
+      // the data below need a serverCall to get
+      doctors: 
+      [
+      ]
+    }
+    Apporequest(this)
+}
   handleChangePage = (e,page) =>{
     this.setState({page})
   }
