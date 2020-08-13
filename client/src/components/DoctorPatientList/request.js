@@ -18,29 +18,18 @@ export const Apporequest = (ths) => {
             return res.json();
         }
     })
-            // {
-        //   id: 0,
-        //   realName: "John Doe1",
-        //   username: "testUser1",
-        //   description: "headache, fever ...",
-        //   appointTime: "2020-06-28 09:00 am",
-        //   diagnosis: "",
-        //   prescription: "",
-        //   status: "Pending"
-        // },
     .then(json => {
         if (json.appos !== undefined) {
             // console.log(json.articles);
-            const _patients = [];
-            var n = 0;
+            var patients = [];
             const ap = json.appos;
-            for (var i = 0; i < ap.length; i++) {
-                const pid = ap[i].patientId
-                const ddt = new Date(ap[i].appointmentTime)
+            ap.forEach((patient,index) => {
+                const pid = patient.patientId
+                const ddt = new Date(patient.appointmentTime)
                 const now = new Date()
                 var SST = 'Pending';
                 
-                if(ap[i].status === false){
+                if(patient.status === false){
                     SST = "Pending"
                 }
                 else if ((Math.abs(ddt.getTime()-now.getTime()))<=86400000){
@@ -55,22 +44,22 @@ export const Apporequest = (ths) => {
                 else{
                     SST = "Declined"
                 }
+                const strTime= ddt.format('DD-MM-YYYY')
                 const pat = {
-                    id: n,
-                    realName: ap[i].realName,
-                    username: ap[i].username,
+                    id: index,
+                    realName: patient.realName,
+                    userName: patient.userName,
                     description: "",
-                    appointTime: ddt,
+                    appointTime: strTime,
                     diagnosis: "",
                     prescription: "",
-                    status: SST,
+                    status: SST
                 }
-                n = n+1;
-                console.log(pat)
-                _patients.push(pat)
-            }
-            ths.setState({patients: _patients})
+                patients.push(pat);
+            })
+            console.log(patients);
         }
+        ths.setState({patients:patients})
     })
     .catch(error => {
         console.log(error);

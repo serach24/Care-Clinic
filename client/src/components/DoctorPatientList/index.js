@@ -21,7 +21,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 0,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-28 09:00 am",
           diagnosis: "",
@@ -31,7 +31,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 1,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-28 09:00 am",
           diagnosis: "",
@@ -41,7 +41,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 2,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-20 09:00 am",
           diagnosis: "Some basic flu",
@@ -51,7 +51,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 3,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-28 09:00 am",
           diagnosis: "Some basic flu",
@@ -61,7 +61,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 4,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-28 09:00 am",
           diagnosis: "Some basic flu",
@@ -71,7 +71,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 5,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-28 09:00 am",
           diagnosis: "TCU 1/52, severe",
@@ -81,7 +81,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 6,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-28 09:00 am",
           diagnosis: "TCU 1/7, hypertension",
@@ -91,7 +91,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 7,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-28 08:00 am",
           diagnosis: "hypertension",
@@ -101,7 +101,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 8,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-20 09:00 am",
           diagnosis: "mental anxiety",
@@ -111,7 +111,7 @@ class DoctorPatientList extends React.Component {
         {
           id: 9,
           realName: "John Doe1",
-          username: "testUser1",
+          userName: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-20 09:00 am",
           diagnosis: "mental anxiety",
@@ -120,9 +120,11 @@ class DoctorPatientList extends React.Component {
         },
       ]
     }
-    Apporequest(this)
+    
 }
-
+componentDidMount() {
+  Apporequest(this)
+}
 
   renderButton(id) {
     if (this.state.patients[id].status === "Pending") {
@@ -224,7 +226,7 @@ class DoctorPatientList extends React.Component {
           <TableHead>
             <TableRow>
               <TableCell>Patient Name</TableCell>
-              {/* TODO: redirect username to profile link */}
+              {/* TODO: redirect userName to profile link */}
               <TableCell >Patient Profile</TableCell>
               <TableCell >Description</TableCell>
               <TableCell >Appointment Time</TableCell>
@@ -239,7 +241,7 @@ class DoctorPatientList extends React.Component {
               .map((row) => (
                 <TableRow>
                   <TableCell>{row.realName}</TableCell>
-                  <TableCell>{row.username}</TableCell>
+                  <TableCell>{row.userName}</TableCell>
                   <TableCell>{row.description}</TableCell>
                   <TableCell>{row.appointTime}</TableCell>
                   <TableCell>
