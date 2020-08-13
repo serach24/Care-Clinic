@@ -190,6 +190,8 @@ router.post("/", (req, res) => {
 			const newRev = {
 				appointmentTime: req.body.time,
                 patientId: req.body.from,
+                realName: req.body.real,
+                username: req.body.name,
 			}
 			User.patients.push(newRev);
 			User.save();

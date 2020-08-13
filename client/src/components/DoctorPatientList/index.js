@@ -18,16 +18,6 @@ class DoctorPatientList extends React.Component {
       
       // the data below need a serverCall to get
       patients: [
-        // {
-        //   id: 0,
-        //   realName: "John Doe1",
-        //   username: "testUser1",
-        //   description: "headache, fever ...",
-        //   appointTime: "2020-06-28 09:00 am",
-        //   diagnosis: "",
-        //   prescription: "",
-        //   status: "Pending"
-        // },
       ]
     }
     Apporequest(this)

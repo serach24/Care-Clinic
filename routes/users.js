@@ -75,7 +75,6 @@ router.post("/changephoneEmail", (req, res) => {
 router.get("/get_profile/:id", (req, res) => {
     User.findById(req.params.id)
         .then(user => {
-            console.log("herehhhhh"+user)
             res.send(user)
         })
         .catch(error => {

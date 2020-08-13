@@ -27,7 +27,17 @@ const patientSchema = new mongoose.Schema({
 	status: {
 		type: Boolean,
 		default: false
-	}
+	},
+	realName: {
+		type: String,
+		required: false,
+		minlength: 1,
+	},
+	username: {
+		type: String,
+		required: false,
+		minlength: 1,
+	},
 })
 
 const problemSchema = new mongoose.Schema({
