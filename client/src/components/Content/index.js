@@ -6,28 +6,23 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddCommentIcon from '@material-ui/icons/AddComment';
 import IconButton from '@material-ui/core/IconButton';
-import Divider from '@material-ui/core/Divider';
 import Comment from '../Comments';
 
 
 import "./styles.css";
 import { styles } from './styles';
 
-
-const log = console.log;
-
 class Content extends React.Component {
     state= {
         commentStatus: false,
         likeStatus: false
     }
-
     handleClick = () => {
+        // getComments(this);
         this.setState(prevState => ({
             commentStatus: !prevState.commentStatus
         }),() => console.log(this.state.commentStatus))
@@ -74,7 +69,8 @@ class Content extends React.Component {
                         </IconButton>
                     </div>
                 </CardActions>
-                {this.state.commentStatus && <Comment /> }
+                {console.log(article.comments)}
+                {this.state.commentStatus && <Comment comments={article.comments}/> }
             </Card>
         );
     }
