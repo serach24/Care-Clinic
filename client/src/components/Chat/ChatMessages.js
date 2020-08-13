@@ -16,7 +16,7 @@ class ChatMessages extends React.Component {
           {messages.map(message => (
             <Message
               message={message}
-              userId={useId}
+              userId={userId}
             />
           ))}
         </List>

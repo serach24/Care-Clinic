@@ -67,7 +67,7 @@ class Chat extends React.Component {
   }
 
   render() {
-    const { open, onClose, talkTo } = this.props;
+    const { open, onClose, talkTo, userId } = this.props;
     return (
       <Dialog open={open} onClose={onClose}>
         <DialogTitle id="customized-dialog-title" onClose={onClose}>
