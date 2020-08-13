@@ -118,13 +118,25 @@ router.post("/", (req, res) => {
                         if(doctors[i].patients[i2].patientId +'' === id){
                             const ddt = new Date(doctors[i].patients[i2].appointmentTime)
                             const now = new Date()
+                            const status = doctors[i].patients[i2].status;
+                            var SST
+                            if(status === false){
+                                SST = "pending"
+                            }
+                            else if(status === true){
+                                SST = "approved"
+                            }
+                            else{
+                                SST = "declinced"
+                            }
                             if((ddt.getTime() > now.getTime()-86400000) &&(req.body.passedNorT)){
                             appos.push({
                                 id: doctors[i].id,
                                 username: doctors[i].username,
                                 realName: doctors[i].realName,
                                 date: ddt+"",
-                                expertise: "Balabilipala"
+                                expertise: "Balabilipala",
+                                status : SST
                             });
                         }
                         else if (!(ddt.getTime() > now.getTime()-86400000) &&!(req.body.passedNorT)){
@@ -133,7 +145,8 @@ router.post("/", (req, res) => {
                                 username: doctors[i].username,
                                 realName: doctors[i].realName,
                                 date: ddt+"",
-                                expertise: "Balabilipala"
+                                expertise: "Balabilipala",
+                                status : SST
                             });
                         }
                         }

@@ -46,7 +46,6 @@ export const LoginRequest = (loginComp, app) => {
                 app.setUserId(json.userId);
                 app.setState({loginState: json.loginState});
                 app.setState({profile:json.profile});
-                console.log(json);
             }
         })
         .catch(error => {
@@ -102,7 +101,34 @@ export const signup = (info, app) => {
         });
 
 }
+export const getProfileOnly = (id) => {
+    // const url = "/users/get_profile/"+id;
+    const request = new Request(`/users/get_profile/${id}`, {
+        method: "get",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
 
+    fetch(request)
+        .then(res => {
+            console.log(res)
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if(json){
+                console.log(json)
+                return(json)
+            }
+
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
 export const getProfile = (app) => {
     const url = "/users/get_profile";
 

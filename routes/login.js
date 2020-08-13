@@ -32,7 +32,7 @@ router.post("/login", (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    log(username, password);
+    // log(username, password);
     // Use the static method on the User model to find a user
     // by their email and password
     User.findByNamePassword(username, password)
@@ -42,7 +42,7 @@ router.post("/login", (req, res) => {
             req.session.user = user._id;
             req.session.username = user.username;
             req.session.loginState = user.level;
-            log('after:'+user._id);
+            // log('after:'+user._id);
             // log('after:'+user.username);
             // log('after:'+user.level);
             // log(req.session)

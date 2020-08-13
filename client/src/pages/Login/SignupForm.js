@@ -22,9 +22,11 @@ class SignupForm extends React.Component {
     age: "",
     mainmail:"",
     phone:"",
+    gender:"",
     backupemail:"not setted yet",
     needVerify: false,
     checkError: false,
+    level: 1,
   }
 
   handleInputChange = (e) => {
@@ -42,6 +44,12 @@ class SignupForm extends React.Component {
   }
 
   submitDoctor = (event) => {
+    if(this.state.level === 1){
+      this.setState({level:3});
+    }
+    else{
+      this.setState({level:1});  
+    }
     this.setState({
       needVerify: event.target.checked
     },()=> console.log(this.state.needVerify))
@@ -91,6 +99,13 @@ class SignupForm extends React.Component {
           name="phone"
           label="Phone number"
           value={this.state.phone}
+          onChange={this.handleInputChange}
+        />
+        <Input
+          error={isPasswordEmpty}
+          name="gender"
+          label="gender"
+          value={this.state.gender}
           onChange={this.handleInputChange}
         />
         <Input

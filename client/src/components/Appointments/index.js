@@ -51,21 +51,25 @@ class Appointments extends React.Component {
               <TableCell >Doctor Username</TableCell>
               <TableCell >Department</TableCell>
               <TableCell >Date</TableCell>
+              <TableCell >Status</TableCell>
               <TableCell >Talk</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {this.state.doctors
-              .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
-              .map((doctor) => (
-                <TableRow key={doctor.id}>
-                  <TableCell>{doctor.realName}</TableCell>
-                  <TableCell>{doctor.username}</TableCell>
-                  <TableCell>{doctor.expertise}</TableCell>
-                  <TableCell>{doctor.date}</TableCell>
-                  <TableCell ><Button onClick={() => this.openChat(doctor)}>Talk</Button></TableCell>
-                </TableRow>
-              ))}
+
+            .slice(page * itemsPerPage, (page+1) * itemsPerPage)
+            .map((row) => (
+              <TableRow key={row.id}>
+                <TableCell>{row.realName}</TableCell>
+                <TableCell>{row.username}</TableCell>
+                <TableCell>{row.expertise}</TableCell>
+                <TableCell>{row.date}</TableCell>
+                <TableCell >{row.status}</TableCell>
+                <TableCell ><Button onClick={() => this.openChat(doctor)}>Talk</Button></TableCell>
+              </TableRow>
+            ))}
+
           </TableBody>
           <TableFooter>
             <TableRow>
