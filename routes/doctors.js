@@ -228,4 +228,42 @@ router.post("/appointment/get", (req, res) => {
         res.status(500).send(code500); // server error
     });
     });
+
+    router.get("/appointment/change/:index/:id/:TFN", (req, res) => {
+        const id = req.params.id;
+        const index = req.params.index;
+        const TFN = req.params.TFN;
+
+        if (!ObjectID.isValid(id)) {
+            res.status(404).send(code404)  // if invalid id, definitely can't find resource, 404.
+            return;  // so that we don't run the rest of the handler.
+        }
+        User.findById(id)
+        .then(doctor => {
+            if (!doctor) {
+                res.status(404).send(code404); // could not find this doctor
+            } else {
+                if (doctor.level !== 3){
+                    res.status(404).send(code404);
+                }else{
+                    if(TFN === '0'){
+                        //console.log(000000000000)
+                        doctor.patients[index].status = true;
+                    }
+                    else if(TFN === '1'){
+                        doctor.patients[index].status = false;
+                    }
+                    else{
+                        doctor.patients[index].status = null;
+                    }
+                    doctor.save();
+                    res.send({appos : doctor.patients});
+                }
+            }
+        })
+        .catch(error => {
+            res.status(500).send(code500); // server error
+        });
+        });
+
 module.exports = router;

@@ -35,6 +35,7 @@ class Appointments extends React.Component {
               <TableCell >Doctor Username</TableCell>
               <TableCell >Department</TableCell>
               <TableCell >Date</TableCell>
+              <TableCell >Status</TableCell>
               <TableCell >Talk</TableCell>
             </TableRow>
           </TableHead>
@@ -47,6 +48,7 @@ class Appointments extends React.Component {
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.expertise}</TableCell>
                 <TableCell>{row.date}</TableCell>
+                <TableCell >{row.status}</TableCell>
                 <TableCell ><Button onClick={()=>{console.log(row)}}>Talk</Button></TableCell>
               </TableRow>
             ))}

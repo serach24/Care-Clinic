@@ -1,5 +1,32 @@
 import {getProfileOnly} from "./../../auth/authUtil"
-
+export const change = (id,index,TFN) =>{
+        // const url = "/users/get_profile/"+id;
+        const request = new Request("/doctors/appointment/change/"+index+"/"+id+"/"+TFN, {
+            method: "get",
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            }
+        });
+    
+        fetch(request)
+            .then(res => {
+                console.log(res)
+                if (res.status === 200) {
+                    return res.json();
+                }
+            })
+            .then(json => {
+                if(json){
+                    console.log(json)
+                    return(json)
+                }
+    
+            })
+            .catch(error => {
+                console.log(error);
+            });
+}
 export const Apporequest = (ths) => {
     // Create our request constructor with all the parameters we need
     const request = new Request("/doctors/appointment/get", {
@@ -28,8 +55,14 @@ export const Apporequest = (ths) => {
                 const ddt = new Date(patient.appointmentTime)
                 const now = new Date()
                 var SST = 'Pending';
-                
-                if(patient.status === false){
+                console.log(patient.state+"   here here line 58 at Doctorlist/request")
+                if(patient.status === null){
+                    SST = "Declined"
+                }
+                else if ((ddt.getTime()-now.getTime())<-86400000){
+                    SST = "Passed"
+                }
+                else if(patient.status === false){
                     SST = "Pending"
                 }
                 else if ((Math.abs(ddt.getTime()-now.getTime()))<=86400000){
@@ -38,13 +71,9 @@ export const Apporequest = (ths) => {
                 else if ((ddt.getTime()-now.getTime())>86400000){
                     SST = "Subsequent"
                 }
-                else if ((ddt.getTime()-now.getTime())<-86400000){
-                    SST = "Passed"
-                }
-                else{
-                    SST = "Declined"
-                }
-                const strTime= ddt.format('DD-MM-YYYY')
+
+
+                const strTime= ddt +""
                 const pat = {
                     id: index,
                     realName: patient.realName,

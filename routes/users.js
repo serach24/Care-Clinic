@@ -17,9 +17,10 @@ router.post("/", (req, res) => {
   const user = new User({
       username: req.body.username,
       password: req.body.password,
-      gender: req.body.gender,
+	  level: req.body.level, 
       realName: req.body.realName,
       location: req.body.location,
+      gender: req.body.gender,
       age: req.body.age,
       phone:req.body.phone,
       mainmail:req.body.mainmail,

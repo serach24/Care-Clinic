@@ -103,12 +103,12 @@ const UserSchema = new mongoose.Schema({
 	},
 	gender: {
 		type: String,
-		required: true,
+		required: false,
 		minlength: 1
 	},
 	level: {
 		type: Number,
-		default: 1
+		require:true,
 	},
 	realName: {
 		type: String,
@@ -142,7 +142,7 @@ const UserSchema = new mongoose.Schema({
 	},
 	needVerify: {
 		type: Boolean,
-		required: true
+		required: false,
 	},
 	img: {
 		type: String,

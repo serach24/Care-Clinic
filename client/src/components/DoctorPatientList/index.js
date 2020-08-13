@@ -3,7 +3,7 @@ import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePag
 import Button from "@material-ui/core/Button";
 import Chat from "../Chat";
 import TreatmentDialog from "../TreatmentDialog";
-import {Apporequest} from "./request";
+import {change ,Apporequest} from "./request";
 
 class DoctorPatientList extends React.Component {
   constructor(props) {
@@ -129,7 +129,7 @@ componentDidMount() {
   renderButton(id) {
     if (this.state.patients[id].status === "Pending") {
       return (<div>
-        <Button size="small" onClick={() => { this.acceptAppointment(id) }} variant="contained" color="primary">
+        <Button size="small" onClick={() => { this.acceptAppointment(id,this.state.patients[id].appointTime) }} variant="contained" color="primary">
           Accept
         </Button>
         <Button size="small" onClick={() => { this.declineAppointment(id) }} variant="contained" color="secondary">
@@ -182,14 +182,29 @@ componentDidMount() {
     })
   }
 
-  acceptAppointment = (id) => {
+  acceptAppointment = (index,time) => {
     const patients = this.state.patients;
-    patients[id].status = "Current";
+    change(this.state.id,index,0);
+    const ddt = new Date(time)
+    const now = new Date()
+    var SST = 'Pending';
+ 
+    if ((ddt.getTime()-now.getTime())<-86400000){
+        SST = "Passed"
+    }
+    else if ((Math.abs(ddt.getTime()-now.getTime()))<=86400000){
+        SST = "Current"
+    }
+    else if ((ddt.getTime()-now.getTime())>86400000){
+        SST = "Subsequent"
+    }
+    patients[index].status = SST;
     this.setState({ patients });
   }
 
   declineAppointment = (id) => {
     const patients = this.state.patients;
+    change(this.state.id,id,2);
     patients[id].status = "Declined";
     this.setState({ patients });
   }
