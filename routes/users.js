@@ -11,7 +11,7 @@ const { User } = require("../models/user");
 // });
 
 router.post("/", (req, res) => {
-  log(req.body);
+//   log(req.body);
 
   // Create a new user
   const user = new User({
@@ -26,7 +26,7 @@ router.post("/", (req, res) => {
       backupemail:req.body.mainmail,
       needVerify: req.body.needVerify
   });
-  log(user);
+//   log(user);
   // Save the user
   user.save().then(
       user => {
@@ -37,7 +37,7 @@ router.post("/", (req, res) => {
               });
       },
       error => {
-          log(error);
+        //   log(error);
           res.status(400).send(error); // 400 for bad request
       }
   );
@@ -45,7 +45,7 @@ router.post("/", (req, res) => {
 
 // a GET route to get all users
 router.get("/", (req, res) => {
-  console.log("here")
+//   console.log("here")
   User.find().then(
       students => {
           let doctors = [];
@@ -75,6 +75,7 @@ router.post("/changephoneEmail", (req, res) => {
 router.get("/get_profile/:id", (req, res) => {
     User.findById(req.params.id)
         .then(user => {
+            console.log("herehhhhh"+user)
             res.send(user)
         })
         .catch(error => {

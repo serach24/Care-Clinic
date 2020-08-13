@@ -102,13 +102,28 @@ export const signup = (info, app) => {
 
 }
 export const getProfileOnly = (id) => {
-    const url = "/users/get_profile/"+id;
+    // const url = "/users/get_profile/"+id;
+    const request = new Request(`/users/get_profile/${id}`, {
+        method: "get",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
 
-    fetch(url)
+    fetch(request)
         .then(res => {
+            console.log(res)
             if (res.status === 200) {
-                return res.json;
+                return res.json();
             }
+        })
+        .then(json => {
+            if(json){
+                console.log(json)
+                return(json)
+            }
+
         })
         .catch(error => {
             console.log(error);
