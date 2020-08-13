@@ -18,6 +18,106 @@ class DoctorPatientList extends React.Component {
       
       // the data below need a serverCall to get
       patients: [
+        {
+          id: 0,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "",
+          prescription: "",
+          status: "Pending"
+        },
+        {
+          id: 1,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "",
+          prescription: "",
+          status: "Pending"
+        },
+        {
+          id: 2,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-20 09:00 am",
+          diagnosis: "Some basic flu",
+          prescription: "some medicine here",
+          status: "Declined"
+        },
+        {
+          id: 3,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "Some basic flu",
+          prescription: "some medicine here",
+          status: "Current"
+        },
+        {
+          id: 4,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "Some basic flu",
+          prescription: "some medicine here",
+          status: "Current"
+        },
+        {
+          id: 5,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "TCU 1/52, severe",
+          prescription: "some medicine here",
+          status: "Subsequent"
+        },
+        {
+          id: 6,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "TCU 1/7, hypertension",
+          prescription: "some medicine here",
+          status: "Subsequent"
+        },
+        {
+          id: 7,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 08:00 am",
+          diagnosis: "hypertension",
+          prescription: "some medicine here",
+          status: "Finished"
+        },
+        {
+          id: 8,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-20 09:00 am",
+          diagnosis: "mental anxiety",
+          prescription: "some medicine here",
+          status: "Finished"
+        },
+        {
+          id: 9,
+          realName: "John Doe1",
+          username: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-20 09:00 am",
+          diagnosis: "mental anxiety",
+          prescription: "some medicine here",
+          status: "Finished"
+        },
       ]
     }
     Apporequest(this)

@@ -32,6 +32,7 @@ export const Apporequest = (ths) => {
         if (json.appos !== undefined) {
             // console.log(json.articles);
             const _patients = [];
+            var n = 0;
             const ap = json.appos;
             for (var i = 0; i < ap.length; i++) {
                 const pid = ap[i].patientId
@@ -55,7 +56,7 @@ export const Apporequest = (ths) => {
                     SST = "Declined"
                 }
                 const pat = {
-                    id: pid,
+                    id: n,
                     realName: ap[i].realName,
                     username: ap[i].username,
                     description: "",
@@ -64,6 +65,7 @@ export const Apporequest = (ths) => {
                     prescription: "",
                     status: SST,
                 }
+                n = n+1;
                 console.log(pat)
                 _patients.push(pat)
             }
