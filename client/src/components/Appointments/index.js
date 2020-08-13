@@ -66,7 +66,7 @@ class Appointments extends React.Component {
                 <TableCell>{row.expertise}</TableCell>
                 <TableCell>{row.date}</TableCell>
                 <TableCell >{row.status}</TableCell>
-                <TableCell ><Button onClick={() => this.openChat(doctor)}>Talk</Button></TableCell>
+                <TableCell ><Button onClick={() => this.openChat(row)}>Talk</Button></TableCell>
               </TableRow>
             ))}
 
