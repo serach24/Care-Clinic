@@ -8,7 +8,7 @@ import "./styles.css"
 class ChatMessages extends React.Component {
   
   render() {
-    const { messages} = this.props;
+    const { messages, userId} = this.props;
     // const classes = Styles();
     return (
       <div>
@@ -16,6 +16,7 @@ class ChatMessages extends React.Component {
           {messages.map(message => (
             <Message
               message={message}
+              userId={userId}
             />
           ))}
         </List>
