@@ -202,4 +202,28 @@ router.post("/", (req, res) => {
 		})
 
 })
+
+router.post("/appointment/get", (req, res) => {
+    const id = req.body.id;
+
+    if (!ObjectID.isValid(id)) {
+		res.status(404).send(code404)  // if invalid id, definitely can't find resource, 404.
+		return;  // so that we don't run the rest of the handler.
+    }
+    User.findById(id)
+    .then(doctor => {
+        if (!doctor) {
+            res.status(404).send(code404); // could not find this doctor
+        } else {
+            if (doctor.level !== 3){
+                res.status(404).send(code404);
+            }else{
+                res.send({appos : doctor.patients});
+            }
+        }
+    })
+    .catch(error => {
+        res.status(500).send(code500); // server error
+    });
+    });
 module.exports = router;

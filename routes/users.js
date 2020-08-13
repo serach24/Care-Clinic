@@ -72,12 +72,14 @@ router.post("/changephoneEmail", (req, res) => {
         });
 });
 
-router.get("/get_profile", (req, res) => {
-    if (req.session.user) {
-        res.send(req.session.user);
-    } else {
-        res.status(401).send();
-    }
+router.get("/get_profile/:id", (req, res) => {
+    User.findById(req.params.id)
+        .then(user => {
+            res.send(user)
+        })
+        .catch(error => {
+            res.status(400).send()
+        });
 });
 
 module.exports = router;
