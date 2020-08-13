@@ -116,13 +116,26 @@ router.post("/", (req, res) => {
                     for (var i2 = 0; i2 < doctors[i].patients.length; i2++) {
 
                         if(doctors[i].patients[i2].patientId +'' === id){
+                            const ddt = new Date(doctors[i].patients[i2].appointmentTime)
+                            const now = new Date()
+                            if((ddt.getTime() > now.getTime()-86400000) &&(req.body.passedNorT)){
                             appos.push({
                                 id: doctors[i].id,
                                 username: doctors[i].username,
                                 realName: doctors[i].realName,
-                                date: doctors[i].patients[i2].appointmentTime,
+                                date: ddt+"",
                                 expertise: "Balabilipala"
                             });
+                        }
+                        else if (!(ddt.getTime() > now.getTime()-86400000) &&!(req.body.passedNorT)){
+                            appos.push({
+                                id: doctors[i].id,
+                                username: doctors[i].username,
+                                realName: doctors[i].realName,
+                                date: ddt+"",
+                                expertise: "Balabilipala"
+                            });
+                        }
                         }
                     }
                 }
