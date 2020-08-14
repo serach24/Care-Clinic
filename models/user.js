@@ -116,6 +116,16 @@ const UserSchema = new mongoose.Schema({
 		required: false,
 		minlength: 1,
 	},
+	Certification1: {
+		type: String,
+		required: false,
+		minlength: 1,
+	},
+	Certification2: {
+		type: String,
+		required: false,
+		minlength: 1,
+	},
 	location: {
 		type: String,
 		required: false,

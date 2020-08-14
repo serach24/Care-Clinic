@@ -72,6 +72,7 @@ export const logout = (app) => {
 };
 
 export const signup = (info, app) => {
+    console.log(info.state);
     const request = new Request("/users", {
         method: "post",
         body: JSON.stringify(info.state),
@@ -80,7 +81,7 @@ export const signup = (info, app) => {
             "Content-Type": "application/json"
         }
     });
-    console.log(request);
+    console.log(request.body);
     fetch(request)
         .then(res =>{
             if (res.status === 200) {
