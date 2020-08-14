@@ -22,7 +22,7 @@ class Doctorf extends React.Component{
             <div className="App">
                 <div className="content">
                 <DoctorList app={app} doctors={this.state.doctors}/>
-                {/* <RightPart /> */}
+                <RightPart />
                 </div>
                 {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}
             </div>
