@@ -6,6 +6,7 @@ import TreatmentDialog from "../TreatmentDialog";
 import {change ,Apporequest} from "./request";
 
 class DoctorPatientList extends React.Component {
+<<<<<<< Updated upstream
   constructor(props) {
     super(props);
     this.state = {
@@ -125,6 +126,19 @@ class DoctorPatientList extends React.Component {
 componentDidMount() {
   Apporequest(this)
 }
+=======
+      {
+        id: 9,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-20 09:00 am",
+        diagnosis: "mental anxiety",
+        prescription: "some medicine here",
+        status: "Finished"
+      },
+>>>>>>> Stashed changes
 
   renderButton(id) {
     if (this.state.patients[id].status === "Pending") {
@@ -139,7 +153,6 @@ componentDidMount() {
       );
     } else if (this.state.patients[id].status === "Current") {
       return (<div>
-        <Button size="small" onClick={this.openChat} variant="contained" color="primary">
           Chat
         </Button>
         <Button size="small" onClick={()=>{this.openTreatmentDialog(id)}} variant="contained" color="primary">
@@ -170,7 +183,6 @@ componentDidMount() {
     });
   }
 
-  openChat = () => {
     this.setState({
       chatOpen: true,
     })
@@ -220,8 +232,6 @@ componentDidMount() {
 
   completeTreatment = (id, diagnosis, prescription) => {
     const patients = this.state.patients;
-    patients[id].diagnosis=diagnosis;
-    patients[id].prescription=prescription;
     patients[id].status = "Complete";
     this.setState({ patients });
     this.closeTreatmentDialog();
@@ -282,16 +292,7 @@ componentDidMount() {
             </TableRow>
           </TableFooter>
         </Table>
-        <Chat open={this.state.chatOpen} onClose={this.closeChat} />
         <TreatmentDialog
-                id={this.state.treatmentId}
-                returnTreatment={this.returnTreatment}
-                completeTreatment={this.completeTreatment}
-                open={this.state.treatmentDialogOpen}
-                handleClose={this.closeTreatmentDialog}
-                // diagnosis={this.state.patients[this.state.treatmentId].diagnosis}
-                // prescription={this.state.patients[this.state.treatmentId].prescription}
-              />
       </div>
     );
   }
