@@ -115,6 +115,7 @@ function CommentContainer(props) {
                 </div>
             ))
             }
+            {/* {props.loginState !== 0 && <AddComment onChange={props.onChange} onClick={props.onClick} comment={props.comment}/>} */}
             <AddComment onChange={props.onChange} onClick={props.onClick} comment={props.comment}/>
         </div>
     );
