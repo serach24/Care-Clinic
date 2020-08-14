@@ -1,6 +1,5 @@
 import React from "react";
 import Typography from '@material-ui/core/Typography';
-import { uid } from "react-uid";
 import "./styles.css";
 class StoryPage extends React.Component {
 
@@ -10,7 +9,7 @@ class StoryPage extends React.Component {
         return (
             <div className="storyContainer">
                 {article.img != null && <div className="imageContainer">
-                    <img src={article.img} alt="image" className="img" />
+                    <img src={article.img} alt="" className="img" />
                 </div>
                 }
                 <div>

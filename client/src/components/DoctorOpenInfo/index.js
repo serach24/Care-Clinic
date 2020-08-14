@@ -13,9 +13,6 @@ import {Apporequest} from './request'
 import "./styles.css";
 import { styles } from './styles';
 
-
-const log = console.log;
-
 class DoctorOpenInfo extends React.Component {
     state={appointment:false,
     };

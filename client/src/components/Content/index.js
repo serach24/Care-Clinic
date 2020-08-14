@@ -4,7 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+// import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -98,7 +98,7 @@ class Content extends React.Component {
                 <Link to={"/article/" + article._id}>
                     <CardActionArea className={classes.actionarea} >
                         <div className={classes.MediaContainer}>
-                            <img className={classes.cardmedia} src={article.img} />
+                            <img className={classes.cardmedia} src={article.img} alt=""/>
                         </div>
                         <CardContent className={classes.contentarea}>
 

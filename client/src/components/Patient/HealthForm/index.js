@@ -1,16 +1,14 @@
 import React from "react";
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import { Formik, Field, Form, FieldArray } from "formik";
+import { Formik, Form, FieldArray } from "formik";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
 
 import { styles } from './styles';
 import "./styles.css";
-import { uid } from "react-uid";
-import { Button, Checkbox, Radio } from "@material-ui/core";
-const log = console.log;
+import { Button} from "@material-ui/core";
 class HealthForm extends React.Component {
     state = {
         ukey: 0,
@@ -107,7 +105,7 @@ class HealthForm extends React.Component {
                                             Add
                             </Button>
                                         {values.problems.map((problem, index) => (
-                                            <div key={problem._id}>
+                                            <div key={index}>
                                                 <TextField
                                                     disabled={isSubmit}
                                                     name={`problems.${index}.year`}
@@ -161,7 +159,7 @@ class HealthForm extends React.Component {
                             </Button>
                                         </div>
                                         {values.drugs.map((drug, index) => (
-                                            <div key={drug._id}>
+                                            <div key={100+index}>
                                                 <TextField
                                                     disabled={isSubmit}
                                                     name={`drugs.${index}.name`}
@@ -221,7 +219,7 @@ class HealthForm extends React.Component {
                                             Add
                             </Button>
                                         {values.allergies.map((allergie, index) => (
-                                            <div key={allergie._id}>
+                                            <div key={200+index}>
                                                 <TextField
                                                     disabled={isSubmit}
                                                     name={`allergies.${index}.drugName`}

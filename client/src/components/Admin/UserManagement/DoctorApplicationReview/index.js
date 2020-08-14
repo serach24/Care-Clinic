@@ -206,14 +206,14 @@ class DoctorApplicationReview extends React.Component {
           <TableBody>
             {this.state.doctors
             .slice(page * itemsPerPage, (page+1) * itemsPerPage)
-            .map((row) => (
-              <TableRow key={this.state.ukey++}>
+            .map((row, index) => (
+              <TableRow key={index}>
                 <TableCell>{row.realName}</TableCell>
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.expertise}</TableCell>
                 <TableCell>
-                  {row.documents.map((doc) => (
-                    <div key={this.state.ukey++}>
+                  {row.documents.map((doc,index) => (
+                    <div key={index+100}>
                       <a className="doctor-document" href={doc.location} download={doc.docName}>{doc.docName}</a>
                     </div>
                   ))}

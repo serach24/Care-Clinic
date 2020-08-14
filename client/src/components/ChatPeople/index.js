@@ -71,8 +71,8 @@ class ChatPeople extends React.Component {
         }}
       >
         <List className={classes.chatPeople}>
-          {people.map(person => (
-            <ListItem key={this.state.ukey++} onClick={() => this.openChat(person)} className={classes.chatPerson} alignItems="flex-start">
+          {people.map((person,index) => (
+            <ListItem key={index} onClick={() => this.openChat(person)} className={classes.chatPerson} alignItems="flex-start">
               <Avatar className="chat-self-avatar" alt="currentUser" src={person.avatar} />
               <ListItemText
                 primary={person.name}

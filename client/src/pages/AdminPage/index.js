@@ -1,6 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
 import ReactDOM from 'react-dom';
 
 import "./styles.css";
@@ -9,8 +7,6 @@ import "./styles.css";
 import UserManagement from "../../components/Admin/UserManagement";
 import ContentManagement from "../../components/Admin/ContentManagement";
 import FeedbackReview from "../../components/Admin/FeedbackReview";
-
-import NavBar from "../../components/ui/NavBar";
 import AdminSideBar from "../../components/Admin/AdminSideBar";
 
 
