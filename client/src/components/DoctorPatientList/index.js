@@ -3,124 +3,133 @@ import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePag
 import Button from "@material-ui/core/Button";
 import Chat from "../Chat";
 import TreatmentDialog from "../TreatmentDialog";
+import {change ,Apporequest} from "./request";
 
 class DoctorPatientList extends React.Component {
-  state = {
-    page: 0,
-    itemsPerPage: 6,
-    chatOpen: false,
-    treatmentDialogOpen: false,
-    treatmentId: 0,
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: this.props.app.state.userId,
+      page: 0,
+      itemsPerPage: 6,
+      chatOpen: false,
+      treatmentDialogOpen: false,
+      treatmentId: 0,
+      
+      // the data below need a serverCall to get
+      patients: [
+        {
+          id: 0,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "",
+          prescription: "",
+          status: "Pending"
+        },
+        {
+          id: 1,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "",
+          prescription: "",
+          status: "Pending"
+        },
+        {
+          id: 2,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-20 09:00 am",
+          diagnosis: "Some basic flu",
+          prescription: "some medicine here",
+          status: "Declined"
+        },
+        {
+          id: 3,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "Some basic flu",
+          prescription: "some medicine here",
+          status: "Current"
+        },
+        {
+          id: 4,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "Some basic flu",
+          prescription: "some medicine here",
+          status: "Current"
+        },
+        {
+          id: 5,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "TCU 1/52, severe",
+          prescription: "some medicine here",
+          status: "Subsequent"
+        },
+        {
+          id: 6,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 09:00 am",
+          diagnosis: "TCU 1/7, hypertension",
+          prescription: "some medicine here",
+          status: "Subsequent"
+        },
+        {
+          id: 7,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-28 08:00 am",
+          diagnosis: "hypertension",
+          prescription: "some medicine here",
+          status: "Finished"
+        },
+        {
+          id: 8,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-20 09:00 am",
+          diagnosis: "mental anxiety",
+          prescription: "some medicine here",
+          status: "Finished"
+        },
+        {
+          id: 9,
+          realName: "John Doe1",
+          userName: "testUser1",
+          description: "headache, fever ...",
+          appointTime: "2020-06-20 09:00 am",
+          diagnosis: "mental anxiety",
+          prescription: "some medicine here",
+          status: "Finished"
+        },
+      ]
+    }
     
-    // the data below need a serverCall to get
-    patients: [
-      {
-        id: 0,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "",
-        prescription: "",
-        status: "Pending"
-      },
-      {
-        id: 1,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "",
-        prescription: "",
-        status: "Pending"
-      },
-      {
-        id: 2,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-20 09:00 am",
-        diagnosis: "Some basic flu",
-        prescription: "some medicine here",
-        status: "Declined"
-      },
-      {
-        id: 3,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "Some basic flu",
-        prescription: "some medicine here",
-        status: "Current"
-      },
-      {
-        id: 4,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "Some basic flu",
-        prescription: "some medicine here",
-        status: "Current"
-      },
-      {
-        id: 5,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "TCU 1/52, severe",
-        prescription: "some medicine here",
-        status: "Subsequent"
-      },
-      {
-        id: 6,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "TCU 1/7, hypertension",
-        prescription: "some medicine here",
-        status: "Subsequent"
-      },
-      {
-        id: 7,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 08:00 am",
-        diagnosis: "hypertension",
-        prescription: "some medicine here",
-        status: "Finished"
-      },
-      {
-        id: 8,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-20 09:00 am",
-        diagnosis: "mental anxiety",
-        prescription: "some medicine here",
-        status: "Finished"
-      },
-      {
-        id: 9,
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-20 09:00 am",
-        diagnosis: "mental anxiety",
-        prescription: "some medicine here",
-        status: "Finished"
-      },
-    ]
-  }
+}
+componentDidMount() {
+  Apporequest(this)
+}
 
   renderButton(id) {
     if (this.state.patients[id].status === "Pending") {
       return (<div>
-        <Button size="small" onClick={() => { this.acceptAppointment(id) }} variant="contained" color="primary">
+        <Button size="small" onClick={() => { this.acceptAppointment(id,this.state.patients[id].appointTime) }} variant="contained" color="primary">
           Accept
         </Button>
         <Button size="small" onClick={() => { this.declineAppointment(id) }} variant="contained" color="secondary">
@@ -173,14 +182,29 @@ class DoctorPatientList extends React.Component {
     })
   }
 
-  acceptAppointment = (id) => {
+  acceptAppointment = (index,time) => {
     const patients = this.state.patients;
-    patients[id].status = "Current";
+    change(this.state.id,index,0);
+    const ddt = new Date(time)
+    const now = new Date()
+    var SST = 'Pending';
+ 
+    if ((ddt.getTime()-now.getTime())<-86400000){
+        SST = "Passed"
+    }
+    else if ((Math.abs(ddt.getTime()-now.getTime()))<=86400000){
+        SST = "Current"
+    }
+    else if ((ddt.getTime()-now.getTime())>86400000){
+        SST = "Subsequent"
+    }
+    patients[index].status = SST;
     this.setState({ patients });
   }
 
   declineAppointment = (id) => {
     const patients = this.state.patients;
+    change(this.state.id,id,2);
     patients[id].status = "Declined";
     this.setState({ patients });
   }
@@ -217,7 +241,7 @@ class DoctorPatientList extends React.Component {
           <TableHead>
             <TableRow>
               <TableCell>Patient Name</TableCell>
-              {/* TODO: redirect username to profile link */}
+              {/* TODO: redirect userName to profile link */}
               <TableCell >Patient Profile</TableCell>
               <TableCell >Description</TableCell>
               <TableCell >Appointment Time</TableCell>
@@ -232,7 +256,7 @@ class DoctorPatientList extends React.Component {
               .map((row) => (
                 <TableRow>
                   <TableCell>{row.realName}</TableCell>
-                  <TableCell>{row.username}</TableCell>
+                  <TableCell>{row.userName}</TableCell>
                   <TableCell>{row.description}</TableCell>
                   <TableCell>{row.appointTime}</TableCell>
                   <TableCell>

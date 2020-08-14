@@ -21,6 +21,8 @@ class DoctorOpenInfo extends React.Component {
     };
     submit(){
         const body = {
+            real: this.props.Rname,
+            name: this.props.Uname,
             from : this.props.UUid,
             to : this.props.doctor.id,
             time : document.getElementById(this.props.doctor.id +"time").value

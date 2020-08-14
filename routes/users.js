@@ -11,22 +11,23 @@ const { User } = require("../models/user");
 // });
 
 router.post("/", (req, res) => {
-  log(req.body);
+//   log(req.body);
 
   // Create a new user
   const user = new User({
       username: req.body.username,
       password: req.body.password,
-      gender: req.body.gender,
+	  level: req.body.level, 
       realName: req.body.realName,
       location: req.body.location,
+      gender: req.body.gender,
       age: req.body.age,
       phone:req.body.phone,
       mainmail:req.body.mainmail,
       backupemail:req.body.mainmail,
       needVerify: req.body.needVerify
   });
-  log(user);
+//   log(user);
   // Save the user
   user.save().then(
       user => {
@@ -37,7 +38,7 @@ router.post("/", (req, res) => {
               });
       },
       error => {
-          log(error);
+        //   log(error);
           res.status(400).send(error); // 400 for bad request
       }
   );
@@ -45,7 +46,7 @@ router.post("/", (req, res) => {
 
 // a GET route to get all users
 router.get("/", (req, res) => {
-  console.log("here")
+//   console.log("here")
   User.find().then(
       students => {
           let doctors = [];
@@ -72,12 +73,14 @@ router.post("/changephoneEmail", (req, res) => {
         });
 });
 
-router.get("/get_profile", (req, res) => {
-    if (req.session.user) {
-        res.send(req.session.user);
-    } else {
-        res.status(401).send();
-    }
+router.get("/get_profile/:id", (req, res) => {
+    User.findById(req.params.id)
+        .then(user => {
+            res.send(user)
+        })
+        .catch(error => {
+            res.status(400).send()
+        });
 });
 
 module.exports = router;

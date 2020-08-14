@@ -102,6 +102,8 @@ render() {
             key={item.username}
             doctor={item}
             UUid = {app.state.userId}
+            Uname = {app.state.profile.username}
+            Rname = {app.state.profile.realName}
             />
             
         ))}
