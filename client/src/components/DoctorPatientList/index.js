@@ -127,6 +127,115 @@ componentDidMount() {
   Apporequest(this)
 }
 =======
+  state = {
+    page: 0,
+    itemsPerPage: 6,
+    chatOpen: false,
+    treatmentDialogOpen: false,
+    treatmentId: 0,
+    talkTo: {},
+
+    // the data below need a serverCall to get
+    patients: [
+      {
+        id: 0,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-28 09:00 am",
+        diagnosis: "",
+        prescription: "",
+        status: "Pending"
+      },
+      {
+        id: 1,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-28 09:00 am",
+        diagnosis: "",
+        prescription: "",
+        status: "Pending"
+      },
+      {
+        id: 2,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-20 09:00 am",
+        diagnosis: "Some basic flu",
+        prescription: "some medicine here",
+        status: "Declined"
+      },
+      {
+        id: 3,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-28 09:00 am",
+        diagnosis: "Some basic flu",
+        prescription: "some medicine here",
+        status: "Current"
+      },
+      {
+        id: 4,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-28 09:00 am",
+        diagnosis: "Some basic flu",
+        prescription: "some medicine here",
+        status: "Current"
+      },
+      {
+        id: 5,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-28 09:00 am",
+        diagnosis: "TCU 1/52, severe",
+        prescription: "some medicine here",
+        status: "Subsequent"
+      },
+      {
+        id: 6,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-28 09:00 am",
+        diagnosis: "TCU 1/7, hypertension",
+        prescription: "some medicine here",
+        status: "Subsequent"
+      },
+      {
+        id: 7,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-28 08:00 am",
+        diagnosis: "hypertension",
+        prescription: "some medicine here",
+        status: "Finished"
+      },
+      {
+        id: 8,
+        userId: "asdfqwer",
+        realName: "John Doe1",
+        username: "testUser1",
+        description: "headache, fever ...",
+        appointTime: "2020-06-20 09:00 am",
+        diagnosis: "mental anxiety",
+        prescription: "some medicine here",
+        status: "Finished"
+      },
       {
         id: 9,
         userId: "asdfqwer",
@@ -138,6 +247,8 @@ componentDidMount() {
         prescription: "some medicine here",
         status: "Finished"
       },
+    ]
+  }
 >>>>>>> Stashed changes
 
   renderButton(id) {
@@ -153,9 +264,10 @@ componentDidMount() {
       );
     } else if (this.state.patients[id].status === "Current") {
       return (<div>
+        <Button size="small" onClick={()=>this.openChat(this.state.patients[id])} variant="contained" color="primary">
           Chat
         </Button>
-        <Button size="small" onClick={()=>{this.openTreatmentDialog(id)}} variant="contained" color="primary">
+        <Button size="small" onClick={() => { this.openTreatmentDialog(id) }} variant="contained" color="primary">
           Treat
         </Button>
       </div>
@@ -183,7 +295,9 @@ componentDidMount() {
     });
   }
 
+  openChat = (talkTo) => {
     this.setState({
+      talkTo,
       chatOpen: true,
     })
   }
@@ -223,8 +337,8 @@ componentDidMount() {
 
   returnTreatment = (id, diagnosis, prescription) => {
     const patients = this.state.patients;
-    patients[id].diagnosis=diagnosis;
-    patients[id].prescription=prescription;
+    patients[id].diagnosis = diagnosis;
+    patients[id].prescription = prescription;
     patients[id].status = "Subsequent";
     this.setState({ patients });
     this.closeTreatmentDialog();
@@ -232,6 +346,8 @@ componentDidMount() {
 
   completeTreatment = (id, diagnosis, prescription) => {
     const patients = this.state.patients;
+    patients[id].diagnosis = diagnosis;
+    patients[id].prescription = prescription;
     patients[id].status = "Complete";
     this.setState({ patients });
     this.closeTreatmentDialog();
@@ -242,6 +358,7 @@ componentDidMount() {
   }
 
   render() {
+    const {app} = this.props;
     const page = this.state.page;
     const itemsPerPage = this.state.itemsPerPage;
     return (
@@ -292,7 +409,21 @@ componentDidMount() {
             </TableRow>
           </TableFooter>
         </Table>
+        <Chat
+          open={this.state.chatOpen}
+          onClose={this.closeChat}
+          talkTo={this.state.talkTo}
+          userId={app.state.userId}
+        />
         <TreatmentDialog
+          id={this.state.treatmentId}
+          returnTreatment={this.returnTreatment}
+          completeTreatment={this.completeTreatment}
+          open={this.state.treatmentDialogOpen}
+          handleClose={this.closeTreatmentDialog}
+        // diagnosis={this.state.patients[this.state.treatmentId].diagnosis}
+        // prescription={this.state.patients[this.state.treatmentId].prescription}
+        />
       </div>
     );
   }
