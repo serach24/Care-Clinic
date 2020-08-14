@@ -16,6 +16,7 @@ import Comments from './components/Comments';
 import HealthHistory from './pages/HealthHistory';
 import Page404 from './pages/404';
 import Doctors from './pages/Doctors';
+import Doctorf from './pages/Doctorsfilter';
 import { readCookie } from './auth/authUtil';
 
 class App extends React.Component {
@@ -66,7 +67,7 @@ class App extends React.Component {
           <Route exact path='/feedback' render={() =>
                           (<Feedback app={this}/>)}/>
           <Route path='/article/:id' component={Storys}/>
-          <Route path='/finddoctor/:expertise' component={Doctors}/>
+          <Route path='/finddoctor/:expertise' component={Doctorf}/>
           <Route path="/test" component={Comments}/>
 
           <Route exact path='/about' render={() =>
