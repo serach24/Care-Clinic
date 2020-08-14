@@ -11,6 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddCommentIcon from '@material-ui/icons/AddComment';
 import IconButton from '@material-ui/core/IconButton';
 import Comment from '../Comments';
+import {postLike, delLike, postReply, getReply} from './request';
 
 
 import "./styles.css";
@@ -19,23 +20,77 @@ import { styles } from './styles';
 class Content extends React.Component {
     state= {
         commentStatus: false,
-        likeStatus: false
+        likeStatus: false,
+        comment:"",
+        comments:[{}]
     }
+
+    componentDidMount () {
+        // console.log(this.props.app.state.userId);
+        // console.log(this.props.article.likes);
+        if (this.props.app.state.loginState !== 0){
+            const uid = this.props.article.likes.find(id => id === this.props.app.state.userId)
+            if(uid !== undefined){
+                this.setState({
+                    likeStatus: true
+                })
+            }
+        }
+        const abody = { articleId: this.props.article._id}
+        getReply(this, abody)
+
+    }
+
+    handleReply = (event) =>{
+        const reqBody = {
+            articleId: this.props.article._id,
+            comment:{"img": "https://i.ibb.co/cCCf9dF/316703-normal.png", 
+                "userName": this.props.app.state.profile.username, 
+                "userProfileLink": "/", 
+                "commentTime": "Jan 4 2019",
+                "comment": this.state.comment}}
+        postReply(this, reqBody)
+
+        // alert('A name was submitted: ' + this.state.comment);
+        event.preventDefault();
+    }
+    handleValueChange = (event) =>{
+        this.setState({
+            comment: event.target.value
+        })
+    }
+
     handleClick = () => {
-        // getComments(this);
+        // if(this.state.commentStatus)
         this.setState(prevState => ({
             commentStatus: !prevState.commentStatus
-        }),() => console.log(this.state.commentStatus))
+        }))
     }
 
     handleClickLike = () => {
-        this.setState(prevState => ({
-            likeStatus: !prevState.likeStatus
-        }),() => console.log(this.state.likeStatus))
+        // console.log(this.props.app.state.loginState)
+        if (this.props.app.state.loginState !== 0){
+            if(this.state.likeStatus){
+                // console.log(this.state.likeStatus)
+                const reqBody = {}
+                reqBody.articleId = this.props.article._id;
+                reqBody.userId = this.props.app.state.userId
+                delLike(this, reqBody)
+            }
+            if(!this.state.likeStatus){
+                // console.log(this.state.likeStatus)
+                const reqBody = {}
+                reqBody.articleId = this.props.article._id;
+                reqBody.userId = this.props.app.state.userId
+                postLike(this, reqBody)
+            }
+        }else{
+            console.log('need login')
+        }
     }
 
     render() {
-        const { classes, article } = this.props;
+        const { classes, article, app } = this.props;
         // console.log(article);
         return (
             <Card className={classes.root}>
@@ -43,10 +98,7 @@ class Content extends React.Component {
                 <Link to={"/article/" + article._id}>
                     <CardActionArea className={classes.actionarea} >
                         <div className={classes.MediaContainer}>
-                            <CardMedia className={classes.cardmedia}
-                                image={article.img}
-                                title="img"
-                            />
+                            <img className={classes.cardmedia} src={article.img} />
                         </div>
                         <CardContent className={classes.contentarea}>
 
@@ -69,8 +121,7 @@ class Content extends React.Component {
                         </IconButton>
                     </div>
                 </CardActions>
-                {console.log(article.comments)}
-                {this.state.commentStatus && <Comment comments={article.comments}/> }
+                {this.state.commentStatus && <Comment loginState={app.state.loginState} comments={this.state.comments} onChange={this.handleValueChange} onClick={this.handleReply} comment={this.state.comment}/> }
             </Card>
         );
     }

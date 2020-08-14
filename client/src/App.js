@@ -27,7 +27,7 @@ class App extends React.Component {
             userId:null,
             profile:{}
         };
-        readCookie(this)
+        
         this.setloginState = this.setloginState.bind(this);
         this.setUserId = this.setUserId.bind(this);
     }
@@ -44,6 +44,9 @@ class App extends React.Component {
         },() => console.log(this.state.loginState));
     }
 
+  componentDidMount(){
+    readCookie(this)
+  }
 
   render (){
     return(
