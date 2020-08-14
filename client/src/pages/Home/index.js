@@ -46,6 +46,10 @@ class Home extends React.Component {
     componentWillUnmount() {
         this._isMounted = false;
       }
+    handleClick =(event)=>{
+        event.preventDefault();
+        // console.log('yes')
+    }
     render() {
         const { app } = this.props
         
@@ -53,10 +57,8 @@ class Home extends React.Component {
             <div className="App">
                 <div className="content">
                     <ContentList articles={this.state.articles} app={app}/>
-                    <RightPart app={app} />
-
+                    <RightPart app={this} home="home"/>
                 </div>
-                {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}
             </div>
         );
     }

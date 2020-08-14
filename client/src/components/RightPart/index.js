@@ -6,8 +6,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from "react-router-dom";
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import StarIcon from '@material-ui/icons/Star';
+import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import imgforbody from './img/Systems-for-health-topic.jpg';
 
@@ -18,6 +17,13 @@ class RightPart extends React.Component {
 
         // the data below need a serverCall to get
         categories: [
+            {
+                category: "General",
+                open: false,
+                name: "All Doctors",
+                link: "/finddoctor/all"
+
+            },
             {
                 category: "General",
                 open: false,
@@ -97,7 +103,7 @@ class RightPart extends React.Component {
         ]
     };
     render() {
-        const { classes, app } = this.props;
+        const { classes, app, home } = this.props;
         return (
             <div className={classes.rightroot}>
                 <img src={imgforbody} alt="img for body" className={classes.img} />
@@ -108,15 +114,14 @@ class RightPart extends React.Component {
                 {this.state.categories.map((item, index) => (
                     <div key={index}>
                     <Divider/>
-                    {/* <ListSubheader>{item.category}</ListSubheader> */}
-                    <Link to={item.link}>
-                    <ListItem button>
-                        {/* <ListItemIcon>
-                            <StarIcon />
-                        </ListItemIcon> */}
-                        <ListItemText primary={item.name} />
+                    {home === "home" 
+                    ? <ListItem component={Link} to="/doctorlist" > 
+                    <ListItemText primary={item.name} /> 
                     </ListItem>
-                    </Link>
+                    :<ListItem button>
+                        <ListItemText  component={Button} onClick={()=>app.handleClick(item.name)} primary={item.name} />
+                    </ListItem>
+                    }
                     </div>
                 ))}
                 </List>

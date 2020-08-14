@@ -12,8 +12,16 @@ class Doctors extends React.Component{
         this.state = {
             doctors:[]
         };
-        getDoctors(this);
+        
         // getDoctorss(this, this.props.match.params.expertise);
+    }
+    componentDidMount(){
+        getDoctors(this);
+    }
+
+    handleClick = (expertise) => {
+        getDoctorss(this,expertise);
+        // event.preventDefault();
     }
 
     render(){
@@ -22,7 +30,7 @@ class Doctors extends React.Component{
             <div className="App">
                 <div className="content">
                 <DoctorList app={app} doctors={this.state.doctors}/>
-                {/* <RightPart /> */}
+                <RightPart app={this}/>
                 </div>
                 {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}
             </div>
