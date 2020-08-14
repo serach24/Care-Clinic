@@ -115,10 +115,10 @@ export const getReply = (comp,reqBody) => {
         })
         .then(json => {
             if (json !== undefined) {
-                console.log(json);
+                // console.log(json);
                 comp.setState({
                     comments: json
-                },() => console.log(comp.state.comments))
+                })
             }
         })
         .catch(error => {
