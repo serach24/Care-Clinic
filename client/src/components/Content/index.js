@@ -36,9 +36,12 @@ class Content extends React.Component {
                 })
             }
         }
-        const abody = { articleId: this.props.article._id}
-        getReply(this, abody)
-
+        const abody = {articleId: this.props.article._id}
+        // console.log(abody.articleId.length)
+        if(abody.articleId.length > 0){
+           getReply(this, abody) 
+        }
+        
     }
 
     handleReply = (event) =>{
@@ -50,7 +53,6 @@ class Content extends React.Component {
                 "commentTime": "Jan 4 2019",
                 "comment": this.state.comment}}
         postReply(this, reqBody)
-
         // alert('A name was submitted: ' + this.state.comment);
         event.preventDefault();
     }
