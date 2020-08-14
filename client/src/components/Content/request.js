@@ -61,3 +61,35 @@ export const delLike = (comp,reqBody) => {
             console.log(error);
         });
 };
+
+export const postReply = (comp,reqBody) => {
+    // Create our request constructor with all the parameters we need
+    // console.log(reqBody);
+    const request = new Request("/comment/", {
+        method: "post",
+        body: JSON.stringify(reqBody),
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+
+    // Send the request with fetch()
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+            if (json !== undefined) {
+                // console.log(json);
+                comp.setState(prevState => ({
+                    commentStatus: prevState.commentStatus
+                }),() => console.log(comp.state.commentStatus))
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};

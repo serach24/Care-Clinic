@@ -13,17 +13,24 @@ import {useStyles} from './styles';
 //     comment: "This is a test case for comment feature"
 // };
 
+
 function AddComment(props) {
     const classes = useStyles();
     return (
-                <div className={classes.field}>
-                    <TextareaAutosize onChange={props.onChange} className={classes.textArea}>
-                    </TextareaAutosize>
-                    <Button onClick={props.onClick} variant="contained" className={classes.replyButton} disableRipple>
-                        reply
-                    </Button>
-
-                </div>
+                // <div className={classes.field}>
+                //     <TextareaAutosize onChange={props.onChange} className={classes.textArea}>
+                //     </TextareaAutosize>
+                //     <Button onClick={props.onClick} variant="contained" className={classes.replyButton} disableRipple>
+                //         reply
+                //     </Button>
+                // </div>
+                <form onSubmit={props.onClick}>
+                    <label>
+                        Comment:
+                        <input type="text" value={props.comment} onChange={props.onChange} />
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
     )
 }
 
@@ -103,12 +110,12 @@ function CommentContainer(props) {
         <div>
             <Divider />
             {props.comments.map((element, index) => (
-                <div id={element._id} className={classes.cell}>
+                <div key={index} id={element._id} className={classes.cell}>
                     <Comment img={element.img} userName={element.userName} userProfileLink={element.userProfileLink} commentTime={element.commentTime} comment={element.comment} index={index} />
                 </div>
             ))
             }
-            <AddComment onChange={props.onChange} onClick={props.onClick}/>
+            <AddComment onChange={props.onChange} onClick={props.onClick} comment={props.comment}/>
         </div>
     );
 }

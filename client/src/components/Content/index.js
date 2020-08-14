@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddCommentIcon from '@material-ui/icons/AddComment';
 import IconButton from '@material-ui/core/IconButton';
 import Comment from '../Comments';
-import {postLike, delLike} from './request';
+import {postLike, delLike, postReply} from './request';
 
 
 import "./styles.css";
@@ -20,7 +20,8 @@ import { styles } from './styles';
 class Content extends React.Component {
     state= {
         commentStatus: false,
-        likeStatus: false
+        likeStatus: false,
+        comment:""
     }
 
     componentDidMount () {
@@ -36,6 +37,25 @@ class Content extends React.Component {
         }
 
     }
+
+    handleReply = (event) =>{
+        const reqBody = {
+            articleId: this.props.article._id,
+            comment:{"img": "https://i.ibb.co/cCCf9dF/316703-normal.png", "userName": "Alex", "userProfileLink": "/", "commentTime": "Jan 4 2019","comment": this.state.comment}}
+        // const newComs = this.props.article.comments;
+        // newComs.push(reqBody.comment)
+        // console.log(newComs);
+        postReply(this, reqBody)
+
+        // alert('A name was submitted: ' + this.state.comment);
+        // event.preventDefault();
+    }
+    handleValueChange = (event) =>{
+        this.setState({
+            comment: event.target.value
+        })
+    }
+
     handleClick = () => {
         // if(this.state.commentStatus)
         this.setState(prevState => ({
@@ -97,7 +117,7 @@ class Content extends React.Component {
                         </IconButton>
                     </div>
                 </CardActions>
-                {this.state.commentStatus && <Comment comments={article.comments}/> }
+                {this.state.commentStatus && <Comment comments={article.comments} onChange={this.handleValueChange} onClick={this.handleReply} comment={this.state.comment}/> }
             </Card>
         );
     }
