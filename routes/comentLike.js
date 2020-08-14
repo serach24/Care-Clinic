@@ -71,11 +71,11 @@ router.post('/', (req, res) => {
     fieldToPush.userProfileLink = comment.userProfileLink
     fieldToPush.commentTime = comment.commentTime
     fieldToPush.comment = comment.comment
-	Article.findByIdAndUpdate(id, {$push: {comments: fieldToPush }}, {new:true, useFindAndModify: false}).then((likes) => {
-		if (!likes) {
+	Article.findByIdAndUpdate(id, {$push: {comments: fieldToPush }}, {new:true, useFindAndModify: false}).then((article) => {
+		if (!article) {
 			res.status(404).send(code404)  // could not find this student
 		} else {
-			res.send(likes);
+			res.send(article.comments);
 		}
 	})
 	.catch((error) => {
@@ -85,7 +85,26 @@ router.post('/', (req, res) => {
 
 });
 
-// router.delete()
+// get all comments
+router.put('/', (req, res) => {
+    const id = req.body.articleId;
+    if (!ObjectID.isValid(id)) {
+        res.status(404).send("resource not found"); // if invalid id, definitely can't find resource, 404.
+        return;
+    }
+	Article.findById(id).then((article) => {
+		if (!article) {
+			res.status(404).send(code404)  // could not find this student
+		} else {
+			res.send(article.comments);
+		}
+	})
+	.catch((error) => {
+			log(error)
+			res.status(400).send(code400) // bad request
+	})
+
+});
 
 
 module.exports = router;

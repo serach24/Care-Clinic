@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import AddCommentIcon from '@material-ui/icons/AddComment';
 import IconButton from '@material-ui/core/IconButton';
 import Comment from '../Comments';
-import {postLike, delLike, postReply} from './request';
+import {postLike, delLike, postReply, getReply} from './request';
 
 
 import "./styles.css";
@@ -21,7 +21,8 @@ class Content extends React.Component {
     state= {
         commentStatus: false,
         likeStatus: false,
-        comment:""
+        comment:"",
+        comments:[{}]
     }
 
     componentDidMount () {
@@ -35,6 +36,8 @@ class Content extends React.Component {
                 })
             }
         }
+        const abody = { articleId: this.props.article._id}
+        getReply(this, abody)
 
     }
 
@@ -42,13 +45,10 @@ class Content extends React.Component {
         const reqBody = {
             articleId: this.props.article._id,
             comment:{"img": "https://i.ibb.co/cCCf9dF/316703-normal.png", "userName": "Alex", "userProfileLink": "/", "commentTime": "Jan 4 2019","comment": this.state.comment}}
-        // const newComs = this.props.article.comments;
-        // newComs.push(reqBody.comment)
-        // console.log(newComs);
         postReply(this, reqBody)
 
         // alert('A name was submitted: ' + this.state.comment);
-        // event.preventDefault();
+        event.preventDefault();
     }
     handleValueChange = (event) =>{
         this.setState({
@@ -117,7 +117,7 @@ class Content extends React.Component {
                         </IconButton>
                     </div>
                 </CardActions>
-                {this.state.commentStatus && <Comment comments={article.comments} onChange={this.handleValueChange} onClick={this.handleReply} comment={this.state.comment}/> }
+                {this.state.commentStatus && <Comment comments={this.state.comments} onChange={this.handleValueChange} onClick={this.handleReply} comment={this.state.comment}/> }
             </Card>
         );
     }
