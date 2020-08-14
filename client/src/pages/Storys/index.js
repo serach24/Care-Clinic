@@ -1,9 +1,5 @@
 import React from "react";
-import {
-    useParams
-  } from 'react-router-dom'
 //importing components
-import NavBar from "../../components/ui/NavBar";
 import StoryPage from "../../components/StoryPage";
 import covidImg from "./img/covid-19-1330px.jpg";
 import {getArticle} from "./request";

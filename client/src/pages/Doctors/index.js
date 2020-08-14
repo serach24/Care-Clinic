@@ -2,7 +2,6 @@ import React from "react";
 
 //importing components
 import DoctorList from "../../components/DoctorList";
-import NavBar from "../../components/ui/NavBar";
 import RightPart from "../../components/RightPart";
 import "./styles.css";
 import {getDoctors} from "./request";

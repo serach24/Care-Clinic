@@ -1,12 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import ReactDOM from 'react-dom';
-import TextField from '@material-ui/core/TextField';
-
 import "./styles.css";
 import ProfilePanel from "./../../components/ProfilePanel"
-import NavBar from "../../components/ui/NavBar";
 /* Component for the Home page */
 
 class ProfilePage extends React.Component {

@@ -1,17 +1,15 @@
 import React from "react";
-import Button from '@material-ui/core/Button';
 import { withStyles } from "@material-ui/core/styles";
 import { styles } from './styles';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { Link } from "react-router-dom";
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
+
 
 import imgforbody from './img/Systems-for-health-topic.jpg';
 
@@ -100,14 +98,14 @@ class RightPart extends React.Component {
                         className={classes.buttoncard}
                 >
                     {this.state.categories.map((item, index) => (
-                        <div key={this.state.ukey++}>
+                        <div key={index}>
                         <ListItem button onClick={()=> {this.handleClick(index)}}>
                         <ListItemText primary={item.category} />
                         {item.open ? <ExpandLess /> : <ExpandMore />}
                         </ListItem>
                         <Collapse in={item.open} timeout="auto" unmountOnExit>
                                 {item.sub.map((cate, index) => (
-                                <ListItem key={this.state.ukey++} button className={classes.nested} component={ Link } to={cate.link} >
+                                <ListItem key={100+index} button className={classes.nested} component={ Link } to={cate.link} >
                                   <ListItemText secondary={cate.name} />
                                 </ListItem>
                                 ))}

@@ -1,9 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-
 import "./styles.css";
-import NavBar from "../../components/ui/NavBar";
+
 import {Addfeed} from './request'
 /* Component for the Home page */
 

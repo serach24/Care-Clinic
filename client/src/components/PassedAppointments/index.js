@@ -1,6 +1,5 @@
 import React from "react"
 import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePagination } from "@material-ui/core"
-import Button from "@material-ui/core/Button";
 import {Apporequest} from "./request";
 class PassedAppointments extends React.Component {
   constructor(props) {

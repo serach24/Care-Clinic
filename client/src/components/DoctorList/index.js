@@ -1,12 +1,11 @@
 import React from "react";
-import { uid } from "react-uid";
 import DoctorOpenInfo from "./../DoctorOpenInfo";
 import Container from '@material-ui/core/Container';
 import "./styles.css";
-import a from "./img/1.jpg";
-import b from "./img/2.jpg";
-import c from "./img/3.jpg";
-import d from "./img/3.jpg";
+// import a from "./img/1.jpg";
+// import b from "./img/2.jpg";
+// import c from "./img/3.jpg";
+// import d from "./img/3.jpg";
 
 
 class DoctorList extends React.Component {

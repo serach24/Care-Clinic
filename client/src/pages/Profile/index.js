@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import ReactDOM from 'react-dom';
-import TextField from '@material-ui/core/TextField';
 
 import "./styles.css";
 import ava from './static/icon.jpg'
@@ -75,7 +73,7 @@ class Profile extends React.Component {
               <Button variant="contained" component={ Link } to={"/"} onClick = {()=>logout(app)}>LogOut</Button>
               </div>
               <div className ="FlowButton">
-              {app.state.loginState!=2 && <Button component={ Link } to={"/"+app.state.userId} variant="contained">Detail</Button>}
+              {app.state.loginState!==2 && <Button component={ Link } to={"/"+app.state.userId} variant="contained">Detail</Button>}
               </div>
               </div>
       </div>

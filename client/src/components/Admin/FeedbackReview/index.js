@@ -44,8 +44,8 @@ class FeedbackReview extends React.Component {
           <TableBody>
             {this.state.feedback
               .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
-              .map((row) => (
-                <TableRow key={this.state.ukey++}>
+              .map((row,index) => (
+                <TableRow key={index+20}>
                   <TableCell>{row.user}</TableCell>
                   <TableCell>{row.content}</TableCell>
                 </TableRow>

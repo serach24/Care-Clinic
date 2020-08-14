@@ -73,16 +73,16 @@ class AdminSideBar extends React.Component {
         <Drawer containerClassName="admin-side-bar" docked={true} open={this.state.isSideBarOpen} onClose={this.openSideBar} variant="permanent">
           <div>
             <List>
-              {this.state.sideBarList.map(row => (
-                <div key={this.state.ukey++}>
+              {this.state.sideBarList.map((row,index) => (
+                <div key={index+100}>
                   <ListItem button className="sidebar-item">
                     <span onClick={() => this.props.GoTo(row.index)} className="sidebar-item-text">{row.name}</span>
                     {/* <ListItemText primary={row.name} /> */}
                   </ListItem>
                   { row.nested!==undefined &&
                   <List>
-                    {row.nested.map(nestedRow => (
-                      <ListItem button key={this.state.ukey++}>
+                    {row.nested.map((nestedRow,index) => (
+                      <ListItem button key={index+200}>
                         <span className="nested-item-text">{nestedRow.name}</span>
                         {/* <ListItemText primary={nestedRow.name} /> */}
                       </ListItem>

@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+// import Button from '@material-ui/core/Button';
+// import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Divider from '@material-ui/core/Divider';
 import {useStyles} from './styles';
 
@@ -15,7 +15,6 @@ import {useStyles} from './styles';
 
 
 function AddComment(props) {
-    const classes = useStyles();
     return (
                 // <div className={classes.field}>
                 //     <TextareaAutosize onChange={props.onChange} className={classes.textArea}>

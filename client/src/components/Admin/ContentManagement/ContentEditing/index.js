@@ -141,8 +141,8 @@ class ContentEditing extends React.Component {
           <TableBody>
             {this.state.chosenContent
               .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
-              .map((row) => (
-                <TableRow key={this.state.ukey++}>
+              .map((row,index) => (
+                <TableRow key={index+10}>
                   <TableCell>{row.title}</TableCell>
                   <TableCell>{row.uploader}</TableCell>
                   <TableCell>{row.uploadTime}</TableCell>

@@ -2,14 +2,13 @@ import React from "react";
 
 //importing components
 import ContentList from "../../components/ContentList";
-import NavBar from "../../components/ui/NavBar";
 import RightPart from "../../components/RightPart";
 
 import "./styles.css";
-import a from "./img/1.jpg";
-import b from "./img/2.jpeg";
-import c from "./img/3.jpg";
-import d from "./img/4.jpg";
+// import a from "./img/1.jpg";
+// import b from "./img/2.jpeg";
+// import c from "./img/3.jpg";
+// import d from "./img/4.jpg";
 import { homeContent } from "./request";
 
 class Home extends React.Component {
