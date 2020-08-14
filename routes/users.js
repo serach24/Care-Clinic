@@ -25,7 +25,9 @@ router.post("/", (req, res) => {
       phone:req.body.phone,
       mainmail:req.body.mainmail,
       backupemail:req.body.mainmail,
-      needVerify: req.body.needVerify
+      needVerify: req.body.needVerify,
+      Certification1:req.body.Certification1,
+      Certification2:req.body.Certification2
   });
 //   log(user);
   // Save the user

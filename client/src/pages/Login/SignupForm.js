@@ -26,6 +26,8 @@ class SignupForm extends React.Component {
     backupemail:"not setted yet",
     needVerify: false,
     checkError: false,
+    Certification1:"not defined",
+    Certification2:"not defined",
     level: 1,
   }
 
@@ -133,7 +135,28 @@ class SignupForm extends React.Component {
           value={this.state.age}
           onChange={this.handleInputChange}
         />
-
+        {
+          this.state.level===3&&
+          (<Input
+          error={isPasswordEmpty}
+          helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+          name="Certification1"
+          label="Certification1"
+          value={this.state.Certification1}
+          onChange={this.handleInputChange}
+        />)}
+        {this.state.level===3&&
+        (
+        <Input
+          error={isPasswordEmpty}
+          helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+          name="Certification2"
+          label="Certification2"
+          value={this.state.Certification2}
+          onChange={this.handleInputChange}
+        />)
+        
+        }
 
         <Button
           variant="contained"
