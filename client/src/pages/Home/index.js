@@ -12,6 +12,7 @@ import "./styles.css";
 import { homeContent } from "./request";
 
 class Home extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props);
         // homeContent(this);
@@ -37,8 +38,14 @@ class Home extends React.Component {
         
     };
     componentDidMount() {
+        this._isMounted = true;
+        if (this._isMounted) {
         homeContent(this);
+        }
     }
+    componentWillUnmount() {
+        this._isMounted = false;
+      }
     render() {
         const { app } = this.props
         

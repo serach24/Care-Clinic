@@ -21,9 +21,11 @@ class Storys extends React.Component{
         "Note: The information in this podcast is current as of the posting date. Listeners should consult their local public health agency for the latest information in their jurisdiction."],
         }
         console.log(this.props.match.params.id);
+        
+    }
+    componentDidMount(){
         getArticle(this.props.match.params.id, this);
     }
-
 
 
     render(){

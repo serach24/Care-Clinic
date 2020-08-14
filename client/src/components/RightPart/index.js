@@ -9,8 +9,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Collapse from '@material-ui/core/Collapse';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-
-
 import imgforbody from './img/Systems-for-health-topic.jpg';
 
 
@@ -21,58 +19,46 @@ class RightPart extends React.Component {
         // the data below need a serverCall to get
         categories:[
             {category: "General",open:false, sub:[
-                                                    {   name:"Sub category 1", 
-                                                        link:"/doctorlist"
-                                                    },
-                                                    {   name:"Sub category 2", 
-                                                        link:"/doctorlist"
-                                                    },
-                                                    {   name:"Sub category 3", 
+                                                    {   name:"Family physician", 
                                                         link:"/doctorlist"
                                                     }
                                                 ]
             },
             {category: "Abdomen and Digestive",open:false, sub:[
-                                                    {   name:"Sub category 1", 
-                                                        link:"/doctorlist"
-                                                    },
-                                                    {   name:"Sub category 2", 
-                                                        link:"/doctorlist"
-                                                    },
-                                                    {   name:"Sub category 3", 
+                                                    {   name:"Endocrinologists", 
                                                         link:"/doctorlist"
                                                     }
                                                 ]
             },
             {category: "Bleeding",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
+                                        name:"Dermatology", link:"/doctorlist"
                                     }]},
             {category: "Brain and Nervous System",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
+                                        name:"Neurosurgery", link:"/doctorlist"
                                     }]},
             {category: "Chest and Respiratory",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
+                                        name:"Respiration", link:"/doctorlist"
                                     }]},
             {category: "Children's Symptoms",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
+                                        name:"Pediatrics", link:"/doctorlist"
                                     }]},
             {category: "Eye",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
+                                        name:"Ophthalmologists", link:"/doctorlist"
                                     }]},
             {category: "Genital and Urinary",open:false, sub:[{
                                         name:"Sub category 1", link:"/doctorlist"
                                     }]},
             {category: "Ear Nose and Throat",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
+                                        name:"ENT", link:"/doctorlist"
                                     }]},
             {category: "Infection",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
+                                        name:"Infectious", link:"/doctorlist"
                                     }]},
             {category: "Joint and Muscle",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
+                                        name:"Orthopedic", link:"/doctorlist"
                                     }]},
             {category: "Oral and Dental",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
+                                        name:"Stomatology", link:"/doctorlist"
                                     }]}
         ]
     };
@@ -81,7 +67,7 @@ class RightPart extends React.Component {
         const newcategories = this.state.categories.map((obj, i) => obj === this.state.categories[index] ? {category: obj.category ,open:!obj.open, sub:obj.sub}: obj );
         this.setState({
             categories: newcategories
-        }, ()=> console.log(this.state.categories));
+        });
     };
 
     render () {
