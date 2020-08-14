@@ -1,4 +1,3 @@
-import {getProfileOnly} from "./../../auth/authUtil"
 export const change = (id,index,TFN) =>{
         // const url = "/users/get_profile/"+id;
         const request = new Request("/doctors/appointment/change/"+index+"/"+id+"/"+TFN, {
@@ -51,7 +50,6 @@ export const Apporequest = (ths) => {
             var patients = [];
             const ap = json.appos;
             ap.forEach((patient,index) => {
-                const pid = patient.patientId
                 const ddt = new Date(patient.appointmentTime)
                 const now = new Date()
                 var SST = 'Pending';

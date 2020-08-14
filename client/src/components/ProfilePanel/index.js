@@ -1,8 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import ReactDOM from 'react-dom';
-import TextField from '@material-ui/core/TextField';
 
 import "./styles.css";
 import  ProfileSide from './../ProfileSide'
@@ -12,9 +8,7 @@ import DoctorPatientList from './../../components/DoctorPatientList'
 /* Component for the Home page */
 
 class ProfilePanel extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+
       render() {
         const {app} = this.props;
         return (

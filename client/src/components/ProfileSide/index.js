@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import ReactDOM from 'react-dom';
+
 import TextField from '@material-ui/core/TextField';
 
 import "./styles.css";
@@ -89,10 +89,10 @@ class ProfileSide extends React.Component {
               <div
               className = "userInfo">
               <div className = "ProfileItem">
-              {(app.state.loginState==0 && "User Type: Developer")}
-              {(app.state.loginState==1 && "User Type: User")}
-              {(app.state.loginState==2 && "User Type: Admin")}
-              {(app.state.loginState==3 && "User Type: Doctor")}
+              {(app.state.loginState===0 && "User Type: Developer")}
+              {(app.state.loginState===1 && "User Type: User")}
+              {(app.state.loginState===2 && "User Type: Admin")}
+              {(app.state.loginState===3 && "User Type: Doctor")}
               </div>
               <div className = "ProfileItem">
               {"User Uid: "+ app.state.userId +"\n"}
@@ -130,7 +130,7 @@ class ProfileSide extends React.Component {
 
               {app.state.loginState === 3 &&
               <div className = "ProfileItem"> {"Expertise: "+ this.state.expertise+"\n"} </div>}
-              {app.state.loginState ==3 && this.state.documents.map((doc) => (
+              {app.state.loginState ===3 && this.state.documents.map((doc) => (
                   <div className = "ProfileItem">
                   <a className="doctor-document" href={doc.location} download={doc.docName}>{doc.docName}</a>
                   </div>

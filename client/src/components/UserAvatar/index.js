@@ -1,8 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Button from "@material-ui/core/Button";
-import ReactDOM from 'react-dom';
-import TextField from '@material-ui/core/TextField';
 
 import "./styles.css";
 import ava from './static/icon.jpg'
@@ -33,7 +29,7 @@ class UserAvatar extends React.Component {
                 </textPath>
               </text>
               </svg>
-              <img className="UserHeadPic" src= {ava}></img>
+              <img className="UserHeadPic" src= {ava} alt={""}></img>
           </div>
     );
   }
