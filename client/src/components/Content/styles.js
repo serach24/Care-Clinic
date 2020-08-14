@@ -9,7 +9,8 @@ export const styles = theme => ({
     cardmedia: {
         width: 120,
         height:120,
-        border: '1px solid darkgray'
+        border: '1px solid darkgray',
+        objectFit: 'cover'
     },
     contentarea: {
         minWidth: 500,
