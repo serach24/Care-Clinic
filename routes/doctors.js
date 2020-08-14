@@ -86,6 +86,61 @@ router.get("/", (req, res) => {
     );
 });
 
+// a GET route to get all valid doctors
+router.get("/doctorlst/:expertise", (req, res) => {
+    const category = String(req.params.expertise);
+    console.log(category)
+    User.find({expertise: category}).then(
+        users => {
+            let doctors = [];
+            doctors = users.filter(user =>  user.level === 3)
+            let fileToSend = doctors.map(doc => {
+                const newDoc = {};
+                newDoc.id= doc._id;
+                newDoc.realName= doc.realName;
+                newDoc.username= doc.username;
+                newDoc.expertise= doc.expertise;
+                newDoc.gender= doc.gender;
+                newDoc.img= doc.img;
+                return newDoc;
+            })
+            res.send({ doctors: fileToSend }); // can wrap in object if want to add more properties
+        },
+        error => {
+            res.status(500).send(code500); // server error
+        }
+    );
+});
+
+// add expertise for doctor
+router.post("/expertise/:id", (req, res) => {
+    const docId = req.params.id;
+    const expertise = req.body.expertise;
+    // console.log(category)
+    User.findByIdAndUpdate(docId, {$push: {expertise: expertise }}, {new:true, useFindAndModify: false}).then(
+        user => {
+            // let doctors = [];
+            // doctors = users.filter(user =>  user.level === 3)
+            // let fileToSend = doctors.map(doc => {
+            //     console.log(typeof(doc.expertise))
+            //     console.log(doc.expertise.includes(""))
+            //     const newDoc = {};
+            //     newDoc.id= doc._id;
+            //     newDoc.realName= doc.realName;
+            //     newDoc.username= doc.username;
+            //     newDoc.expertise= doc.expertise;
+            //     newDoc.gender= doc.gender;
+            //     newDoc.img= doc.img;
+            //     return newDoc;
+            // })
+            res.send({ doctor: user }); // can wrap in object if want to add more properties
+        },
+        error => {
+            res.status(500).send(code500); // server error
+        }
+    );
+});
+
 // a GET route to get a doctor by their id.
 // id is treated as a wildcard parameter, which is why there is a colon : beside it.
 // (in this case, the database id, but you can make your own id system for your project)

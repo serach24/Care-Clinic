@@ -14,91 +14,115 @@ import imgforbody from './img/Systems-for-health-topic.jpg';
 
 class RightPart extends React.Component {
     state = {
-        ukey:0,
-        
+        ukey: 0,
+
         // the data below need a serverCall to get
-        categories:[
-            {category: "General",open:false, sub:[
-                                                    {   name:"Family physician", 
-                                                        link:"/doctorlist"
-                                                    }
-                                                ]
+        categories: [
+            {
+                category: "General", open: false, sub: [
+                    {
+                        name: "Family physician",
+                        link: "/finddoctor/Family physician"
+                    }
+                ]
             },
-            {category: "Abdomen and Digestive",open:false, sub:[
-                                                    {   name:"Endocrinologists", 
-                                                        link:"/doctorlist"
-                                                    }
-                                                ]
+            {
+                category: "Abdomen and Digestive", open: false, sub: [
+                    {
+                        name: "Endocrinologists",
+                        link: "/finddoctor/Endocrinologists"
+                    }
+                ]
             },
-            {category: "Bleeding",open:false, sub:[{
-                                        name:"Dermatology", link:"/doctorlist"
-                                    }]},
-            {category: "Brain and Nervous System",open:false, sub:[{
-                                        name:"Neurosurgery", link:"/doctorlist"
-                                    }]},
-            {category: "Chest and Respiratory",open:false, sub:[{
-                                        name:"Respiration", link:"/doctorlist"
-                                    }]},
-            {category: "Children's Symptoms",open:false, sub:[{
-                                        name:"Pediatrics", link:"/doctorlist"
-                                    }]},
-            {category: "Eye",open:false, sub:[{
-                                        name:"Ophthalmologists", link:"/doctorlist"
-                                    }]},
-            {category: "Genital and Urinary",open:false, sub:[{
-                                        name:"Sub category 1", link:"/doctorlist"
-                                    }]},
-            {category: "Ear Nose and Throat",open:false, sub:[{
-                                        name:"ENT", link:"/doctorlist"
-                                    }]},
-            {category: "Infection",open:false, sub:[{
-                                        name:"Infectious", link:"/doctorlist"
-                                    }]},
-            {category: "Joint and Muscle",open:false, sub:[{
-                                        name:"Orthopedic", link:"/doctorlist"
-                                    }]},
-            {category: "Oral and Dental",open:false, sub:[{
-                                        name:"Stomatology", link:"/doctorlist"
-                                    }]}
+            {
+                category: "Bleeding", open: false, sub: [{
+                    name: "Dermatology", link: "/finddoctor/Dermatology"
+                }]
+            },
+            {
+                category: "Brain and Nervous System", open: false, sub: [{
+                    name: "Neurosurgery", link: "/doctorlist/Neurosurgery"
+                }]
+            },
+            {
+                category: "Chest and Respiratory", open: false, sub: [{
+                    name: "Respiration", link: "/doctorlist/Respiration"
+                }]
+            },
+            {
+                category: "Children's Symptoms", open: false, sub: [{
+                    name: "Pediatrics", link: "/doctorlist/Pediatrics"
+                }]
+            },
+            {
+                category: "Eye", open: false, sub: [{
+                    name: "Ophthalmologists", link: "/doctorlist/Ophthalmologists"
+                }]
+            },
+            {
+                category: "Genital and Urinary", open: false, sub: [{
+                    name: "Sub category 1", link: "/doctorlist"
+                }]
+            },
+            {
+                category: "Ear Nose and Throat", open: false, sub: [{
+                    name: "ENT", link: "/doctorlist/ENT"
+                }]
+            },
+            {
+                category: "Infection", open: false, sub: [{
+                    name: "Infectious", link: "/doctorlist/Infectious"
+                }]
+            },
+            {
+                category: "Joint and Muscle", open: false, sub: [{
+                    name: "Orthopedic", link: "/doctorlist/Orthopedic"
+                }]
+            },
+            {
+                category: "Oral and Dental", open: false, sub: [{
+                    name: "Stomatology", link: "/doctorlist/Stomatology"
+                }]
+            }
         ]
     };
 
     handleClick = (index) => {
-        const newcategories = this.state.categories.map((obj, i) => obj === this.state.categories[index] ? {category: obj.category ,open:!obj.open, sub:obj.sub}: obj );
+        const newcategories = this.state.categories.map((obj, i) => obj === this.state.categories[index] ? { category: obj.category, open: !obj.open, sub: obj.sub } : obj);
         this.setState({
             categories: newcategories
         });
     };
 
-    render () {
+    render() {
         const { classes, app } = this.props;
         return (
             <div className={classes.rightroot}>
-                <img src={imgforbody} alt="img for body" className={classes.img}/>
-                <List   component="nav"
-                        subheader={
-                            <ListSubheader component='div' id="nested-health-topics">
+                <img src={imgforbody} alt="img for body" className={classes.img} />
+                <List component="nav"
+                    subheader={
+                        <ListSubheader component='div' id="nested-health-topics">
                             <strong>Common Topics</strong>
-                            </ListSubheader>
-                        }
-                        className={classes.buttoncard}
+                        </ListSubheader>
+                    }
+                    className={classes.buttoncard}
                 >
                     {this.state.categories.map((item, index) => (
                         <div key={index}>
-                        <ListItem button onClick={()=> {this.handleClick(index)}}>
-                        <ListItemText primary={item.category} />
-                        {item.open ? <ExpandLess /> : <ExpandMore />}
-                        </ListItem>
-                        <Collapse in={item.open} timeout="auto" unmountOnExit>
+                            <ListItem button onClick={() => { this.handleClick(index) }}>
+                                <ListItemText primary={item.category} />
+                                {item.open ? <ExpandLess /> : <ExpandMore />}
+                            </ListItem>
+                            <Collapse in={item.open} timeout="auto" unmountOnExit>
                                 {item.sub.map((cate, index) => (
-                                <ListItem key={100+index} button className={classes.nested} component={ Link } to={cate.link} >
-                                  <ListItemText secondary={cate.name} />
-                                </ListItem>
+                                    <ListItem key={100 + index} button className={classes.nested} component={Link} to={cate.link} >
+                                        <ListItemText secondary={cate.name} />
+                                    </ListItem>
                                 ))}
-                        </Collapse>
+                            </Collapse>
                         </div>
                     ))}
-                {console.log(app.state.loginState + "state")}
+                    {console.log(app.state.loginState + "state")}
                 </List>
             </div>
         );
