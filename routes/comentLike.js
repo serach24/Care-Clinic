@@ -23,7 +23,7 @@ router.post('/like', (req, res) => {
 		if (!likes) {
 			res.status(404).send(code404)  // could not find this student
 		} else {
-			res.send(likes);
+			res.send({status:"true"});
 		}
 	})
 	.catch((error) => {
@@ -45,7 +45,7 @@ router.delete('/like', (req, res) => {
 		if (!likes) {
 			res.status(404).send(code404)  // could not find this student
 		} else {
-			res.send(likes);
+			res.send({status:"true"});
 		}
 	})
 	.catch((error) => {
@@ -57,7 +57,7 @@ router.delete('/like', (req, res) => {
 });
 
 //add comment
-router.put('/rely', (req, res) => {
+router.post('/', (req, res) => {
     const id = req.body.articleId;
     const comment = req.body.comment;
     log(comment)

@@ -8,7 +8,7 @@ class ContentList extends React.Component {
 
 
 render() {
-    const { articles } = this.props;
+    const { articles, app } = this.props;
     return (
         <div className="article_container">
           <Container >
@@ -18,6 +18,7 @@ render() {
                 article
               )}
             article={article}
+            app={app}
             />
           ))}
           </Container>
