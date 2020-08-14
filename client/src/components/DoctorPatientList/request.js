@@ -76,8 +76,9 @@ export const Apporequest = (ths) => {
                 const strTime= ddt +""
                 const pat = {
                     id: index,
+                    userId: patient.patientId,
                     realName: patient.realName,
-                    userName: patient.userName,
+                    username: patient.userName,
                     description: "",
                     appointTime: strTime,
                     diagnosis: "",

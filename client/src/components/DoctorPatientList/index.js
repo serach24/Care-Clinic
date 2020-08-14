@@ -3,26 +3,27 @@ import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePag
 import Button from "@material-ui/core/Button";
 import Chat from "../Chat";
 import TreatmentDialog from "../TreatmentDialog";
-import {change ,Apporequest} from "./request";
+import { change, Apporequest } from "./request";
 
 class DoctorPatientList extends React.Component {
-<<<<<<< Updated upstream
   constructor(props) {
     super(props);
     this.state = {
       id: this.props.app.state.userId,
+      talkTo: {},
       page: 0,
       itemsPerPage: 6,
       chatOpen: false,
       treatmentDialogOpen: false,
       treatmentId: 0,
-      
+
       // the data below need a serverCall to get
       patients: [
         {
           id: 0,
+          userId: "5f2f5af3c17b5014972cf8ee",
           realName: "John Doe1",
-          userName: "testUser1",
+          username: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-28 09:00 am",
           diagnosis: "",
@@ -31,8 +32,9 @@ class DoctorPatientList extends React.Component {
         },
         {
           id: 1,
+          userId: "5f2f5af3c17b5014972cf8ee",
           realName: "John Doe1",
-          userName: "testUser1",
+          username: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-28 09:00 am",
           diagnosis: "",
@@ -41,240 +43,48 @@ class DoctorPatientList extends React.Component {
         },
         {
           id: 2,
+          userId: "5f2f5af3c17b5014972cf8ee",
           realName: "John Doe1",
-          userName: "testUser1",
+          username: "testUser1",
           description: "headache, fever ...",
           appointTime: "2020-06-20 09:00 am",
           diagnosis: "Some basic flu",
           prescription: "some medicine here",
           status: "Declined"
         },
-        {
-          id: 3,
-          realName: "John Doe1",
-          userName: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-28 09:00 am",
-          diagnosis: "Some basic flu",
-          prescription: "some medicine here",
-          status: "Current"
-        },
-        {
-          id: 4,
-          realName: "John Doe1",
-          userName: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-28 09:00 am",
-          diagnosis: "Some basic flu",
-          prescription: "some medicine here",
-          status: "Current"
-        },
-        {
-          id: 5,
-          realName: "John Doe1",
-          userName: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-28 09:00 am",
-          diagnosis: "TCU 1/52, severe",
-          prescription: "some medicine here",
-          status: "Subsequent"
-        },
-        {
-          id: 6,
-          realName: "John Doe1",
-          userName: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-28 09:00 am",
-          diagnosis: "TCU 1/7, hypertension",
-          prescription: "some medicine here",
-          status: "Subsequent"
-        },
-        {
-          id: 7,
-          realName: "John Doe1",
-          userName: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-28 08:00 am",
-          diagnosis: "hypertension",
-          prescription: "some medicine here",
-          status: "Finished"
-        },
-        {
-          id: 8,
-          realName: "John Doe1",
-          userName: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-20 09:00 am",
-          diagnosis: "mental anxiety",
-          prescription: "some medicine here",
-          status: "Finished"
-        },
-        {
-          id: 9,
-          realName: "John Doe1",
-          userName: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-20 09:00 am",
-          diagnosis: "mental anxiety",
-          prescription: "some medicine here",
-          status: "Finished"
-        },
       ]
     }
-    
-}
-componentDidMount() {
-  Apporequest(this)
-}
-=======
-  state = {
-    page: 0,
-    itemsPerPage: 6,
-    chatOpen: false,
-    treatmentDialogOpen: false,
-    treatmentId: 0,
-    talkTo: {},
 
-    // the data below need a serverCall to get
-    patients: [
-      {
-        id: 0,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "",
-        prescription: "",
-        status: "Pending"
-      },
-      {
-        id: 1,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "",
-        prescription: "",
-        status: "Pending"
-      },
-      {
-        id: 2,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-20 09:00 am",
-        diagnosis: "Some basic flu",
-        prescription: "some medicine here",
-        status: "Declined"
-      },
-      {
-        id: 3,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "Some basic flu",
-        prescription: "some medicine here",
-        status: "Current"
-      },
-      {
-        id: 4,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "Some basic flu",
-        prescription: "some medicine here",
-        status: "Current"
-      },
-      {
-        id: 5,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "TCU 1/52, severe",
-        prescription: "some medicine here",
-        status: "Subsequent"
-      },
-      {
-        id: 6,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 09:00 am",
-        diagnosis: "TCU 1/7, hypertension",
-        prescription: "some medicine here",
-        status: "Subsequent"
-      },
-      {
-        id: 7,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-28 08:00 am",
-        diagnosis: "hypertension",
-        prescription: "some medicine here",
-        status: "Finished"
-      },
-      {
-        id: 8,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-20 09:00 am",
-        diagnosis: "mental anxiety",
-        prescription: "some medicine here",
-        status: "Finished"
-      },
-      {
-        id: 9,
-        userId: "asdfqwer",
-        realName: "John Doe1",
-        username: "testUser1",
-        description: "headache, fever ...",
-        appointTime: "2020-06-20 09:00 am",
-        diagnosis: "mental anxiety",
-        prescription: "some medicine here",
-        status: "Finished"
-      },
-    ]
   }
->>>>>>> Stashed changes
+  
+  componentDidMount() {
+    Apporequest(this)
+  }
 
-  renderButton(id) {
-    if (this.state.patients[id].status === "Pending") {
+  renderButton(patient) {
+    if (patient.status === "Pending") {
       return (<div>
-        <Button size="small" onClick={() => { this.acceptAppointment(id,this.state.patients[id].appointTime) }} variant="contained" color="primary">
+        <Button size="small" onClick={() => this.acceptAppointment(patient.id, patient.appointTime) } variant="contained" color="primary">
           Accept
         </Button>
-        <Button size="small" onClick={() => { this.declineAppointment(id) }} variant="contained" color="secondary">
+        <Button size="small" onClick={() => { this.declineAppointment(patient.id) }} variant="contained" color="secondary">
           Decline
         </Button>
       </div>
       );
-    } else if (this.state.patients[id].status === "Current") {
+    } else if (patient.status === "Current") {
       return (<div>
-        <Button size="small" onClick={()=>this.openChat(this.state.patients[id])} variant="contained" color="primary">
+        <Button size="small" onClick={() => this.openChat(patient)} variant="contained" color="primary">
           Chat
         </Button>
-        <Button size="small" onClick={() => { this.openTreatmentDialog(id) }} variant="contained" color="primary">
+        <Button size="small" onClick={() => { this.openTreatmentDialog(patient.id) }} variant="contained" color="primary">
           Treat
         </Button>
       </div>
       );
-    } else if (this.state.patients[id].status === "Subsequent") {
+    } else if (patient.status === "Subsequent") {
       return (<div>
-        <Button size="small" onClick={this.openChat} variant="contained" color="primary">
+        <Button size="small" onClick={() => this.openChat(patient)} variant="contained" color="primary">
           Chat
         </Button>
       </div>
@@ -300,6 +110,8 @@ componentDidMount() {
       talkTo,
       chatOpen: true,
     })
+    console.log(this.state.talkTo.userId + "fuk1");
+    console.log(this.state.talkTo.userId + "fuk2");
   }
 
   closeChat = () => {
@@ -308,21 +120,21 @@ componentDidMount() {
     })
   }
 
-  acceptAppointment = (index,time) => {
+  acceptAppointment = (index, time) => {
     const patients = this.state.patients;
-    change(this.state.id,index,0);
+    change(this.state.id, index, 0);
     const ddt = new Date(time)
     const now = new Date()
     var SST = 'Pending';
- 
-    if ((ddt.getTime()-now.getTime())<-86400000){
-        SST = "Passed"
+
+    if ((ddt.getTime() - now.getTime()) < -86400000) {
+      SST = "Passed"
     }
-    else if ((Math.abs(ddt.getTime()-now.getTime()))<=86400000){
-        SST = "Current"
+    else if ((Math.abs(ddt.getTime() - now.getTime())) <= 86400000) {
+      SST = "Current"
     }
-    else if ((ddt.getTime()-now.getTime())>86400000){
-        SST = "Subsequent"
+    else if ((ddt.getTime() - now.getTime()) > 86400000) {
+      SST = "Subsequent"
     }
     patients[index].status = SST;
     this.setState({ patients });
@@ -330,7 +142,7 @@ componentDidMount() {
 
   declineAppointment = (id) => {
     const patients = this.state.patients;
-    change(this.state.id,id,2);
+    change(this.state.id, id, 2);
     patients[id].status = "Declined";
     this.setState({ patients });
   }
@@ -383,7 +195,7 @@ componentDidMount() {
               .map((row) => (
                 <TableRow>
                   <TableCell>{row.realName}</TableCell>
-                  <TableCell>{row.userName}</TableCell>
+                  <TableCell>{row.username}</TableCell>
                   <TableCell>{row.description}</TableCell>
                   <TableCell>{row.appointTime}</TableCell>
                   <TableCell>
@@ -392,7 +204,7 @@ componentDidMount() {
                   </TableCell>
                   <TableCell>{row.status}</TableCell>
                   <TableCell>
-                    {this.renderButton(row.id)}
+                    {this.renderButton(row)}
                   </TableCell>
                 </TableRow>
               ))}

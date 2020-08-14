@@ -26,6 +26,8 @@ class Appointments extends React.Component {
       talkTo,
       chatOpen: true,
     })
+    console.log(this.state.talkTo.userId + "fuk1");
+    console.log(this.state.talkTo.userId + "fuk2");
   }
 
   closeChat = () => {
@@ -60,7 +62,7 @@ class Appointments extends React.Component {
 
             .slice(page * itemsPerPage, (page+1) * itemsPerPage)
             .map((row) => (
-              <TableRow key={row.id}>
+              <TableRow key={row.userid}>
                 <TableCell>{row.realName}</TableCell>
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.expertise}</TableCell>
