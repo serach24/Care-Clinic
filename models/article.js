@@ -20,8 +20,7 @@ const articleSchema = new mongoose.Schema({
         minlength: 1
     },
     img: {
-        data: Buffer,
-        contentType: String
+        type: String
     },
     likes:[mongoose.ObjectId],
     comments:[commentSchema]

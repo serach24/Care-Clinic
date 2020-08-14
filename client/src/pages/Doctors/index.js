@@ -4,7 +4,7 @@ import React from "react";
 import DoctorList from "../../components/DoctorList";
 import RightPart from "../../components/RightPart";
 import "./styles.css";
-import {getDoctors} from "./request";
+import {getDoctors, getDoctorss} from "./request";
 
 class Doctors extends React.Component{
     constructor(props) {
@@ -12,7 +12,16 @@ class Doctors extends React.Component{
         this.state = {
             doctors:[]
         };
+        
+        // getDoctorss(this, this.props.match.params.expertise);
+    }
+    componentDidMount(){
         getDoctors(this);
+    }
+
+    handleClick = (expertise) => {
+        getDoctorss(this,expertise);
+        // event.preventDefault();
     }
 
     render(){
@@ -21,8 +30,7 @@ class Doctors extends React.Component{
             <div className="App">
                 <div className="content">
                 <DoctorList app={app} doctors={this.state.doctors}/>
-                <RightPart app={app} />
-
+                <RightPart app={this}/>
                 </div>
                 {/* <StoryPage header={this.state.articleheader} content={this.state.articlecontent} /> */}
             </div>

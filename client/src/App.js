@@ -66,7 +66,7 @@ class App extends React.Component {
           <Route exact path='/feedback' render={() =>
                           (<Feedback app={this}/>)}/>
           <Route path='/article/:id' component={Storys}/>
-
+          
           <Route path="/test" component={Comments}/>
 
           <Route exact path='/about' render={() =>

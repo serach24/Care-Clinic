@@ -11,7 +11,6 @@ const { ObjectID } = require("mongodb");
 // return article document
 router.post("/", (req, res) =>{
     log(req.body);
-        // Create a new doctor using the Doctor mongoose model
         const article = new Article({
             title: req.body.title,
             content: req.body.content,

@@ -1,14 +1,28 @@
-export const getDoctors = (comp,reqBody) => {
+export const getDoctors = (comp,expertise) => {
     // Create our request constructor with all the parameters we need
     // console.log(reqBody);
-    const request = new Request("/comment/", {
-        method: "put",
-        body: JSON.stringify(reqBody),
-        headers: {
-            Accept: "application/json, text/plain, */*",
-            "Content-Type": "application/json"
-        }
-    });
+    let request;
+    if (expertise !== null){
+        request = new Request(`/doctors/doctorlst/${expertise}`, {
+            method: "get",
+            body: JSON.stringify(reqBody),
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            }
+        });
+    }
+    else{
+        request = new Request("/doctors/", {
+            method: "get",
+            body: JSON.stringify(reqBody),
+            headers: {
+                Accept: "application/json, text/plain, */*",
+                "Content-Type": "application/json"
+            }
+        });        
+    }
+
 
     // Send the request with fetch()
     fetch(request)
@@ -19,10 +33,10 @@ export const getDoctors = (comp,reqBody) => {
         })
         .then(json => {
             if (json !== undefined) {
-                console.log(json);
-                // comp.setState({
-                //     comments: json
-                // },() => console.log(comp.state.comments))
+                console.log("here"+json);
+                comp.setState({
+                    doctors: json.doctors
+                },() => console.log(comp.state.doctors))
             }
         })
         .catch(error => {

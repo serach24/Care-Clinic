@@ -28,6 +28,9 @@ render() {
             UUid = {app.state.userId}
             Uname = {app.state.profile.username}
             Rname = {app.state.profile.realName}
+            // UUid = ""
+            // Uname = ""
+            // Rname = ""
             />
             
         ))}
