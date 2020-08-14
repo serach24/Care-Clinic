@@ -131,7 +131,7 @@ router.post("/", (req, res) => {
                             }
                             if((ddt.getTime() > now.getTime()-86400000) &&(req.body.passedNorT)){
                             appos.push({
-                                id: doctors[i].id,
+                                userId: doctors[i].id,
                                 username: doctors[i].username,
                                 realName: doctors[i].realName,
                                 date: ddt+"",
@@ -141,7 +141,7 @@ router.post("/", (req, res) => {
                         }
                         else if (!(ddt.getTime() > now.getTime()-86400000) &&!(req.body.passedNorT)){
                             appos.push({
-                                id: doctors[i].id,
+                                userId: doctors[i].id,
                                 username: doctors[i].username,
                                 realName: doctors[i].realName,
                                 date: ddt+"",

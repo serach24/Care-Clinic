@@ -70,10 +70,10 @@ io.on('connection', (socket) => {
   })
 
   socket.on('sendMsg', (message) => {
-    log('sendmsg: ' + message);
+    log(`sendMsg: text: ${message.text}, sender: ${message.sender}, receiver: ${message.receiver}`);
 
-    const receiver = userList.filter(userInfo => userInfo.userId == message.receiver)[0]
-    if (!receiver) {
+    const receiver = userList.filter(userInfo => userInfo.userId == message.receiver)
+    if (receiver === undefined || receiver.length == 0) {
       socket.emit('chatTip', "He/She is not online yet and could not see your message");
       return;
     }
@@ -83,18 +83,18 @@ io.on('connection', (socket) => {
     const date = new Date()
     // const time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
     message.time = date
-
-    socket.broadcast.to(receiverId).emit('receiveMsg', message)
-
-    User.update({"_id": message.sender, 
-      "chatList.chatHistory.receiver": message.receiver}, 
-      { $push: { "chatList.chatHistory.$.history": message },
-        $set: {"recentMessage": message.text, "recentTime": message.time} })
     
-    User.update({"_id": message.receiver, 
-      "chatList.chatHistory.receiver": message.sender}, 
-      { $push: { "chatList.chatHistory.$.history": message },
-      $set: {"recentMessage": message.text, "recentTime": message.time} })
+    socket.broadcast.to(receiver[0].socketId).emit('receiveMsg', message)
+    log(`send to ${receiver[0].socketId}`);
+    // User.update({"_id": message.sender, 
+    //   "chatList.chatHistory.receiver": message.receiver}, 
+    //   { $push: { "chatList.chatHistory.$.history": message },
+    //     $set: {"recentMessage": message.text, "recentTime": message.time} })
+    
+    // User.update({"_id": message.receiver, 
+    //   "chatList.chatHistory.receiver": message.sender}, 
+    //   { $push: { "chatList.chatHistory.$.history": message },
+    //   $set: {"recentMessage": message.text, "recentTime": message.time} })
   })
 
   socket.on('disconnect', () => {

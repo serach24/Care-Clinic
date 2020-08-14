@@ -55,11 +55,11 @@ class Chat extends React.Component {
     // locally add message
     const messages = this.state.messages
     const date = new Date()
-    const time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+    // const time = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
     const message = {
       sender: this.props.userId,
       receiver: this.props.talkTo.userId,
-      time,
+      time: date,
       text: this.state.input
     }
     messages.push(message);
