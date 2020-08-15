@@ -13,7 +13,7 @@ const { ObjectID } = require("mongodb");
 router.post('/like', (req, res) => {
     const id = req.body.articleId;
     const userId = req.body.userId;
-    log(userId)
+    // log(userId)
     if (!ObjectID.isValid(id) || !ObjectID.isValid(userId)) {
         res.status(404).send(); // if invalid id, definitely can't find resource, 404.
         return;
@@ -36,7 +36,7 @@ router.post('/like', (req, res) => {
 router.delete('/like', (req, res) => {
     const id = req.body.articleId;
     const userId = req.body.userId;
-    log(userId)
+    // log(userId)
     if (!ObjectID.isValid(id) || !ObjectID.isValid(userId)) {
         res.status(404).send(); // if invalid id, definitely can't find resource, 404.
         return;

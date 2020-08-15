@@ -15,42 +15,6 @@ const code404 = 'Resource not found';
 //   res.send('respond with a resource');
 // });
 
-router.post("/", (req, res) => {
-//   log(req.body);
-
-  // Create a new user
-  const user = new User({
-      username: req.body.username,
-      password: req.body.password,
-	  level: req.body.level, 
-      realName: req.body.realName,
-      location: req.body.location,
-      gender: req.body.gender,
-      age: req.body.age,
-      phone:req.body.phone,
-      mainmail:req.body.mainmail,
-      backupemail:req.body.mainmail,
-      needVerify: req.body.needVerify,
-      Certification1:req.body.Certification1,
-      Certification2:req.body.Certification2
-  });
-//   log(user);
-  // Save the user
-  user.save().then(
-      user => {
-          res.send({
-                  userId: user._id,
-                  loginState: user.level,
-                  profile:user
-              });
-      },
-      error => {
-        //   log(error);
-          res.status(400).send(error); // 400 for bad request
-      }
-  );
-});
-
 // a GET route to get all users
 router.get("/", (req, res) => {
 //   console.log("here")

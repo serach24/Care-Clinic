@@ -14,7 +14,7 @@ const code404 = 'Resource not found';
 // body format { title:"", content:"", img:""}
 // return article document
 router.post("/", (req, res) =>{
-    log(req.body);
+    // log(req.body);
         const article = new Article({
             title: req.body.title,
             content: req.body.content,

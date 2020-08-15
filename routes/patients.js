@@ -41,7 +41,7 @@ router.post('/:id', (req, res) =>{
         return;
     }
 
-    log(req.body);
+    // log(req.body);
     User.findByIdAndUpdate(id, {$set: {"healthHistory": req.body}}, {new:true, useFindAndModify: false}).then((user) => {
         if(!user) {
             res.status(404).send(code404)
@@ -153,11 +153,10 @@ router.post("/", (req, res) => {
                     }
                 }
                 res.send({ appos }); // can wrap in object if want to add more properties
-            },
-            error => {
+            })
+            .catch(error => {
                 res.status(500).send(code500); // server error
-            }
-        );
+            });
     });
 
 
