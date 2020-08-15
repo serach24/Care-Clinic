@@ -64,11 +64,11 @@ router.post("/:id", (req, res) => {
 
 // a GET route to get all valid doctors
 router.get("/", (req, res) => {
-    User.find().then(
+    User.find({"level":3}).then(
         users => {
-            let doctors = [];
-            doctors = users.filter(user =>  user.level === 3)
-            let fileToSend = doctors.map(doc => {
+            // let doctors = [];
+            // doctors = users.filter(user =>  user.level === 3)
+            let fileToSend = users.map(doc => {
                 const newDoc = {};
                 newDoc.id= doc._id;
                 newDoc.realName= doc.realName;
@@ -90,11 +90,11 @@ router.get("/", (req, res) => {
 router.get("/doctorlst/:expertise", (req, res) => {
     const category = String(req.params.expertise);
     console.log(category)
-    User.find({expertise: category}).then(
+    User.find({expertise: category, "level":3}).then(
         users => {
-            let doctors = [];
-            doctors = users.filter(user =>  user.level === 3)
-            let fileToSend = doctors.map(doc => {
+            // let doctors = [];
+            // doctors = users.filter(user =>  user.level === 3)
+            let fileToSend = users.map(doc => {
                 const newDoc = {};
                 newDoc.id= doc._id;
                 newDoc.realName= doc.realName;
