@@ -102,7 +102,7 @@ class UserBan extends React.Component {
             {this.state.chosenUsers
             .slice(page * itemsPerPage, (page+1) * itemsPerPage)
             .map((row) => (
-              <TableRow>
+              <TableRow key ={row.id}>
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.role}</TableCell>
                 <TableCell>{row.recentIPAddress}</TableCell>
