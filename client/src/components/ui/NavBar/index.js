@@ -96,11 +96,6 @@ class NavBar extends React.Component {
             {app.state.loginState === 3 && <Button component={Link} to={"/patientList"} color="inherit"
               className="PatientList" > My Patients </Button>}
 
-
-
-            {/* {app.state.loginState !== 0 && <ChatOutlinedIcon className="chat-button" onClick={this.handleClick} />}
-            <ChatPeople userId={this.props.userId} open={open} anchorEl={this.state.chatPeopleAnchor} onClose={this.closeChat} /> */}
-
             {app.state.loginState === 0 && !this.state.auth && <Button component={Link} to={"/login"} color="inherit"
               className="loginButton" >Login</Button>}
             {app.state.loginState !== 0 && <div className="ProfileButton"> Profile </div>}
