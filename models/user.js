@@ -119,12 +119,12 @@ const UserSchema = new mongoose.Schema({
 	Certification1: {
 		type: String,
 		required: false,
-		minlength: 1,
+		minlength: 0,
 	},
 	Certification2: {
 		type: String,
 		required: false,
-		minlength: 1,
+		minlength: 0,
 	},
 	location: {
 		type: String,

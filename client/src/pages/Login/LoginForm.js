@@ -1,13 +1,19 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 // material ui components
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Input from "../../components/ui/Input";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 import "./styles.css";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 /* Component for the Student Form */
 class LoginForm extends React.Component {
@@ -49,6 +55,11 @@ class LoginForm extends React.Component {
     // this.props.SetUUid("BoluoLiuDoctor");
     // }
   }
+  handleClose = () => {
+    this.setState({
+      setOpen:false
+    })
+  };
 
   render() {
     const { app, login } = this.props;
@@ -81,7 +92,6 @@ class LoginForm extends React.Component {
           value={this.state.password}
           onChange={this.handleInputChange}
         />
-        <Link className="login-submit-button-link">
           <div className="login-submit-button">
             <Button
               variant="contained"
@@ -93,7 +103,13 @@ class LoginForm extends React.Component {
               Login
             </Button>
           </div>
-        </Link>
+          <div className="alertRoot">
+          <Snackbar open={this.state.setOpen} autoHideDuration={6000} onClose={this.handleClose}>
+            <Alert onClose={this.handleClose} severity="error">
+              Login Error
+            </Alert>
+          </Snackbar>
+        </div>
         <div className="login-text">
           <div className="login-switch">
             <Link onClick={this.props.switch} variant="body2">

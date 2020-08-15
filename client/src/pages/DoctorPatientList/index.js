@@ -193,7 +193,7 @@ class DoctorPatientList extends React.Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.state.patients
+            {this.state.patients.reverse()
               .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
               .map((row) => (
                 <TableRow>

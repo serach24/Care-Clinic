@@ -6,6 +6,10 @@ const router = express.Router();
 const { Article } = require("../models/article");
 const { ObjectID } = require("mongodb");
 
+const code500 = 'Internal server error';
+const code400 = 'Bad Request';
+const code404 = 'Resource not found';
+
 /*** Article APIs below ***/
 // body format { title:"", content:"", img:""}
 // return article document

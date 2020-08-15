@@ -6,6 +6,10 @@ const router = express.Router();
 const { User } = require("../models/user");
 const user = require('../models/user');
 
+const code500 = 'Internal server error';
+const code400 = 'Bad Request';
+const code404 = 'Resource not found';
+
 // /* GET users listing. */
 // router.get('/', function(req, res, next) {
 //   res.send('respond with a resource');

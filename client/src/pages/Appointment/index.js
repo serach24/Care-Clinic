@@ -42,14 +42,14 @@ class Appointments extends React.Component {
   render() {
     const page = this.state.page;
     const itemsPerPage = this.state.itemsPerPage;
-    const {classes} = this.props
+    const { classes } = this.props
     return (
       <div className={classes.appRoot}>
         <h3>Upcoming Appointments</h3>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Doctor Name</TableCell> 
+              <TableCell>Doctor Name</TableCell>
               {/* TODO: add username to profile link */}
               <TableCell >Doctor Username</TableCell>
               <TableCell >Department</TableCell>
@@ -59,8 +59,7 @@ class Appointments extends React.Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.state.doctors
-
+            {this.state.doctors.reverse()
               .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
               .map((row) => (
                 <TableRow key={row.userid}>
@@ -97,4 +96,4 @@ class Appointments extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: false }) (Appointments);
+export default withStyles(styles, { withTheme: false })(Appointments);

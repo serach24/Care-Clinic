@@ -5,6 +5,10 @@ const router = express.Router();
 // mongoose model
 const { User } = require("../models/user");
 
+const code500 = 'Internal server error';
+const code400 = 'Bad Request';
+const code404 = 'Resource not found';
+
 router.get("/:sender", (req, res) => {
   const sender = req.params.sender;
   log(sender)
