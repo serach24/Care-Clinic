@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 // material ui components
 import Container from "@material-ui/core/Container";

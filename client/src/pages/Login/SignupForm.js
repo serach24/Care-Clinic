@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import { Redirect } from 'react-router-dom'
 
 import Input from "../../components/ui/Input";
 import { signup } from "./../../auth/authUtil";
@@ -81,6 +82,9 @@ class SignupForm extends React.Component {
     const { app } = this.props;
     let isUsernameEmpty = this.state.checkError && this.state.username === "";
     let isPasswordEmpty = this.state.checkError && this.state.password === "";
+    if (app.state.loginState !== 0) {
+      return <Redirect to={"/"} />
+    }
     return (
       <Container component="main" maxWidth="xs">
         <h3> Sign up</h3>
