@@ -10,21 +10,6 @@ class HealthHistory extends React.Component {
 
         this.state = {
             isSubmit: true,
-            // patient: {
-            //     firstName: "",
-            //     lastName:"",
-            //     DOB: "",
-            //     maritalStatus: "",
-            //     problems:[
-            //         {year:"", reason:"", ukey: 100 }
-            //     ],
-            //     drugs:[
-            //         {name:"", strength:"", frequency:"", ukey:200}
-            //     ],
-            //     allergies:[
-            //         {drugName:"", reaction:"", ukey:300}
-            //     ]
-            // },
 
             // the data below need a serverCall to get.
             patient: {
@@ -46,7 +31,7 @@ class HealthHistory extends React.Component {
 
     };
     componentDidMount = () => {
-        getHealth(this, this.props.match.params.id);
+        getHealth(this, this.props.app.state.userId);
     }
 
     editable = (event) => {
@@ -65,9 +50,7 @@ class HealthHistory extends React.Component {
                 isSubmit: true
             }
         }, () => {
-            // console.log(this);
-            changeHealth(this, this.props.match.params.id);
-            // console.log(this.state.patient);
+            changeHealth(this, this.props.app.state.userId);
         });
     }
 
