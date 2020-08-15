@@ -25,17 +25,17 @@ class AdminSideBar extends React.Component {
         }
         ]
       },
-      {
-        name: "Content Management",
-        ref: "content-management",
-          index:1,
-          nested: [
-          { name: "Content Upload Review",
-            ref: "content-upload-review" },
-          { name: "Content Editing",
-            ref: "content-editing" },
-        ]
-      },
+      // {
+      //   name: "Content Management",
+      //   ref: "content-management",
+      //     index:1,
+      //     nested: [
+      //     { name: "Content Upload Review",
+      //       ref: "content-upload-review" },
+      //     { name: "Content Editing",
+      //       ref: "content-editing" },
+      //   ]
+      // },
       {
         name: "Feedback Review",
         ref: "feedback-review",
