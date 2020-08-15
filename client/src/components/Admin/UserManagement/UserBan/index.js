@@ -10,6 +10,7 @@ import Paper from "@material-ui/core/Paper"
 
 
 import { styles } from '../styles';
+import { getUsers, deUser } from "./request";
 
 class UserBan extends React.Component {
   state = {
@@ -18,85 +19,22 @@ class UserBan extends React.Component {
     users: [
       {
         id: 0,
-        username: "testDoctor1",
-        role: "Doctor",
-        recentIPAddress: "99.227.163.185",
-        status: "Active",
-        banTime: 0,
-      },
-      {
-        id: 1,
-        username: "testUser1",
-        role: "Normal",
-        recentIPAddress: "99.227.163.186",
-        status: "Active",
-        banTime: 0,
-      },
-      {
-        id: 2,
-        username: "testDoctor2",
-        role: "Doctor",
-        recentIPAddress: "99.227.164.145",
-        status: "Active",
-        banTime: 0,
-      },
-      {
-        id: 3,
-        username: "testUser2",
-        role: "Normal",
-        recentIPAddress: "99.237.163.185",
-        status: "Active",
-        banTime: 0,
-      },
-      {
-        id: 4,
-        username: "IAmNotADoctor",
-        role: "Normal",
-        recentIPAddress: "99.237.163.185",
-        status: "Banned",
-        banTime: 24,
-      },
-      {
-        id: 5,
-        username: "asdfasdf",
-        role: "Normal",
-        recentIPAddress: "99.237.163.185",
-        status: "Banned",
-        banTime: 24,
-      },    
-      {
-        id: 6,
-        username: "IAmNotAnAdmin",
-        role: "Normal",
-        recentIPAddress: "99.237.163.185",
-        status: "Banned",
-        banTime: 24,
-      },
-      {
-        id: 7,
-        username: "ADoctor",
-        role: "Doctor",
-        recentIPAddress: "99.237.163.185",
-        status: "Banned",
-        banTime: 24,
-      },
-      {
-        id: 8,
-        username: "whatever",
-        role: "Normal",
-        recentIPAddress: "99.237.163.185",
-        status: "Banned",
-        banTime: 24,
-      },
+        username: "",
+        role: "",
+        recentIPAddress: "",
+        status: "",
+        banTime: ""
+      }
     ],
     username: "",
     chosenUsers: []
   }
 
   componentDidMount(){
-    this.setState({
-      chosenUsers: this.state.users
-    })
+    getUsers(this);
+    // this.setState({
+    //   chosenUsers: this.state.users
+    // })
   }
 
   searchUser = () => {
@@ -109,15 +47,19 @@ class UserBan extends React.Component {
   }
 
   banUser = (id) =>{
-    const users = this.state.users;
-    users[id].status = "Banned";
-    this.setState({users});
+    const rbody = {}
+    rbody.id = id
+    rbody.status = "Ban"
+    deUser(rbody)
+    getUsers(this)
   }
 
   revokeBanUser = (id) =>{
-    const users = this.state.users;
-    users[id].status = "Active";
-    this.setState({users});
+    const rbody = {}
+    rbody.id = id
+    rbody.status = "Active"
+    deUser(rbody)
+    getUsers(this)
   }
 
   handleChangePage = (e,page) =>{
@@ -160,7 +102,7 @@ class UserBan extends React.Component {
             {this.state.chosenUsers
             .slice(page * itemsPerPage, (page+1) * itemsPerPage)
             .map((row) => (
-              <TableRow>
+              <TableRow key ={row.id}>
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.role}</TableCell>
                 <TableCell>{row.recentIPAddress}</TableCell>

@@ -53,7 +53,12 @@ class DoctorOpenInfo extends React.Component {
                     <div>{doctor.realName+"\n"}</div>
                     </Typography>
                     <Typography variant="h5" color="textSecondary">
-                    <div>{ doctor.expertise+"\n" +doctor.gender}</div>
+                    <div>{doctor.gender}</div>
+                    </Typography>
+                    <Typography variant="h6" color="textSecondary">
+                    {doctor.expertise.map(ex => (
+                        ex+" "
+                    ))}
                     </Typography>
                 </CardContent>
             </CardActionArea>    

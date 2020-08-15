@@ -4,6 +4,7 @@ const router = express.Router();
 
 // mongoose model
 const { User } = require("../models/user");
+const user = require('../models/user');
 
 // /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -49,10 +50,28 @@ router.post("/", (req, res) => {
 // a GET route to get all users
 router.get("/", (req, res) => {
 //   console.log("here")
-  User.find().then(
-      students => {
-          let doctors = [];
-          res.send({ students }); // can wrap in object if want to add more properties
+  User.find({"level":{$ne:2} }).then(
+      users => {
+          let usersToSend = [];
+          usersToSend = users.map(user =>{
+            const nUser = {};
+            nUser.id= user._id;
+            nUser.username= user.username;
+            if (user.level === 1){
+                nUser.role= "Normal";
+            }
+            if (user.level === 2){
+                nUser.role= "Admin";
+            }
+            if (user.level === 3){
+                nUser.role= "Doctor";
+            }
+            nUser.recentIPAddress= "192.168.0.1";
+            nUser.status = "Active";
+            nUser.banTime= 0;
+            return nUser;
+          })
+          res.send({ users: usersToSend }); // can wrap in object if want to add more properties
       },
       error => {
           res.status(500).send(error); // server error

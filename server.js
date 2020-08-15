@@ -12,6 +12,7 @@ const patientsRouter = require('./routes/patients');
 const feedRouter = require('./routes/feedback');
 const chatRouter = require('./routes/chat');
 const commentLike = require('./routes/comentLike');
+const superusers = require('./routes/superusers');
 
 const sio = require("socket.io");
 // starting the express server
@@ -45,7 +46,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      expires: 60 * 1000,
+      expires: 15*60*1000,
       httpOnly: true
     }
   })
@@ -107,12 +108,12 @@ io.on('connection', (socket) => {
 // Middleware for authentication of resources
 const authenticate = (req, res, next) => {
   if (req.session.user) {
-    User.findById(req.session.userId).then((userId) => {
-      log('auth' + userId)
-      if (!userId) {
+    User.findById(req.session.user).then((user) => {
+      log('auth' + user)
+      if (!user) {
         return Promise.reject()
       } else {
-        req.userId = userId
+        req.user = user
         next()
       }
     }).catch((error) => {
@@ -125,11 +126,13 @@ const authenticate = (req, res, next) => {
 
 app.use('/users', loginRouter);
 
-app.use('/doctors', doctorsRouter);
+app.use('/doctors',authenticate, doctorsRouter);
 // log(doctorsRouter);
 app.use('/patients', patientsRouter);
 
 app.use('/users', usersRouter);
+
+app.use('/superusers', superusers);
 
 app.use('/articles', articlesRouter);
 
