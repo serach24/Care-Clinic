@@ -73,15 +73,13 @@ class Profile extends React.Component {
         anchorEl={anchorEl}
         onClose={onClose}
       >
-        <div className="FlowAvatar">
-          <UserAvatar app={app} />
-        </div>
+
         <div className="FlowButtons">
           <div className="FlowButton">
-            <Button variant="contained" component={Link} to={"/"} onClick={() => logout(app)}>LogOut</Button>
+            <Button fullWidth variant="filled" component={Link} to={"/"} onClick={() => logout(app)}>LogOut</Button>
           </div>
           <div className="FlowButton">
-            {app.state.loginState !== 2 && <Button component={Link} to={"/" + app.state.userId} variant="contained">Detail</Button>}
+            {app.state.loginState !== 2 && <Button fullWidth component={Link} to={"/" + app.state.userId} variant="filled">Detail</Button>}
           </div>
         </div>
       </ Popover>
