@@ -13,7 +13,7 @@ const code404 = 'Resource not found';
 // body format { title:"", content:"", img:""}
 // return article document
 router.post("/", (req, res) =>{
-    log(req.body);
+    // log(req.body);
         // Create a new doctor using the Doctor mongoose model
         const Feedback = new feedback({
             description: req.body.message,
@@ -37,7 +37,7 @@ router.get("/", (req,res) => {
     // log(req.body)
     feedback.find().then(
         feedback => {
-            log(feedback);
+            // log(feedback);
             res.send({ feedback }); // can wrap in object if want to add more properties
         },
         error => {

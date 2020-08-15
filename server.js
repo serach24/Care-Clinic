@@ -103,7 +103,7 @@ io.on('connection', (socket) => {
 const authenticate = (req, res, next) => {
   if (req.session.user) {
     User.findById(req.session.user).then((user) => {
-      log('auth' + user)
+      // log('auth' + user)
       if (!user) {
         return Promise.reject()
       } else {

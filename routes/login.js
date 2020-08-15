@@ -11,7 +11,7 @@ const code400 = 'Bad Request';
 const code404 = 'Resource not found';
 
 router.post("/", (req, res) => {
-    log(req.body);
+    // log(req.body);
   
     // Create a new user
     const user = new User({
@@ -108,8 +108,7 @@ router.get("/check-session", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-      log(req.body);
-    
+    //   log(req.body);
       // Create a new user
       const user = new User({
           username: req.body.username,
