@@ -107,7 +107,7 @@ const authenticate = (req, res, next) => {
       if (!user) {
         return Promise.reject()
       } else {
-        req.user = user_id
+        req.user = user._id
         next()
       }
     }).catch((error) => {
