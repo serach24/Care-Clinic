@@ -12,7 +12,7 @@ export const Apporequest = (ths) => {
     // Send the request with fetch()
     fetch(request)
     .then(res => {
-        console.log(request)
+        //console.log(request)
         if (res.status === 200) {
             return res.json();
         }

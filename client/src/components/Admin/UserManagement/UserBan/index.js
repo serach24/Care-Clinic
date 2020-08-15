@@ -92,8 +92,8 @@ class UserBan extends React.Component {
               <TableCell>Username</TableCell>
               {/* TODO: add username to profile link */}
               <TableCell >Role</TableCell>
-              <TableCell >Recent IP Address</TableCell>
-              <TableCell >Recent Activity</TableCell>
+              {/* <TableCell >Recent IP Address</TableCell> */}
+              {/* <TableCell >Recent Activity</TableCell> */}
               <TableCell >Status</TableCell>
               <TableCell >Manage</TableCell>
             </TableRow>
@@ -105,9 +105,8 @@ class UserBan extends React.Component {
               <TableRow key ={row.id}>
                 <TableCell>{row.username}</TableCell>
                 <TableCell>{row.role}</TableCell>
-                <TableCell>{row.recentIPAddress}</TableCell>
-                <TableCell>
-                </TableCell>
+                {/* <TableCell>{row.recentIPAddress}</TableCell> */}
+                {/* <TableCell></TableCell> */}
                 <TableCell>{row.status}</TableCell>
                 <TableCell>
                   {row.status === "Active"

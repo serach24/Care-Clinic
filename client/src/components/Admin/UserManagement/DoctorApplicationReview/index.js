@@ -12,159 +12,26 @@ class DoctorApplicationReview extends React.Component {
       doctors: [
         {
           id: 0,
-          realName: "John Doe1",
-          username: "testDoctor1",
-          expertise: "Pediatrics",
+          realName: "",
+          username: "",
+          expertise: "",
           documents: [
             {
-              docName: "sampleCertification1.jpg",
-              location: "/img/sampleCertification1.jpg"
+              docName: "",
+              location: ""
             },
             {
-              docName: "sampleCertification2.pdf",
-              location: "/img/sampleCertification2.pdf"
+              docName: "",
+              location: ""
             }
           ],
-          status: "Pending"
-        },
-        {
-          id: 1,
-          realName: "John Doe2",
-          username: "testDoctor2",
-          expertise: "Neurosurgery",
-          documents: [
-            {
-              docName: "sampleCertification1.jpg",
-              location: "/img/sampleCertification1.jpg"
-            },
-            {
-              docName: "sampleCertification2.pdf",
-              location: "/img/sampleCertification2.pdf"
-            }
-          ],
-          status: "Pending"
-        }, 
-        {
-          id: 2,
-          realName: "John Doe3",
-          username: "testDoctor3",
-          expertise: "Dermatology",
-          documents: [
-            {
-              docName: "sampleCertification1.jpg",
-              location: "/img/sampleCertification1.jpg"
-            },
-            {
-              docName: "sampleCertification2.pdf",
-              location: "/img/sampleCertification2.pdf"
-            }
-          ],
-          status: "Pending"
-        }, 
-        {
-          id: 3,
-          realName: "John Doe4",
-          username: "testDoctor4",
-          expertise: "Pediatrics",
-          documents: [
-            {
-              docName: "sampleCertification1.jpg",
-              location: "/img/sampleCertification1.jpg"
-            },
-            {
-              docName: "sampleCertification2.pdf",
-              location: "/img/sampleCertification2.pdf"
-            }
-          ],
-          status: "Pending"
-        }, 
-        {
-          id: 4,
-          realName: "John Doe5",
-          username: "testDoctor5",
-          expertise: "ENT",
-          documents: [
-            {
-              docName: "sampleCertification1.jpg",
-              location: "/img/sampleCertification1.jpg"
-            },
-            {
-              docName: "sampleCertification2.pdf",
-              location: "/img/sampleCertification2.pdf"
-            }
-          ],
-          status: "Pending"
-        }, 
-        {
-          id: 5,
-          realName: "John Doe6",
-          username: "testDoctor6",
-          expertise: "ENT",
-          documents: [
-            {
-              docName: "sampleCertification1.jpg",
-              location: "/img/sampleCertification1.jpg"
-            },
-            {
-              docName: "sampleCertification2.pdf",
-              location: "/img/sampleCertification2.pdf"
-            }
-          ],
-          status: "Approved"
-        }, 
-        {
-          id: 6,
-          realName: "John Doe7",
-          username: "testDoctor7",
-          expertise: "Stomatology",
-          documents: [
-            {
-              docName: "sampleCertification1.jpg",
-              location: "/img/sampleCertification1.jpg"
-            },
-            {
-              docName: "sampleCertification2.pdf",
-              location: "/img/sampleCertification2.pdf"
-            }
-          ],
-          status: "Declined"
-        }, 
-        {
-          id: 7,
-          realName: "John Doe8",
-          username: "testDoctor8",
-          expertise: "Neurosurgery",
-          documents: [
-            {
-              docName: "sampleCertification1.jpg",
-              location: "/img/sampleCertification1.jpg"
-            },
-            {
-              docName: "sampleCertification2.pdf",
-              location: "/img/sampleCertification2.pdf"
-            }
-          ],
-          status: "Declined"
-        },
-        {
-          id: 8,
-          realName: "John Doe9",
-          username: "testDoctor9",
-          expertise: "Respiration",
-          documents: [
-            {
-              docName: "sampleCertification1.jpg",
-              location: "/img/sampleCertification1.jpg"
-            },
-            {
-              docName: "sampleCertification2.pdf",
-              location: "/img/sampleCertification2.pdf"
-            }
-          ],
-          status: "Declined"
+          status: ""
         },
       ]
     }
+    
+  }
+  componentDidMount(){
     Pendingrequest(this)
   }
   

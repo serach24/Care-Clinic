@@ -11,7 +11,7 @@ const code400 = 'Bad Request';
 const code404 = 'Resource not found';
 
 router.post("/", (req, res) => {
-    log(req.body);
+    // log(req.body);
   
     // Create a new user
     const user = new User({
@@ -33,7 +33,9 @@ router.post("/", (req, res) => {
     // Save the user
     user.save().then(
         user => {
-            res.send({
+            user.password = "";
+            res.send(
+                {
                     userId: user._id,
                     loginState: user.level,
                     profile:user
@@ -70,6 +72,7 @@ router.post("/login", (req, res) => {
                 res.status(500).send("User is Banned")
                 return;
             }
+            user.password = "";
             res.send({ userId: user._id,
                        loginState: user.level,
                        profile:user
@@ -105,8 +108,7 @@ router.get("/check-session", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-      log(req.body);
-    
+    //   log(req.body);
       // Create a new user
       const user = new User({
           username: req.body.username,
