@@ -90,20 +90,11 @@ io.on('connection', (socket) => {
     
     socket.broadcast.to(receiver[0].socketId).emit('receiveMsg', message)
     log(`send to ${receiver[0].socketId}`);
-    // User.update({"_id": message.sender, 
-    //   "chatList.chatHistory.receiver": message.receiver}, 
-    //   { $push: { "chatList.chatHistory.$.history": message },
-    //     $set: {"recentMessage": message.text, "recentTime": message.time} })
-    
-    // User.update({"_id": message.receiver, 
-    //   "chatList.chatHistory.receiver": message.sender}, 
-    //   { $push: { "chatList.chatHistory.$.history": message },
-    //   $set: {"recentMessage": message.text, "recentTime": message.time} })
   })
 
   socket.on('disconnect', () => {
-    log('quit')
-    userList = userList.filter(item => (item.id !== socket.id))
+    log(`socketId ${socket.id} quit`)
+    userList = userList.filter(userInfo => (userInfo.socketId !== socket.id))
   })
 
 });
