@@ -62,6 +62,10 @@ router.post("/login", (req, res) => {
             // log('after:'+user.level);
             // log(req.session)
             // log(req.session.id)
+            if (user.status === "Ban"){
+                res.status(500).send("User is Banned")
+                return;
+            }
             res.send({ userId: user._id,
                        loginState: user.level,
                        profile:user

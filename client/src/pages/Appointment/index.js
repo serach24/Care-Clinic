@@ -59,8 +59,7 @@ class Appointments extends React.Component {
             </TableRow>
           </TableHead>
           <TableBody>
-            {this.state.doctors
-
+            {this.state.doctors.reverse()
             .slice(page * itemsPerPage, (page+1) * itemsPerPage)
             .map((row) => (
               <TableRow key={row.userid}>
