@@ -46,7 +46,7 @@ class Appointments extends React.Component {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>Doctor Name</TableCell>
+              <TableCell>Doctor Name</TableCell> 
               {/* TODO: add username to profile link */}
               <TableCell >Doctor Username</TableCell>
               <TableCell >Department</TableCell>
@@ -58,17 +58,17 @@ class Appointments extends React.Component {
           <TableBody>
             {this.state.doctors
 
-            .slice(page * itemsPerPage, (page+1) * itemsPerPage)
-            .map((row) => (
-              <TableRow key={row.userid}>
-                <TableCell>{row.realName}</TableCell>
-                <TableCell>{row.username}</TableCell>
-                <TableCell>{row.expertise}</TableCell>
-                <TableCell>{row.date}</TableCell>
-                <TableCell >{row.status}</TableCell>
-                <TableCell >{row.status==="approved" && (<Button onClick={() => this.openChat(row)}>Talk</Button>)}</TableCell>
-              </TableRow>
-            ))}
+              .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
+              .map((row) => (
+                <TableRow key={row.userid}>
+                  <TableCell>{row.realName}</TableCell>
+                  <TableCell>{row.username}</TableCell>
+                  <TableCell>{row.expertise}</TableCell>
+                  <TableCell>{row.date}</TableCell>
+                  <TableCell >{row.status}</TableCell>
+                  <TableCell >{row.status === "approved" && (<Button onClick={() => this.openChat(row)}>Talk</Button>)}</TableCell>
+                </TableRow>
+              ))}
 
           </TableBody>
           <TableFooter>

@@ -41,18 +41,18 @@ class HealthHistory extends React.Component {
                 allergies: [
                     { drugName: "", reaction: "", ukey: 300 }
                 ]
-            } 
+            }
         }
-        
+
     };
     componentDidMount = () => {
         getHealth(this, this.props.match.params.id);
     }
 
-    editable = (event) =>{
+    editable = (event) => {
         this.setState({
             isSubmit: !event.target.checked
-        },()=> console.log(this.state.isSubmit))
+        }, () => console.log(this.state.isSubmit))
     }
 
     handleSubmit = (data) => {
@@ -76,7 +76,7 @@ class HealthHistory extends React.Component {
         return (
             <div>
                 {/* <div>1{this.state.patient.firstName}</div> */}
-                <HealthForm patient={this.state.patient} onSubmit={this.handleSubmit} isSubmit={this.state.isSubmit} edit={this.editable}/>
+                <HealthForm patient={this.state.patient} onSubmit={this.handleSubmit} isSubmit={this.state.isSubmit} edit={this.editable} />
             </div>
         );
     }

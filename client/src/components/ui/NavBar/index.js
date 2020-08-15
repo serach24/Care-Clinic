@@ -98,8 +98,10 @@ class NavBar extends React.Component {
               className="Admin" >Admin</Button>}
             {app.state.loginState !== 2 && <Button component={Link} to={"/feedback"} color="inherit"
               className="FeedBack" >FeedBack</Button>}
-            {(app.state.loginState === 1 || app.state.loginState === 3) && <Button component={Link} to={"/appointment"} color="inherit"
-              className="Appointment" >My Appointments</Button>}
+            {app.state.loginState === 1 && <Button component={Link} to={"/appointment"} color="inherit"
+              className="Appointment" > My Appointments</Button>}
+            {app.state.loginState === 3 && <Button component={Link} to={"/patientList"} color="inherit"
+              className="PatientList" > My Patients </Button>}
 
 
 

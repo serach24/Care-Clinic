@@ -14,10 +14,10 @@ import ProfilePage from './pages/ProfilePage';
 import Comments from './components/Comments';
 import Appointment from './pages/Appointment';
 
-import HealthHistory from './pages/HealthHistory';
 import Page404 from './pages/404';
 import Doctors from './pages/Doctors';
-import { readCookie } from './auth/authUtil';
+import { readCookie } from './auth/authUtil'; 
+import DoctorPatientList from './pages/DoctorPatientList';
 
 class App extends React.Component {
   constructor(props) {
@@ -72,12 +72,11 @@ class App extends React.Component {
 
               <Route exact path='/about' render={() =>
                 (<About app={this} />)} />
-              <Route path="/healthHistory/:id" component={HealthHistory} />
               
-              <Route path="/appointment" render={<Appointment app={this}/>} />
+              <Route path="/appointment" render={() => (<Appointment app={this}/>)} />
+              
+              <Route path="/patientList" render={() => (<DoctorPatientList app={this}/>)} />
 
-              <Route exact path={"/healthHistory" + this.state.userId + "T"} render={() =>
-                (<HealthHistory isEdit={true} app={this} />)} />
               {this.state.loginState !== 0 && <Route exact path={"/" + this.state.userId} render={() =>
                 (<ProfilePage app={this} />)} />}
 
