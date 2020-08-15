@@ -74,7 +74,7 @@ class App extends React.Component {
                 (<About app={this} />)} />
               <Route path="/healthHistory/:id" component={HealthHistory} />
               
-              <Route path="/appointment" render={<Appointment app={this}/>} />
+              <Route path="/appointment" render={()=>(<Appointment app={this}/>)} />
 
               <Route exact path={"/healthHistory" + this.state.userId + "T"} render={() =>
                 (<HealthHistory isEdit={true} app={this} />)} />
