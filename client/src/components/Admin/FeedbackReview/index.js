@@ -31,6 +31,10 @@ class FeedbackReview extends React.Component {
     }
     get_all_feed(this)
   }
+
+  handleChangePage = (e,page) =>{
+    this.setState({page})
+  }
  
   render() {
     const page = this.state.page;

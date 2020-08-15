@@ -85,7 +85,7 @@ export const Apporequest = (ths) => {
                     prescription: "",
                     status: SST
                 }
-                if(patient.description != undefined){
+                if(patient.description !== undefined){
                     pat.description= patient.description;
                 }
                 patients.push(pat);
