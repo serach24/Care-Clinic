@@ -135,7 +135,7 @@ router.post("/", (req, res) => {
                                 username: doctors[i].username,
                                 realName: doctors[i].realName,
                                 date: ddt+"",
-                                expertise: "Balabilipala",
+                                expertise: doctors[i].expertise[0],
                                 status : SST
                             });
                         }
@@ -145,7 +145,7 @@ router.post("/", (req, res) => {
                                 username: doctors[i].username,
                                 realName: doctors[i].realName,
                                 date: ddt+"",
-                                expertise: "Balabilipala",
+                                expertise: doctors[i].expertise[0],
                                 status : SST
                             });
                         }
