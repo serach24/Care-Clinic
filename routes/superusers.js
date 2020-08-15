@@ -99,7 +99,7 @@ router.get("/pendingdoc/get", (req, res) => {
         }
     );
 });
-router.get("/fish/change/:index/:id/:TFN", (req, res) => {
+router.get("/fish/change/:id/:TFN", (req, res) => {
     const id = new ObjectID(req.params.id);
     const index = req.params.index;
     const TFN = req.params.TFN;
@@ -118,13 +118,13 @@ router.get("/fish/change/:index/:id/:TFN", (req, res) => {
             }else{
                 if(TFN === '0'){
                     //console.log(000000000000)
-                    doctor.patients[index].needVerify = true;
+                    doctor.needVerify = true;
                 }
                 else if(TFN === '1'){
-                    doctor.patients[index].needVerify = false;
+                    doctor.needVerify = false;
                 }
                 else{
-                    doctor.patients[index].needVerify = null;
+                    doctor.needVerify = null;
                 }
                 doctor.save();
                 res.send({appos : doctor.patients});

@@ -1,7 +1,7 @@
 
-export const change = (id,index,TFN) =>{
+export const change = (id,TFN) =>{
         // const url = "/users/get_profile/"+id;
-        const request = new Request("/superusers/fish/change/"+index+"/"+id+"/"+TFN, {
+        const request = new Request("/superusers/fish/change/"+id+"/"+TFN, {
             method: "get",
             headers: {
                 Accept: "application/json, text/plain, */*",

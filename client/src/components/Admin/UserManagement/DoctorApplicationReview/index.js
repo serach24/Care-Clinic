@@ -172,21 +172,21 @@ class DoctorApplicationReview extends React.Component {
   approveApplication = (id) =>{
     const doctors = this.state.doctors;
     doctors[id].status = "Approved";
-    change(doctors[id].trueId,id,1);
+    change(doctors[id].trueId,1);
     this.setState({doctors});
   }
 
   declineApplication = (id) =>{
     const doctors = this.state.doctors;
     doctors[id].status = "Declined";
-    change(doctors[id].trueId,id,2);
+    change(doctors[id].trueId,2);
     this.setState({doctors});
   }
 
   revokeApplication = (id) => {
     const doctors = this.state.doctors;
     doctors[id].status = "Pending";
-    change(doctors[id].trueId,id,0);
+    change(doctors[id].trueId,0);
     this.setState({doctors});
   } 
 
