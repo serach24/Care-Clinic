@@ -155,6 +155,10 @@ const UserSchema = new mongoose.Schema({
 		type: Boolean,
 		required: false,
 	},
+	status: {
+		type: String,
+		default: "Active",
+	},
 	img: {
 		type: String,
 		default: "https://i.postimg.cc/vBsL0kX0/1.jpg"
