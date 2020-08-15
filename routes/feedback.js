@@ -33,7 +33,7 @@ router.get("/", (req,res) => {
     // log(req.body)
     feedback.find().then(
         feedback => {
-            log();
+            log(feedback);
             res.send({ feedback }); // can wrap in object if want to add more properties
         },
         error => {

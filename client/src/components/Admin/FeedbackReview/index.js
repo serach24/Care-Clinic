@@ -1,33 +1,37 @@
 import React from "react";
 import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePagination } from "@material-ui/core"
-
+import {get_all_feed} from "./../../../auth/authUtil"
 
 class FeedbackReview extends React.Component {
-  state = {
-    ukey: 0,
-    page: 0,
-    itemsPerPage: 6,
-    // the data below need a serverCall to get
-    feedback: [
-      {
-        content: "This product is so good, I finally figured out my health problems.This product is so good, I finally figured out my health problems.This product is so good, I finally figured out my health problems.",
-        user: "testUser1"
-      },
-      {
-        content: "This product is so bad, I almost killed myself.This product is so bad, I almost killed myself.This product is so bad, I almost killed myself.",
-        user: "testUser2"
-      },
-      {
-        content: "Thank all the doctors on this platform, I do not have money but I had chance to cure myself.Thank all the doctors on this platform, I do not have money but I had chance to cure myself.",
-        user: "testUser3"
-      },
-      {
-        content: "I don't believe it, I'd rather go to clinics. I don't believe it, I'd rather go to clinics. I don't believe it, I'd rather go to clinics. I don't believe it, I'd rather go to clinics. ",
-        user: "testUser4"
-      },
-
-    ]
+  constructor(props) {
+    super(props);
+    this.state = {
+      ukey: 0,
+      page: 0,
+      itemsPerPage: 6,
+      // the data below need a serverCall to get
+      feedback: [
+        // {
+        //   description: "This product is so good, I finally figured out my health problems.This product is so good, I finally figured out my health problems.This product is so good, I finally figured out my health problems.",
+        //   email: "testUser1"
+        // },
+        // {
+        //   description: "This product is so bad, I almost killed myself.This product is so bad, I almost killed myself.This product is so bad, I almost killed myself.",
+        //   email: "testUser2"
+        // },
+        // {
+        //   description: "Thank all the doctors on this platform, I do not have money but I had chance to cure myself.Thank all the doctors on this platform, I do not have money but I had chance to cure myself.",
+        //   email: "testUser3"
+        // },
+        // {
+        //   description: "I don't believe it, I'd rather go to clinics. I don't believe it, I'd rather go to clinics. I don't believe it, I'd rather go to clinics. I don't believe it, I'd rather go to clinics. ",
+        //   email: "testUser4"
+        // },
+      ]
+    }
+    get_all_feed(this)
   }
+ 
   render() {
     const page = this.state.page;
     const itemsPerPage = this.state.itemsPerPage;
@@ -46,8 +50,8 @@ class FeedbackReview extends React.Component {
               .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
               .map((row,index) => (
                 <TableRow key={index+20}>
-                  <TableCell>{row.user}</TableCell>
-                  <TableCell>{row.content}</TableCell>
+                  <TableCell>{row.email}</TableCell>
+                  <TableCell>{row.description}</TableCell>
                 </TableRow>
               ))}
           </TableBody>

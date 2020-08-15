@@ -148,6 +148,29 @@ export const getProfile = (app) => {
             console.log(error);
         });
 };
+export const get_all_feed = (app) => {
+    const request = new Request("/feed", {
+        method: "get",
+        headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json"
+        }
+    });
+    fetch(request)
+        .then(res => {
+            if (res.status === 200) {
+                return res.json();
+            }
+        })
+        .then(json => {
+                // console.log(json)
+                app.setState({ feedback: json.feedback});
+                console.log(app.state.feedback[0])
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};
 export const changePhoneEmail = (info, app) => {
     // Create our request constructor with all the parameters we need
     const request = new Request("/users/changephoneEmail", {
