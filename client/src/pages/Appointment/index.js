@@ -42,7 +42,7 @@ class Appointments extends React.Component {
   render() {
     const page = this.state.page;
     const itemsPerPage = this.state.itemsPerPage;
-    const {classes} = this.props
+    const { classes } = this.props
     return (
       <div className={classes.appRoot}>
         <h3>Upcoming Appointments</h3>
@@ -60,17 +60,17 @@ class Appointments extends React.Component {
           </TableHead>
           <TableBody>
             {this.state.doctors.reverse()
-            .slice(page * itemsPerPage, (page+1) * itemsPerPage)
-            .map((row) => (
-              <TableRow key={row.userid}>
-                <TableCell>{row.realName}</TableCell>
-                <TableCell>{row.username}</TableCell>
-                <TableCell>{row.expertise}</TableCell>
-                <TableCell>{row.date}</TableCell>
-                <TableCell >{row.status}</TableCell>
-                <TableCell >{row.status==="approved" && (<Button onClick={() => this.openChat(row)}>Talk</Button>)}</TableCell>
-              </TableRow>
-            ))}
+              .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
+              .map((row) => (
+                <TableRow key={row.userid}>
+                  <TableCell>{row.realName}</TableCell>
+                  <TableCell>{row.username}</TableCell>
+                  <TableCell>{row.expertise}</TableCell>
+                  <TableCell>{row.date}</TableCell>
+                  <TableCell >{row.status}</TableCell>
+                  <TableCell >{row.status === "approved" && (<Button onClick={() => this.openChat(row)}>Talk</Button>)}</TableCell>
+                </TableRow>
+              ))}
 
           </TableBody>
           <TableFooter>
@@ -96,4 +96,4 @@ class Appointments extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: false }) (Appointments);
+export default withStyles(styles, { withTheme: false })(Appointments);

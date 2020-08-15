@@ -12,9 +12,6 @@ import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
 import Profile from './../../../pages/Profile';
 import "./styles.css";
 
-
-import {acquireChatList} from '../../../requests/chat';
-
 const log = console.log;
 
 export const styles = theme => ({
@@ -29,23 +26,20 @@ class NavBar extends React.Component {
 
   state = {
     auth: false,
-    chatPeopleAnchor: null,
+    profileAnchor: null,
     people: []
   }
 
 
-  handleClick = (e) => {
-    if (this.state.chatPeopleAnchor === null) {
-      acquireChatList(this.props.userId).then((chatList) =>{
-        this.setState({people: chatList})
-      })
+  handleProfileClick = (e) => {
+    if (this.state.profileAnchor === null) {
       this.setState({
-        chatPeopleAnchor: e.currentTarget,
+        profileAnchor: e.currentTarget,
       });
     }
     else {
       this.setState({
-        chatPeopleAnchor: null,
+        profileAnchor: null,
       });
     }
   };
@@ -64,44 +58,50 @@ class NavBar extends React.Component {
     }
   }
 
-  closeChat = () => {
+  closeProfile = () => {
     this.setState({
-      chatPeopleAnchor: null,
+      profileAnchor: null,
     })
   }
 
   render() {
-    const {app, classes} = this.props;
+    const { app, classes } = this.props;
+    const open = Boolean(this.state.profileAnchor);
     return (
       <div className="navbar">
         <AppBar position="fixed" className={classes.appBar} color="secondary">
           <Toolbar>
-            <IconButton edge="start" 
-                        className="menuButton" >
-                <LocalHospitalIcon fontSize="large" />
+            <IconButton edge="start"
+              className="menuButton" >
+              <LocalHospitalIcon fontSize="large" />
             </IconButton>
             <Button color="inherit"
               component={Link} to={"/"}
               className="Home" >
               Home
-                        </Button>
+            </Button>
             <Button component={Link} to={"/about"} color="inherit"
               className="About" >About</Button>
             {app.state.loginState === 0 && <Button component={Link} to={"/login"} color="inherit"
               className="TalkToADoctor" >Talk to a Doctor</Button>}
             {app.state.loginState === 1 && <Button color="inherit"
-              component={ Link } to={"/doctorlist"}
+              component={Link} to={"/doctorlist"}
               className="TalkToADoctor" >Talk to a Doctor</Button>}
             {app.state.loginState === 2 && <Button component={Link} to={"/admin"} color="inherit"
               className="Admin" >Admin</Button>}
             {app.state.loginState !== 2 && <Button component={Link} to={"/feedback"} color="inherit"
               className="FeedBack" >FeedBack</Button>}
-            {(app.state.loginState === 1 || app.state.loginState === 3) && <Button component={Link} to={"/appointment"} color="inherit"
-              className="Appointment" >My Appointments</Button>}
+            {app.state.loginState === 1 && <Button component={Link} to={"/appointment"} color="inherit"
+              className="Appointment" > My Appointments</Button>}
+            {app.state.loginState === 3 && <Button component={Link} to={"/patientList"} color="inherit"
+              className="PatientList" > My Patients </Button>}
+
             {app.state.loginState === 0 && !this.state.auth && <Button component={Link} to={"/login"} color="inherit"
               className="loginButton" >Login</Button>}
-            {app.state.loginState !== 0 && <div className="ProfileButton"> Profile </div>}
-            {app.state.loginState !== 0 && <div className="Profile"> <Profile app={app}></Profile> </div>}
+            {app.state.loginState !== 0 && <div className="ProfileButton" onClick={this.handleProfileClick}> Profile </div>}
+            {app.state.loginState !== 0 && <div className="Profile"> 
+              <Profile open={open} app={app} anchorEl={this.state.profileAnchor} onClose={this.closeProfile} ></Profile> </div>
+            }
             {this.state.auth && <Button color="inherit"
               className="accountButton" >My Account</Button>}
           </Toolbar>

@@ -1,6 +1,6 @@
 import React from "react"
 import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePagination } from "@material-ui/core"
-import {Apporequest} from "./request";
+import { Apporequest } from "./request";
 class PassedAppointments extends React.Component {
   constructor(props) {
     super(props);
@@ -10,14 +10,14 @@ class PassedAppointments extends React.Component {
       id: this.props.app.state.userId,
       passedNorT: false,
       // the data below need a serverCall to get
-      doctors: 
-      [
-      ]
+      doctors:
+        [
+        ]
     }
     Apporequest(this)
-}
-  handleChangePage = (e,page) =>{
-    this.setState({page})
+  }
+  handleChangePage = (e, page) => {
+    this.setState({ page })
   }
 
   render() {
@@ -38,27 +38,27 @@ class PassedAppointments extends React.Component {
           </TableHead>
           <TableBody>
             {this.state.doctors
-            .slice(page * itemsPerPage, (page+1) * itemsPerPage)
-            .map((row) => (
-              <TableRow key={row.id}>
-                <TableCell>{row.realName}</TableCell>
-                <TableCell>{row.username}</TableCell>
-                <TableCell>{row.expertise}</TableCell>
-                <TableCell>{row.date}</TableCell>
-              </TableRow>
-            ))}
+              .slice(page * itemsPerPage, (page + 1) * itemsPerPage)
+              .map((row) => (
+                <TableRow key={row.id}>
+                  <TableCell>{row.realName}</TableCell>
+                  <TableCell>{row.username}</TableCell>
+                  <TableCell>{row.expertise}</TableCell>
+                  <TableCell>{row.date}</TableCell>
+                </TableRow>
+              ))}
           </TableBody>
           <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[3]}
-              count={this.state.doctors.length}
-              rowsPerPage={this.state.itemsPerPage}
-              page={this.state.page}
-              onChangePage={this.handleChangePage}
-            />
-          </TableRow>
-        </TableFooter>
+            <TableRow>
+              <TablePagination
+                rowsPerPageOptions={[3]}
+                count={this.state.doctors.length}
+                rowsPerPage={this.state.itemsPerPage}
+                page={this.state.page}
+                onChangePage={this.handleChangePage}
+              />
+            </TableRow>
+          </TableFooter>
         </Table>
       </div>
     );

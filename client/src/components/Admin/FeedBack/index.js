@@ -26,8 +26,8 @@ class Feedback extends React.Component {
     }
 
     FunctionSubmitFeedback() {
-            alert(this.state.email + " want to send message '" + this.state.message +"' as feedback");
-        }
+      alert(this.state.email + " want to send message '" + this.state.message +"' as feedback");
+    }
 
 
 

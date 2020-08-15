@@ -1,24 +1,12 @@
-.ProfileWindow{
-    position: absolute;
-    right: 26%;
-    top:20px;
-    background-color: #0047b9;
-    width: 250px;
-    height: 400px;
-    text-align: center;
-    border-width: thick;
-    border-style: solid;
-    border-color: darkblue;
-}
-.FlowButton{
+
+/* .FlowButton{
     margin-top: 30%;
 }
-.FlowAvatar{
-}
+
 .FlowButtons{
     float: left;
     left: 32%;
     position: absolute;
     height: 70%;
     top: 200px;
-}
+} */
