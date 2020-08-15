@@ -241,18 +241,18 @@ router.post("/", (req, res) => {
                 patientId: req.body.from,
                 realName: req.body.real,
                 username: req.body.name,
-            }
-            User.patients.push(newRev);
-            User.save();
-            res.send(User);
-        }
-    })
-        .catch((error) => {
-            log(error)
-            res.status(500).send('Internal Server Error')  // server error
-        })
-
-})
+                description: req.body.dis,
+			}
+			User.patients.push(newRev);
+			User.save();
+			res.send(User);
+		}
+	})
+		.catch((error) => {
+			log(error)
+			res.status(500).send('Internal Server Error')  // server error
+		})
+});
 
 router.post("/appointment/get", (req, res) => {
     const id = req.body.id;
