@@ -38,7 +38,6 @@ class Feedback extends React.Component {
           margin="normal"
           variant="outlined"
           fullWidth
-          autoFocus
           className="email"
           name="email"
           label="Please enter your email"
