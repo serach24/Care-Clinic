@@ -7,12 +7,11 @@ import Button from '@material-ui/core/Button';
 
 import IconButton from '@material-ui/core/IconButton';
 import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
-import ChatOutlinedIcon from '@material-ui/icons/ChatOutlined';
 
 
 import Profile from './../../../pages/Profile';
 import "./styles.css";
-import ChatPeople from '../../ChatPeople';
+
 
 import {acquireChatList} from '../../../requests/chat';
 
@@ -73,7 +72,6 @@ class NavBar extends React.Component {
 
   render() {
     const {app, classes} = this.props;
-    const open = Boolean(this.state.chatPeopleAnchor);
     return (
       <div className="navbar">
         <AppBar position="fixed" className={classes.appBar} color="secondary">
@@ -100,12 +98,6 @@ class NavBar extends React.Component {
               className="FeedBack" >FeedBack</Button>}
             {(app.state.loginState === 1 || app.state.loginState === 3) && <Button component={Link} to={"/appointment"} color="inherit"
               className="Appointment" >My Appointments</Button>}
-
-
-
-          {app.state.loginState !== 0 && <ChatOutlinedIcon className="chat-button" onClick={this.handleClick} />}
-            <ChatPeople people={this.state.people} userId={this.props.userId} open={open} anchorEl={this.state.chatPeopleAnchor} onClose={this.closeChat} />
-
             {app.state.loginState === 0 && !this.state.auth && <Button component={Link} to={"/login"} color="inherit"
               className="loginButton" >Login</Button>}
             {app.state.loginState !== 0 && <div className="ProfileButton"> Profile </div>}

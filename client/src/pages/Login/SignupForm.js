@@ -6,11 +6,17 @@ import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 import Input from "../../components/ui/Input";
 import { signup } from "./../../auth/authUtil";
 
 import "./styles.css";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 /* Component for the Student Form */
 class SignupForm extends React.Component {
@@ -26,9 +32,11 @@ class SignupForm extends React.Component {
     backupemail: "not setted yet",
     needVerify: false,
     checkError: false,
-    Certification1: "not defined",
-    Certification2: "not defined",
+    expertise: "",
+    Certification1: "",
+    Certification2: "",
     level: 1,
+    setOpen: false
   }
 
   handleInputChange = (e) => {
@@ -56,6 +64,18 @@ class SignupForm extends React.Component {
       needVerify: event.target.checked
     }, () => console.log(this.state.needVerify))
   }
+
+  handleClick = () => {
+    this.setState({
+      setOpen:true
+    })
+  };
+
+  handleClose = () => {
+    this.setState({
+      setOpen:false
+    })
+  };
 
   render() {
     const { app } = this.props;
@@ -91,6 +111,7 @@ class SignupForm extends React.Component {
         />
         <Input
           error={isPasswordEmpty}
+          helperText={isPasswordEmpty ? "Cannot be empty." : ""}
           name="mainmail"
           label="Email"
           value={this.state.mainmail}
@@ -98,6 +119,7 @@ class SignupForm extends React.Component {
         />
         <Input
           error={isPasswordEmpty}
+          helperText={isPasswordEmpty ? "Cannot be empty." : ""}
           name="phone"
           label="Phone number"
           value={this.state.phone}
@@ -105,13 +127,15 @@ class SignupForm extends React.Component {
         />
         <Input
           error={isPasswordEmpty}
+          helperText={isPasswordEmpty ? "Cannot be empty." : ""}
           name="gender"
-          label="gender"
+          label="Gender"
           value={this.state.gender}
           onChange={this.handleInputChange}
         />
         <Input
           error={isPasswordEmpty}
+          helperText={isPasswordEmpty ? "Cannot be empty." : ""}
           name="realName"
           label="Real Name"
           value={this.state.realName}
@@ -120,7 +144,7 @@ class SignupForm extends React.Component {
 
         <Input
           error={isPasswordEmpty}
-          helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+          helperText={isPasswordEmpty ? "Cannot be empty." : ""}
           name="location"
           label="Location"
           value={this.state.location}
@@ -129,7 +153,7 @@ class SignupForm extends React.Component {
 
         <Input
           error={isPasswordEmpty}
-          helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+          helperText={isPasswordEmpty ? "Cannot be empty." : ""}
           name="age"
           label="Age"
           value={this.state.age}
@@ -139,7 +163,17 @@ class SignupForm extends React.Component {
           this.state.level === 3 &&
           (<Input
             error={isPasswordEmpty}
-            helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+            helperText={isPasswordEmpty ? "Cannot be empty." : ""}
+            name="expertise"
+            label="Expertise"
+            value={this.state.expertise}
+            onChange={this.handleInputChange}
+          />)}
+        {
+          this.state.level === 3 &&
+          (<Input
+            error={isPasswordEmpty}
+            helperText={isPasswordEmpty ? "Cannot be empty." : ""}
             name="Certification1"
             label="Certification1"
             value={this.state.Certification1}
@@ -149,7 +183,7 @@ class SignupForm extends React.Component {
           (
             <Input
               error={isPasswordEmpty}
-              helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+              helperText={isPasswordEmpty ? "Cannot be empty." : ""}
               name="Certification2"
               label="Certification2"
               value={this.state.Certification2}
@@ -157,6 +191,7 @@ class SignupForm extends React.Component {
             />)
 
         }
+        <Link className="login-submit-button-link">
         <div className="login-submit-button">
           <Button
             variant="contained"
@@ -167,6 +202,14 @@ class SignupForm extends React.Component {
             Sign up
         </Button>
         </div>
+        <div className="alertRoot">
+          <Snackbar open={this.state.setOpen} autoHideDuration={6000} onClose={this.handleClose}>
+            <Alert onClose={this.handleClose} severity="error">
+              Signup error
+            </Alert>
+          </Snackbar>
+        </div>
+        </Link>
         <div className="login-text">
           <div className="login-switch">
             <Link onClick={this.props.switch} variant="body2">

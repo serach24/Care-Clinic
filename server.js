@@ -118,7 +118,7 @@ const authenticate = (req, res, next) => {
   }
 }
 
-app.use('/users', loginRouter);
+app.use('/user', loginRouter);
 
 app.use('/doctors', authenticate, doctorsRouter);
 // log(doctorsRouter);

@@ -6,8 +6,14 @@ import { Redirect } from 'react-router-dom'
 import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Input from "../../components/ui/Input";
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 import "./styles.css";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 /* Component for the Student Form */
 class LoginForm extends React.Component {
@@ -49,6 +55,11 @@ class LoginForm extends React.Component {
     // this.props.SetUUid("BoluoLiuDoctor");
     // }
   }
+  handleClose = () => {
+    this.setState({
+      setOpen:false
+    })
+  };
 
   render() {
     const { app, login } = this.props;
@@ -93,6 +104,13 @@ class LoginForm extends React.Component {
               Login
             </Button>
           </div>
+          <div className="alertRoot">
+          <Snackbar open={this.state.setOpen} autoHideDuration={6000} onClose={this.handleClose}>
+            <Alert onClose={this.handleClose} severity="error">
+              Login Error
+            </Alert>
+          </Snackbar>
+        </div>
         </Link>
         <div className="login-text">
           <div className="login-switch">

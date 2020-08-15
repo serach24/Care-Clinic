@@ -1,7 +1,7 @@
 
 
 export const readCookie = (app) => {
-    const url = "/users/check-session";
+    const url = "/user/check-session";
 
     fetch(url)
         .then(res => {
@@ -25,7 +25,7 @@ export const readCookie = (app) => {
 // A function to send a POST request with the user to be logged inw
 export const LoginRequest = (loginComp, app) => {
     // Create our request constructor with all the parameters we need
-    const request = new Request("/users/login", {
+    const request = new Request("/user/login", {
         method: "post",
         body: JSON.stringify(loginComp.state),
         headers: {
@@ -39,6 +39,10 @@ export const LoginRequest = (loginComp, app) => {
         .then(res => {
             if (res.status === 200) {
                 return res.json();
+            }else{
+                loginComp.setState({
+                    setOpen:true
+                })
             }
         })
         .then(json => {
@@ -55,7 +59,7 @@ export const LoginRequest = (loginComp, app) => {
 
 // A function to send a GET request to logout the current user
 export const logout = (app) => {
-    const url = "/users/logout";
+    const url = "/user/logout";
 
     fetch(url)
         .then(res => {
@@ -73,7 +77,7 @@ export const logout = (app) => {
 
 export const signup = (info, app) => {
     console.log(info.state);
-    const request = new Request("/users", {
+    const request = new Request("/user", {
         method: "post",
         body: JSON.stringify(info.state),
         headers: {
@@ -86,6 +90,10 @@ export const signup = (info, app) => {
         .then(res =>{
             if (res.status === 200) {
                 return res.json();
+            }else{
+                info.setState({
+                    setOpen:true
+                })
             }
         })
         .then(json =>{
