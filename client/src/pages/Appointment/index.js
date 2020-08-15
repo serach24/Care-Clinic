@@ -2,6 +2,8 @@ import React from "react"
 import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePagination } from "@material-ui/core"
 import Button from "@material-ui/core/Button";
 import { Apporequest } from "./request";
+import { withStyles } from '@material-ui/core/styles';
+import { styles } from './styles';
 
 import Chat from "../../components/Chat";
 
@@ -40,8 +42,9 @@ class Appointments extends React.Component {
   render() {
     const page = this.state.page;
     const itemsPerPage = this.state.itemsPerPage;
+    const {classes} = this.props
     return (
-      <div>
+      <div className={classes.appRoot}>
         <h3>Upcoming Appointments</h3>
         <Table>
           <TableHead>
@@ -94,4 +97,4 @@ class Appointments extends React.Component {
   }
 }
 
-export default Appointments;
+export default withStyles(styles, { withTheme: false }) (Appointments);
