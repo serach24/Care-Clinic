@@ -90,14 +90,16 @@ class NavBar extends React.Component {
             <Button component={Link} to={"/about"} color="inherit"
               className="About" >About</Button>
             {app.state.loginState === 0 && <Button component={Link} to={"/login"} color="inherit"
-              className="TalkButton" >Talk to a Doctor</Button>}
+              className="TalkToADoctor" >Talk to a Doctor</Button>}
             {app.state.loginState === 1 && <Button color="inherit"
               component={ Link } to={"/doctorlist"}
-              className="TalkButton" >Talk to a Doctor</Button>}
+              className="TalkToADoctor" >Talk to a Doctor</Button>}
             {app.state.loginState === 2 && <Button component={Link} to={"/admin"} color="inherit"
-              className="TalkButton" >Admin</Button>}
+              className="Admin" >Admin</Button>}
             {app.state.loginState !== 2 && <Button component={Link} to={"/feedback"} color="inherit"
-              className="TalkButton" >FeedBack</Button>}
+              className="FeedBack" >FeedBack</Button>}
+            {app.state.loginState === 1 && app.state.loginState === 3 && <Button component={Link} to={"/appointment"} color="inherit"
+              className="Appointment" >My Appointments</Button>}
 
 
 

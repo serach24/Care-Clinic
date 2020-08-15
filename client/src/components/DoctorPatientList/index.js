@@ -110,8 +110,6 @@ class DoctorPatientList extends React.Component {
       talkTo,
       chatOpen: true,
     })
-    console.log(this.state.talkTo.userId + "fuk1");
-    console.log(this.state.talkTo.userId + "fuk2");
   }
 
   closeChat = () => {

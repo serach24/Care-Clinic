@@ -2,7 +2,7 @@ import React from "react";
 
 import "./styles.css";
 import  ProfileSide from './../ProfileSide'
-import Appointments from './../Appointments'
+// import Appointments from '../../pages/Appointment'
 import PassedAppointments from './../PassedAppointments'
 import DoctorPatientList from './../../components/DoctorPatientList'
 /* Component for the Home page */
@@ -15,9 +15,9 @@ class ProfilePanel extends React.Component {
           <div className="ProfileContainer">
             <ProfileSide app={app}/>
           </div>
-          {app.state.loginState ===1 && <div className="AppointmentsContainer">
+          {/* {app.state.loginState ===1 && <div className="AppointmentsContainer">
               <Appointments app={app}/>
-          </div>}
+          </div>} */}
           {app.state.loginState ===1 && <div className="AppointmentsContainer">
               <PassedAppointments app={app} />
           </div>}

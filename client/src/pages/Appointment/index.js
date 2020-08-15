@@ -3,7 +3,7 @@ import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePag
 import Button from "@material-ui/core/Button";
 import { Apporequest } from "./request";
 
-import Chat from "../Chat";
+import Chat from "../../components/Chat";
 
 class Appointments extends React.Component {
   constructor(props) {
@@ -26,8 +26,6 @@ class Appointments extends React.Component {
       talkTo,
       chatOpen: true,
     })
-    console.log(this.state.talkTo.userId + "fuk1");
-    console.log(this.state.talkTo.userId + "fuk2");
   }
 
   closeChat = () => {
