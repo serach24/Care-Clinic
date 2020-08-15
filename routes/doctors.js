@@ -247,6 +247,7 @@ router.post("/", (req, res) => {
                 patientId: req.body.from,
                 realName: req.body.real,
                 username: req.body.name,
+                description: req.body.dis,
 			}
 			User.patients.push(newRev);
 			User.save();

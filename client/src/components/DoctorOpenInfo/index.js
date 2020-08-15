@@ -10,14 +10,29 @@ import Button from '@material-ui/core/Button';
 import Time from './appointment';
 import {Apporequest} from './request'
 
+import { TextField} from "@material-ui/core";
+
 import "./styles.css";
 import { styles } from './styles';
 
 class DoctorOpenInfo extends React.Component {
     state={appointment:false,
+            dis:"",    
     };
+
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState({
+          [name]: value
+        });
+      }
+
     submit(){
         const body = {
+            dis: this.state.dis,
             real: this.props.Rname,
             name: this.props.Uname,
             from : this.props.UUid,
@@ -48,7 +63,6 @@ class DoctorOpenInfo extends React.Component {
                             /> 
                 </div>
                 <CardContent className={classes.contentarea}>
-
                     <Typography variant="h5">
                     <div>{doctor.realName+"\n"}</div>
                     </Typography>
@@ -66,6 +80,17 @@ class DoctorOpenInfo extends React.Component {
                     {/* {!this.state.appointment && <Button> Talk</Button>} */}
                     {!this.state.appointment && <Button onClick={()=>this.setState({appointment: true})}> Make Appointment</Button>}
                     {this.state.appointment && <Time submit={this.submit.bind(this)} doctorId={doctor.id} />}
+                    {this.state.appointment &&         
+                        <TextField
+                        margin="normal"
+                        variant="outlined"
+                        fullWidth
+                        className="dis"
+                        name="dis"
+                        label="Please enter detail"
+                        value={this.state.dis}
+                        onChange={this.handleInputChange}
+                        />}
             </CardActions>
 
             </Card>

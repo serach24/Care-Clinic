@@ -33,7 +33,9 @@ router.post("/", (req, res) => {
     // Save the user
     user.save().then(
         user => {
-            res.send({
+            user.password = "";
+            res.send(
+                {
                     userId: user._id,
                     loginState: user.level,
                     profile:user
@@ -70,6 +72,7 @@ router.post("/login", (req, res) => {
                 res.status(500).send("User is Banned")
                 return;
             }
+            user.password = "";
             res.send({ userId: user._id,
                        loginState: user.level,
                        profile:user
