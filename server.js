@@ -14,6 +14,9 @@ const chatRouter = require('./routes/chat');
 const commentLike = require('./routes/comentLike');
 const superusers = require('./routes/superusers');
 
+//auth middleware
+// const authenticate = require('./sAuth/patientAuth');
+
 const sio = require("socket.io");
 // starting the express server
 const app = express();
@@ -126,23 +129,21 @@ const authenticate = (req, res, next) => {
 
 app.use('/users', loginRouter);
 
-app.use('/doctors',authenticate, doctorsRouter);
+app.use('/doctors', authenticate, doctorsRouter);
 // log(doctorsRouter);
-app.use('/patients', patientsRouter);
+app.use('/patients',authenticate, patientsRouter);
 
-app.use('/users', usersRouter);
+app.use('/users',authenticate, usersRouter);
 
-app.use('/superusers', superusers);
+app.use('/superusers',authenticate, superusers);
 
 app.use('/articles', articlesRouter);
 
 app.use('/feed', feedRouter);
 
-app.use('/chat', chatRouter);
+app.use('/chat',authenticate, chatRouter);
 
 app.use('/comment', commentLike);
-
-
 
 /*** Webpage routes below **********************************/
 // Serve the build

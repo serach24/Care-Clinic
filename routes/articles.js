@@ -68,9 +68,5 @@ router.get("/:id", (req, res) => {
             res.status(500).send(); // server error
         });
 });
-//article delete 
-//article update
-
-
 
 module.exports = router;
