@@ -57,7 +57,7 @@ class Home extends React.Component {
             <div className="App">
                 <div className="content">
                     <ContentList articles={this.state.articles} app={app}/>
-                    <RightPart app={this} home="home"/>
+                    {app.state.loginState !== 3 && <RightPart app={this} home="home"/>}
                 </div>
             </div>
         );
