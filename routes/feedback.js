@@ -5,6 +5,10 @@ const router = express.Router();
 //mongoose model
 const { feedback } = require("../models/feedback");
 
+const code500 = 'Internal server error';
+const code400 = 'Bad Request';
+const code404 = 'Resource not found';
+
 /*** Article APIs below ***/
 // body format { title:"", content:"", img:""}
 // return article document
