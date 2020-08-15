@@ -12,7 +12,7 @@ render() {
     return (
         <div className="article_container">
           <Container >
-            {articles.map(article => (
+            {articles.reverse().map(article => (
             <Content 
             key={uid(
                 article
