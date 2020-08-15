@@ -55,7 +55,7 @@ export const Apporequest = (ths) => {
                 const ddt = new Date(patient.appointmentTime)
                 const now = new Date()
                 var SST = 'Pending';
-                console.log(patient.state+"   here here line 58 at Doctorlist/request")
+                //console.log(patient.state+"   here here line 58 at Doctorlist/request")
                 if(patient.status === null){
                     SST = "Declined"
                 }
@@ -84,6 +84,9 @@ export const Apporequest = (ths) => {
                     diagnosis: "",
                     prescription: "",
                     status: SST
+                }
+                if(patient.description != undefined){
+                    pat.description= patient.description;
                 }
                 patients.push(pat);
             })
