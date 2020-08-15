@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 
 import "./styles.css";
 import ava from './static/icon.jpg'
-import UserAvatar from './../../components/UserAvatar'
 import { logout } from './../../auth/authUtil'
 import { Popover } from "@material-ui/core";
 
