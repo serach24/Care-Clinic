@@ -4,7 +4,7 @@ import "./styles.css";
 import ProfileSide from './../ProfileSide'
 // import Appointments from '../../pages/Appointment'
 import PassedAppointments from './../PassedAppointments'
-import DoctorPatientList from './../../components/DoctorPatientList'
+import DoctorPatientList from '../../pages/DoctorPatientList'
 import HealthHistory from '../HealthHistory'
 /* Component for the Home page */
 

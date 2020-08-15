@@ -1,9 +1,13 @@
 import React from "react"
 import { Table, TableHead, TableRow, TableCell, TableBody, TableFooter, TablePagination } from "@material-ui/core"
 import Button from "@material-ui/core/Button";
-import Chat from "../Chat";
-import TreatmentDialog from "../TreatmentDialog";
+import Chat from "../../components/Chat";
+import TreatmentDialog from "../../components/TreatmentDialog";
 import { change, Apporequest } from "./request";
+
+
+import { withStyles } from '@material-ui/core/styles';
+import { styles } from './styles';
 
 class DoctorPatientList extends React.Component {
   constructor(props) {
@@ -56,21 +60,22 @@ class DoctorPatientList extends React.Component {
     }
 
   }
-  
+
   componentDidMount() {
     Apporequest(this)
   }
 
   renderButton(patient) {
     if (patient.status === "Pending") {
-      return (<div>
-        <Button size="small" onClick={() => this.acceptAppointment(patient.id, patient.appointTime) } variant="contained" color="primary">
-          Accept
+      return (
+        <div>
+          <Button size="small" onClick={() => this.acceptAppointment(patient.id, patient.appointTime)} variant="contained" color="primary">
+            Accept
         </Button>
-        <Button size="small" onClick={() => { this.declineAppointment(patient.id) }} variant="contained" color="secondary">
-          Decline
+          <Button size="small" onClick={() => { this.declineAppointment(patient.id) }} variant="contained" color="secondary">
+            Decline
         </Button>
-      </div>
+        </div>
       );
     } else if (patient.status === "Current") {
       return (<div>
@@ -168,11 +173,11 @@ class DoctorPatientList extends React.Component {
   }
 
   render() {
-    const {app} = this.props;
+    const { app, classes} = this.props;
     const page = this.state.page;
     const itemsPerPage = this.state.itemsPerPage;
     return (
-      <div>
+      <div className={classes.DoctorPatientList}>
         <h3>Patient List</h3>
         <Table>
           <TableHead>
@@ -239,4 +244,4 @@ class DoctorPatientList extends React.Component {
   }
 }
 
-export default DoctorPatientList;
+export default withStyles(styles, { withTheme: false }) (DoctorPatientList);

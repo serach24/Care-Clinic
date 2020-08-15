@@ -1,11 +1,9 @@
-import { TextareaAutosize } from "@material-ui/core";
-
 export const styles = theme => ({
-  root: {
+  appRoot: {
     padding: '2px 4px',
-    display: 'flex',
     alignItems: 'center',
-    width: 400,
+    width: 1200,
+    margin:'auto'
   },
   paper: {
     width: 240,

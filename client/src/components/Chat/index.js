@@ -10,7 +10,7 @@ import "./styles.css"
 
 import io from 'socket.io-client'
 // TODO might need to change this
-const socket = io('ws://localhost:3000')
+const socket = io()
 
 class Chat extends React.Component {
   state = {

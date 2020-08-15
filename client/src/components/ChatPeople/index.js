@@ -8,7 +8,6 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Chat from "../Chat";
 import { styles } from "./styles";
-// import {acquireChatList} from '../../requests/chat';
 
 class ChatPeople extends React.Component {
   state = {
