@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
 import Input from "../../components/ui/Input";
-import {signup} from "./../../auth/authUtil";
+import { signup } from "./../../auth/authUtil";
 
 import "./styles.css";
 
@@ -20,14 +20,14 @@ class SignupForm extends React.Component {
     realName: "",
     location: "",
     age: "",
-    mainmail:"",
-    phone:"",
-    gender:"",
-    backupemail:"not setted yet",
+    mainmail: "",
+    phone: "",
+    gender: "",
+    backupemail: "not setted yet",
     needVerify: false,
     checkError: false,
-    Certification1:"not defined",
-    Certification2:"not defined",
+    Certification1: "not defined",
+    Certification2: "not defined",
     level: 1,
   }
 
@@ -46,28 +46,28 @@ class SignupForm extends React.Component {
   }
 
   submitDoctor = (event) => {
-    if(this.state.level === 1){
-      this.setState({level:3});
+    if (this.state.level === 1) {
+      this.setState({ level: 3 });
     }
-    else{
-      this.setState({level:1});  
+    else {
+      this.setState({ level: 1 });
     }
     this.setState({
       needVerify: event.target.checked
-    },()=> console.log(this.state.needVerify))
+    }, () => console.log(this.state.needVerify))
   }
 
   render() {
-    const {app} = this.props;
+    const { app } = this.props;
     let isUsernameEmpty = this.state.checkError && this.state.username === "";
     let isPasswordEmpty = this.state.checkError && this.state.password === "";
     return (
       <Container component="main" maxWidth="xs">
         <h3> Sign up</h3>
         <FormControlLabel
-        control={<Switch checked={this.state.needVerify} onChange={this.submitDoctor} name="needVerify" />}
-        label="Sign up as a Doctor"
-      />
+          control={<Switch checked={this.state.needVerify} onChange={this.submitDoctor} name="needVerify" />}
+          label="Sign up as a Doctor"
+        />
         <Input
           error={isUsernameEmpty}
           helperText={isUsernameEmpty ? "Username cannot be empty." : ""}
@@ -136,37 +136,37 @@ class SignupForm extends React.Component {
           onChange={this.handleInputChange}
         />
         {
-          this.state.level===3&&
+          this.state.level === 3 &&
           (<Input
-          error={isPasswordEmpty}
-          helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
-          name="Certification1"
-          label="Certification1"
-          value={this.state.Certification1}
-          onChange={this.handleInputChange}
-        />)}
-        {this.state.level===3&&
-        (
-        <Input
-          error={isPasswordEmpty}
-          helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
-          name="Certification2"
-          label="Certification2"
-          value={this.state.Certification2}
-          onChange={this.handleInputChange}
-        />)
-        
-        }
+            error={isPasswordEmpty}
+            helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+            name="Certification1"
+            label="Certification1"
+            value={this.state.Certification1}
+            onChange={this.handleInputChange}
+          />)}
+        {this.state.level === 3 &&
+          (
+            <Input
+              error={isPasswordEmpty}
+              helperText={isPasswordEmpty ? "Password cannot be empty." : ""}
+              name="Certification2"
+              label="Certification2"
+              value={this.state.Certification2}
+              onChange={this.handleInputChange}
+            />)
 
-        <Button
-          variant="contained"
-          color="primary"
-          fullWidth
-          onClick={() => signup(this, app)}
-          className="login-submit-button"
-        >
-          Sign up
+        }
+        <div className="login-submit-button">
+          <Button
+            variant="contained"
+            color="primary"
+            fullWidth
+            onClick={() => signup(this, app)}
+          >
+            Sign up
         </Button>
+        </div>
         <div className="login-text">
           <div className="login-switch">
             <Link onClick={this.props.switch} variant="body2">

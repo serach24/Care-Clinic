@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
-import  { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 // material ui components
 import Container from "@material-ui/core/Container";
@@ -51,12 +51,12 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const {app , login} = this.props;
+    const { app, login } = this.props;
     let isUsernameEmpty = this.state.checkError && this.state.username === "";
     let isPasswordEmpty = this.state.checkError && this.state.password === "";
-    if (app.state.loginState !== 0){
-      return <Redirect to={"/"}/>
-     }
+    if (app.state.loginState !== 0) {
+      return <Redirect to={"/"} />
+    }
     return (
       <Container component="main" maxWidth="xs">
         <h3> Login </h3>
@@ -82,16 +82,17 @@ class LoginForm extends React.Component {
           onChange={this.handleInputChange}
         />
         <Link className="login-submit-button-link">
-        <Button
-          variant="contained"
-          color="primary"
-          fullWidth
-          onClick={()=>login(this, app)}
-          className="login-submit-button"
-          id="login-submit-button"
-        >
-          Login
-        </Button>
+          <div className="login-submit-button">
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              onClick={() => login(this, app)}
+              id="login-submit-button"
+            >
+              Login
+            </Button>
+          </div>
         </Link>
         <div className="login-text">
           <div className="login-switch">

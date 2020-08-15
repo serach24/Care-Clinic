@@ -4,3 +4,12 @@
 .login-switch {
   cursor: pointer;
 }
+.login-submit-button{
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.login-text{
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
