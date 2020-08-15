@@ -108,7 +108,7 @@ class RightPart extends React.Component {
             <div className={classes.rightroot}>
                 <img src={imgforbody} alt="img for body" className={classes.img} />
                 <List component="nav" subheader={<ListSubheader component='div' id="nested-health-topics">
-                            <strong>Doctor Categories</strong>
+                            <strong>Categories</strong>
                         </ListSubheader>}
                     className={classes.buttoncard}>   
                 {this.state.categories.map((item, index) => (
