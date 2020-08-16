@@ -13,24 +13,24 @@ const code404 = 'Resource not found';
 //signup route
 router.post("/", (req, res) => {
     // log(req.body);
-  
+
     // Create a new user
     const user = new User({
         username: req.body.username,
         password: req.body.password,
-        level: req.body.level, 
+        level: req.body.level,
         realName: req.body.realName,
         location: req.body.location,
         gender: req.body.gender,
         age: req.body.age,
-        phone:req.body.phone,
-        mainmail:req.body.mainmail,
-        backupemail:req.body.mainmail,
+        phone: req.body.phone,
+        mainmail: req.body.mainmail,
+        backupemail: req.body.mainmail,
         needVerify: req.body.needVerify,
-        Certification1:req.body.Certification1,
-        Certification2:req.body.Certification2
+        Certification1: req.body.Certification1,
+        Certification2: req.body.Certification2
     });
-  //   log(user);
+    //   log(user);
     // Save the user
     user.save().then(
         user => {
@@ -42,7 +42,7 @@ router.post("/", (req, res) => {
                 {
                     userId: user._id,
                     loginState: user.level,
-                    profile:user
+                    profile: user
                 });
         },
         error => {
@@ -50,7 +50,7 @@ router.post("/", (req, res) => {
             res.status(400).send(error); // 400 for bad request
         }
     );
-  });
+});
 
 // A route to login and create a session
 router.post("/login", (req, res) => {
@@ -72,14 +72,15 @@ router.post("/login", (req, res) => {
             // log('after:'+user.level);
             // log(req.session)
             // log(req.session.id)
-            if (user.status === "Ban"){
+            if (user.status === "Ban") {
                 res.status(500).send("User is Banned")
                 return;
             }
             user.password = "";
-            res.send({ userId: user._id,
-                       loginState: user.level,
-                       profile:user
+            res.send({
+                userId: user._id,
+                loginState: user.level,
+                profile: user
             });
         })
         .catch(error => {
@@ -103,8 +104,9 @@ router.get("/logout", (req, res) => {
 // A route to check if a use is logged in on the session cookie
 router.get("/check-session", (req, res) => {
     if (req.session.user) {
-        res.send({ userId: req.session.user,
-                    loginState: req.session.loginState
+        res.send({
+            userId: req.session.user,
+            loginState: req.session.loginState
         });
     } else {
         res.status(401).send();

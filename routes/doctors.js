@@ -76,7 +76,6 @@ router.get("/", (req, res) => {
     );
 });
 
-// a GET route to get all valid doctors
 router.get("/doctorlst/:expertise", (req, res) => {
     const category = String(req.params.expertise);
     console.log(category)
@@ -192,35 +191,6 @@ router.delete("/:id", (req, res) => {
         });
 });
 
-// a PATCH route for changing properties of a resource.
-// (alternatively, a PUT is used more often for replacing entire resources).
-router.patch("/:id", (req, res) => {
-    const id = req.params.id;
-
-    // get the updated name and year only from the request body.
-    const { name, year } = req.body;
-    const body = { name, year };
-
-    if (!ObjectID.isValid(id)) {
-        res.status(404).send(code404);
-        return;
-    }
-
-    // Update the doctor by their id.
-    User.findByIdAndUpdate(id, { $set: body }, { new: true })
-        .then(doctor => {
-            if (!doctor) {
-                res.status(404).send(code404);
-            } else {
-                res.send(doctor);
-            }
-        })
-        .catch(error => {
-            log(error)
-            res.status(400).send(code400); // bad request for changing the doctor.
-        });
-});
-
 router.post("/", (req, res) => {
     const id = req.body.to;
     log(id + " start adding appointment")
@@ -242,16 +212,16 @@ router.post("/", (req, res) => {
                 realName: req.body.real,
                 username: req.body.name,
                 description: req.body.dis,
-			}
-			User.patients.push(newRev);
-			User.save();
-			res.send(User);
-		}
-	})
-		.catch((error) => {
-			log(error)
-			res.status(500).send('Internal Server Error')  // server error
-		})
+            }
+            User.patients.push(newRev);
+            User.save();
+            res.send(User);
+        }
+    })
+        .catch((error) => {
+            log(error)
+            res.status(500).send('Internal Server Error')  // server error
+        })
 });
 
 router.post("/appointment/get", (req, res) => {
@@ -296,7 +266,6 @@ router.get("/appointment/change/:index/:id/:TFN", (req, res) => {
                     res.status(404).send(code404);
                 } else {
                     if (TFN === '0') {
-                        //console.log(000000000000)
                         doctor.patients[index].status = true;
                     }
                     else if (TFN === '1') {

@@ -48,8 +48,6 @@ router.get("/", (req, res) => {
 });
 
 router.post("/changephoneEmail", (req, res) => {
-    // Use the static method on the User model to find a user
-    // by their email and password
     User.findById(req.body.userId)
         .then(user => {
             user.backupemail = req.body.email;
