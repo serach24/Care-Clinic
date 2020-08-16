@@ -177,13 +177,12 @@ class DoctorPatientList extends React.Component {
     const page = this.state.page;
     const itemsPerPage = this.state.itemsPerPage;
     return (
-      <div className={classes.DoctorPatientList}>
+      <div className={classes.doctorPatientList}>
         <h3>Patient List</h3>
         <Table>
           <TableHead>
             <TableRow>
               <TableCell>Patient Name</TableCell>
-              {/* TODO: redirect userName to profile link */}
               <TableCell >Patient Profile</TableCell>
               <TableCell >Description</TableCell>
               <TableCell >Appointment Time</TableCell>
@@ -236,8 +235,6 @@ class DoctorPatientList extends React.Component {
           completeTreatment={this.completeTreatment}
           open={this.state.treatmentDialogOpen}
           handleClose={this.closeTreatmentDialog}
-        // diagnosis={this.state.patients[this.state.treatmentId].diagnosis}
-        // prescription={this.state.patients[this.state.treatmentId].prescription}
         />
       </div>
     );

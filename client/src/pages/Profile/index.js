@@ -62,6 +62,10 @@ class Profile extends React.Component {
     }
   }
 
+  handleLogOut = ()=>{
+    this.props.onClose();    
+    logout(this.props.app)
+  }
 
   render() {
     const { app, open, onClose, anchorEl } = this.props;
@@ -71,14 +75,26 @@ class Profile extends React.Component {
         open={open}
         anchorEl={anchorEl}
         onClose={onClose}
+
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
       >
 
         <div className="FlowButtons">
           <div className="FlowButton">
-            <Button fullWidth variant="filled" component={Link} to={"/"} onClick={() => logout(app)}>LogOut</Button>
+            {app.state.loginState !== 2 && 
+              <Button fullWidth onClick={onClose} component={Link} to={"/" + app.state.userId} variant="filled">
+                Detail
+              </Button>}
           </div>
           <div className="FlowButton">
-            {app.state.loginState !== 2 && <Button fullWidth component={Link} to={"/" + app.state.userId} variant="filled">Detail</Button>}
+            <Button fullWidth variant="filled" component={Link} to={"/"} onClick={this.handleLogOut}>LogOut</Button>
           </div>
         </div>
       </ Popover>
