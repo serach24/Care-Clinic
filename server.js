@@ -118,6 +118,29 @@ const authenticate = (req, res, next) => {
   }
 }
 
+const adminAuthenticate = (req, res, next) => {
+  if (req.session.user) {
+    User.findById(req.session.user).then((user) => {
+      // log('auth' + user)
+      if (!user) {
+        return Promise.reject()
+      } else {
+        req.user = user._id
+        if(user.level == 2){
+          next()
+        }else{
+          return Promise.reject()
+        }
+        
+      }
+    }).catch((error) => {
+      res.status(401).send("Unauthorized")
+    })
+  } else {
+    res.status(401).send("Unauthorized")
+  }
+}
+
 app.use('/user', loginRouter);
 
 app.use('/doctors', authenticate, doctorsRouter);
@@ -126,7 +149,7 @@ app.use('/patients',authenticate, patientsRouter);
 
 app.use('/users',authenticate, usersRouter);
 
-app.use('/superusers',authenticate, superusers);
+app.use('/superusers',adminAuthenticate, superusers);
 
 app.use('/articles', articlesRouter);
 
