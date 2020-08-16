@@ -38,6 +38,8 @@ router.post("/", (req, res) => {
             req.session.username = user.username;
             req.session.loginState = user.level;
             user.password = "";
+            user.img = "";
+            req.session.profile = user;
             res.send(
                 {
                     userId: user._id,
@@ -67,6 +69,9 @@ router.post("/login", (req, res) => {
             req.session.user = user._id;
             req.session.username = user.username;
             req.session.loginState = user.level;
+            user.password = "";
+            user.img = "";
+            req.session.profile = user;
             // log('after:'+user._id);
             // log('after:'+user.username);
             // log('after:'+user.level);
@@ -76,7 +81,6 @@ router.post("/login", (req, res) => {
                 res.status(500).send("User is Banned")
                 return;
             }
-            user.password = "";
             res.send({
                 userId: user._id,
                 loginState: user.level,
@@ -106,7 +110,8 @@ router.get("/check-session", (req, res) => {
     if (req.session.user) {
         res.send({
             userId: req.session.user,
-            loginState: req.session.loginState
+            loginState: req.session.loginState,
+            profile: req.session.profile
         });
     } else {
         res.status(401).send();

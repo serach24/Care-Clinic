@@ -10,21 +10,24 @@ Database: Mongodb Atlas
 ### Routes:
 
 Users:
+```
 GET '/users/'
 Get all user information
- 
+```
+``` 
 POST '/users/changephoneEmail'
 body: 	{
 	email : string,  new backup email
 	phone: int, new phone number
 } 
 Change the email and phone number of the userId
- 
+```
+``` 
 GET '/users/get_profile/:id'
 Get the the user profile by id
- 
+``` 
 ### Login:
-
+```
 POST ‘/user’
 body: {
 username: String (required),
@@ -41,49 +44,58 @@ Certification1: String,
 Certification2: String
 }
 sign up with fields above, username and password is required. In level, 1 stands for user, 2 stands for admin), 3 stands for doctor.
-
+```
+```
 POST‘/user/login’
 body: {
 usernameL String, 
 password: String
 )
 log in with username and password
-
+```
+```
 GET ‘/user/logout’
 use this route to remove the session
-
+```
+```
 GET ‘/user/check-session’
 check if a use is logged in on the session cookie
-
+```
 
  
 ### Doctors: 
-
+```
 GET /doctors/'
 Get all doctors
-
+```
+```
 GET ‘/doctors/doctorlst/:expertise’
 Get all doctors with expertise
-
+```
+```
 POST ‘/doctors/expertise/:id’
 body: {
 expertise: String
 }
 add expertise to the doctor with id
-
+```
+```
 GET ‘/doctors/:id’
 Get the doctor with id 
-
+```
+```
 DELETE ‘/doctors/:id’
 delete the doctor with id from the database
-
+```
+```
 PATCH ‘/doctors/:id’
 body: {
 name: String, 
 yearL:  String
 }
 change the doctor 
-
+```
+```
 POST ‘/doctors/’
 body: {
 to: Stirng (userId), 
@@ -93,26 +105,23 @@ real: String (realName),
 name: String (username),
 dis: String (description)
 }
-
 add an appointment to the doctor with userId = to as well as the appointment time, patientId, patients’ real name, patients’ username, and appointment description.
-
+```
+```
 POST ‘/appointment/get’
 body : {
 id: String
 }
 get the appointment with id
-
-
+```
+```
 GET "/appointment/change/:index/:id/:TFN"
 change the state of the appointment with the index in the user with id. TFN should be 0 1 or 2, which represents true(approved), false(ending) or null(declined) for appointment status
- 
- 
+ ```
 
 
-
-
-
-
+### Patients
+```
 '/patients',authenticate, patientsRouter
 POST “/patients/:id”
 Body :	{
@@ -131,10 +140,12 @@ Body :	{
             ]
         }
 Update the health history of a user.
- 
+```
+```
 GET “/patients/:id”
 Get the health history of a user.
- 
+```
+```
 POST “/patients/”
 Body :	{
 id : patient id,
@@ -142,54 +153,65 @@ passedNorT : boolean
 }
 Get the current appointments of the user if passedNorT is true.
 Get passed appointments of the user if passedNorT is false.
- 
+```
  
 ### User
+```
 '/superusers',authenticate, superusers
 GET “/superusers/” 
 Get all users
- 
+```
+```
 PATCH “/superusers/”
 body:     { 
 userid: string,
 	status: string, state to set
 }
 Change user’s state to the state in body
- 
- 
+```
+```
 GET “/superusers/fish/change/:id/:TFN”
 id: user’s objectid
 TFN : 0-True 1-False 2-null
 set the needVerify state according to TFN 
+```
  
-### Ariticles: 
+### Ariticles:
+``` 
 POST "/articles/"  
 body: { title:"", content:"", img:""} 
 return article document
- 
+```
+``` 
 GET "/articles/" 
 Get all articles
- 
+```
+```
 GET "/articles/:id" 
 Get article by id
- 
+``` 
  
 ### Feed:
- 
+``` 
 GET "/feed/" 
 Get all feedbacks
- 
+```
+``` 
 GET "/feed/:id" 
 Get feedback by id
- 
+```
+``` 
 POST "/feed/" 
 Post a feedback by state
- 
+``` 
 
 Feedback structure:
+```
 {"_id":object id,"open":boolean,"description":String,"email":String,"__v":0}
+```
 
 User/doctor structure:
+```
 {"_id":object id
 ,"status":"Active",
 "img": string url of the avatar
@@ -211,11 +233,12 @@ THE ONLY WAY GETTING A ACCOUNT LEVEL 2 is editing database
 "patients":[], list of appointments
 "chatList":[], list of chat messages
 "__v":0}
-
+```
 
 
 
 Article structure
+```
 {"_id": Object id,
 "likes":[Object id], array of user id who liked it
 "title": String,
@@ -231,10 +254,10 @@ Article structure
 "img": String,
 "__v":0
 }
+```
 
 
-
-Authentication process:
+## Authentication process:
 ### Login
 *  Frontend send login request ---> Server matches the username and encrypted password ---> Server sends back login status ---> Frontend finishes the login process or alerts the error.
 * When frontend page refresh, it will send a request to the server that checks it’s login status. So it will not lose login status when page refresh.
@@ -245,15 +268,12 @@ Authentication process:
 ### Backend authenticate middleware
 * Server will verify the user permission when it received any protected API requests.
 * There are 3 levels of security. 
-** The routes for the Guest users, they can access routes for the article and log in. Those routes do not need to authenticate.
-** Routes for Normal users like Doctors or Patients. For example, \doctors and \patients routes. Only logged-in users can access.
-** Routes for Admin. For example, \superusers route. Only admin users can access it.
-
-##Comment and Like
-* The logged-in users can leave comments and likes on the home page. The guest user can view comments.
+* The routes for the Guest users, they can access routes for the article and log in. Those routes do not need to authenticate.
+* Routes for Normal users like Doctors or Patients. For example, "\doctors" and "\patients" routes. Only logged-in users can access.
+* Routes for Admin. For example, "\superusers" route. Only admin users can access it.
 
 
-#Front End:
+# Front End:
 ## Introduction
 Our Project is an online clinic, where patients can chat with doctors about their symptoms and get a prescription sent to them through the app. This is aimed at more common ailments (colds, headaches, behind counter supplements like iron pills, UTIs, etc) and not used for more complex cases.
 
@@ -279,6 +299,7 @@ Living in a pandemic, it’s getting increasingly difficult to get out of the ho
 * Provide feedback in the "FEEDBACK" page on the navigation bar
 * Login with existed username and password by clicking on "Login" button at the right-top corner of the page
 * Sign up a new account by clicking "Don't have an account yet? Sign up" in the login page 
+* The logged-in users can leave comments and likes the content on the home page. The guest user can view comments.
 
 ### Normal Logged-in User (Potential Patient)
 * Read educational articles in the home page 
