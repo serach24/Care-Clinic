@@ -99,9 +99,7 @@ class NavBar extends React.Component {
             {app.state.loginState === 0 && !this.state.auth && <Button component={Link} to={"/login"} color="inherit"
               className="loginButton" >Login</Button>}
             {app.state.loginState !== 0 && <div className="ProfileButton" onClick={this.handleProfileClick}> Profile </div>}
-            {app.state.loginState !== 0 && <div className="Profile"> 
-              <Profile open={open} app={app} anchorEl={this.state.profileAnchor} onClose={this.closeProfile} ></Profile> </div>
-            }
+            <Profile open={open} app={app} anchorEl={this.state.profileAnchor} onClose={this.closeProfile} ></Profile>
             {this.state.auth && <Button color="inherit"
               className="accountButton" >My Account</Button>}
           </Toolbar>
