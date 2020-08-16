@@ -192,35 +192,6 @@ router.delete("/:id", (req, res) => {
         });
 });
 
-// a PATCH route for changing properties of a resource.
-// (alternatively, a PUT is used more often for replacing entire resources).
-router.patch("/:id", (req, res) => {
-    const id = req.params.id;
-
-    // get the updated name and year only from the request body.
-    const { name, year } = req.body;
-    const body = { name, year };
-
-    if (!ObjectID.isValid(id)) {
-        res.status(404).send(code404);
-        return;
-    }
-
-    // Update the doctor by their id.
-    User.findByIdAndUpdate(id, { $set: body }, { new: true })
-        .then(doctor => {
-            if (!doctor) {
-                res.status(404).send(code404);
-            } else {
-                res.send(doctor);
-            }
-        })
-        .catch(error => {
-            log(error)
-            res.status(400).send(code400); // bad request for changing the doctor.
-        });
-});
-
 router.post("/", (req, res) => {
     const id = req.body.to;
     log(id + " start adding appointment")

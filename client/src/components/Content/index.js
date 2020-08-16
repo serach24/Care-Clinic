@@ -45,12 +45,14 @@ class Content extends React.Component {
     }
 
     handleReply = (event) =>{
+        const time = new Date();
+        const timestr = time.toDateString()
         const reqBody = {
             articleId: this.props.article._id,
             comment:{"img": "https://i.ibb.co/cCCf9dF/316703-normal.png", 
                 "userName": this.props.app.state.profile.username, 
                 "userProfileLink": "/", 
-                "commentTime": "Jan 4 2019",
+                "commentTime": timestr,
                 "comment": this.state.comment}}
         postReply(this, reqBody)
         // alert('A name was submitted: ' + this.state.comment);
