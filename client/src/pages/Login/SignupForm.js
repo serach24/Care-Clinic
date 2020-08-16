@@ -195,7 +195,6 @@ class SignupForm extends React.Component {
             />)
 
         }
-        <Link className="login-submit-button-link">
         <div className="login-submit-button">
           <Button
             variant="contained"
@@ -213,7 +212,6 @@ class SignupForm extends React.Component {
             </Alert>
           </Snackbar>
         </div>
-        </Link>
         <div className="login-text">
           <div className="login-switch">
             <Link onClick={this.props.switch} variant="body2">
