@@ -12,6 +12,8 @@ export const useStyles = makeStyles((theme) => ({
         borderBottom: '1px solid var(--box-border-color)',
     },
     avatar: {
+        width:'40px',
+        height:'40px',
         borderRadius: '4px',
         verticalAlign: 'bottom',
     },

@@ -49,7 +49,7 @@ class Content extends React.Component {
         const timestr = time.toDateString()
         const reqBody = {
             articleId: this.props.article._id,
-            comment:{"img": "https://i.ibb.co/cCCf9dF/316703-normal.png", 
+            comment:{"img": "https://i.ibb.co/NS9X7M9/icon.jpg", 
                 "userName": this.props.app.state.profile.username, 
                 "userProfileLink": "/", 
                 "commentTime": timestr,
