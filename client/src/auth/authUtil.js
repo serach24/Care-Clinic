@@ -12,7 +12,8 @@ export const readCookie = (app) => {
         .then(json => {
             if (json && json.userId) {
                 app.setState({ userId: json.userId,
-                               loginState: json.loginState
+                               loginState: json.loginState,
+                               profile:json.profile
                 });
             }
         })

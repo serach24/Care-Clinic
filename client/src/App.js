@@ -70,9 +70,9 @@ class App extends React.Component {
               <Route exact path='/about' render={() =>
                 (<About app={this} />)} />
               
-              <Route path="/appointment" render={() => (<Appointment app={this}/>)} />
+              {this.state.loginState !== 0 && <Route path="/appointment" render={() => (<Appointment app={this}/>)} />}
               
-              <Route path="/patientList" render={() => (<DoctorPatientList app={this}/>)} />
+              {this.state.loginState !== 0 && <Route path="/patientList" render={() => (<DoctorPatientList app={this}/>)} />}
 
               {this.state.loginState !== 0 && <Route exact path={"/" + this.state.userId} render={() =>
                 (<ProfilePage app={this} />)} />}

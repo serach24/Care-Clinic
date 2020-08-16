@@ -1,8 +1,8 @@
 export const styles = theme => ({
     formroot: {
-        display:"flex",
-        flexWrap:"wrap",
-        width:902,
+        // display:"flex",
+        // flexWrap:"wrap",
+        width:900,
         margin:"10px auto",
         backgroundColor: 'white',
         border: '2px solid grey',
@@ -19,7 +19,7 @@ export const styles = theme => ({
     disabled: {},
     textFieldFull: {
         margin: 8,
-        width: 640,
+        width: 480,
         '&$disabledFull': {
             color:'black'
           }

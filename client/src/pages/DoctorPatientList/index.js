@@ -25,36 +25,14 @@ class DoctorPatientList extends React.Component {
       patients: [
         {
           id: 0,
-          userId: "5f2f5af3c17b5014972cf8ee",
-          realName: "John Doe1",
-          username: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-28 09:00 am",
+          userId: "",
+          realName: "",
+          username: "",
+          description: "",
+          appointTime: "",
           diagnosis: "",
           prescription: "",
-          status: "Pending"
-        },
-        {
-          id: 1,
-          userId: "5f2f5af3c17b5014972cf8ee",
-          realName: "John Doe1",
-          username: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-28 09:00 am",
-          diagnosis: "",
-          prescription: "",
-          status: "Pending"
-        },
-        {
-          id: 2,
-          userId: "5f2f5af3c17b5014972cf8ee",
-          realName: "John Doe1",
-          username: "testUser1",
-          description: "headache, fever ...",
-          appointTime: "2020-06-20 09:00 am",
-          diagnosis: "Some basic flu",
-          prescription: "some medicine here",
-          status: "Declined"
+          status: ""
         },
       ]
     }
